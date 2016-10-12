@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="example.dao.MemberInviteDao">
+	<resultMap type="memberInvite" id="memberInviteMap">
+	<!-- type 
+	 스프링 설정 에서 typeAliasesPackage 에 지정함 별명을 앞에 example.vo 으로 
+	 자동으로 만들어 주게 설정했다. 
+	 그래서 앞에 example.vo 를 빼도 된다.
+	 -->
+		<id column="INO" property="no" /> <!--PK 는 ID 나머지는 result -->
+		<result column="GNO" property="groupNo" />
+		<result column="MNO" property="memberNo" />
+		<result column="INVI_EMAIL" property="inviteEmail" />
+		<result column="STATUS" property="status" />
+		<result column="INVIT_DT" property="createdDate" />   
+	</resultMap>
+
+	<select id="selectList" resultMap="memberInviteMap" parameterType="map">
+    SELECT hiba_membs.*, hiba_invit.*
+    FROM hiba_membs , hiba_invit 
+    WHERE hiba_membs.email = hiba_invit.INVI_EMAIL
+   
+    <!-- 
+    select ino, gno, INVI_EMAIL, name
+    from hiba_invit  
+  
+ 
+  
+     
+    select * From hiba_invit left JOIN hiba_group
+    ON hiba_invit.GNO = hiba_membs.GNO
+    left JOIN hiba_group
+    ON hiba_invit.email = hiba_membs.email    
+    -->
+    limit #{startIndex}, #{length}
+  </select>
+
+  <insert id="insert" parameterType="memberInvite">
+    <!--  
+    insert into hiba_invit(mno, gno, email, invit_dt)
+    values (#{memberNo}, #{groupNo}, #{email}, now())
+    -->
+    insert into hiba_invit(mno, gno, INVI_EMAIL, name, invit_dt)
+    select mno, 
+          #{groupNo},           
+          #{inviteEmail},
+          name,
+          now()      
+    from hiba_membs
+    where email=#{inviteEmail}
+                 
+  </insert>
+
+  <delete id="delete" parameterType="int">
+    delete from hiba_membs where
+    mno=#{value}
+  </delete>
+
+</mapper>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+   <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+    <title>프로젝트-스케쥴</title>
+    <!--[if lt IE 9]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" type="text/css" href="../css/common_style.css" >
+    <link rel="stylesheet" type="text/css" href="../css/makeCal.css" >
+    <link rel="stylesheet" type="text/css" href="../css/makegroup.css">        
+    <link href="../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/5.0.7/sweetalert2.min.css" />
+    
+  </head>
+<body>
+	<header>
+  
+  </header>
+	<section>
+		<div class="section-wrap">
+		  <div class="make-top">
+		    <div class="make-text">
+		     <h2><span id="userName" class="my-login" data-value=""></span>님의 그룹만들기.</h2>
+	  	   <p>일정을 만들 그룹을 선택해 주세요.<span id="mno"></span></p>
+		    </div>
+		    <div class="my-info">
+		       <ul>
+		         <li class="my-profile">My 이미지</li> 
+		         <li><button class="btn btn-default" data-target="#layerpop" data-toggle="modal">그룹추가</button></li>
+		       </ul>
+					 <div class="modal fade" id="layerpop" >
+	  				<div class="modal-dialog">
+		    			<div class="modal-content">
+			     			 <!-- header -->
+		      			<div class="modal-header">
+			       		 	 <!-- 닫기(x) 버튼 -->
+	       		       <button type="button" class="close" data-dismiss="modal">×</button>
+		        		   <!-- header title -->
+			        		 <h4 class="modal-title">그룹생성</h4>
+			     			</div>
+			     			<!-- body -->
+		      			<div class="modal-body">
+			      			<label for="file">그룹이름</label><br> 
+		            	<input id="groupName" type="text" name="groupName" placeholder="그룹명을 입력하세요."><br>
+									<label for="file">그룹이미지</label><br> 
+									<input class="file" type="file" name="file"><br> 
+		      			</div>
+		      			<!-- Footer -->
+		      			<div class="modal-footer">
+					      	<button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
+					        <button type="button" id="addBtn" class="btn btn-default" data-dismiss="modal">만들기</button>
+					      </div>
+					    </div>
+		        </div>
+	       </div> 
+	      </div>
+	    </div>
+	    </div>
+	    <div class="my-group">
+	     <ul id="member" class="member">
+	    <!--  
+	       <li><a href="makeSc.jsp"><i class="group-img"><img src="../images/profile.png"></i><span>그룹1</span></a></li>
+	       <li><a href="#"><i class="group-img"><img src="../images/profile.png"></i><span>그룹2</span></a></li>
+	       <li><a href="#"><i class="group-img"><img src="../images/profile.png"></i><span>그룹3</span></a></li>
+	      -->	     
+	     </ul>
+	    </div>	  	
+	</section>
+   <footer>
+  
+  </footer>
+  
+  <script id="liTemplateText" type="text/x-handlebars-template">
+  <li class="groupList">
+    <ul>       
+       <li class="groupTitleLink">
+          <a href="#" class="groupMore" data-no="{{groupNo}}">
+          <i class="group-img"><img src="../images/profile.png"></i>
+         
+          </a>
+        </li>
+        <li><button id="deleteBtn" class="btn btn-xs btn-default" data-no="{{no}}">x</btuuon></li>
+    </ul>
+  </li>
+  </script>
+   <script id="liTemplateText2" type="text/x-handlebars-template">  
+    
+  </script>
+  
+  <script src="../node_modules/jquery/dist/jquery.js"></script>   
+  <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>    
+  <script src="../node_modules/handlebars/dist/handlebars.min.js"></script>
+  <script type='text/javascript'  src="../js/include.js"></script>    
+  <script type='text/javascript'  src="../js/main.js"></script>
+  <script type="text/javascript" src="../js/common.js"></script>
+  <script type="text/javascript" src="../js/bit.js"></script>   
+  <script type="text/javascript" src="../member/memberApp.js"></script>
+  <script type="text/javascript" src="makegroupApp.js"></script>
+  <script type="text/javascript" src="makegroupForm.js"></script>
+  <script type="text/javascript" src="../memberInvite/memberInviteApp.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/5.0.7/sweetalert2.min.js"></script>
+  <script type="text/javascript">
+   ajaxLoginUser()
+   ajaxMemberGroupInviteList()
+   ajaxGroupList()
+   if (location.search.startsWith("?")) {
+     var no = location.search.split("=")[1];
+     
+     $(".my-new").css("display","none")
+    
+   } else {
+       $(".my-view").css("display","none")
+   }
+   function add() {
+	   $("#member").append($("#li"));
+   }
+   
+  </script>
+</body>
+</html>
