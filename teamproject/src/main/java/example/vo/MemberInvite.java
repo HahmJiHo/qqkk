@@ -11,12 +11,17 @@ public class MemberInvite implements Serializable {
 	protected int no;
 	protected int groupNo;
 	protected int memberNo;
-	protected int state;
+	protected int groupGroupNo;
+	protected boolean status;
 	protected String name;
 	protected String inviteEmail;
 	protected Date createdDate;
 	protected String createdDate2;
-
+	protected String color;
+	protected String groupUserName;
+	protected String groupName;
+	
+	
 	public int getMemberNo() {
 		return memberNo;
 	}
@@ -46,13 +51,7 @@ public class MemberInvite implements Serializable {
 		this.groupNo = groupNo;
 	}
 
-	public int getState() {
-		return state;
-	}
 
-	public void setState(int state) {
-		this.state = state;
-	}
 
 	public String getInviteEmail() {
 		return inviteEmail;
@@ -76,14 +75,56 @@ public class MemberInvite implements Serializable {
     this.createdDate = Date.valueOf(str);
     this.createdDate2 = str;
   }
+		
+  public String getColor() {
+		return color;
+	}
+
+	public void setColor(String color) {
+		this.color = color;
+	}
+	public boolean isStatus() {
+		return status;
+	}
+
+	public void setStatus(boolean status) {
+		this.status = status;
+	}
 	
-	
-	
-@Override
-public String toString() {
-	return "MemberInvite [no=" + no + ", groupNo=" + groupNo + ", state=" + state + ", inviteEmail=" + inviteEmail
-			+ ", createdDate=" + createdDate + ", createdDate2=" + createdDate2 + "]";
-}
+	public int getGroupGroupNo() {
+		return groupGroupNo;
+	}
+
+	public void setGroupGroupNo(int groupGroupNo) {
+		this.groupGroupNo = groupGroupNo;
+	}
+
+
+
+	public String getGroupUserName() {
+		return groupUserName;
+	}
+
+	public void setGroupUserName(String groupUserName) {
+		this.groupUserName = groupUserName;
+	}
+
+	public String getGroupName() {
+		return groupName;
+	}
+
+	public void setGroupName(String groupName) {
+		this.groupName = groupName;
+	}
+
+	@Override
+	public String toString() {
+		return "MemberInvite [no=" + no + ", groupNo=" + groupNo + ", memberNo=" + memberNo + ", status=" + status + ", name="
+				+ name + ", inviteEmail=" + inviteEmail + ", createdDate=" + createdDate + ", createdDate2=" + createdDate2
+				+ ", color=" + color + "]";
+	}
+
+
 
 	
 }

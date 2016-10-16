@@ -24,6 +24,10 @@
     from hiba_group 
     limit #{startIndex}, #{length}
    <!--
+    select hiba_group.gno, hiba_group.mno, hiba_group.gname, hiba_invit.status
+    from hiba_group inner join hiba_invit
+    on hiba_group.gno = hiba_invit.gno
+    where hiba_invit.status = true
   SELECT hiba_group.GNO, hiba_group.GNAME, hiba_invit.GNO
 FROM hibadb.hiba_invit    hiba_invit
      INNER JOIN hibadb.hiba_group hiba_group

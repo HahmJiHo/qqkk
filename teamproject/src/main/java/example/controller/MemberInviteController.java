@@ -24,7 +24,7 @@ public class MemberInviteController {
 	@RequestMapping("list")
 	public String list(
 			@RequestParam(defaultValue="1")int pageNo,
-			@RequestParam(defaultValue="5")int length,
+			@RequestParam(defaultValue="100")int length,
 			Model model) throws Exception {
 		
 		HashMap<String,Object> map = new HashMap<>();

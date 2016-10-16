@@ -21,6 +21,8 @@
   </header>
 	<section>
 		<div class="section-wrap">
+		<div class="test">
+		</div>
 		  <div class="make-top">
 		    <div class="make-text">
 		     <h2><span id="userName" class="my-login" data-value=""></span>님의 그룹만들기.</h2>
@@ -72,27 +74,8 @@
    <footer>
   
   </footer>
-  
-  <script id="liTemplateText" type="text/x-handlebars-template">
-  <li class="groupList">
-    <ul>       
-       <li class="groupTitleLink">
-          <a href="#" class="groupMore" data-no="{{groupNo}}">
-          <i class="group-img"><img src="../images/profile.png"></i>
-         
-          </a>
-        </li>
-        <li><button id="deleteBtn" class="btn btn-xs btn-default" data-no="{{no}}">x</btuuon></li>
-    </ul>
-  </li>
-  </script>
-   <script id="liTemplateText2" type="text/x-handlebars-template">  
-    
-  </script>
-  
   <script src="../node_modules/jquery/dist/jquery.js"></script>   
   <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>    
-  <script src="../node_modules/handlebars/dist/handlebars.min.js"></script>
   <script type='text/javascript'  src="../js/include.js"></script>    
   <script type='text/javascript'  src="../js/main.js"></script>
   <script type="text/javascript" src="../js/common.js"></script>
@@ -106,18 +89,36 @@
    ajaxLoginUser()
    ajaxMemberGroupInviteList()
    ajaxGroupList()
-   if (location.search.startsWith("?")) {
-     var no = location.search.split("=")[1];
-     
+   if (location.search.startsWith("?")) {     
      $(".my-new").css("display","none")
     
    } else {
        $(".my-view").css("display","none")
    }
-   function add() {
-	   $("#member").append($("#li"));
-   }
-   
+
   </script>
+    <script id="liTemplateText" type="text/x-handlebars-template">
+  <li class="groupList">
+    <ul>       
+       <li class="groupTitleLink">
+          <a href="#" class="groupMore" data-no="{{groupNo}}">
+          <i class="group-img"><img src="../images/profile.png"></i>
+         
+          </a>
+        </li>
+        <li><button id="deleteBtn" class="btn btn-xs btn-default" data-no="{{no}}">x</btuuon></li>
+    </ul>
+  </li>
+  </script>
+    <script id="inviteMessage" type="text/x-handlebars-template">     
+      <div class="invite-box">
+        <p>{{groupUserName}} 님이 <span> {{groupName}} 그룹에 초대하였습니다</span></p>
+        <ul>
+           <li><button type="button" class="btn addTrue">수락</button></li>
+          <li><button type="button" class="btn addFail">거절</button></li>
+        </ul>
+     </div>  
+  </script>
+    <script src="../node_modules/handlebars/dist/handlebars.min.js"></script>
 </body>
 </html>

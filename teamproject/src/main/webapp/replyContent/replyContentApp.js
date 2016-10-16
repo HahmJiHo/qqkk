@@ -9,10 +9,9 @@ function ajaxReplyList() {
 
 		var contents = ""
 		var arr = result.data	
-		var getGroupNo = $(location).attr('search')	
-		var groupNo = getGroupNo.split("=")[1]
+
 		for (var i in arr) {			
-			if (groupNo == arr[i].groupNo) {					
+			if ($('#group-reply-btn').attr('data-no') == arr[i].groupNo) {					
 				if ($("#userName").text() ==  arr[i].name) {
 					 contents +=  "<span class='listNickName' style='font-weight:bold; float:right; display:block; max-width: 300px; clear:both'>" + arr[i].name +"</span>" +	
 					"<div class='bubble-me' style='float:right; clear:both;'>" +			   			 
@@ -54,5 +53,6 @@ function ajaxLoginUser() {
 		} 	
 		$("#userName").text(result.data.name)
 		$("#nicknm").text(result.data.nicknm)
+		$("#userName").attr('data-no', result.data.no)
 	})
 }

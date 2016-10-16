@@ -20,8 +20,8 @@ function ajaxGroupList() {
 		var arr = result.data
 	   // var template = Handlebars.compile($('#liTemplateText2').html())
 	    var len = $('.groupMore').length;
-		for (var a = 0; a < len; a++) {
-		    for (var i in arr) {
+		for (var a = 0; a < len; a++) {			
+		    for (var i in arr) {		    	
 				if ($('.groupMore').eq(a).attr('data-no') == arr[i].no) {																				
 					$(".groupTitleLink").eq(a).append("<span class='groupNum'>"+ arr[i].groupName+"</span>");					
 				}	
@@ -47,6 +47,7 @@ function ajaxGroupName() {
 		var template = Handlebars.compile($('#groupNameTemplateText').html())
 			
 		for (var i in arr) {		
+			
 			if (location.search.startsWith("?")) {
 				var no = location.search.split("=")[1];
 				if (arr[i].no == no) {

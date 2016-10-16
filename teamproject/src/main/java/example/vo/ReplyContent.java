@@ -6,8 +6,8 @@ public class ReplyContent implements Serializable {
 	private static final long serialVersionUID = 1L;
   
   protected int no;
-  protected int groupNo;
   protected int memberNo;
+  protected int groupNo;
   protected String name;
 	protected String content;
 	
@@ -16,12 +16,6 @@ public class ReplyContent implements Serializable {
 	}
 	public void setNo(int no) {
 		this.no = no;
-	}
-	public int getGroupNo() {
-		return groupNo;
-	}
-	public void setGroupNo(int groupNo) {
-		this.groupNo = groupNo;
 	}
 	public String getName() {
 		return name;
@@ -41,12 +35,18 @@ public class ReplyContent implements Serializable {
 	public void setMemberNo(int memberNo) {
 		this.memberNo = memberNo;
 	}
+	public int getGroupNo() {
+		return groupNo;
+	}
+	public void setGroupNo(int groupNo) {
+		this.groupNo = groupNo;
+	}
 	@Override
 	public String toString() {
-		return "ReplyContent [no=" + no + ", groupNo=" + groupNo + ", memberNo=" + memberNo + ", name=" + name
-				+ ", content=" + content + "]";
+		return "ReplyContent [no=" + no  + ", groupNo=" + groupNo + ", memberNo="
+				+ memberNo + ", name=" + name + ", content=" + content + "]";
 	}
-	
+
 	
  
 	

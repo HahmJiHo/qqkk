@@ -9,23 +9,25 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import example.dao.GroupMemberDao;
 import example.dao.MemberInviteDao;
 import example.dao.ReplyContentDao;
+import example.vo.GroupMember;
 import example.vo.JsonResult;
 import example.vo.MemberInvite;
-import example.vo.ReplyContent;
+
 
 @Controller // 페이지 컨트롤러에 붙이는 애노테이션 
 @RequestMapping("/memberInvite/") // 이 페이지의 컨트롤러의 기준 URL
 public class MemberInviteController {
 	@Autowired MemberInviteDao memberInviteDao;
 	@Autowired ReplyContentDao replyContentDao;
-	
+	@Autowired GroupMemberDao groupMemberDao;
 	
 	@RequestMapping(path="list")
 	public Object list(
 			@RequestParam(defaultValue="1") int pageNo,
-			@RequestParam(defaultValue="30") int length) throws Exception {
+			@RequestParam(defaultValue="100") int length) throws Exception {
 
 		try {
 			HashMap<String,Object> map = new HashMap<>();
@@ -51,6 +53,64 @@ public class MemberInviteController {
 			return JsonResult.fail(e.getMessage());
 		}						
 	}
+	
+	@RequestMapping(path="update")
+	public Object update(MemberInvite memberInvite) throws Exception{
+
+		try {
+			HashMap<String,Object> paramMap = new HashMap<>();
+			paramMap.put("no", memberInvite.getNo());
+			paramMap.put("groupNo", memberInvite.getGroupNo());
+			System.out.println(memberInvite);
+			System.out.println("-----------------------");
+			if (memberInviteDao.selectOneByNameAndNumber(paramMap) == null) {
+				throw new Exception("해당 회원이 없습니다.");
+			}
+			System.out.println(memberInvite);
+			memberInviteDao.update(memberInvite);
+			return JsonResult.success();
+		} catch (Exception e) {
+			
+			return JsonResult.fail(e.getMessage());
+		}					
+		
+	}
+	
+	@RequestMapping(path="update2")
+	public Object update2(MemberInvite memberInvite) throws Exception{
+		try {
+			HashMap<String,Object> paramMap = new HashMap<>();
+			paramMap.put("no", memberInvite.getNo());
+			paramMap.put("groupNo", memberInvite.getGroupNo());
+		
+			System.out.println(memberInvite);
+			System.out.println("-----------------------");
+			if (memberInviteDao.selectOneByNameAndNumber(paramMap) == null) {
+				throw new Exception("해당 회원이 없습니다.");
+			}
+			System.out.println(memberInvite);
+			memberInviteDao.update2(memberInvite);
+			/*
+			GroupMember groupMember = new GroupMember();			
+			paramMap.put("no", groupMember.);
+			paramMap.put("groupNo", groupMember.getGroupNo());
+			
+			System.out.println(groupMember);
+			if (memberInvite.isStatus() == true) {
+				groupMemberDao.insert(groupMember);
+			}
+			
+			*/
+			return JsonResult.success();
+		} catch (Exception e) {
+			
+			return JsonResult.fail(e.getMessage());
+		}					
+		
+	}
+	
+	
+	
 	
 	@RequestMapping(path="delete")
 	public Object delete(int no) throws Exception {		

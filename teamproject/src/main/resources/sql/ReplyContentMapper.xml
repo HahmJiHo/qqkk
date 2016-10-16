@@ -11,13 +11,13 @@
 	 -->
 		<id column="RNO" property="no" /> <!--PK 는 ID 나머지는 result -->
     <result column="mno" property="memberNo" />    
-    <result column="grno" property="groupNo" />
+    <result column="rgno" property="groupNo" />
     <result column="nicknm" property="name" />
     <result column="conts" property="content" />      
 	</resultMap>
 
 	<select id="selectList" resultMap="replyContentMap" parameterType="map">
-    select mno, grno, nicknm, conts
+    select mno, rgno, nicknm, conts
     from hiba_g_r_cont
       order by
     <choose>
@@ -45,7 +45,7 @@
     -->
     
     
-    insert into hiba_g_r_cont(mno, grno, conts, nicknm)
+    insert into hiba_g_r_cont(mno, rgno, conts, nicknm)
     select mno, 
           #{groupNo},
           #{content}, 

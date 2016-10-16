@@ -2,9 +2,10 @@ $(document).ready(function() {
   
   $('header').on("click", ".navbar", function(e) {
 	$('.nav').slideToggle();	
-    console.log("aa")
-  });    
-    
+  });  
+  
+ 
+  
   
   $(".title-nav li").click(function(){
      var thisIndex = $(this).index();
@@ -16,6 +17,8 @@ $(document).ready(function() {
      return false;
     });
   $(".title-nav li").eq(0).click();  
+  
+  
   
 })
 

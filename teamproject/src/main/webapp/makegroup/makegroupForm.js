@@ -7,9 +7,9 @@ $("#addBtn").click(function(e) {
 });
 
 
-$("#updateBtn").click(function(e) {  
+$("#color-btn").click(function(e) {  
 	var makegroup = {
-			name : $("#name").val(),
+			color : $("#name").val(),
 			nicknm : $("#nicknm").val(),
 			email : $("#email").val(),
 			password : $("#password").val(),

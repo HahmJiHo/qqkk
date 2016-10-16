@@ -7,6 +7,7 @@ public class Member implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	protected int no;
+	protected String color;
 	protected String name;
 	protected String nicknm;
 	protected String email;
@@ -41,6 +42,13 @@ public class Member implements Serializable {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	public String getColor() {
+		return color;
+	}
+	public void setColor(String color) {
+		this.color = color;
+	}
+	
 
 	
 	

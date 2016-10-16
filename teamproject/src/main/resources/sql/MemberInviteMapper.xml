@@ -14,20 +14,23 @@
 		<result column="MNO" property="memberNo" />
 		<result column="INVI_EMAIL" property="inviteEmail" />
 		<result column="STATUS" property="status" />
-		<result column="INVIT_DT" property="createdDate" />   
+		<result column="INVIT_DT" property="createdDate" />
+		<result column="color" property="color" />
+		<result column="gname" property="groupName" />   
+		<result column="gno" property="groupGroupNo" />   
+		<result column="mname" property="groupUserName" />      
 	</resultMap>
 
 	<select id="selectList" resultMap="memberInviteMap" parameterType="map">
+      select hiba_group.gno, hiba_group.gname, hiba_group.mname, hiba_invit.*
+			from hiba_group inner join hiba_invit
+			on hiba_group.gno = hiba_invit.gno
+   
+    <!-- 
+    select *from hiba_invit  
     SELECT hiba_membs.*, hiba_invit.*
     FROM hiba_membs , hiba_invit 
     WHERE hiba_membs.email = hiba_invit.INVI_EMAIL
-   
-    <!-- 
-    select ino, gno, INVI_EMAIL, name
-    from hiba_invit  
-  
- 
-  
      
     select * From hiba_invit left JOIN hiba_group
     ON hiba_invit.GNO = hiba_membs.GNO
@@ -42,20 +45,35 @@
     insert into hiba_invit(mno, gno, email, invit_dt)
     values (#{memberNo}, #{groupNo}, #{email}, now())
     -->
-    insert into hiba_invit(mno, gno, INVI_EMAIL, name, invit_dt)
+    insert into hiba_invit(mno, gno, INVI_EMAIL, name, status, invit_dt)
     select mno, 
           #{groupNo},           
           #{inviteEmail},
           name,
+          #{status},
           now()      
     from hiba_membs
     where email=#{inviteEmail}
                  
   </insert>
 
-  <delete id="delete" parameterType="int">
-    delete from hiba_membs where
-    mno=#{value}
-  </delete>
+  <select id="selectOneByNameAndNumber" resultMap="memberInviteMap" parameterType="map">
+    select ino, gno
+    from hiba_invit 
+    where ino=#{no} and gno=(#{groupNo})
+  </select>
+
+  <update id="update" parameterType="memberInvite">
+    update hiba_invit set
+    color=#{color}
+    where ino=#{no}
+  </update>
+
+
+  <update id="update2" parameterType="memberInvite">
+    update hiba_invit set
+    status=#{status}
+    where ino=#{no}
+  </update>
 
 </mapper>

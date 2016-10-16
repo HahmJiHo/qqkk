@@ -1,9 +1,6 @@
 $("#addBtn").click(function(e) { 
-	var getGroupNo = $(location).attr('search')	
-	var groupNo = getGroupNo.split("=")[1]
-	groupNo = parseInt(groupNo)
 	var replyContent = {
-		groupNo : groupNo,	
+		groupNo : $("#group-reply-btn").attr('data-no'),
 		content : $("#content").val(),
 		name : $("#userName").html()
 	}
@@ -13,7 +10,7 @@ $("#addBtn").click(function(e) {
 
 
 
-$('#group-reply-btn').on('click', function(e) {
+$('.group-reply-more').on('click', '#group-reply-btn',function(e) {
 	$('#reply-modal').modal();
 	$("#board-Table > ul").on('click', '#deleteBtn', function(e) {   
 		var no = $(this).parent().prevAll("#no").text()

@@ -33,7 +33,7 @@ public class MakeGroupController {
 	@RequestMapping(path="list")
 	public Object list(
 			@RequestParam(defaultValue="1") int pageNo,
-			@RequestParam(defaultValue="30") int length) throws Exception {
+			@RequestParam(defaultValue="100") int length) throws Exception {
 		try {
 			HashMap<String,Object> map = new HashMap<>();
 			map.put("startIndex", (pageNo - 1) * length);
@@ -59,9 +59,10 @@ public class MakeGroupController {
 			memberInvite.setGroupNo(makeGroup.getNo());
 			memberInvite.setName(makeGroup.getName());					
 			memberInvite.setInviteEmail(member.getEmail());
+			memberInvite.setStatus(true);
 			System.out.println(memberInvite);			
 			memberInviteDao.insert(memberInvite);
-			
+		
 			// 그룹 생성시 그룹 댓글 생성
 			Reply reply = new Reply();
 			reply.setGroupNo(makeGroup.getNo());
@@ -72,8 +73,9 @@ public class MakeGroupController {
 			
 			// 그룹 댓글 생성시 댓글 콘텐츠 생성
 			ReplyContent replyContent = new ReplyContent();
-			replyContent.setGroupNo(makeGroup.getNo());
-			replyContent.setMemberNo(member.getNo());
+			
+			replyContent.setGroupNo(reply.getNo()); //rgno
+			replyContent.setMemberNo(member.getNo()); //mno
 			replyContent.setName(member.getName());
 			replyContent.setContent("그룹을 만들었습니다.");
 			System.out.println(replyContent);		
