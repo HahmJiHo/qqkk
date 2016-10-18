@@ -2,6 +2,7 @@
 <html lang="ko">
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
 <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
@@ -77,44 +78,51 @@
 	<section>
 		<div class="section-wrap">
 			<div class="selectbar-left">
+
+			<div class="my-info">
+           		<ul>
+             		<li class="my-profile"></li>     
+             		<li><a href='#' id="loginBtn" class="btn btn-xs btn-success my-logout">로그인</a></li> 
+      				<li><a href='#' id="logoutBtn" class="btn btn-xs btn-success my-login">로그 아웃</a></li> 	                          
+          		 </ul>  
+        		</div>
 				<form class="navbar-form navbar-left" role="search">
 					<div class="form-group">
 						<input type="text" class="form-control" placeholder="Search">
+					<button type="button" class="btn btn-default"><i class="fa fa-search w3-xlarge"></i></button>
+					<button type="button" class="btn btn-default"
+					onclick="location.href='MySchedule.html'"><i class="fa fa-bars w3-xlarge" aria-hidden="true"></i></button>
+					<button type="button" class="btn btn-default"
+					onclick="location.href='checkMySchedule.html'"><i class="fa fa-calendar w3-xlarge" aria-hidden="true"></i></button>
 					</div>
-					<button type="button" class="btn btn-default">검색</button>
-					<div class="btn-group" role="group" aria-label="...">
-						<button type="button" class="glyphicon glyphicon-th-list"
-							onclick="location.href='MySchedule.html'"></button>
-						<button type="button" class="btn btn-default">월</button>
-					</div>
+			
 				</form>
 				<div class="sectionbar-line">
 					<hr align=center width=100%>
 				</div>
 			</div>
-
+			
+			<div id="schedule-cal">
 			<nav class="w3-sidenav w3-collapse w3-white w3-animate-left"
-				style="z-index: 3; width: 200px;" id="mySidenav">
+				style="z-index: 3; width: 170px; height: 676px;" id="mySidenav">
 				<br>
 				<div class="w3-container">
 					<a href="#" onclick="w3_close()"
 						class="w3-hide-large w3-right w3-jumbo w3-padding"
 						title="close menu"> <i class="fa fa-remove"></i>
 					</a>
-					<h4 class="w3-padding-0">
-						<b>이상원님의 캘린더</b>
+					<h5 class="w3-padding-0">
+						<b><span id="user" class="my-login" data-value=""></span>님의 캘린더</b>
+					</h5>
 						<img src="../images/sangwon.jpg" style="width: 50%;"
 							class="w3-round"><br>
-					</h4>
 				</div>
-				<a href="#" class="w3-padding w3-text-teal">전체 그룹 일정보기</a> <a
-					href="#" class="w3-padding">그룹1</a> <a href="#" class="w3-padding">그룹2</a>
-				<a href="#" class="w3-padding">그룹3</a> <a href="#"
-					class="w3-padding">그룹4</a>
-
-
+				
+				<a href="#" class="w3-padding w3-text-teal">전체 그룹 일정</a> 
+				<a id="groupName" href="#" class="w3-padding"></a>
+				
 			</nav>
-
+			</div>
 
 			<div id='calendar'></div>
 
@@ -126,7 +134,7 @@
 								<span aria-hidden="true">×</span> <span class="sr-only">close</span>
 							</button>
 							<h1 id="modalTitle" class="modal-title"></h1>
-							<p class="modal-groupName">그룹1</p>
+							<p class="modal-groupName"></p>
 							<p class="modal-start-date"></p>
 							<p class="modal-end-date"></p>
 							<p class="modal-place"></p>
@@ -134,7 +142,14 @@
 							<p class="modal-weather"></p>
 						</div>
 						<div id="modalBody" class="modal-body">
-							
+							<div style="margin-top:5px;">
+                    <h4 class="detail-sc-day">장소</h4>
+							     <div id="map"style="width:100%; height:450px;"></div>
+							    
+            
+                   
+                
+							    </div>	
 						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-default"
@@ -156,9 +171,106 @@
 
 
 	</section>
-	<script type='text/javascript' src="../js/calendar.js"></script>
-	<script type='text/javascript' src="../js/include.js"></script>
-	<script type='text/javascript' src='../js/cal_custom.js'></script>
-	<script type='text/javascript' src="../js/main.js"></script>
+	<footer>
+	
+	</footer>
+	<script id="divTemplateText" type="text/x-handlebars-template">
+				<a id="groupName" href="#" class="w3-padding">{{groupName}}</a>
+	</script>
+	
+
+<script src="../node_modules/handlebars/dist/handlebars.min.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>	
+<script type="text/javascript" src="../js/bit.js"></script>    
+<script type="text/javascript" src="../member/memberApp.js"></script>
+<script type='text/javascript' src="../js/include.js"></script>
+<script type='text/javascript' src='../js/cal_custom.js'></script>
+<script type='text/javascript' src="../js/main.js"></script>
+<script type='text/javascript' src="checkmyschedule.js"></script>
+	
+<script>
+ajaxLoginUser()
+ajaxMyScheduleList()
+	
+	
+	if (location.search.startsWith("?")) {
+  var no = location.search.split("=")[0];
+  ajaxMyScheduleList(no)
+  $(".my-new").css("display","none")
+ 
+} else {
+    $(".my-view").css("display","none")
+
+  
+}
+
+window.initMap = function() {
+	   var map = new google.maps.Map(document.getElementById('map'), {
+	     center: {lat: -33.8688, lng: 151.2195},
+	     zoom: 16,
+	     mapTypeId: google.maps.MapTypeId.ROADMAP
+	   });
+	 
+	   // Create the search box and link it to the UI element.
+	   var input = document.getElementById('pac-input');
+	   var searchBox = new google.maps.places.SearchBox(input);
+	   map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+	 
+	   // Bias the SearchBox results towards current map's viewport.
+	   map.addListener('bounds_changed', function() {
+	     searchBox.setBounds(map.getBounds());
+	   });
+	 
+	   var markers = [];
+	   // [START region_getplaces]
+	   // Listen for the event fired when the user selects a prediction and retrieve
+	   // more details for that place.
+	   searchBox.addListener('places_changed', function() {
+	     var places = searchBox.getPlaces();
+	 
+	     if (places.length == 0) {
+	       return;
+	     }
+	 
+	     // Clear out the old markers.
+	     markers.forEach(function(marker) {
+	       marker.setMap(null);
+	     });
+	     markers = [];
+	 
+	     // For each place, get the icon, name and location.
+	     var bounds = new google.maps.LatLngBounds();
+	     places.forEach(function(place) {
+	       var icon = {
+	         url: place.icon,
+	         size: new google.maps.Size(71, 71),
+	         origin: new google.maps.Point(0, 0),
+	         anchor: new google.maps.Point(17, 34),
+	         scaledSize: new google.maps.Size(25, 25)
+	       };
+	 
+	       // Create a marker for each place.
+	       markers.push(new google.maps.Marker({
+	         map: map,
+	         icon: icon,
+	         title: place.name,
+	         position: place.geometry.location
+	       }));
+	 
+	       if (place.geometry.viewport) {
+	         // Only geocodes have viewport.
+	         bounds.union(place.geometry.viewport);
+	       } else {
+	         bounds.extend(place.geometry.location);
+	       }
+	     });
+	     map.fitBounds(bounds);
+	   });
+	   // [END region_getplaces]
+	 }
+
+
+	</script>
+	<script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyAft7ukIrCdQPQYU4aXTBySOqsjQthqMNE&libraries=places&callback=initMap" async defer></script>
 </body>
 </html>
