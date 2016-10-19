@@ -7,7 +7,10 @@ public class Place implements Serializable {
 	
 	protected int no;
 	protected String placeName;
+	protected String lat;
+	protected String lon;
 	protected int like;
+	
 	public int getNo() {
 		return no;
 	}
@@ -25,6 +28,18 @@ public class Place implements Serializable {
 	}
 	public void setPlaceName(String placeName) {
 		this.placeName = placeName;
+	}
+	public String getLat() {
+		return lat;
+	}
+	public void setLat(String lat) {
+		this.lat = lat;
+	}
+	public String getLon() {
+		return lon;
+	}
+	public void setLon(String lon) {
+		this.lon = lon;
 	}
 	
 

@@ -415,7 +415,7 @@ top: 4px;
   
   <script>  
   ajaxLoginUser()
-  ajaxMyScheduleList()
+  
   ajaxGroupBtn()
   ajaxMemberInviteList()
   ajaxMemberList()
@@ -429,6 +429,7 @@ top: 4px;
  // ajaxMemberInviteList()
 	if (location.search.startsWith("?")) {
 	  var no = location.search.split("=")[1];
+	  ajaxMyScheduleList(no)
 	  $(".my-new").css("display","none")
 	 
 	} else {

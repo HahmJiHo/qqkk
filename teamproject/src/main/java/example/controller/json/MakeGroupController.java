@@ -9,10 +9,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import example.dao.GroupMemberDao;
 import example.dao.MakeGroupDao;
 import example.dao.MemberInviteDao;
 import example.dao.ReplyContentDao;
 import example.dao.ReplyDao;
+import example.vo.GroupMember;
 import example.vo.JsonResult;
 import example.vo.MakeGroup;
 import example.vo.Member;
@@ -27,7 +29,7 @@ public class MakeGroupController {
 	@Autowired MemberInviteDao memberInviteDao;
 	@Autowired ReplyDao replyDao;
 	@Autowired ReplyContentDao replyContentDao;
-	
+	@Autowired GroupMemberDao groupMemberDao;
 	
 	
 	@RequestMapping(path="list")
@@ -80,6 +82,11 @@ public class MakeGroupController {
 			replyContent.setContent("그룹을 만들었습니다.");
 			System.out.println(replyContent);		
 			replyContentDao.insert(replyContent);
+			
+			GroupMember groupMember = new GroupMember();
+			groupMember.setGroupNo(makeGroup.getNo());
+			groupMember.setNo(member.getNo());
+			groupMemberDao.insert(groupMember);
 			
 			return JsonResult.success();
 			

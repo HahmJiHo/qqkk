@@ -80,14 +80,6 @@ public class PlaceController {
 	@RequestMapping(path="delete")
 	public Object delete(int no) throws Exception {
 		try {
-			
-		/*	HashMap<String,Object> paramMap = new HashMap<>();
-      paramMap.put("no", no);
-      paramMap.put("password", password);
-
-			if (placeDao.selectOneByPassword(paramMap) == null) {
-				throw new Exception("해당 게시물이 없거나 암호가 일치하지 않습니다.!");
-			}*/
 			placeDao.delete(no);
 			return JsonResult.success();
 		} catch (Exception e) {

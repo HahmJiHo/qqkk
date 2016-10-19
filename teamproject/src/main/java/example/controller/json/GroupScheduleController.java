@@ -27,7 +27,7 @@ public class GroupScheduleController {
 	@RequestMapping(path="list")
 	public Object list(
 			@RequestParam(defaultValue="1") int pageNo,
-			@RequestParam(defaultValue="30") int length) throws Exception {
+			@RequestParam(defaultValue="100") int length) throws Exception {
 		
 
 		try {
@@ -82,13 +82,6 @@ public class GroupScheduleController {
 	public Object update(Event event) throws Exception{
 
 		try {
-		/*	HashMap<String,Object> paramMap = new HashMap<>();
-			paramMap.put("no", groupSchedule.getNo());
-			paramMap.put("password", groupSchedule.getPassword());
-
-			if (groupScheduleDao.selectOneByPassword(paramMap) == null) {
-				throw new Exception("해당 게시물이 없거나 암호가 일치하지 않습니다.!");
-			}*/
 			groupScheduleDao.update(event);
 			return JsonResult.success();
 		} catch (Exception e) {
@@ -99,17 +92,10 @@ public class GroupScheduleController {
 	}
 	
 	@RequestMapping(path="delete")
-	public Object delete(int no, String password) throws Exception {
+	public Object delete(int no) throws Exception {
 		try {
-			
-			HashMap<String,Object> paramMap = new HashMap<>();
-      paramMap.put("no", no);
-      paramMap.put("password", password);
-
-			if (groupScheduleDao.selectOneByPassword(paramMap) == null) {
-				throw new Exception("해당 게시물이 없거나 암호가 일치하지 않습니다.!");
-			}
 			groupScheduleDao.delete(no);
+			placeDao.delete(no);
 			return JsonResult.success();
 		} catch (Exception e) {
 			

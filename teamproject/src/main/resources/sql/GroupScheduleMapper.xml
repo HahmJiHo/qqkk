@@ -25,7 +25,7 @@
     <!-- select mno, gno, gpno, st_dt, ed_dt, sc_title
     from hiba_g_sc -->
 
-     select hiba_g_sc.gsno, hiba_g_sc.mno, hiba_g_sc.gno, hiba_g_sc.gpno, hiba_g_sc.st_dt, hiba_g_sc.ed_dt, hiba_g_sc.sc_title, hiba_invit.COLOR
+     select hiba_g_sc.gsno, hiba_g_sc.mno, hiba_g_sc.gno, hiba_g_sc.gpno, hiba_g_sc.st_dt, hiba_g_sc.ed_dt, hiba_g_sc.sc_title, hiba_invit.COLOR, hiba_place.PL_NAME
      from hiba_g_sc
      inner join hiba_invit on hiba_g_sc.mno = hiba_invit.mno and hiba_g_sc.gno = hiba_invit.gno
      inner join hiba_place on hiba_place.gpno = hiba_g_sc.gpno
@@ -78,7 +78,7 @@
 
   <delete id="delete" parameterType="int">
     delete from hiba_g_sc where
-    mno=#{value}
+    gpno =#{value}
   </delete>
 
 </mapper>

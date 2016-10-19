@@ -12,7 +12,6 @@
 		<id column="GPNO" property="no" /> <!--PK 는 ID 나머지는 result -->
 		<result column="PL_NAME" property="placeName" />
 		<result column="PL_LIKE" property="like" />
-	
 	</resultMap>
 
 	<select id="selectList" resultMap="placeMap" parameterType="map">
@@ -41,8 +40,8 @@
   
   
   <insert id="insert" parameterType="place" useGeneratedKeys="true" keyColumn="GPNO" keyProperty="no">
-    insert into hiba_place(PL_NAME, PL_LIKE)
-    values (#{placeName}, #{like})
+    insert into hiba_place(PL_NAME, PL_LIKE, lat, lon)
+    values (#{placeName}, #{like}, #{lat}, #{lon})
     
   </insert>
 
@@ -52,9 +51,9 @@
     where GPNO=#{no}
   </update>
 
-<!--   <delete id="delete" parameterType="int">
-    delete from hiba_place where
-    mno=#{value}
-  </delete> -->
+	<delete id="delete" parameterType="int">
+	    delete from hiba_place where
+	    GPNO=#{value}
+	  </delete> 
 
 </mapper>

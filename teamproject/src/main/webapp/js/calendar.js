@@ -9,6 +9,12 @@ function showCalendar(arr) {
 					var getGroupNo = $(location).attr('search')	
 					var groupNo = getGroupNo.split("=")[1]
 					var memberNo = $("#userName").attr('data-value')
+					var a = $("#map").find('a').attr('href')
+					var b = a.split("=")[1];
+					var c = b.split("&")[0];
+					var llet = c.split(",")[0];
+					var lot = c.split(",")[1];
+					
 					if (checkPoint == false) {
 						$('.list-value').appendTo(".fc-content")
 						var count = ""
@@ -22,7 +28,9 @@ function showCalendar(arr) {
 								end : $("#addDateEnd").val(),
 								groupNo : groupNo,
 								memberNo : memberNo,
-								placeName : $("#pac-input").val()	
+								placeName : $("#pac-input").val(),
+								lat : llet,
+								lon : lot
 						}
 						console.log(event);
 						ajaxAddSchedule(event)	
@@ -63,7 +71,9 @@ function showCalendar(arr) {
 								end : $("#addDateEnd").val(),
 								groupNo : groupNo,
 								memberNo : memberNo,
-								placeName : $("#pac-input").val()	
+								placeName : $("#pac-input").val(),
+								lat : llet,
+								lon : lot
 						}
 			            console.log(event)
 						ajaxAddSchedule(event)
@@ -118,6 +128,8 @@ function showCalendar(arr) {
 								'error'							
 						)	
 					}
+					
+					
 					
 				}
 
@@ -207,13 +219,14 @@ function showCalendar(arr) {
 			var eventStart = moment(event.start).valueOf();
 			
 			if (eventStart >= ntoday) {
-				element.append( "<span class='closeon' style='display:blokc; position:absolute; right:0; top:0; z-index:1000;' data-no=" + event.no +">X</span>" );
+				element.append( "<span class='closeon' style='display:blokc; position:absolute; right:0; top:0; z-index:1000;' data-no=" + event.groupPlaceNo +">X</span>" );
 
 			} 
 			if (eventEnd < ntoday) {
 				event.editable = false;
 			}
-			element.find(".closeon").click(function() {         								
+			element.find(".closeon").click(function() {    
+				var no = $(this).attr('data-no')
 				swal({
 					title: 'Are you sure?',
 					text: "일정을 삭제 하시겠습니까?",
@@ -228,9 +241,10 @@ function showCalendar(arr) {
 							'Your file has been deleted.',
 							'success'
 					);
-					$('#calendar').fullCalendar('removeEvents', event._id);
+					ajaxDeleteSchedule(no)
+					$('#calendar').fullCalendar('renderEvent', event, true)
 				})								
-				return false;
+				return false;				
 			});
 
 		
@@ -239,17 +253,16 @@ function showCalendar(arr) {
 			var moment11 = $('#calendar').fullCalendar('getDate')
 			start = moment(event.start).format('YYYY-MM-DD HH:mm')
 			end = moment(event.end).format('YYYY-MM-DD HH:mm')
-
-			//alert("Event title: " + event.title + " Start Date: " + start + " End Date: " + end );
+			var placeName = event.placeName
 			$('#calendarModal').modal()
 			$('#modalTitle').html(event.title)
 			$('.modal-start-date').html(start)
 			$('.modal-end-date').html(end)
 			$('#modalBody').html(event.description)
 			$('#eventUrl').attr('href',event.url)
-			//console.log('eventcount=' + event.count)
-
-			function google_map(mapid, addr, event) {
+			
+			function google_map(mapid, addr) {
+				console.log(placeName)
 				var geocoder =  new google.maps.Geocoder();
 				geocoder.geocode( {'address': addr }, function(results, status) {
 					if (status == google.maps.GeocoderStatus.OK) {
@@ -266,7 +279,7 @@ function showCalendar(arr) {
 						'<div class="map_Content">'+ 
 						//'TEL: <a href=tel:031-398-0902>031-398-0902</a><br />'+ 
 						//'진료시간: 00:00~24:00 연중무휴<br />' + 
-						'주소: '+ event.placeName + 
+						'주소: ' + placeName + 
 						'</div>'+ 
 						'</div></td></tr></table>'; 
 
@@ -275,37 +288,34 @@ function showCalendar(arr) {
 							map: map, 
 							draggable:false,
 							animation: google.maps.Animation.DROP, 
-							title: markerTitle 
+							title: markerTitle,
 						}); 
 
 						var infowindow = new google.maps.InfoWindow({ 
 							content: contentString,
-							maxWidth: markerMaxWidth
+							maxWidth: markerMaxWidth,
+							placeName : placeName
 						}); 
-						infowindow.open(map, marker); 
+						infowindow.open(map, marker, placeName); 
 
 						google.maps.event.addListener(marker, 'click', function() { 
-							infowindow.open(map, marker); 
+							infowindow.open(map, marker, placeName); 
+							
 						}); 
 					}
 				});
-
-
 			}
 
 			$('#calendarModal').on('shown.bs.modal', function(){
-				google_map("google_map", event.place);
-				//console.log(event);		
+				google_map("google_map", placeName);
 				google.maps.event.trigger(map,'resize',{});
-
+			
 			});
-
+	
 		},
 		editable: true,
 		eventLimit: true, // allow "more" link when too many events      			
-		events: arr
-		
-		
+		events: arr	
 	});
 	$(function(){
 		$('#addDateStart').datetimepicker({format:"YYYY-MM-DD HH:mm"}).data('DateTimePicker').date(new Date());
@@ -316,7 +326,7 @@ function showCalendar(arr) {
 	});
 
 };   
-function ajaxMyScheduleList() {
+function ajaxMyScheduleList(no) {
 	$.getJSON(serverAddr +"/schedule/list.json", function(obj) {
 		var result = obj.jsonResult
 		if (result.state != "success") {
@@ -326,9 +336,12 @@ function ajaxMyScheduleList() {
 		var contents = ""
 		var arr = result.data
 	    var arrTest=[]
-	    for (var i in arr) {
-            arrTest.push(arr[i]);
-      }
+		for (var i in arr) {
+			if (no == arr[i].groupNo) {
+		        arrTest.push(arr[i]);
+		      }
+		}
+	   
       console.log(arrTest);
       showCalendar(arrTest);
 	})
@@ -372,15 +385,18 @@ function ajaxUpdateMember(event) {
 	}, "json")
 }
 
-function ajaxDeleteMember(no) {
+function ajaxDeleteSchedule(no) {
 	$.getJSON(serverAddr +"/schedule/delete.json",{
-		no: no,
+		no: no
 	}, function(obj) {
 		var result = obj.jsonResult
 		if (result.state != "success") {
-			alert("삭제 실패 입니다.")       
+			alert("삭제 실패 입니다.11")       
 			return
 		} 
-		location.href = "memberApp.html"    		
+		window.location.reload()   		
 	})		
 }
+
+/**/
+
