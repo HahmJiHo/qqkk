@@ -26,15 +26,23 @@ td, th{display: table-cell;}
 ul:after{content:" ";display:block;clear:both;}
 body{ font-family:"arial", sans-serif; font-size:12px;}
 
+
+
+
 .btn-group {
-	margin-left: 980px;
+	margin-left: 1000px;
 }
 
-.my-info {
-	margin-left: 970px;
+.detail {
+	margin-left: 201px;
 }
 
-.w3-container {
-	float: left;
 
+h3 {
+	color: #9dc92a;
+}
+
+.section-bar {
+	size: 3px;
+	color: #9dc92a;
 }
