@@ -4,9 +4,11 @@ $(document).ready(function() {
 	$('.nav').slideToggle();	
   });  
   
- 
-  
-  
+
+  $('header').on("click", ".user-alert", function(e) {
+		$('.invite-box').slideToggle();	
+  });  
+
   $(".title-nav li").click(function(){
      var thisIndex = $(this).index();
      $(".artice").hide();
@@ -22,4 +24,5 @@ $(document).ready(function() {
   
 })
 
-
+  
+  

@@ -1,12 +1,14 @@
 "use strict";
-$(document).ready(function() {  	
+function showCalendar(arr) { 	
 	$('#calendar').fullCalendar({		
 		customButtons: {			
 			myCustomButton: {
 				text: 'save',
 				click: function() {						
 					var checkPoint = $('.list-checked').is(':checked')																
-
+					var getGroupNo = $(location).attr('search')	
+					var groupNo = getGroupNo.split("=")[1]
+					var memberNo = $("#userName").attr('data-value')
 					if (checkPoint == false) {
 						$('.list-value').appendTo(".fc-content")
 						var count = ""
@@ -14,27 +16,26 @@ $(document).ready(function() {
 						for (var i = 0; i < len; i++) {												
 							count++	
 						}
-						var event = { 
-								title: $('#addeventTitle').val(), 
-								start: $('#addDateStart').val(),
-								end: $('#addDateEnd').val(),
-								location : $('.location').val(),
-								count : count
-						};	
+						var event = {
+								title : $("#addeventTitle").val(),
+								start : $("#addDateStart").val(),
+								end : $("#addDateEnd").val(),
+								groupNo : groupNo,
+								memberNo : memberNo,
+								placeName : $("#pac-input").val()	
+						}
+						console.log(event);
+						ajaxAddSchedule(event)	
 						
-						
-
 						$(".schedule-btn").append(
 								"<li class='sc-list'><input class='list-checked' type='checkbox' name='schedule' data-value='"+ count +"'>"+ event.title +"</li>"								
 						);
 						var eventDataValue = $('.sc-list').length;
-						//var getValue = eventDataValue							
 						var errorTest = "입력하지 않은 항목이 있습니다."
 							if ($('#addeventTitle').val().length != 0 
 									&& $('#addDateStart').val().length != 0 
 									&& $('#addDateEnd').val().length != 0
 							) {
-								//console.log(event)
 								$('#calendar').fullCalendar('renderEvent', event, true);								
 								swal(
 										'Good job!',
@@ -55,27 +56,23 @@ $(document).ready(function() {
 						var count = [];
 			            $.each($("input[name='schedule']:checked"), function(){            
 			            	count.push($(this).attr('data-value'));
-			            });
-					    //console.log("-----------------------------------");
-					    //console.log(count);
-						var event = { 
-								title: $('#addeventTitle').val(), 
-								start: $('#addDateStart').val(),
-								end: $('#addDateEnd').val(),
-								location : $('.location').val(),
-								count : count[0]
-								
-						};	
-						
-						//console.log(event)
-						
+			            });					
+			            var event = {
+								title : $("#addeventTitle").val(),
+								start : $("#addDateStart").val(),
+								end : $("#addDateEnd").val(),
+								groupNo : groupNo,
+								memberNo : memberNo,
+								placeName : $("#pac-input").val()	
+						}
+			            console.log(event)
+						ajaxAddSchedule(event)
 						
 						var errorTest = "입력하지 않은 항목이 있습니다."
 							if ($('#addeventTitle').val().length != 0 
 									&& $('#addDateStart').val().length != 0 
 									&& $('#addDateEnd').val().length != 0
 							) {
-								//	console.log(event)
 																	
 								swal(
 										'Good job!',
@@ -181,7 +178,7 @@ $(document).ready(function() {
 			$('#addeventTitle').val('') 
 			$('#addDateStart').val(clickDay);
 			$('#addDateEnd').val('')
-			$('.location').val('')
+			$('#pac-input').val('')
 			$('.fc-myCustomButton-button').css({ "opacity": "1.0" ,  "position" : "static" });
 			if ($('.fc-myCustomButton-button').length <= 1) {				
 				$(".fc-myCustomButton-button").appendTo('#add-moadl-footer')					
@@ -190,19 +187,17 @@ $(document).ready(function() {
 
 		},	
 		eventRender: function(event, element, view) {
-			 
 			/* 일정 추가 */
 			$(".fc-myCustomButton-button").addClass("btn btn-primary")
 			$('.fc-myCustomButton-button').css({ "opacity": "0.0" , "position" : "absolute"});
 			$('#addeventTitle').val('') 
 			$('#addDateStart').val('')
 			$('#addDateEnd').val('')
-			$('.location').val('')
+			$('#pac-input').val('')
 			$('.make-sc-btn').on('click', function(e) {
-				$('#calendarAddModal').modal();	
+				$('#calendarAddModal').modal();				
 				$('.fc-myCustomButton-button').css({ "opacity": "1.0" ,  "position" : "static" });
 				if ($('.fc-myCustomButton-button').length <= 1) {				
-					//$(".modal-footer").append('<button type="button" class="fc-myCustomButton-button fc-button fc-state-default fc-corner-left fc-corner-right" style="display:block">save</button>')
 					$(".fc-myCustomButton-button").appendTo('#add-moadl-footer')					
 
 				}	
@@ -210,8 +205,9 @@ $(document).ready(function() {
 			var ntoday = new Date().getTime();
 			var eventEnd = moment(event.end).valueOf();
 			var eventStart = moment(event.start).valueOf();
+			
 			if (eventStart >= ntoday) {
-				element.append( "<span class='closeon' style='display:blokc; position:absolute; right:0; top:0; z-index:1000;'>X</span>" );
+				element.append( "<span class='closeon' style='display:blokc; position:absolute; right:0; top:0; z-index:1000;' data-no=" + event.no +">X</span>" );
 
 			} 
 			if (eventEnd < ntoday) {
@@ -253,7 +249,7 @@ $(document).ready(function() {
 			$('#eventUrl').attr('href',event.url)
 			//console.log('eventcount=' + event.count)
 
-			function google_map(mapid, addr) {
+			function google_map(mapid, addr, event) {
 				var geocoder =  new google.maps.Geocoder();
 				geocoder.geocode( {'address': addr }, function(results, status) {
 					if (status == google.maps.GeocoderStatus.OK) {
@@ -270,7 +266,7 @@ $(document).ready(function() {
 						'<div class="map_Content">'+ 
 						//'TEL: <a href=tel:031-398-0902>031-398-0902</a><br />'+ 
 						//'진료시간: 00:00~24:00 연중무휴<br />' + 
-						'주소: '+ event.loaction + 
+						'주소: '+ event.placeName + 
 						'</div>'+ 
 						'</div></td></tr></table>'; 
 
@@ -298,7 +294,7 @@ $(document).ready(function() {
 			}
 
 			$('#calendarModal').on('shown.bs.modal', function(){
-				google_map("google_map", event.location);
+				google_map("google_map", event.place);
 				//console.log(event);		
 				google.maps.event.trigger(map,'resize',{});
 
@@ -307,23 +303,10 @@ $(document).ready(function() {
 		},
 		editable: true,
 		eventLimit: true, // allow "more" link when too many events      			
-		events: [
-		         {					
-		        	 title: "대성리",
-		        	 start: "2016-09-27T10:30:00-05:00",
-		        	 end: "2016-09-28T12:30:00-05:00",
-		        	 location : "경기도 가평군 청평면 대성리" 					
-		         },
-
-		         ]
-
+		events: arr
+		
 		
 	});
-	$('#calendar').fullCalendar( 'addEventSource',        
-		    function(start, end, callback, event) {
-					
-		    }
-		);
 	$(function(){
 		$('#addDateStart').datetimepicker({format:"YYYY-MM-DD HH:mm"}).data('DateTimePicker').date(new Date());
 		$('#addDateEnd').datetimepicker({format:"YYYY-MM-DD HH:mm"}).data('DateTimePicker').date(new Date());
@@ -331,9 +314,73 @@ $(document).ready(function() {
 		$('#addDateEnd').val('');
 		$('#addeventTitle').val('');
 	});
-	
-	
 
+};   
+function ajaxMyScheduleList() {
+	$.getJSON(serverAddr +"/schedule/list.json", function(obj) {
+		var result = obj.jsonResult
+		if (result.state != "success") {
+			alert("서버에서 데이터를 가져오는데 실패 했습니다.")
+			return
+		} 
+		var contents = ""
+		var arr = result.data
+	    var arrTest=[]
+	    for (var i in arr) {
+            arrTest.push(arr[i]);
+      }
+      console.log(arrTest);
+      showCalendar(arrTest);
+	})
+}
 
+function ajaxAddSchedule(event) {
+	$.post(serverAddr +"/schedule/add.json", event, function(obj) {
+		var result = obj.jsonResult
+		if (result.state != "success") {
+			console.log(result.data)
+			alert("등록 실패 입니다.")       
+			return
+		} 
+	}, "json" )	
+}
 
-});   
+function ajaxLoadMember(no) {
+	$.getJSON(serverAddr +"/schedule/detail.json?no=" + no, function(obj) {
+		var result = obj.jsonResult
+		if (result.state != "success") {
+			alert("조회 실패 입니다.")       
+			return
+		} 
+		// 서버에서 받은 데이터로 폼을 채운다
+		$("#no").val(result.data.no);
+		$("#name").val(result.data.name);
+		$("#nicknm").val(result.data.nicknm);
+		$("#email").val(result.data.email);
+
+	})
+}
+
+function ajaxUpdateMember(event) {	
+	$.post(serverAddr +"/schedule/update.json", event, function(obj) {
+		var result = obj.jsonResult
+		if (result.state != "success") {
+			alert("변경 실패입니다.")
+			return
+		}
+		window.location.href = "memberApp.html"
+	}, "json")
+}
+
+function ajaxDeleteMember(no) {
+	$.getJSON(serverAddr +"/schedule/delete.json",{
+		no: no,
+	}, function(obj) {
+		var result = obj.jsonResult
+		if (result.state != "success") {
+			alert("삭제 실패 입니다.")       
+			return
+		} 
+		location.href = "memberApp.html"    		
+	})		
+}

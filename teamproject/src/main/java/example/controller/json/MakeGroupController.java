@@ -57,7 +57,8 @@ public class MakeGroupController {
 			MemberInvite memberInvite = new MemberInvite();
 			// 그룹 생성시 생성자 자동추가
 			memberInvite.setGroupNo(makeGroup.getNo());
-			memberInvite.setName(makeGroup.getName());					
+			memberInvite.setName(makeGroup.getName());
+			memberInvite.setInviteName(makeGroup.getName());
 			memberInvite.setInviteEmail(member.getEmail());
 			memberInvite.setStatus(true);
 			System.out.println(memberInvite);			
@@ -72,8 +73,7 @@ public class MakeGroupController {
 			replyDao.insert(reply);
 			
 			// 그룹 댓글 생성시 댓글 콘텐츠 생성
-			ReplyContent replyContent = new ReplyContent();
-			
+			ReplyContent replyContent = new ReplyContent();			
 			replyContent.setGroupNo(reply.getNo()); //rgno
 			replyContent.setMemberNo(member.getNo()); //mno
 			replyContent.setName(member.getName());

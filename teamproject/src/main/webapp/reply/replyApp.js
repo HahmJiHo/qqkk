@@ -15,7 +15,6 @@ function ajaxGroupBtn() {
 		for (var i in arr) {			
 			if (groupNo == arr[i].groupNo) {					
 				contents += template(arr[i]) 
-				console.log(contents)
 			}
 		}
 		

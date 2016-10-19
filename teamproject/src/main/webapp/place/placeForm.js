@@ -28,7 +28,7 @@ $("#deleteBtn").click(function(e) {
 
 
 function ajaxAddMember(member) {
-	$.post(serverAddr +"/member/add.json", member, function(obj) {
+	$.post(serverAddr +"/place/add.json", member, function(obj) {
 		var result = obj.jsonResult
 		if (result.state != "success") {
 			console.log(result.data)
@@ -40,7 +40,7 @@ function ajaxAddMember(member) {
 }
 
 function ajaxLoadMember(no) {
-	$.getJSON(serverAddr +"/member/detail.json?no=" + no, function(obj) {
+	$.getJSON(serverAddr +"/place/detail.json?no=" + no, function(obj) {
 		var result = obj.jsonResult
 		if (result.state != "success") {
 			alert("조회 실패 입니다.")       
@@ -56,7 +56,7 @@ function ajaxLoadMember(no) {
 }
 
 function ajaxUpdateMember(member) {	
-	$.post(serverAddr +"/member/update.json", member, function(obj) {
+	$.post(serverAddr +"/place/update.json", member, function(obj) {
 		var result = obj.jsonResult
 		if (result.state != "success") {
 			alert("변경 실패입니다.")
@@ -67,7 +67,7 @@ function ajaxUpdateMember(member) {
 }
 
 function ajaxDeleteMember(no, password) {
-	$.getJSON(serverAddr +"/member/delete.json",{
+	$.getJSON(serverAddr +"/place/delete.json",{
 		no: no,
 		password : password
 	}, function(obj) {

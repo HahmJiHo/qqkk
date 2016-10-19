@@ -39,6 +39,11 @@ public class GroupMember implements Serializable {
     this.createdDate = Date.valueOf(str);
     this.createdDate2 = str;
   }
+	@Override
+	public String toString() {
+		return "GroupMember [no=" + no + ", groupNo=" + groupNo + ", createdDate=" + createdDate + ", createdDate2="
+				+ createdDate2 + "]";
+	}
 	
 	
 	

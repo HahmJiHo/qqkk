@@ -1,21 +1,3 @@
-/*
-$(".addTrue").click(function(e) { 
-	var groupmember = {
-			name : $("#name").val(),
-			nicknm : $("#nicknm").val(),
-			email : $("#email").val(),
-			password : $("#password").val()
-	}
-	ajaxAddGroupMember(groupmember)
-	
-});
-*/
-$(".failBtn").click(function(e) {   
-	ajaxDeleteGroupMember($("#no").val(), $("#password").val())
-});
-
-
-
 function ajaxAddGroupMember(groupmember) {
 	$.post(serverAddr +"/groupMember/add.json", groupmember, function(obj) {
 		var result = obj.jsonResult

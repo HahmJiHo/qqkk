@@ -18,16 +18,24 @@
 		<result column="color" property="color" />
 		<result column="gname" property="groupName" />   
 		<result column="gno" property="groupGroupNo" />   
-		<result column="mname" property="groupUserName" />      
+		<result column="mname" property="groupUserName" />
+		<result column="INVIT_NAME" property="inviteName" />
+		<result column="grno" property="groupReplyNo" />
+		<result column="gno" property="groupReplyGroupNo" />      
 	</resultMap>
 
 	<select id="selectList" resultMap="memberInviteMap" parameterType="map">
-      select hiba_group.gno, hiba_group.gname, hiba_group.mname, hiba_invit.*
-			from hiba_group inner join hiba_invit
-			on hiba_group.gno = hiba_invit.gno
-   
+     <!--  select hiba_group.gno, hiba_group.gname, hiba_group.mname, hiba_invit.*
+			from hiba_group inner join hiba_invit  			
+			on hiba_group.gno = hiba_invit.gno -->
+    
+      select hiba_group.gno, hiba_group.gname, hiba_group.mname, hiba_invit.* , hiba_g_reply.gno, hiba_g_reply.grno
+      from hiba_group
+      inner join hiba_invit on hiba_group.gno = hiba_invit.gno
+      inner join hiba_g_reply on hiba_invit.gno = hiba_g_reply.gno
     <!-- 
     select *from hiba_invit  
+   
     SELECT hiba_membs.*, hiba_invit.*
     FROM hiba_membs , hiba_invit 
     WHERE hiba_membs.email = hiba_invit.INVI_EMAIL
@@ -36,8 +44,8 @@
     ON hiba_invit.GNO = hiba_membs.GNO
     left JOIN hiba_group
     ON hiba_invit.email = hiba_membs.email    
-    -->
-    limit #{startIndex}, #{length}
+   
+    limit #{startIndex}, #{length} -->
   </select>
 
   <insert id="insert" parameterType="memberInvite">
@@ -45,11 +53,12 @@
     insert into hiba_invit(mno, gno, email, invit_dt)
     values (#{memberNo}, #{groupNo}, #{email}, now())
     -->
-    insert into hiba_invit(mno, gno, INVI_EMAIL, name, status, invit_dt)
+    insert into hiba_invit(mno, gno, INVI_EMAIL, name, INVIT_NAME, status, invit_dt)
     select mno, 
           #{groupNo},           
           #{inviteEmail},
-          name,
+          #{name},
+          #{inviteName},
           #{status},
           now()      
     from hiba_membs
@@ -62,6 +71,11 @@
     from hiba_invit 
     where ino=#{no} and gno=(#{groupNo})
   </select>
+	<select id="selectOneByGroupNoAndEmail" resultMap="memberInviteMap" parameterType="map">
+	    select gno, INVI_EMAIL
+	    from hiba_invit 
+	    where gno=#{groupNo} and INVI_EMAIL=(#{inviteEmail})
+	</select> 
 
   <update id="update" parameterType="memberInvite">
     update hiba_invit set
@@ -72,8 +86,15 @@
 
   <update id="update2" parameterType="memberInvite">
     update hiba_invit set
+    gno = #{groupNo},
+    mno = #{memberNo},
     status=#{status}
     where ino=#{no}
   </update>
+
+  <delete id="delete" parameterType="int">
+    delete from hiba_invit where
+    ino=#{no}
+  </delete>
 
 </mapper>

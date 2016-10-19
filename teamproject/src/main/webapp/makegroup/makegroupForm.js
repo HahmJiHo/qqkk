@@ -4,6 +4,7 @@ $("#addBtn").click(function(e) {
 			name : $("#userName").text()
 	}
 	ajaxAddGroup(makegroup)
+	
 });
 
 
@@ -54,8 +55,7 @@ function ajaxAddGroup(makegroup) {
 				  'You clicked the button!',
 				  'success'
 				)
-		ajaxMemberGroupInviteList()
-		ajaxGroupList()
+		window.location.reload();
 	}, "json" )	
 }
 

@@ -381,7 +381,7 @@ top: 4px;
     <li>
       <span class="member-photo"><img src="../images/514741.jpg"></span>                   
       <i class="member-color" style="background:{{color}}"></i>  
-      <span class="member-name" data-value="{{no}}">{{name}}</span>      
+      <span class="member-name" data-value="{{no}}">{{inviteName}}</span>      
     </li>
   </script>
   <script id="groupNameTemplateText" type="text/x-handlebars-template">
@@ -400,9 +400,8 @@ top: 4px;
   <script type="text/javascript" src="http://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/a549aa8780dbda16f6cff545aeabc3d71073911e/src/js/bootstrap-datetimepicker.js"></script>   
   <script type='text/javascript' src="../js/include.js"></script>    
   <script type='text/javascript' src="../js/main.js"></script>
-  <script type='text/javascript' src="../js/calendar.js"></script> 
-  <script type='text/javascript' src='../js/cal_custom.js'></script>
   <script type="text/javascript" src="../js/common.js"></script>
+  <script type='text/javascript' src="../js/calendar.js"></script> 
   <script type="text/javascript" src="../js/bit.js"></script>   
   <script type="text/javascript" src="../member/memberApp.js"></script>
   <script type="text/javascript" src="../makegroup/makegroupApp.js"></script>
@@ -411,14 +410,16 @@ top: 4px;
   <script type="text/javascript" src="../reply/replyApp.js"></script>
   <script type="text/javascript" src="../reply/replyForm.js"></script>
   <script type="text/javascript" src="../replyContent/replyContentApp.js"></script>
-  <script type="text/javascript" src="../replyContent/replyContentForm.js"></script>  
+  <script type="text/javascript" src="../replyContent/replyContentForm.js"></script> 
+  <script type="text/javascript" src="../groupSchedule/groupScheduleForm.js"></script>  
   
   <script>  
   ajaxLoginUser()
+  ajaxMyScheduleList()
   ajaxGroupBtn()
-  ajaxReplyList()
   ajaxMemberInviteList()
   ajaxMemberList()
+  ajaxReplyList()
   ajaxGroupName()
   <!--
   var getGroupNo = $(location).attr('search') 

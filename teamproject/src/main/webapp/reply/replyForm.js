@@ -1,25 +1,12 @@
-$("#addMember").click(function(e) { 	
+/*$("#addMember").click(function(e) { 	
 	var replyContent = {
 		groupNo : $("#group-reply-btn").attr('data-no'),
 		content : "그룹에 참가하였습니다",
 		name : $("#name").val()
 	}
-	ajaxAddReplyContent(replyContent)
-	
-	
+	ajaxAddReplyContent(replyContent)	
 });
-
-$('#group-reply-btn').on('click', function(e) {
-	ajaxReplyList()
-	$('#reply-modal').modal();
-	$("#board-Table > ul").on('click', '#deleteBtn', function(e) {   
-		var no = $(this).parent().prevAll("#no").text()
-		ajaxDeleteReply(no)
-		
-	});
-	
-})
-
+*/
 function ajaxAddReply(reply) {
 	$.post(serverAddr +"/reply/add.json", reply,  function(obj) {
 		var result = obj.jsonResult
@@ -30,6 +17,7 @@ function ajaxAddReply(reply) {
 		}
 	}, "json" )	
 }
+ 
 
 function ajaxAddReplyContent(replyContent) {
 	$.post(serverAddr +"/replyContent/add.json", replyContent,  function(obj) {

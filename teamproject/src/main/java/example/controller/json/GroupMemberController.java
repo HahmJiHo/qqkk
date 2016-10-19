@@ -14,7 +14,7 @@ import example.vo.JsonResult;
 import example.vo.MemberInvite;
 
 @Controller // 페이지 컨트롤러에 붙이는 애노테이션 
-@RequestMapping("/groupMemberDao/") // 이 페이지의 컨트롤러의 기준 URL
+@RequestMapping("/groupMember/") // 이 페이지의 컨트롤러의 기준 URL
 public class GroupMemberController {
 	@Autowired
 	GroupMemberDao groupMemberDao;
@@ -43,9 +43,9 @@ public class GroupMemberController {
 	public Object add(GroupMember groupMember) throws Exception {
 		// 성공하든 실패하든 클라이언트에게 데이터를 보내야 한다.
 		try {
-			MemberInvite memberInvite = new MemberInvite();
+			/*MemberInvite memberInvite = new MemberInvite();
 			groupMember.setNo(memberInvite.getMemberNo());
-			groupMember.setGroupNo(memberInvite.getGroupNo());			
+			groupMember.setGroupNo(memberInvite.getGroupNo());			*/
 			groupMemberDao.insert(groupMember);
 			return JsonResult.success();
 		} catch (Exception e) {

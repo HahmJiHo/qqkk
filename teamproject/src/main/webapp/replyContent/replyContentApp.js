@@ -34,17 +34,10 @@ function ajaxReplyList() {
 		}
 		
 		$("#board-Table").html(contents)
-		 
-		// 태그 를 추가한후 제목에 대해 click 리스너를 추가한다.
-		/*
-		$(".titleLink").click(function (e) {
-			window.location.href = "memberForm.html?no=" + $(this).attr("data-no")
-		})       
-		*/
 	})
 }
 
-function ajaxLoginUser() {
+/*function ajaxLoginUser() {
 	$.getJSON(serverAddr +"/auth/loginUser.json", function(obj) {
 		var result = obj.jsonResult
 		if (result.state != "success") {
@@ -53,6 +46,6 @@ function ajaxLoginUser() {
 		} 	
 		$("#userName").text(result.data.name)
 		$("#nicknm").text(result.data.nicknm)
-		$("#userName").attr('data-no', result.data.no)
+		$("#userName").attr('data-value', result.data.no)
 	})
-}
+}*/

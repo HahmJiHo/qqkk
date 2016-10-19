@@ -41,7 +41,7 @@
   </select>
   
   
-  <insert id="insert" parameterType="member" useGeneratedKeys="true" keyColumn="email" keyProperty="email">
+  <insert id="insert" parameterType="member" useGeneratedKeys="true" keyColumn="mno" keyProperty="no">
     insert into hiba_membs(name,
     nicknm,  email, pwd)
     values (#{name}, #{nicknm}, #{email}, password(#{password}))

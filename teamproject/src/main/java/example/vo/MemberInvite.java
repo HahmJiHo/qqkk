@@ -14,13 +14,15 @@ public class MemberInvite implements Serializable {
 	protected int groupGroupNo;
 	protected boolean status;
 	protected String name;
+	protected String inviteName;
 	protected String inviteEmail;
 	protected Date createdDate;
 	protected String createdDate2;
 	protected String color;
 	protected String groupUserName;
 	protected String groupName;
-	
+	protected String groupReplyGroupNo;
+	protected String groupReplyNo;
 	
 	public int getMemberNo() {
 		return memberNo;
@@ -116,13 +118,42 @@ public class MemberInvite implements Serializable {
 	public void setGroupName(String groupName) {
 		this.groupName = groupName;
 	}
+	
+	public String getInviteName() {
+		return inviteName;
+	}
+
+	public void setInviteName(String inviteName) {
+		this.inviteName = inviteName;
+	}
+
+	
+	
+	public String getGroupReplyGroupNo() {
+		return groupReplyGroupNo;
+	}
+
+	public void setGroupReplyGroupNo(String groupReplyGroupNo) {
+		this.groupReplyGroupNo = groupReplyGroupNo;
+	}
+
+	public String getGroupReplyNo() {
+		return groupReplyNo;
+	}
+
+	public void setGroupReplyNo(String groupReplyNo) {
+		this.groupReplyNo = groupReplyNo;
+	}
 
 	@Override
 	public String toString() {
-		return "MemberInvite [no=" + no + ", groupNo=" + groupNo + ", memberNo=" + memberNo + ", status=" + status + ", name="
-				+ name + ", inviteEmail=" + inviteEmail + ", createdDate=" + createdDate + ", createdDate2=" + createdDate2
-				+ ", color=" + color + "]";
+		return "MemberInvite [no=" + no + ", groupNo=" + groupNo + ", memberNo=" + memberNo + ", groupGroupNo="
+				+ groupGroupNo + ", status=" + status + ", name=" + name + ", inviteName=" + inviteName + ", inviteEmail="
+				+ inviteEmail + ", createdDate=" + createdDate + ", createdDate2=" + createdDate2 + ", color=" + color
+				+ ", groupUserName=" + groupUserName + ", groupName=" + groupName + "]";
 	}
+
+	
 
 
 

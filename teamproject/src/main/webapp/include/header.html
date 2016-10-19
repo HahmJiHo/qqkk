@@ -8,7 +8,10 @@
       <li><a href="#">커뮤니티</a></li>
       <li class="f-r"><a href="#"></a></li>
       <li class="f-r glyphicon glyphicon-calendar"><a href="#"></a></li>
-      <li class="f-r glyphicon glyphicon-user user-alert" style="display:block; cursor:pointer"> 123</li>
+      <li class="f-r glyphicon glyphicon-user user-alert" style="display:block; cursor:pointer">
+        <i class="glyphicon glyphicon-exclamation-sign alert-icon" 
+        style="color: red; position: absolute; font-size:15px; right:0px; display:none"></i>
+      </li>
       <li class="f-r "><a href="#"></a></li>
     </ul>
      <div class="navbar">
@@ -16,17 +19,21 @@
       <i class="icon-bar"></i>
       <i class="icon-bar"></i>
     </div>
-     <div class="alert-box" style="width:200px; height: 100px; position:absolute; background-color:rgba(0, 0, 0, 0.5); right:100px; top: 40px;">
-	      <!-- <div class="invite-box">
-           <ul>
-		         <li><button type="button" class="btn addTrue">수락</button></li>
-		         <li><button type="button" class="btn addFail">거절</button></li>
-		        </ul>
-	      </div> -->
-	      	     	   
-	  </div>
+
   </div>
-
+  <div class="alert-box" style="position:absolute; background-color:rgba(0, 0, 0, 0.5); right:250px; top: 50px; color:#fff">             
+    </div>
 </nav>   
-
-
+  <script id="inviteMessage" type="text/x-handlebars-template">     
+      <div class="invite-box" style="display:none">
+        <p>{{name}} 님이 <span id="inviteGroupNo" > {{groupName}} 그룹에 초대하였습니다</span></p>
+        <ul>
+           <li style="display:inline"><button type="button" class="btn addTrue"  data-value="{{no}}" data-no="{{groupNo}}" data-chat="{{groupReplyNo}}">수락</button></li>
+           <li style="display:inline"><button type="button" class="btn addFail" data-value="{{no}}">거절</button></li>
+        </ul>
+     </div>  
+  </script>
+  <script type="text/javascript" src="../memberInvite/memberInvitemessageApp.js"></script>
+<script>
+ajaxGroupInviteListMessage()
+</script>

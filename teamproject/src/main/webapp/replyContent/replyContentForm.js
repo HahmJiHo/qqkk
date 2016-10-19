@@ -6,19 +6,14 @@ $("#addBtn").click(function(e) {
 	}
 	ajaxAddReplyContent(replyContent)
 	
+	$("#content").val('')
 });
 
-
-
 $('.group-reply-more').on('click', '#group-reply-btn',function(e) {
-	$('#reply-modal').modal();
-	$("#board-Table > ul").on('click', '#deleteBtn', function(e) {   
-		var no = $(this).parent().prevAll("#no").text()
-		ajaxDeleteReply(no)
-		
-	});
-	
+	$('#reply-modal').modal();	
 })
+
+
 
 function ajaxAddReplyContent(replyContent) {
 	$.post(serverAddr +"/replyContent/add.json", replyContent,  function(obj) {
