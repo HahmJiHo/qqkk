@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet"
+	href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css"
+	href="/data/201010/IJ12877841645771/style.css" />
+<link href='../css/fullcalendar.css' rel='stylesheet' />
+<link rel="stylesheet" type="text/css" href="../css/detailInfo.css">
+<link href='../css/fullcalendar.print.css' rel='stylesheet'
+	media='print' />
+
+
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="../css/common_style.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<link href='../css/fullcalendar.css' rel='stylesheet' />
+<link href='../css/fullcalendar.print.css' rel='stylesheet'
+	media='print' />
+<link
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"
+	rel="stylesheet" />
+<link
+	href="http://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/a549aa8780dbda16f6cff545aeabc3d71073911e/build/css/bootstrap-datetimepicker.css"
+	rel="stylesheet" />
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+	integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+	crossorigin="anonymous">
+
+<style>
+.container {
+	width: 600px;
+}
+</style>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="http://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/a549aa8780dbda16f6cff545aeabc3d71073911e/src/js/bootstrap-datetimepicker.js"></script>	
+<title>Insert title here</title>
+</head>
+<body>
+<section>
+		<div class="section-wrap">
+			<div class="selectbar-left">
+
+			<div class="my-info">
+           		<ul>
+             		<li class="my-profile"></li>     
+             		<li><a href='#' id="loginBtn" class="btn btn-xs btn-success my-logout">로그인</a></li> 
+      				<li><a href='#' id="logoutBtn" class="btn btn-xs btn-success my-login">로그 아웃</a></li> 	                          
+          		 </ul>  
+        		</div>
+				<form class="navbar-form navbar-left" role="search">
+					<div class="form-group">
+						<input type="text" class="form-control" placeholder="Search">
+					<button type="button" class="btn btn-default"><i class="fa fa-search w3-xlarge"></i></button>
+					<button type="button" class="btn btn-default"
+					onclick="location.href='MySchedule.html'"><i class="fa fa-bars w3-xlarge" aria-hidden="true"></i></button>
+					<button type="button" class="btn btn-default"
+					onclick="location.href='checkMySchedule.html'"><i class="fa fa-calendar w3-xlarge" aria-hidden="true"></i></button>
+					</div>
+			
+				</form>
+				<div class="sectionbar-line">
+					<hr align=center width=100%>
+				</div>
+			</div>
+
+			<nav class="w3-sidenav w3-collapse w3-white w3-animate-left"
+				style="z-index: 3; width: 200px;" id="mySidenav">
+				<br>
+				<div class="w3-container">
+					<a href="#" onclick="w3_close()"
+						class="w3-hide-large w3-right w3-jumbo w3-padding"
+						title="close menu"> <i class="fa fa-remove"></i>
+					</a>
+					<h4 class="w3-padding-0">
+						<b>이상원님의 캘린더</b>
+						<img src="../images/sangwon.jpg" style="width: 50%;"
+							class="w3-round"><br>
+					</h4>
+				</div>
+				<a href="#" class="w3-padding w3-text-teal">전체 그룹 일정보기</a> <a
+					href="#" class="w3-padding">그룹1</a> <a href="#" class="w3-padding">그룹2</a>
+				<a href="#" class="w3-padding">그룹3</a> <a href="#"
+					class="w3-padding">그룹4</a>
+			</nav>
+			
+			<div class="detail">
+				<h1 class="title">그룹1의 친구 생일 파티</h1>
+				
+				<div class="schedule-date">
+					<h3>날짜</h3>
+					<hr class="section-bar"></hr>
+					<div class="date">
+						<h1 class="d-day"></h1>
+						<p class="appointmentDate"></p>
+					</div>
+				</div>
+				
+
+				<div>
+					<h3>날씨</h3>
+					<hr class="section-bar"></hr>
+					<div class="weather">
+						
+					</div>
+				</div>
+				
+				<div>
+					<h3>장소</h3>
+					<hr class="section-bar"></hr>
+				</div>
+			</div>
+			</div>
+			</section>
+			<script src="../node_modules/jquery/dist/jquery.min.js"></script>
+<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="../node_modules/handlebars/dist/handlebars.min.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>	
+
+<script type="text/javascript" src="../js/bit.js"></script>    
+ <script type="text/javascript" src="../member/memberApp.js"></script>
+			
+			<script>
+ajaxLoginUser()
+ajaxMyScheduleList()
+
+if (location.search.startsWith("?")) {
+  var no = location.search.split("=")[0];
+  ajaxMyScheduleList(no)
+  $(".my-new").css("display","none")
+ 
+} else {
+    $(".my-view").css("display","none")
+
+  
+}
+
+
+</script>
+</body>
+</html>
