@@ -2,6 +2,8 @@
 <html lang="ko">
 <head>
 <meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
 <title>프로젝트-스케쥴</title>
 
 
@@ -11,8 +13,6 @@
 <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap-theme.min.css">
 
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
 
 <style type="text/css">
 .mainP {
@@ -179,7 +179,7 @@ div.desc {padding: 15px;text-align: center;color: black;font-size: 1em;font-weig
 			<div class="form-group">
 				<label for="email" class="col-sm-2 control-label">이메일</label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control" id="email"
+					<input type="text" class="form-control" id="loginEmail"
 						placeholder="예) hong@bit.com">
 				</div>
 			</div>
@@ -189,7 +189,7 @@ div.desc {padding: 15px;text-align: center;color: black;font-size: 1em;font-weig
 				<label for="password" class="col-sm-2 control-label">암호</label>
 				<div class="col-sm-10">
 
-					<input type="password" id="password" class="form-control"
+					<input type="password" id="LoginPassword" class="form-control"
 						placeholder="암호">
 				</div>
 			</div>
@@ -294,16 +294,14 @@ div.desc {padding: 15px;text-align: center;color: black;font-size: 1em;font-weig
 		</div>
 
 
-	</footer>
+	</footer> 
 	<script src="node_modules/jquery/dist/jquery.min.js"></script>
-	<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-		
+	<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>		
 	<script src="js/main.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 
 	<script type="text/javascript" src="js/common.js"></script>
 	<script type="text/javascript" src="js/bit.js"></script>
-	<script type="text/javascript" src="auth/authApp.js"></script>
 	<script type="text/javascript" src="member/memberForm.js"></script>
+	<script type="text/javascript" src="auth/authApp.js"></script>
 <script>	
 init() 
 ajaxLogout()

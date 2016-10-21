@@ -1,19 +1,17 @@
-$("#loginBtn").click(function(e) { 
+$("#id02").on('click', "#loginBtn", function(event) { 
 	var user = {
-			email: $("#email").val(),
-			password: $("#password").val(),
+			email: $("#loginEmail").val(),
+			password: $("#LoginPassword").val(),
 			saveEmail: $("#saveEmail").is(":checked") 
 	}
+	
+	
 	ajaxLogin(user)
 });
 
-$('.lgoin-btn').click(function(){
-	$('#login-Modal').modal()
-})
 function ajaxLogin(user) {
-
 	$.ajax({
-		url : serverAddr +"/auth/login.json",
+		url : serverAddr + "/auth/login.json",
 		method : "POST",
 		dataType : "json",
 		data : user,
@@ -23,14 +21,18 @@ function ajaxLogin(user) {
 				alert("로그인 실패 입니다.\n 이메일 또는 암호를 확인하세요.")       
 				return
 			} 
-			window.location.href = "../makegroup/makegroup.html"		
+			window.location.href = serverAddr + "/myschedule/checkMySchedule.html"		
 		},
 		error : function(msg) {
 			alert(msg)
 		}
 	})
-
 }
+
+
+
+
+
 
 function ajaxLogout(user) {
 	$.getJSON( serverAddr +"/auth/logout.json", function(obj) {
