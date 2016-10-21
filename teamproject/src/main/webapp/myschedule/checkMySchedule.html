@@ -191,7 +191,8 @@
 <script>
 ajaxLoginUser()
 ajaxMyScheduleList()
-	
+ajaxEventLocationList()
+
 if (location.search.startsWith("?")) {
   var no = location.search.split("=")[0];
   ajaxMyScheduleList(no)

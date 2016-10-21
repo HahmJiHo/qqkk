@@ -1,3 +1,7 @@
+var eventLocationList;
+var mySchedulList;
+
+
 $("#loginBtn").click(function(event) {
 	location.href = "../auth/authApp.html"
 });
@@ -6,6 +10,25 @@ $("#logoutBtn").click(function(event) {
 	location.href = "../auth/authApp.html"
 });
 
+$("#calendarModal").click(function() {
+	alert('kdkdkdkd')
+	
+});
+
+$('#calendarModal').on('shown.bs.modal', function(){
+	console.log('22222')
+	google_map("google_map", event.placeName);
+	//console.log(event);		
+	google.maps.event.trigger(map,'resize',{});
+
+});
+
+$('#calendarModal').on('shown.bs.modal', function(){
+	
+	console.log(lon)
+	console.log(lat)
+	});
+	
 function showCalendar(arr) {
 	$('#calendar').fullCalendar({		
 		header: {
@@ -19,14 +42,16 @@ function showCalendar(arr) {
 		selectHelper: true,
 		disableDragging : true,
 
-
 		eventClick: function(event, start, end) {
+			var location = getLatLon(event.placeName);
+			ajaxWeather(location.lat, location.lon)
 			var moment11 = $('#calendar').fullCalendar('getDate')
 			start = moment(event.start).format('YYYY-MM-DD HH:mm')
 			end = moment(event.end).format('YYYY-MM-DD HH:mm')
 
 			//alert("Event title: " + event.title + " Start Date: " + start + " End Date: " + end );
 			$('#calendarModal').modal()
+
 			$('#modalTitle').html(event.title)
 			$('.modal-groupName').html(event.groupName)
 			$('.modal-start-date').html(start)
@@ -34,6 +59,7 @@ function showCalendar(arr) {
 			$(".modal-place").html(event.placeName)
 			$('#modalBody').html(event.description)
 			$('#eventUrl').attr('href',event.url)
+			console.log(event)
 			//console.log('eventcount=' + event.count)
 
 			function google_map(mapid, addr) {
@@ -76,17 +102,7 @@ function showCalendar(arr) {
 						}); 
 					}
 				});
-
-
 			}
-
-			$('#calendarModal').on('shown.bs.modal', function(){
-				google_map("google_map", event.placeName);
-				//console.log(event);		
-				google.maps.event.trigger(map,'resize',{});
-
-			});
-
 		},
 		editable: true,
 		eventLimit: true, // allow "more" link when too many events      			
@@ -99,6 +115,14 @@ function showCalendar(arr) {
 	);
 }
 
+
+function getLatLon(placeName) {
+	for (var i in eventLocationList) {
+		if (eventLocationList[i].placeName == placeName) {
+			return eventLocationList[i];
+		}
+	}
+}
 
 function ajaxMyScheduleList() {
 	var placeName = "";
@@ -113,10 +137,12 @@ function ajaxMyScheduleList() {
 		}
 
 		var contents = ""
-	    var arr = result.data
-		var arrTest=[]
-		var template = Handlebars.compile($('#divTemplateText').html())
+	    var myScheduleList = result.data
+	    console.log(myScheduleList)
+	    showCalendar(myScheduleList);
 		
+		var template = Handlebars.compile($('#divTemplateText').html())
+		/*
 		for (var i in arr) {
 			if ($("#user").attr('data-value') == arr[i].no){
 				contents += template(arr[i])
@@ -127,62 +153,57 @@ function ajaxMyScheduleList() {
 		}
 		console.log(arrTest);
 		console.log(contents);
-		showCalendar(arrTest);
+		
 
 		
 		$("#groupName").html(contents)
+		
 		$(".titleLink").click(function(event) {
 			window.location.href = "checkMySchedule.html?no=" + $(this).attr("data-no")
-		})
+		})*/
 	})
-	
-	$("#calendarModal").click(function() {
-		$.getJSON(serverAddr + '/myschedule/listWeather.json', function(obj){
-			var result = obj.jsonResult
-			if (result.state != "success") {
-				alert("서버에서 데이터를 가져오는데 실패했습니다.")
-				return
-			}
-			
-			var arr = result.data
-			console.log(arr)
-			for (var i in arr) {
-				if (placeName == arr[i].placeName)
-				lat = String(arr[i].lat)
-				lon = String(arr[i].lon)
-			}
-			console.log(lat)
-			console.log(lon)
-			
-		})
-		
-		$.getJSON(skPlanetWeather , {
-			"version": "1",
-			"lat": lat,
-			"lon": lon,
-			"appKey": "6e62a500-8f2f-36d6-ac6d-2fcc4b4a5a23"
-		}, function(data) {
-			var arr = data.result
-			if (arr.message != "성공") {
-					alert("서버에서 데이터를 가져오는데 실패했습니다.")
-					return
-				
-			}
-			//console.log(arr) 
-			for (var i in arr) {
-				if (arr[i] == "weather") 
-					contents += arr[i]
-			}
-			console.log(contents)
-			$(".modal-weather").html(contents)
-		})
-	});
 	
 	
 }
 
+function ajaxWeather(lat, lon) {
+	console.log(lat, lon);
+	$.getJSON(skPlanetWeather, {
+		"lat": lat,
+		"lon": lon,
+		"version": "1",
+		"appKey": "6e62a500-8f2f-36d6-ac6d-2fcc4b4a5a23"
+	}, function(data) {
+		var arr = data.result
+		if (arr.message != "성공") {
+				alert("서버에서 데이터를 가져오는데 실패했습니다.")
+				return
+			
+		}
+		var calendarWeather = data.weather
+		console.log(calendarWeather.minutely[0])
+		$(".modal-weather").html(calendarWeather.minutely[0].humidity)
+		/*
+		for (var i in arr) {
+			if (arr[i].weather)
+				contents += arr[i]
+		}*/
+	})
+}
 
-
+function ajaxEventLocationList() {
+	$.getJSON(serverAddr + '/myschedule/listWeather.json', function(obj){
+		var result = obj.jsonResult
+		if (result.state != "success") {
+			alert("서버에서 데이터를 가져오는데 실패했습니다.")
+			return
+		}
+		
+		eventLocationList = result.data;
+		console.log(eventLocationList)
+		
+	})
+}
 
 function ajaxLoginUser() {
 	$.getJSON(serverAddr +"/auth/loginUser.json", function(obj) {
