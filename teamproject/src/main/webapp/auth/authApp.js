@@ -6,7 +6,7 @@ $("#id02").on('click', "#loginBtn", function(event) {
 	}
 	 
 	ajaxLogin(user)
-});
+}); 
 
 function ajaxLogin(user) {
 	$.ajax({
