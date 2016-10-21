@@ -4,7 +4,6 @@ $("#id02").on('click', "#loginBtn", function(event) {
 			password: $("#LoginPassword").val(),
 			saveEmail: $("#saveEmail").is(":checked") 
 	}
-	
 	 
 	ajaxLogin(user)
 });
