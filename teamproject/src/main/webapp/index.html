@@ -1,76 +1,311 @@
 <!DOCTYPE html>
 <html lang="ko">
-  <head>
-   <meta charset="utf-8">
-    <title>프로젝트-스케쥴</title>
-    <!--[if lt IE 9]>
-      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <link rel="stylesheet" type="text/css" href="css/main.css" >
-    <link rel="stylesheet" type="text/css" href="css/common_style.css" >
-    <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
-  </head>
-  <script>
-  $(function() {
-    
-   $("footer").load("footer2.html"); 
-  });
-</script> 
-  <body>
-    <header>
-      <nav>
-        <div class="nav-warp">
-          <h1><a href="#">로고</a></h1>
-          <ul class="nav">
-            <li><a href="#">회원가입</a></li>
-            <li><a href="#">공지사항</a></li>
-          </ul>
-           <div class="navbar">
-            <i class="icon-bar"></i>
-            <i class="icon-bar"></i>
-            <i class="icon-bar"></i>
-          </div>
-        </div>
-      </nav>   
-    </header>
-    <section>
-      <div class="section-wrap">
-        <h2>Title 입니다.</h2>
-        <div class="title-menu">
-          <ul class="title-nav">
-            <li><a href="#" class="active">회원</a></li>
-            <li><a href="#">비회원</a></li>
-          </ul>
-        </div>
-        <article class="member artice">
-          <div class="article-content">
-            <form method="post">     
-	            <ul>
-	              <li><input type="text" name="" placeholder="아이디를 입력하세요"></li>
-	              <li><input type="password" name="" placeholder="암호를 입력하세요"></li>
-	              <li class="member-join"><button>로그인</button></li>
-	              <li class="member-join"><a href="#">회원 가입</a></li>
-	            </ul>
-            </form>
-          </div>
-        </article>
-        <article class="non-member artice" style="display : none ;">
-          <div class="article-content">
-             <form method="get">
-                <ul>
-                  <li><input type="text" name="" placeholder="URL을 입력하세요"></li>
-                  <li><button>접속</button></li>
-                  <li><button>그룹 만들기</button></li>
-                </ul>
-             </form>
-          </div>
-        </article>
-      </div>
-    </section>
-    <footer>
-     
-    </footer>     
-     <script src="js/main.js"></script>
-  </body>
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+<title>프로젝트-스케쥴</title>
+
+
+<link rel="stylesheet" type="text/css" href="css/main_kong.css">
+<link rel="stylesheet" type="text/css" href="css/mainPage.css">
+<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap-theme.min.css">
+
+
+<style type="text/css">
+.mainP {
+	background-image: url("images/main1.png");background-repeat: no-repeat;background-size: 100%;height: auto;min-height: 675px;}
+
+#mainText1 {color: white;	font-size: 2em;	font-style: inherit;font-weight: bold;margin-right: 55%;margin-bottom: 50px;padding-top: 110px;}
+
+#mainText2 {color: white;	font-size: 1.3em;font-style: inherit;font-weight: bold;margin-right: 55%;margin-bottom: 50px;}
+
+.button {display: inline-block;	padding: 15px 25px;	font-size: 24px;cursor: pointer;text-align: center;text-decoration: none;	outline: none;
+					color: #fff;background-color: #4CAF50;border: none;	border-radius: 15px; /* box-shadow: 0 9px #999; */}
+
+.button:hover {	background-color: #3e8e41;}
+
+.button:active {background-color: #3e8e41;box-shadow: 0 5px #666;transform: translateY(4px);}
+
+div.img {border: 1px solid #cc;}
+
+div.img:hover {border: 1px solid #777;}
+
+div.img img {width: 100%;height: auto;}
+
+div.desc {padding: 15px;text-align: center;color: black;font-size: 1em;font-weight: bold;font-style: inherit;}
+
+* {box-sizing: border-box;}
+
+.mainIMG {padding: 0 6px;float: left;width: 24.99999%;}
+
+@media only screen and (max-width: 700px) {
+	.mainIMG {width: 49.99999%;margin: 6px 0;
+	}
+}
+
+@media only screen and (max-width: 500px) {
+	.mainIMG {width: 100%;
+	}
+}
+
+.arti {	min-height: 320px;}
+
+#logBtn {	padding-top: 50px;}
+
+.Btn {	background-color: rgb(125, 20, 133);border: none;color: white;padding: 15px 32px;text-align: center;text-decoration: none;
+	display: inline-block;font-size: 16px;margin: 4px 2px;cursor: pointer;}
+
+.Btn2 {	background-color: #e7e7e7;color: black;} /* Gray */
+.Btn3 {	background-color: #e7e7e7;color: black;} /* Gray */
+.footerText li {float: left;padding: 15px;text-align: center;	color: white;	font-size: 1.8em;	font-weight: bold;padding-right: 90px;margin-left: 150px;}
+
+.btn-default {float:left;}
+
+</style>
+
+
+
+</head>
+<body>
+
+
+				<!-- header 로그인  / 회원가입 / 사용방법 -->
+	<header>
+		<nav>
+			<div class="nav-warp">
+				<ul class="nav">
+					<li><button id="ModalLoginBtn" class="Btn" type="button" onclick="document.getElementById('id02').style.display='block'">로그인</button></li>
+					<li><button class="Btn Btn2">사용방법</button></li>
+					<li><button class="Btn Btn3" onclick="document.getElementById('id01').style.display='block'">회원가입</button></li>
+				</ul>
+				<div class="navbar">
+					<i class="icon-bar"></i> 
+					<i class="icon-bar"></i>
+					<i class="icon-bar"></i>
+				</div>
+			</div>
+		</nav>
+	</header>
+
+
+
+			<!-- MainPage TEXT  -->
+
+	<section class="mainP">
+		<ul id="mainText1">
+			<li>안녕 ~</li>
+			<li>내일 거기서 봐</li>
+		</ul>
+		<br>
+		
+		<ul id="mainText2">
+			<li>이번 달은 무슨 모임이지?</li>
+			<li>결혼식 3번 약속 2번.. 그 근처에 뭐가 있더라 ?</li>
+			<li>모임별로 일정을 알려주는 hiba 지금 가입하세요 !!</li>
+			
+			<!-- MainPage LOGIN BUTTON -->
+			<li><p id="logBtn">
+					<button onclick="document.getElementById('id01').style.display='block'" 
+					id="mainBtn" type="button" class="button w3-btn w3-green w3-large">가 입 하 기</button>
+				</p></li>
+		</ul>
+
+
+
+
+			<!-- JoIN Button Modal -->
+
+		<div id="id01" class="w3-modal">
+			<div class="w3-modal-content w3-card-8 w3-animate-zoom"	style="max-width: 600px">
+
+				<div class="w3-center">
+					<br> <span onclick="document.getElementById('id01').style.display='none'"
+						class="w3-closebtn w3-hover-red w3-container w3-padding-8 w3-display-topright"
+						title="Close Modal">&times;</span> <img src="images/loginIMG.png"
+						alt="Avatar" style="width: 10%" class="w3-circle w3-margin-top">
+				</div>
+
+				<form class="w3-container" >
+					<div class="w3-section">
+						
+							
+						<label><b>이름</b></label> <input id="name"	class="w3-input w3-border w3-margin-bottom" type="text" placeholder="아이디 입력" name="usrId" required>
+							
+						<label><b>닉네임</b></label> <input id="nicknm" class="w3-input w3-border w3-margin-bottom" type="text" placeholder="이름 입력" name="usrName" required>
+						
+						<label><b>이메일</b></label> <input id="email" class="w3-input w3-border w3-margin-bottom" type="text"	placeholder="이메일 입력" name="email" required> 
+						
+						<label><b>비밀번호</b></label> <input id="password" class="w3-input w3-border" type="password" placeholder="비밀번호 입력" name="psw" required> 
+						
+						<button id="addBtn" class="w3-btn-block w3-green w3-section w3-padding" type="button">가 입 하 기</button>
+						<!-- <label><b>비밀번호 확인</b></label> <input id="password" class="w3-input w3-border" type="password"	placeholder="비밀번호 확인" name="pswCheck" required> -->
+						<input class="w3-check w3-margin-top" type="checkbox" checked="checked"> Remember me
+					
+					</div>
+				</form>
+
+
+		<div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
+					<button
+						onclick="document.getElementById('id01').style.display='none'"
+						type="button" class="w3-btn w3-red">Cancel</button>
+					<span class="w3-right w3-padding w3-hide-small">Forgot <a href="#">password?</a></span>
+				</div>
+			</div>
+		</div>
+
+
+
+
+
+
+	<div id="id02" class="w3-modal">
+		<div class="w3-modal-content w3-card-8 w3-animate-zoom"	style="max-width: 600px">
+			<div class="w3-center" style="padding: 10px; background-color:rgb(125, 20, 133)">
+				<br> <span onclick="document.getElementById('id02').style.display='none'"
+						class="w3-closebtn w3-hover-red w3-container w3-padding-8 w3-display-topright"
+						title="Close Modal">&times;</span> <!-- <img src="images/loginIMG.png"
+						alt="Avatar" style="width: 10%" class="w3-circle w3-margin-top"> -->
+	</div>
+	
+
+
+					<!-- login 버튼 -->
+<div>
+		<form method="post" class="form-horizontal" style="padding-top: 30px;">
+			<div class="form-group">
+				<label for="email" class="col-sm-2 control-label">이메일</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="loginEmail"
+						placeholder="예) hong@bit.com">
+				</div>
+			</div>
+
+
+			<div class="form-group">
+				<label for="password" class="col-sm-2 control-label">암호</label>
+				<div class="col-sm-10">
+
+					<input type="password" id="LoginPassword" class="form-control"
+						placeholder="암호">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="col-sm-offset-2 col-sm-10">
+					<div class="checkbox">
+						<label style="float:left;"> <input id="saveEmail" type="checkbox">
+							Remember me
+						</label>
+					</div>
+				</div>
+			</div>
+ 
+			<div class="form-group"  style="padding-bottom: 30px;">
+				<div class="col-sm-offset-2 col-sm-10">
+					<button id="loginBtn" type="button" class="btn btn-default">로그인</button>
+				</div>
+			</div>
+		</form>
+			
+			</div>
+		</div>
+	</div>
+
+
+
+	</section>
+
+
+
+	 <article class="arti">
+		<div class="mainIMG">
+			<div class="IMg">
+				<a href="images/m1.jpg"> <img src="images/m1.jpg" alt="main5"
+					width="300" height="200">
+				</a>
+				<div class="desc" style="margin-right: 20%">
+					모임별로 쉽게 잡아봐!!<br>많이 품고 있는 이상!<br> 이것이야말로 무한한 가치를 가진 것이다
+				</div>
+			</div>
+		</div>
+
+
+
+		<div class="mainIMG">
+			<div class="IMg">
+				<a href="/images/m2.jpg"> <img src="images/m2.jpg" alt="main5"
+					width="300" height="200">
+				</a>
+				<div class="desc" style="margin-right: 20%">
+					약속날 날씨도 미리봐!!<br>많이 품고 있는 이상!<br> 이것이야말로 무한한 가치를 가진 것이다
+				</div>
+			</div>
+		</div>
+
+
+
+		<div class="mainIMG">
+			<div class="IMg">
+				<a href="/images/m3.jpg"> <img src="images/m3.jpg" alt="main5"
+					width="300" height="200">
+				</a>
+				<div class="desc" style="margin-right: 20%">
+					만나는 주변 장소 알아봐!!<br>많이 품고 있는 이상!<br> 이것이야말로 무한한 가치를 가진 것이다
+				</div>
+			</div>
+		</div>
+
+
+		<div class="mainIMG">
+			<div class="IMg">
+				<a href="/images/m4.jpg"> <img src="images/m4.jpg" alt="main5"
+					width="300" height="200">
+				</a>
+				<div class="desc" style="margin-right: 20%">
+					찍은사진 공유 해봐!!<br>많이 품고 있는 이상!<br> 이것이야말로 무한한 가치를 가진 것이다
+				</div>
+			</div>
+		</div>
+
+
+	</article>
+
+
+
+
+
+
+
+
+
+	<footer>
+		<div class="footer-warp">
+			<img src="images/main2.png" alt="footerIMG"
+				style="width: 100px; position: absolute; padding-top: 13px;">
+			<ul class="footerText">
+				<li>서비스 약관</li>
+				<li>개인정보 보호정책</li>
+				<li>문의하기</li>
+			</ul>
+		</div>
+
+ 
+	</footer> 
+	<script src="node_modules/jquery/dist/jquery.min.js"></script>
+	<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>		
+	<script src="js/main.js"></script>
+	<script type="text/javascript" src="js/common.js"></script>
+	<script type="text/javascript" src="js/bit.js"></script>
+	<script type="text/javascript" src="member/memberForm.js"></script>
+	<script type="text/javascript" src="auth/authApp.js"></script>
+<script>	
+init() 
+ajaxLogout()
+</script>
+	
+</body>
 </html>
