@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+   <meta charset="utf-8">
+    <title>하이바 커뮤니티</title>
+    
+    <link rel="stylesheet" type="text/css" href="../css/common_style.css" >
+    <link rel="stylesheet" type="text/css" href="../css/community.css" >
+    
+    <!-- 부트스크랩 CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <script src="../node_modules/jquery/dist/jquery.js"></script> 
+    
+    
+    <!-- makeSc 부트스트랩-->
+    
+    
+	  <!-- 좋아요 S-->  
+    
+ 
+    <!-- 좋아요 E-->  
+    <!-- AngularJS search-->
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+<style>
+      #calendar {
+      max-width: 850px;
+      margin: 0 auto;
+      float: right;
+     }
+
+     .article-schedule ul li { padding-bottom: 20px; }     
+     .my-make-schedule button:first-child {
+      margin-bottom: 20px;      
+     }
+     .my-schedule { border-top: 1px solid gray; border-bottom: 1px solid gray; padding:20px 0; }
+     .my-schedule ul { margin-bottom: 0px; }
+     .my-schedule ul li { padding: 2px 0; }
+     .my-group-member ul li { padding-bottom: 15px; padding-right: 10px; position: relative; }
+     .my-group-member ul li i { 
+     display: inline-block; float: right; width: 40px; 
+     height: 40px; background: #555; }     
+     .member-photo { display: inline-block; }
+     .member-photo img{ width: 70px; height: 70px; border-radius: 100px; }
+     .member-name { display: block; position: absolute; right: 10px; top: 50px; }
+     .state { -  width: 15px; height: 15px; }
+     .danger { background:url("../images/ximg.png") no-repeat }
+     .success { background:url("../images/successicon.png") no-repeat }
+           #map {
+        height: 300px;
+      }
+.controls {
+  margin-top: 10px;
+  border: 1px solid transparent;
+  border-radius: 2px 0 0 2px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  height: 32px;
+  outline: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+#pac-input {
+  background-color: #fff;
+  font-family: Roboto;
+  font-size: 15px;
+  font-weight: 300;
+  margin-left: 12px;
+  padding: 0 11px 0 13px;
+  text-overflow: ellipsis;
+  width: 300px;
+}
+
+#pac-input:focus {
+  border-color: #4d90fe;
+}
+
+.pac-container {
+  font-family: Roboto;
+}
+
+#type-selector {
+  color: #fff;
+  background-color: #4d90fe;
+  padding: 5px 11px 0px 11px;
+}
+
+#type-selector label {
+  font-family: Roboto;
+  font-size: 13px;
+  font-weight: 300;
+}
+     .pac-container {
+    background-color: #FFF;
+    z-index: 20;
+    position: fixed;
+    display: inline-block;
+    float: left;
+}
+.modal{
+    z-index: 20;   
+}
+.modal-backdrop{
+    z-index: 10;        
+}​
+  </style>
+  </head>
+  
+  <body>
+    <header>
+     <nav>
+      <div class="nav-warp">
+        <div class="headerLogo">
+             <h1><a href="#">로고</a></h1>
+        </div>
+        <ul class="nav">
+          <li><a href="#">일정</a></li>
+          <li><a href="#">그룹</a></li>
+          <li><a href="#">앨범</a></li>
+          <li><a href="../community/communityApp.html">커뮤니티</a></li>
+          <li class="f-r"><a href="#"></a></li>
+          <li class="f-r glyphicon glyphicon-calendar"><a href="#"></a></li>
+          <li class="f-r glyphicon glyphicon-user"><a href="#"></a></li>
+          <li class="f-r "><a href="#"></a></li>
+        </ul>
+         <div class="navbar">
+          <i class="icon-bar"></i>
+          <i class="icon-bar"></i>
+          <i class="icon-bar"></i>
+        </div>
+        
+        <div style='position:absolute;right:0px;top:10px;font-size:15px;'>
+          <span id="userName" class="my-login"></span>
+          <a id="loginBtn" href='#' class="btn btn-success btn-xs my-logout">로그인</a>
+          <a id="logoutBtn" href='#' class="btn btn-success btn-xs my-login">로그아웃</a>
+        </div> 
+      </div>
+    </nav> 
+    </header>
+    
+    
+  <section>
+    <div class="section-wrap">
+      <h2>커뮤니티</h2>
+        <div class="col-md-8">
+		        <form method="post" class="light">
+		          <input type="text" placeholder="검색할 내용을 적어주세요">
+		        </form>
+		        <label>
+		        <button type="button" class="button-border2" ng-model="searchText"> <span class="glyphicon glyphicon-search" aria-hidden="true"></span></button></label>
+		        <button type="button" class="button-border2" onclick="location.href='communityForm.html'">글쓰기</button>
+		        <button type="button" class="button-border2">내글보기</button>
+		    </div>
+   
+		    <div>
+		       <button type="button" class="button-border button-success">최신순</button>
+		       <button type="button" class="button-border button-success">조회수</button>
+		       <button type="button" class="button-border button-success">댓글순</button>
+		       <button type="button" class="button-border button-success">랜덤</button>
+		    </div>
+ 
+
+<!-- 검색바2 S -->
+<script type="text/javascript" src="/js/vk/kor/bz15/jquery/location.js"></script>
+ <!--  <section id="content"> -->
+  <div>
+    <div class="findCategory">
+      <form action="/../where_main_search.jsp" method="GET" name="searchForm">
+        <div class="lcate">
+           <div class="title go-ir">
+			      <p>step 01</p>
+			      <h2>지역선택 <small>원하시는 지역을 선택하세요</small></h2>
+           </div>
+
+			    <div class="map">
+			      <p class="hide">지도에서 선택</p>
+			      <!-- 
+			        1. 현재 html을 저장하여 초기화에 사용합니다.
+			        2. 스크립트에서 지역번호를 사용한 html 조각을 불러옵니다. 'function getLocate(){} = locate_{지역번호}.html'
+			      -->
+			      <ul id="setHiddenButtons1">
+			        <li class="icon1"><button value="2" name="areaCode" type="button" class="go-button">인천</button></li>
+			        <li class="icon2"><button value="1" name="areaCode" type="button" class="go-button">서울</button></li>
+			        <li class="icon3"><button value="31" name="areaCode" type="button" class="go-button">경기</button></li>
+			        <li class="icon4"><button value="32" name="areaCode" type="button" class="go-button ov">강원</button><input type="hidden" name="areaCode" value="32"></li>
+			        <li class="icon5"><button value="34" name="areaCode" type="button" class="go-button">충남</button></li>
+			        <li class="icon6"><button value="8" name="areaCode" type="button" class="go-button">세종</button></li>
+			        <li class="icon7"><button value="3" name="areaCode" type="button" class="go-button">대전</button></li>
+			        <li class="icon8"><button value="35" name="areaCode" type="button" class="go-button">경북</button></li>
+			        <li class="icon9"><button value="37" name="areaCode" type="button" class="go-button">전북</button></li>
+			        <li class="icon10"><button value="4" name="areaCode" type="button" class="go-button">대구</button></li>
+			        <li class="icon11"><button value="5" name="areaCode" type="button" class="go-button">광주</button></li>
+			        <li class="icon12"><button value="38" name="areaCode" type="button" class="go-button">전남</button></li>
+			        <li class="icon13"><button value="36" name="areaCode" type="button" class="go-button">경남</button></li>
+			        <li class="icon14"><button value="7" name="areaCode" type="button" class="go-button">울산</button></li>
+			        <li class="icon15"><button value="6" name="areaCode" type="button" class="go-button">부산</button></li>
+			        <li class="icon16"><button value="39" name="areaCode" type="button" class="go-button">제주</button></li>
+			        <li class="icon17"><button value="33" name="areaCode" type="button" class="go-button">충북</button></li>
+			      </ul>
+			    </div>
+			
+			    <div class="category">
+			      <p class="hide">목록에서 선택</p>
+			      <ul id="setHiddenButtons2" class="categoryList">
+							 <!-- 강원 -->
+							<li><button name="sigunguCode" value="" type="button" class="go-button ov">전체</button><input type="hidden" name="sigunguCode" value=""></li>
+							<li><button name="sigunguCode" value="1" type="button" class="go-button">강릉시</button></li>
+							<li><button name="sigunguCode" value="2" type="button" class="go-button">고성군</button></li>
+							<li><button name="sigunguCode" value="3" type="button" class="go-button">동해시</button></li>
+							<li><button name="sigunguCode" value="4" type="button" class="go-button">삼척시</button></li>
+							<li><button name="sigunguCode" value="5" type="button" class="go-button">속초시</button></li>
+							<li><button name="sigunguCode" value="6" type="button" class="go-button">양구군</button></li>
+							<li><button name="sigunguCode" value="7" type="button" class="go-button">양양군</button></li>
+							<li><button name="sigunguCode" value="8" type="button" class="go-button">영월군</button></li>
+							<li><button name="sigunguCode" value="9" type="button" class="go-button">원주시</button></li>
+							<li><button name="sigunguCode" value="10" type="button" class="go-button">인제군</button></li>
+							<li><button name="sigunguCode" value="11" type="button" class="go-button">정선군</button></li>
+							<li><button name="sigunguCode" value="12" type="button" class="go-button">철원군</button></li>
+							<li><button name="sigunguCode" value="13" type="button" class="go-button">춘천시</button></li>
+							<li><button name="sigunguCode" value="14" type="button" class="go-button">태백시</button></li>
+							<li><button name="sigunguCode" value="15" type="button" class="go-button">평창군</button></li>
+							<li><button name="sigunguCode" value="16" type="button" class="go-button">홍천군</button></li>
+							<li><button name="sigunguCode" value="17" type="button" class="go-button">화천군</button></li>
+							<li><button name="sigunguCode" value="18" type="button" class="go-button">횡성군</button></li>
+						</ul>
+			      <p class="categoryResult"><span class="category1">강원</span> <span class="category2">전체</span> 지역이 선택되었습니다.</p>
+			    </div>
+			  </div>
+
+			  <div class="submit_buttons">
+			    <input type="submit" value="검색하기">
+			    <input type="reset" value="초기화">
+			  </div>
+			  <input type="hidden" name="gotoPage">
+				<script type="text/javascript" src="/js/vk/kor/bz15/jquery/find.js"></script><!-- This page is generated by CMS -->  
+      </form>
+      </div>
+<!--  </section> -->
+   </div>
+<!-- 검색바2 E -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="colorbar"> 강원 / 전체 </div>
+  
+  
+  
+  
+  
+<!-- Main Quill library -->
+<script src="//cdn.quilljs.com/1.1.0/quill.js" type="text/javascript"></script>
+<script src="//cdn.quilljs.com/1.1.0/quill.min.js" type="text/javascript"></script>
+
+<!-- Theme included stylesheets -->
+<link href="//cdn.quilljs.com/1.1.0/quill.snow.css" rel="stylesheet">
+<link href="//cdn.quilljs.com/1.1.0/quill.bubble.css" rel="stylesheet">
+
+<!-- Core build with no theme, formatting, non-essential modules -->
+<link href="//cdn.quilljs.com/1.1.0/quill.core.css" rel="stylesheet">
+<script src="//cdn.quilljs.com/1.1.0/quill.core.js" type="text/javascript"></script>
+  
+  
+
+
+
+
+
+  
+  <!-- 컨텐츠 S -->
+<h1>게시물 목록조회</h1>
+<!-- <p><button type="button" class="btn btn-primary btn-sm" 
+           onclick="location.href='boardForm.html'">새 글</button></p> -->
+<table id="communityTable" class="table table-hover">
+<thead>
+<tr>
+  <th>번호</th>
+  <th>제목</th>
+  <th>등록일</th>
+  <th>조회수</th>
+  <th>좋아요</th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+<!-- 컨텐츠 E -->  
+
+
+     
+  </div>
+</section> 
+      
+
+<footer>
+	<div class="footer-warp">
+	  <p>푸터 영역 입니다.</p>
+	</div>      
+</footer>      
+
+
+
+ 
+     
+<script id="trTemplateText" type="text/x-handlebars-template">
+{{#each data}}
+<tr>
+  <td>{{no}}</td>
+  <td><a class="titleLink" href="#" data-no="{{no}}">{{title}}</a></td>
+  <td>{{registerDate2}}</td>
+  <td>{{viewCount}}</td>
+  <td>{{boardLike}}</td>
+</tr>
+{{/each}}
+</script>
+
+
+
+
+
+
+ 
+
+<script src="../node_modules/jquery/dist/jquery.min.js"></script>
+<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="../node_modules/handlebars/dist/handlebars.min.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript" src="../js/bit.js"></script>
+<script type="text/javascript" src="communityApp.js"></script>
+<script>
+ajaxLoginUser() // 로그인 유저 정보 가져오기
+ajaxCommunityList() // 게시물 목록 가져오기
+</script>
+
+</html>
+
+
+
+
+
