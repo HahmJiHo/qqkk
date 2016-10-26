@@ -16,8 +16,8 @@ $(function () {
       <li><a href="#">앨범</a></li>
       <li><a href="../community/communityApp.html">커뮤니티</a></li>
       <li class="f-r"><a href="#"></a></li>
-      <li class="f-r iconMemberPlus" data-toggle="tooltip" data-placement="bottom" title="그룹추가하기" onclick="document.getElementById('idMemberPlus').style.display='block'"><a href="#"></a></li>
-      <li class="f-r iconSchedulePlus" data-toggle="tooltip" data-placement="bottom" title="일정추가하기" onclick="document.getElementById('idSchedulePlus').style.display='block'"><a href="#"></a></li>
+      <li class="f-r iconMemberPlus" data-toggle="tooltip" data-placement="bottom" title="그룹추가하기"><a href="#"></a></li>
+      <li class="f-r iconSchedulePlus" data-toggle="tooltip" data-placement="bottom" title="일정추가하기"><a href="#"></a></li>
       <li class="f-r iconBell" data-toggle="tooltip" data-placement="bottom" title="새로운알림"  style="display:block; cursor:pointer">
         <i class="glyphicon glyphicon-exclamation-sign alert-icon" 
         style="color: red; position: absolute; font-size:15px; right:0px; display:none"></i>
@@ -47,120 +47,6 @@ $(function () {
 ajaxGroupInviteListMessage()
 </script> 
     
- <!--  그룹추가 모달 S -->   
- <div class="w3-container">
-  <div id="idMemberPlus" class="w3-modal">
-    <div class="w3-modal-content w3-card-8">
-      <header class="w3-container w3-teal">
-        <span onclick="document.getElementById('idMemberPlus').style.display='none'"class="w3-closebtn">&times;</span>
-        <h1>일정추가하기</h1>
-      </header>
-      <div class="w3-container">
-        <form class="form-horizontal">
-        
-        <div class="form-group">
-          <label for="">그룹명</label>
-          <div class="col-sm-10">
-            <input type="text" class="form-control" id="" placeholder="그룹명을적어주세요">
-          </div>
-        </div>
-        
-        <div class="form-group">
-          <label for="">그룹설명</label>
-          <div class="col-sm-10">
-            <input type="text" class="form-control" id="" placeholder="그룹설명을적어주세요">
-          </div>
-        </div>
-        
-       <div class="form-group">
-          <label for="">이메일</label>
-          <div class="col-sm-10">
-            <input type="text" class="form-control" id="" placeholder="추가할 멤버의 이메일을 적어주세요">
-          </div>
-        </div>
-        
-        <div class="form-group">
-          <label for="exampleInputFile">파일 업로드</label>
-          <div class="col-sm-10">
-            <input type="file" id="exampleInputFile" name="file1">
-            <p class="help-block">다중 파일 업로드는 업데이트예정!</p>
-         </div>
-        </div>
-        
-       <div class="form-group">
-          <label for="contents">전하고 싶은 내용(선택사항)</label>
-          <div class="col-sm-10">
-            <textarea id="contents" class="form-control" 
-                      cols="50" rows="10" placeholder="전하고 싶은 내용을 적어주세요"></textarea>
-          </div>
-        </div>
-        
-        <div class="form-group">
-          <div class="col-sm-10">
-            <button id="addBtn" type="button" class="btn btn-default my-new">링크복사하기</button>
-            <button id="addBtn" type="button" class="btn btn-default my-new">이메일보내기</button>
-          </div>
-        </div>
-      </form>
-      
-    </div>
-     </div>
-   </div>
- <!--  그룹추가 모달 E -->  
-    
-    
- <!--  일정추가 모달 S -->   
- <div class="w3-container">
-  <div id="idSchedulePlus" class="w3-modal">
-    <div class="w3-modal-content w3-card-8">
-      <header class="w3-container w3-teal">
-        <span onclick="document.getElementById('idSchedulePlus').style.display='none'"class="w3-closebtn">&times;</span>
-        <h1>일정추가하기</h1>
-      </header>
-      <div class="w3-container">
-        <form class="form-horizontal">
-        
-        <div class="form-group">
-          <label for="">그룹명</label>
-          <div class="col-sm-10">
-            <input type="text" class="form-control" id="" placeholder="그룹명을적어주세요">
-          </div>
-        </div>
-        
-        <div class="form-group">
-          <label for="">그룹설명</label>
-          <div class="col-sm-10">
-            <input type="text" class="form-control" id="" placeholder="약속명을적어주세요">
-            <p class="help-block">새로운 약속 일정으루 추가됩니다.</p>
-          </div>
-        </div>
-        
-       <div class="form-group">
-          <label for="">시작일</label>
-          <div class="col-sm-10">
-            <input type="text" class="form-control" id="" placeholder="시작일">
-          </div>
-        </div>
-        
-       <div class="form-group">
-          <label for="">시작일</label>
-          <div class="col-sm-10">
-            <input type="text" class="form-control" id="" placeholder="종료일">
-          </div>
-        </div>
-        
-        
-        <div class="form-group">
-          <div class="col-sm-10">
-            <button id="addBtn" type="button" class="btn btn-default my-new">일정추가</button>
-          </div>
-        </div>
-      </form>
-      
-    </div>
-     </div>
-   </div>
- <!--  일정추가 모달 E -->   
 
 
 
