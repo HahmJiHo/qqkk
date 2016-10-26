@@ -6,7 +6,6 @@ $("#addBtn").click(function(e) {
 			password : $("#password").val()
 	}
 	ajaxAddMember(member)
-	
 });
 
 
@@ -35,11 +34,12 @@ function ajaxAddMember(member) {
 			alert("등록 실패 입니다.")       
 			return
 		} 
-		window.location.href ="memberApp.html"
+		window.location.reload()
 	}, "json" )	
 }
 
 function ajaxLoadMember(no) {
+	
 	$.getJSON(serverAddr +"/member/detail.json?no=" + no, function(obj) {
 		var result = obj.jsonResult
 		if (result.state != "success") {
@@ -70,8 +70,7 @@ function ajaxDeleteMember(no, password) {
 	$.getJSON(serverAddr +"/member/delete.json",{
 		no: no,
 		password : password
-	}, function(obj) {
-		var result = obj.jsonResult
+	}, function(result){
 		if (result.state != "success") {
 			alert("삭제 실패 입니다.")       
 			return
