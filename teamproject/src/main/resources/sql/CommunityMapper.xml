@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="example.dao.CommunityDao">
+  <resultMap type="community" id="communityMap">
+  <!-- type 
+   스프링 설정 에서 typeAliasesPackage 에 지정함 별명을 앞에 example.vo 으로 
+   자동으로 만들어 주게 설정했다. 
+   그래서 앞에 example.vo 를 빼도 된다.
+   -->
+   
+    
+    <id column="CNO" property="no" />
+    <result column="MNO" property="userNo" />
+    <result column="TITL" property="title" />
+    <result column="CONTS" property="contents" />
+    <result column="RG_DT" property="registerDate" />
+    <result column="VWCT" property="viewCount" />
+    <result column="ADDR" property="address" />
+    <result column="IMG" property="contentsPhoto" />
+    <result column="B_LIKE" property="boardLike" />
+    
+    <result column="NICKNM" property="userNicName"/>
+    
+    <!-- 
+    <id column="CNO" property="no" />
+    <result column="MNO" property="userNo" />
+    <result column="NICKNM" property="userNicName" />
+    <result column="PHOT_PATH" property="userPhoto" />
+    
+    <result column="TITL" property="title" />
+    <result column="CONTS" property="contents" />
+    <result column="IMG" property="contentsPhoto" />
+    <result column="ADDR" property="address" />
+    
+    <result column="RG_DT" property="registerDate" />
+    <result column="VWCT" property="viewCount" />
+    
+    <result column="B_LIKE" property="boardLike" />
+    <result column="RNO" property="commentNo" />
+    <result column="MNO" property="commentUserNo" />
+    <result column="CNO" property="communityBoardNo" />
+    <result column="NICKNM" property="commentUserNicName" />
+    <result column="CONTS" property="comment" />
+    <result column="RG_DT" property="commentRegisterDate" />-->
+
+
+  </resultMap>
+
+  <select id="selectList" resultMap="communityMap" parameterType="map">
+    select hiba_board.cno, hiba_board.mno, hiba_board.titl, hiba_board.conts,
+           hiba_board.vwct, hiba_board.b_like, hiba_board.rg_dt
+    from hiba_board
+    <where>
+      <if test="title != null">title like concat('%', #{title}, '%')</if>
+    </where>
+     order by 
+    <choose>
+      <when test="titleOrder == 'asc'">titl asc</when>
+      <when test="titleOrder == 'desc'">titl desc</when>
+      <when test="viewCountOrder == 'asc'">vwcn asc</when>
+      <when test="viewCountOrder == 'desc'">vwcn desc</when>
+      <when test="noOrder == 'asc'"> cno asc</when>
+      <otherwise>cno desc</otherwise>
+    </choose>   
+    limit #{startIndex}, #{length}
+  </select>
+  
+
+  <select id="selectOne" resultMap="communityMap" parameterType="int">
+    select hiba_board.cno, hiba_board.mno, hiba_board.titl, hiba_board.conts, 
+           hiba_board.rg_dt, hiba_board.vwct, hiba_board.b_like, 
+           hiba_board.addr, hiba_membs.nicknm
+    from hiba_board inner join hiba_membs on hiba_board.mno = hiba_membs.mno
+    where cno = #{value}
+  </select>
+  
+  
+ <!-- <select id="selectOneByPassword" resultMap="communityMap" parameterType="map">
+    select cno, title, conts, addr, rg_dt, vw_cnt 
+    from hiba_board 
+    where cno=#{no} 
+  </select> -->
+
+  
+  <insert id="insert" parameterType="community"  useGeneratedKeys="true" keyColumn="no" keyProperty="no">
+    insert into hiba_board(mno, titl, conts, addr, RG_DT)
+    values(#{userNo}, #{title}, #{contents}, #{address}, now())
+    
+  </insert>
+
+  <update id="update" parameterType="community"> 
+    update hiba_board set
+      titl=#{title},
+      conts=#{contents},
+      addr=#{address}
+    where cno=#{no}
+  </update>
+  
+
+  <delete id="delete" parameterType="int">
+    delete from hiba_board
+    where cno = #{no}
+  </delete>
+
+</mapper>
