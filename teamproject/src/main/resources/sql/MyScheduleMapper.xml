@@ -35,7 +35,12 @@
   </select>
 
 <select id="selectOneByScheduleNo" parameterType="int" resultMap="myscheduleMap">
-    
+    select  hiba_membs.mno,hiba_g_sc.gsno, hiba_membs.name, hiba_membs.nicknm,hiba_group.gname, hiba_g_sc.sc_title, hiba_place.pl_name, hiba_g_sc.st_dt, hiba_g_sc.ed_dt from hiba_g_membs
+    inner join hiba_membs on hiba_g_membs.mno=hiba_membs.mno
+    inner join hiba_group on hiba_g_membs.gno=hiba_group.gno
+    inner join hiba_g_sc on hiba_g_membs.mno=hiba_g_sc.mno and hiba_g_membs.gno=hiba_g_sc.gno
+    inner join hiba_place on hiba_g_sc.gpno=hiba_place.gpno
+    where hiba_g_sc.gsno = #{value}
   </select>
     
 
