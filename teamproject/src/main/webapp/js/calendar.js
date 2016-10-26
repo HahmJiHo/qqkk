@@ -32,9 +32,9 @@ function showCalendar(arr) {
 								titleNo : count,
 								id : count,
 						}
+						console.log(event)
 						ajaxAddSchedule(event)	
-						
-						
+						console.log("00000000000000000000")
 						var eventDataValue = $('.sc-list').length;
 						var errorTest = "입력하지 않은 항목이 있습니다."
 							if ($('#addeventTitle').val().length != 0 
@@ -69,8 +69,8 @@ function showCalendar(arr) {
 								lon : lot,
 								id : count
 						}
+			            console.log(event)
 						ajaxAddSchedule(event)
-						
 						var errorTest = "입력하지 않은 항목이 있습니다."
 							if ($('#addeventTitle').val().length != 0 
 									&& $('#addDateStart').val().length != 0 
@@ -245,7 +245,7 @@ function showCalendar(arr) {
 		
 		},
 		eventClick: function(event, start, end) {
-			alert(event.id)
+		
 			start = moment(event.start).format('YYYY-MM-DD HH:mm')
 			end = moment(event.end).format('YYYY-MM-DD HH:mm')
 			$('#calendarModal').modal()
@@ -320,41 +320,58 @@ function ajaxMyScheduleList(no) {
 		var contents = ""
 		var arr = result.data
 	    var arrTest=[]
-		
+		var dataStartMapping = []
+		var dataEndMapping = []
 		var template = Handlebars.compile($('#sideScheduleList').html())
 		for (var i in arr) {
+			
+			
+			
 			if (no == arr[i].groupNo) {				
 		        arrTest.push(arr[i]);
-		        
+		        if (arr[i].id == 2) {
+		        	dataStartMapping.push(arr[i].start)		        		
+		        	dataEndMapping.push(arr[i].end)
+				}
 		        if(arr[i].titleNo) {
 		        	contents += template(arr[i])
 		        	
 		        }
 			}	
 		}
+		console.log(dataStartMapping)
+		
+		var now = new Date(); 
+		var dayStartChecked = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+		var a = []
+		for (var i = 0; i < dataStartMapping.length; i++) {			
+			a.push(new Date(dataStartMapping[i]))			
+		}
+		a.sort(function (a, b) {
+			  return a - b;
+		})
+		console.log(a)
+		
 	$(".side-schedhule-List").html(contents) 
 	showCalendar(arrTest);
-	var count = ""
+
 	var len = $('.scno').length    
 	var scheduleNo = $('.scno').attr('data-scno')
-	
-	
 	$('body').on('change', '.list-checked',function () {
 	    var listCheckedNo = $(this).attr('data-value')
 		$('.scno').each(function() {
 			if (listCheckedNo == $(this).attr('data-scno')) {
-				$(this).parent().parent().show()
+				$(this).parent().show()
 			} else if (listCheckedNo != $(this).attr('data-scno')) {
-				$(this).parent().parent().hide()
+				$(this).parent().hide()
 			}
-		})
-	   
-	     
-	   
-	     
+		})	     
 	});
 	})
 }
+
+
+
 
 function ajaxAddSchedule(event) {
 	$.post(serverAddr +"/schedule/add.json", event, function(obj) {
@@ -363,7 +380,7 @@ function ajaxAddSchedule(event) {
 			console.log(result.data)
 			alert("등록 실패 입니다.")       
 			return
-		} 
+		}  
 		window.location.reload()   
 	}, "json" )	
 }
@@ -392,6 +409,5 @@ function ajaxDeleteSchedule(no) {
 		window.location.reload()   		
 	})		
 }
-
 
 

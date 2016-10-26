@@ -12,8 +12,9 @@ public class Event implements Serializable {
 	protected String start;
 	protected String color;
 	protected String end;
-	protected String title;
+	protected String title;	
 	protected String placeName;
+	protected boolean status;
 	protected int like;
 	protected String lat;
 	protected String lon;

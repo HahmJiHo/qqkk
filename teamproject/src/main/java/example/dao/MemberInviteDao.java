@@ -10,9 +10,11 @@ public interface MemberInviteDao {
 	MemberInvite selectOneByGroupNoAndEmail(Map<String, Object> paramMap);
 		
 	MemberInvite selectOneByNameAndNumber(Map<String, Object> paramMap);
-	List<MemberInvite> selectList(Map<String, Object> paramMap) throws Exception;	
-  int insert(MemberInvite memberInvite) throws Exception;
+	List<MemberInvite> selectList() throws Exception;	
+	MemberInvite selectOne(int no) throws Exception;
+	int insert(MemberInvite memberInvite) throws Exception;
   int delete(int no) throws Exception;
   int update(MemberInvite memberInvite) throws Exception;
   int update2(MemberInvite memberInvite) throws Exception;
+  int countAll() throws Exception;
 }

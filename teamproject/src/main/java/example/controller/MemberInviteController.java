@@ -31,7 +31,7 @@ public class MemberInviteController {
 		map.put("startIndex", (pageNo - 1) * length);
 		map.put("length", length);
 
-		List<MemberInvite> list = memberInviteDao.selectList(map);
+		List<MemberInvite> list = memberInviteDao.selectList();
 		model.addAttribute("list", list);			
 		
 		return "member/MemberList";	

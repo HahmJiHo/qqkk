@@ -7,9 +7,8 @@ import example.vo.Event;
 
 public interface GroupScheduleDao {
 	
-	GroupScheduleDao selectOneByEmailAndPassword(Map<String, Object> paramMap);
 	
-	List<Event> selectList(Map<String, Object> paramMap) throws Exception;
+	List<Event> selectList() throws Exception;
 	Event selectOne(int no) throws Exception;  
 	Event selectOneByPassword(Map<String, Object> paramMap) throws Exception;    
   int insert(Event event) throws Exception;

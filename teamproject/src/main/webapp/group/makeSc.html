@@ -45,8 +45,7 @@
      display: inline-block; width: 40px; margin-left: 10px;
      height: 40px;}          
      .member-photo { display: inline-block; }
-     .member-photo img{ width: 70px; height: 70px; border-radius: 100px; }
-     .member-name { display: block; position: absolute; left: 82px; top: 50px; }
+     .member-photo img{ width: 50px; height: 50px; border-radius: 100px; }
      .state { -  width: 15px; height: 15px; }
      .danger { background:url("../images/ximg.png") no-repeat }
      .success { background:url("../images/successicon.png") no-repeat }
@@ -169,6 +168,7 @@ top: 4px;
 .color-select input { width: 60px; height: 60px; }
 #color-btn { float: left; } 
 #popoverContent { display: none;}
+.form-group ul li .minicolors .minicolors-swatch { border-radius : 100px; }
   </style>
 </head>
 <body>
@@ -297,6 +297,29 @@ top: 4px;
 				      
 				    </ul>
 	       </div>
+	       <div id="moreSchedule" class="modal fade">
+          <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">                  
+                  <div id="more-schedule" class="container" style="position:relative;" >
+                      <div class="accept-member-box">
+											  <p>참여자</p>
+											  <a class="more-tooltip"href="#" data-toggle="tooltip" title="">1111</a>
+											  <ul class="accept-list">
+											   
+											  </ul>
+											  </div>
+                   </div>                     
+               </div>
+               <div id="modalBody" class="modal-body">
+                 
+                </div>
+                  <div id="add-moadl-footer" class="modal-footer">                      
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  </div>
+             </div>
+          </div>
+      </div>  
 	       <div class="my-group-member">
 		       <h4 class="sm-title" style="display:inline">참가 멤버</h4>
 		       <button class="btn btn-xs btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="true" aria-controls="collapseExample" style="float:right">
@@ -310,7 +333,7 @@ top: 4px;
                   <input type="hidden" id="hidden-input" class="demo" value="#db913d" >
                 </li>
                 <li>
-                  <button id="color-btn" type="button" class="btn btn-default">선택</button>
+                  <button id="color-btn" type="button" class="btn btn-default btn-xs">선택</button>
                 </li>
               </ul>
 			        			            
@@ -381,27 +404,40 @@ top: 4px;
   </script>
   <script id="groupli" type="text/x-handlebars-template"> 
     <li>
-      <span class="member-photo"><img src="../images/514741.jpg"></span>                   
-      <i class="member-color" style="background:{{color}}"></i>  
+      <span class="member-photo"><img class="member-color" style="border: 4px solid {{color}}" src="../images/514741.jpg"></span>                   
       <span class="member-name" data-value="{{no}}">{{inviteName}}</span>      
     </li>
   </script>
   <script id="groupNameTemplateText" type="text/x-handlebars-template">
     <h3><span id="groupName">{{groupName}} 그룹 입니다</span></h3>  
   </script>
-   <script id="sideScheduleList" type="text/x-handlebars-template">
-    
-    <li>
-        <input class="list-checked" type="checkbox" name="schedule" data-value="{{titleNo}}">
-        <p>{{title}}</p>
+   <script id="sideScheduleList" type="text/x-handlebars-template">    
+    <li style="position: relative;">
+        <ul>
+          <li>             
+              <p class="more-schedule" style="cursor:pointer" data-value="{{no}}">{{title}}</p>     
+              <div class="accept-box" data-value="{{no}}" style="padding: 10px; background:#fff; position:absolute; border:1px solid #696969; z-index:10; display:none;">
+<p style="display:inline">참석자</p>
+ <button type="button" class="more-close" style="float:right"><span>×</span></button>
+                <div class="accept-name" style="clear:both;">
+
+                </div>
+              </div>     
+           </li> 
+          <li class="btn btn-xs" style="float: left"><button id="schedule-accept-btn" type="button" data-value="{{no}}">참석</button></li>
+          <li class="btn btn-xs" style="float: left"><button id="schedule-reject-btn" type="button" data-value="{{no}}">불참석</button></li>
+        </ul>
+              
     </li>      
   </script>
-  
+   <script id="moreScheduleAccept" type="text/x-handlebars-template"> 
+     <span>{{name}}</span>
+
+  </script>
   <script src="../node_modules/jquery/dist/jquery.js"></script>  
   <script src='../js/moment.min.js'></script>
   <script src='../js/fullcalendar.min.js' charset="UTF-8"></script>
-  <script src='../js/ko.js'></script>
-  
+  <script src='../js/ko.js'></script>  
   <script type="text/javascript" src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="../js/jquery.minicolors.js"></script>
   <script type="text/javascript" src="../node_modules/handlebars/dist/handlebars.min.js"></script>
@@ -411,7 +447,8 @@ top: 4px;
   <script type='text/javascript' src="../js/include.js"></script>    
   <script type='text/javascript' src="../js/main.js"></script>
   <script type="text/javascript" src="../js/common.js"></script>
-  <script type='text/javascript' src="../js/calendar.js"></script>  
+  <script type='text/javascript' src="../js/calendar.js"></script> 
+  <script type='text/javascript' src="../js/cal_custom.js"></script> 
   <script type="text/javascript" src="../js/bit.js"></script>   
   <script type="text/javascript" src="../member/memberApp.js"></script>
   <script type="text/javascript" src="../makegroup/makegroupApp.js"></script>
@@ -422,21 +459,15 @@ top: 4px;
   <script type="text/javascript" src="../replyContent/replyContentApp.js"></script>
   <script type="text/javascript" src="../replyContent/replyContentForm.js"></script> 
   <script type="text/javascript" src="../groupSchedule/groupScheduleForm.js"></script>  
-  
+  <script type="text/javascript" src="../schedulestatus/schedulestatusApp.js"></script> 
+  <script type="text/javascript" src="../schedulestatus/schedulestatusForm.js"></script> 
   <script>  
   ajaxLoginUser()
-  
   ajaxGroupBtn()
+  ajaxReplyList()
   ajaxMemberInviteList()
   ajaxMemberList()
-  ajaxReplyList()
   ajaxGroupName()
-  <!--
-  var getGroupNo = $(location).attr('search') 
-  var groupNo = getGroupNo.split("=")[1]
-  $('#groupNo').text(groupNo)
-  -->
- // ajaxMemberInviteList()
 	if (location.search.startsWith("?")) {
 	  var no = location.search.split("=")[1];
 	  ajaxMyScheduleList(no)
