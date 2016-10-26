@@ -293,7 +293,9 @@ top: 4px;
           <button id="addMember" type="button" class="btn btn-default">add2</button>
          <h3 class="sm-title">진행 중인 일정</h3>
 	       <div class="my-schedule checkbox">
-            <ul class='schedule-btn'></ul>
+            <ul class="side-schedhule-List">
+				      
+				    </ul>
 	       </div>
 	       <div class="my-group-member">
 		       <h4 class="sm-title" style="display:inline">참가 멤버</h4>
@@ -387,6 +389,14 @@ top: 4px;
   <script id="groupNameTemplateText" type="text/x-handlebars-template">
     <h3><span id="groupName">{{groupName}} 그룹 입니다</span></h3>  
   </script>
+   <script id="sideScheduleList" type="text/x-handlebars-template">
+    
+    <li>
+        <input class="list-checked" type="checkbox" name="schedule" data-value="{{titleNo}}">
+        <p>{{title}}</p>
+    </li>      
+  </script>
+  
   <script src="../node_modules/jquery/dist/jquery.js"></script>  
   <script src='../js/moment.min.js'></script>
   <script src='../js/fullcalendar.min.js' charset="UTF-8"></script>
@@ -401,7 +411,7 @@ top: 4px;
   <script type='text/javascript' src="../js/include.js"></script>    
   <script type='text/javascript' src="../js/main.js"></script>
   <script type="text/javascript" src="../js/common.js"></script>
-  <script type='text/javascript' src="../js/calendar.js"></script> 
+  <script type='text/javascript' src="../js/calendar.js"></script>  
   <script type="text/javascript" src="../js/bit.js"></script>   
   <script type="text/javascript" src="../member/memberApp.js"></script>
   <script type="text/javascript" src="../makegroup/makegroupApp.js"></script>
