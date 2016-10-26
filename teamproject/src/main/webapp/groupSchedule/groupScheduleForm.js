@@ -1,30 +1,28 @@
-
-/*
-$("#updateBtn").click(function(e) {  
-	var member = {
-			name : $("#name").val(),
-			nicknm : $("#nicknm").val(),
-			email : $("#email").val(),
-			password : $("#password").val(),
-			no : $("#no").val()
+/*$("#schedule-accept-btn").click(function(e) {  
+	var event = {
+			stauts : $("#schedule-accept-btn").val("1"),			
 	}
-	ajaxUpdateMember(member)
+	ajaxUpdateSchedule(event)
 });
 
-$("#deleteBtn").click(function(e) {   
-	ajaxDeleteMember($("#no").val(), $("#password").val())
-});*/
+$("#schedule-reject-btn").click(function(e) {   
+	var event = {
+			stauts : $("#schedule-accept-btn").val("0"),			
+	}
+	ajaxUpdateSchedule(event)
+});
 
 
 
-/*function ajaxAddSchedule(schedule) {
-	$.post(serverAddr +"/schedule/add.json", schedule, function(obj) {
+function ajaxUpdateSchedule(event) {	
+	$.post(serverAddr +"/schedule/update.json", event, function(obj) {
 		var result = obj.jsonResult
 		if (result.state != "success") {
-			console.log(result.data)
-			alert("등록 실패 입니다.")       
+			alert("변경 실패입니다.")
 			return
-		} 
-		window.location.href ="memberApp.html"
-	}, "json" )	
-}*/
+		}
+		window.location.href = "memberApp.html"
+	}, "json")
+}
+
+*/

@@ -1,5 +1,6 @@
 $("#addBtn").click(function(e) { 
 	var replyContent = {
+		memberNo : $("#userName").attr('data-value'),
 		groupNo : $("#group-reply-btn").attr('data-no'),
 		content : $("#content").val(),
 		name : $("#userName").html()

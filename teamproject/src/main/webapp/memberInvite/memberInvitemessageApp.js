@@ -3,7 +3,7 @@ function ajaxGroupInviteListMessage() {
 		async: false
 		var result = obj.jsonResult
 		if (result.state != "success") {
-			alert("서버에서 데이터를 가져오는데 실패 했습니다.")
+			alert("서버에서 데이터를 가져오는데 실패 했습니다.멤버리스트")
 			return
 		} 
 		var contents = ""
@@ -35,6 +35,7 @@ $("body").on('click','.addTrue', function(e){
 	ajaxMemberInvite(memberInvite)
 	/*groupNo : $(this).attr('data-no'),*/
 	var replyContent = {
+		memberNo : $('.invite-box').attr('data-value'),
 		groupNo : $(this).attr('data-chat'),
 		content : "그룹에 참가하였습니다",
 		name : $("#userName").text()

@@ -1,19 +1,20 @@
 package example.controller.json;
 
 import java.util.HashMap;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import example.dao.GroupMemberDao;
 import example.dao.MakeGroupDao;
 import example.dao.MemberInviteDao;
 import example.dao.ReplyContentDao;
 import example.dao.ReplyDao;
+import example.service.MakeGroupService;
 import example.vo.GroupMember;
 import example.vo.JsonResult;
 import example.vo.MakeGroup;
@@ -30,18 +31,14 @@ public class MakeGroupController {
 	@Autowired ReplyDao replyDao;
 	@Autowired ReplyContentDao replyContentDao;
 	@Autowired GroupMemberDao groupMemberDao;
-	
+	@Autowired MakeGroupService makeGroupService;
 	
 	@RequestMapping(path="list")
-	public Object list(
-			@RequestParam(defaultValue="1") int pageNo,
-			@RequestParam(defaultValue="100") int length) throws Exception {
+	public Object list() throws Exception {
 		try {
-			HashMap<String,Object> map = new HashMap<>();
-			map.put("startIndex", (pageNo - 1) * length);
-			map.put("length", length);
-			return JsonResult.success(makeGroupDao.selectList(map));
-			
+			List<MakeGroup> list = makeGroupService.getMakeGroupList();
+			return JsonResult.success(list);
+
 		} catch (Exception e) {
 	
 			return JsonResult.fail(e.getMessage());
@@ -100,7 +97,7 @@ public class MakeGroupController {
 	public Object detail(int no) throws Exception{
 		
 		try {
-			MakeGroup makeGroup = makeGroupDao.selectOne(no);
+			MakeGroup makeGroup = makeGroupService.getMakeGroup(no);
 			
 			if (makeGroup == null)
 				throw new Exception("해당 번호의 게시물이 존재하지 않습니다.");
@@ -117,13 +114,11 @@ public class MakeGroupController {
 	public Object update(MakeGroup makeGroup) throws Exception{
 
 		try {
-			HashMap<String,Object> paramMap = new HashMap<>();
-			paramMap.put("no", makeGroup.getNo());
 
-			if (makeGroupDao.selectOneByPassword(paramMap) == null) {
+			if (makeGroupService.getMakeGroup(makeGroup.getNo()) == null) {
 				throw new Exception("해당 게시물이 없거나 암호가 일치하지 않습니다.!");
 			}
-			makeGroupDao.update(makeGroup);
+			makeGroupService.updateMakeGroup(makeGroup);
 			return JsonResult.success();
 		} catch (Exception e) {
 			
@@ -135,10 +130,10 @@ public class MakeGroupController {
 		@RequestMapping(path="delete")
 		public Object delete(int no) throws Exception {
 			try {
-				if (makeGroupDao.delete(no) == 0) {
+				if (makeGroupService.getMakeGroup(no) == null) {
 					throw new Exception("삭제 실패입니다");
 				}
-				makeGroupDao.delete(no);
+				makeGroupService.deleteMakeGroup(no);
 				return JsonResult.success();
 	
 			} catch (Exception e) {

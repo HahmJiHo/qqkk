@@ -12,9 +12,14 @@ public class Event implements Serializable {
 	protected String start;
 	protected String color;
 	protected String end;
-	protected String title;
+	protected String title;	
 	protected String placeName;
+	protected boolean status;
 	protected int like;
+	protected String lat;
+	protected String lon;
+	protected int titleNo;
+	protected int id;
 	public int getNo() {
 		return no;
 	}
@@ -70,12 +75,38 @@ public class Event implements Serializable {
 		this.like = like;
 	}
 	
-	
 	public String getColor() {
 		return color;
 	}
 	public void setColor(String color) {
 		this.color = color;
+	}
+
+	public String getLat() {
+		return lat;
+	}
+	public void setLat(String lat) {
+		this.lat = lat;
+	}
+	public String getLon() {
+		return lon;
+	}
+	public void setLon(String lon) {
+		this.lon = lon;
+	}
+
+	public int getTitleNo() {
+		return titleNo;
+	}
+	public void setTitleNo(int titleNo) {
+		this.titleNo = titleNo;
+	}
+
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 	@Override
 	public String toString() {

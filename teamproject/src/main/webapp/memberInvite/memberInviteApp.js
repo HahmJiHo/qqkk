@@ -25,14 +25,15 @@ function ajaxMemberInviteList() {
 				}				
 			}			
 		 }
+		 	
 	})
 }
 
 function ajaxMemberGroupInviteList() {
-	$.getJSON(serverAddr +"/memberInvite/list.json", function(obj) {
+	$.getJSON(serverAddr +"/memberInvite/list.json",function(obj) {
 		var result = obj.jsonResult
 		if (result.state != "success") {
-			alert("서버에서 데이터를 가져오는데 실패 했습니다.")
+			alert("서버에서 데이터를 가져오는데 실패 했습니다.ddd")
 			return
 		} 
 		var contents = ""
@@ -49,6 +50,8 @@ function ajaxMemberGroupInviteList() {
 		$(".groupTitleLink > a").click(function (e) {
 			window.location.href = "../group/makeSc.html?no=" + $(this).attr("data-no")
 		}) 
+		
+		
 	})
 	
 }

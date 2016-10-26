@@ -20,16 +20,9 @@ public class MakeGroupController {
 	MakeGroupDao makeGroupDao;
 	
 	@RequestMapping("list")
-	public String list(
-			@RequestParam(defaultValue="1")int pageNo,
-			@RequestParam(defaultValue="5")int length,
-			Model model) throws Exception {
+	public String list(Model model) throws Exception {
 		
-		HashMap<String,Object> map = new HashMap<>();
-		map.put("startIndex", (pageNo - 1) * length);
-		map.put("length", length);
-
-		List<MakeGroup> list = makeGroupDao.selectList(map);
+		List<MakeGroup> list = makeGroupDao.selectList();
 		model.addAttribute("list", list);			
 		
 		return "group/MakeGroupList";	

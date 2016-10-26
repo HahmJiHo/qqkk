@@ -18,14 +18,18 @@
 		<result column="SC_TITLE" property="title" />
 		<result column="PL_NAME" property="placeName" />
 		<result column="PL_LIKE" property="like" /> 
-		<result column="COLOR" property="color" />   
+		<result column="COLOR" property="color" />  
+		<result column="TITLE_COUNT" property="titleNo" /> 
+		<result column="ID" property="id" />    
 	</resultMap>
 
 	<select id="selectList" resultMap="eventMap" parameterType="map">
     <!-- select mno, gno, gpno, st_dt, ed_dt, sc_title
     from hiba_g_sc -->
 
-     select hiba_g_sc.gsno, hiba_g_sc.mno, hiba_g_sc.gno, hiba_g_sc.gpno, hiba_g_sc.st_dt, hiba_g_sc.ed_dt, hiba_g_sc.sc_title, hiba_invit.COLOR, hiba_place.PL_NAME
+     select hiba_g_sc.*,
+      hiba_invit.COLOR, 
+      hiba_place.PL_NAME, hiba_place.lat, hiba_place.lon
      from hiba_g_sc
      inner join hiba_invit on hiba_g_sc.mno = hiba_invit.mno and hiba_g_sc.gno = hiba_invit.gno
      inner join hiba_place on hiba_place.gpno = hiba_g_sc.gpno
@@ -53,8 +57,8 @@
   
   
   <insert id="insert" parameterType="event">
-   insert into hiba_g_sc(mno, gno, gpno, st_dt, ed_dt, sc_title)
-    values (#{memberNo}, #{groupNo}, #{groupPlaceNo}, #{start}, #{end}, #{title}) 
+   insert into hiba_g_sc(mno, gno, gpno, st_dt, ed_dt, sc_title, title_count, ID)
+    values (#{memberNo}, #{groupNo}, #{groupPlaceNo}, #{start}, #{end}, #{title}, #{titleNo}, #{id}) 
     
     
   <!--  insert into hiba_g_sc(mno, gno, gpno, st_dt, ed_dt, sc_title)

@@ -14,14 +14,12 @@ function showCalendar(arr) {
 					var c = b.split("&")[0];
 					var llet = c.split(",")[0];
 					var lot = c.split(",")[1];
-					
-					if (checkPoint == false) {
-						$('.list-value').appendTo(".fc-content")
+					if (checkPoint == false) {				
 						var count = ""
-						var len = $('.fc-event-container').length
-						for (var i = 0; i < len; i++) {												
-							count++	
-						}
+							var len = $('.fc-event-container').length
+							for (var i = 0; i <= len; i++) {												
+								count++	
+							}
 						var event = {
 								title : $("#addeventTitle").val(),
 								start : $("#addDateStart").val(),
@@ -30,21 +28,19 @@ function showCalendar(arr) {
 								memberNo : memberNo,
 								placeName : $("#pac-input").val(),
 								lat : llet,
-								lon : lot
+								lon : lot,
+								titleNo : count,
+								id : count,
 						}
-						console.log(event);
+						console.log(event)
 						ajaxAddSchedule(event)	
-						
-						$(".schedule-btn").append(
-								"<li class='sc-list'><input class='list-checked' type='checkbox' name='schedule' data-value='"+ count +"'>"+ event.title +"</li>"								
-						);
+						console.log("00000000000000000000")
 						var eventDataValue = $('.sc-list').length;
 						var errorTest = "입력하지 않은 항목이 있습니다."
 							if ($('#addeventTitle').val().length != 0 
 									&& $('#addDateStart').val().length != 0 
 									&& $('#addDateEnd').val().length != 0
 							) {
-								$('#calendar').fullCalendar('renderEvent', event, true);								
 								swal(
 										'Good job!',
 										'You clicked the button!',
@@ -57,13 +53,10 @@ function showCalendar(arr) {
 							} else {
 								checkInput()
 							}
-					} else {
-	
-		
-						
-						var count = [];
+					} else {		
+						var count = "";
 			            $.each($("input[name='schedule']:checked"), function(){            
-			            	count.push($(this).attr('data-value'));
+			            	count = ($(this).attr('data-value'));
 			            });					
 			            var event = {
 								title : $("#addeventTitle").val(),
@@ -73,11 +66,11 @@ function showCalendar(arr) {
 								memberNo : memberNo,
 								placeName : $("#pac-input").val(),
 								lat : llet,
-								lon : lot
+								lon : lot,
+								id : count
 						}
 			            console.log(event)
 						ajaxAddSchedule(event)
-						
 						var errorTest = "입력하지 않은 항목이 있습니다."
 							if ($('#addeventTitle').val().length != 0 
 									&& $('#addDateStart').val().length != 0 
@@ -89,9 +82,7 @@ function showCalendar(arr) {
 										'You clicked the button!',
 										'success'							
 								)
-								//$('.fc-content').append("<sapn class='list-value' data-value='"+ $('.list-checked').attr('data-value') +"'></sapn>");
 								$('#calendarAddModal').modal('hide');
-								$('#calendar').fullCalendar('renderEvent', event, true);
 							} else {
 								checkInput()
 							}
@@ -199,7 +190,9 @@ function showCalendar(arr) {
 
 		},	
 		eventRender: function(event, element, view) {
-			/* 일정 추가 */
+			/* 일정 추가 팝업*/
+			
+			$('.fc-content').data('data-scno', event.id)
 			$(".fc-myCustomButton-button").addClass("btn btn-primary")
 			$('.fc-myCustomButton-button').css({ "opacity": "0.0" , "position" : "absolute"});
 			$('#addeventTitle').val('') 
@@ -219,6 +212,8 @@ function showCalendar(arr) {
 			var eventStart = moment(event.start).valueOf();
 			
 			if (eventStart >= ntoday) {
+				$('.fc-event-container').attr('data-scno', event.id)
+				element.prepend( "<span class='scno' data-scno=" + event.id +">" + event.id + "</span>" );			
 				element.append( "<span class='closeon' style='display:blokc; position:absolute; right:0; top:0; z-index:1000;' data-no=" + event.groupPlaceNo +">X</span>" );
 
 			} 
@@ -250,68 +245,55 @@ function showCalendar(arr) {
 		
 		},
 		eventClick: function(event, start, end) {
-			var moment11 = $('#calendar').fullCalendar('getDate')
+		
 			start = moment(event.start).format('YYYY-MM-DD HH:mm')
 			end = moment(event.end).format('YYYY-MM-DD HH:mm')
-			var placeName = event.placeName
 			$('#calendarModal').modal()
+			console.log("11111111111")
 			$('#modalTitle').html(event.title)
-			$('.modal-start-date').html(start)
-			$('.modal-end-date').html(end)
-			$('#modalBody').html(event.description)
-			$('#eventUrl').attr('href',event.url)
-			
-			function google_map(mapid, addr) {
-				console.log(placeName)
-				var geocoder =  new google.maps.Geocoder();
-				geocoder.geocode( {'address': addr }, function(results, status) {
-					if (status == google.maps.GeocoderStatus.OK) {
-						var map = new google.maps.Map(document.getElementById(mapid), {
-							zoom: 16,
-							center: results[0].geometry.location,
-							mapTypeId: google.maps.MapTypeId.ROADMAP
-						});
+			$('.modal-start-date').text(start + " ~ ")
+			$('.modal-end-date').text(end + " ")
+			console.log(event.start)
+			console.log(event.end)
+			console.log(event.placeName)
+			var thisIndex = event.groupPlaceNo
+			if (thisIndex) {				
+				var marker;
+				function initMap() {
+				  var map = new google.maps.Map(document.getElementById('google_map'), {
+				    zoom: 13,
+				    center: {lat: Number(event.lat), lng: Number(event.lon)}
+				  });
+				  var markerMaxWidth = 260;  // 마커를 클릭했을때 나타나는 말풍선의 최대 크기
+				  var contentString = '<table><tr><td width=90><img src="../images/logo.png" width="80" style="border-radius:5px;"></td><td><div>' + 
+				     '<span style="padding-bottom:10px"><b>'+event.title+'</b></span><br />'+ 
+				     '<div class="map_Content">'+ 
+				       '주소:' +  event.placeName + 
+				     '</div>'+ 
+				      '</div></td></tr></table>'; 
+				  marker = new google.maps.Marker({
+				    map: map,
+				    draggable: true,
+				    animation: google.maps.Animation.DROP,
+				    position: {lat: Number(event.lat), lng: Number(event.lon)}
+				  });
+				  
+				  var infowindow = new google.maps.InfoWindow({
+				    content: contentString,				    
+				    position: {lat: Number(event.lat), lng: Number(event.lon)}
+				  
+				  });
+				  infowindow.open(map, marker);
 
-						var markerTitle    = "";  // 현재 위치 마커에 마우스를 올렸을때 나타나는 이름
-						var markerMaxWidth = 260;  // 마커를 클릭했을때 나타나는 말풍선의 최대 크기
-						var contentString = '<table><tr><td width=90><img src="" width="80" style="border-radius:5px;"></td><td><div>' + 
-						'<span style="padding-bottom:10px"><b>'+markerTitle+'</b></span><br />'+ 
-						'<div class="map_Content">'+ 
-						//'TEL: <a href=tel:031-398-0902>031-398-0902</a><br />'+ 
-						//'진료시간: 00:00~24:00 연중무휴<br />' + 
-						'주소: ' + placeName + 
-						'</div>'+ 
-						'</div></td></tr></table>'; 
-
-						var marker = new google.maps.Marker({ 
-							position: map.getCenter(), 
-							map: map, 
-							draggable:false,
-							animation: google.maps.Animation.DROP, 
-							title: markerTitle,
-						}); 
-
-						var infowindow = new google.maps.InfoWindow({ 
-							content: contentString,
-							maxWidth: markerMaxWidth,
-							placeName : placeName
-						}); 
-						infowindow.open(map, marker, placeName); 
-
-						google.maps.event.addListener(marker, 'click', function() { 
-							infowindow.open(map, marker, placeName); 
+				
+				}
 							
-						}); 
-					}
+				$('#calendarModal').on('shown.bs.modal', function(){
+					console.log("22222222222")
+					initMap()
+					
 				});
-			}
-
-			$('#calendarModal').on('shown.bs.modal', function(){
-				google_map("google_map", placeName);
-				google.maps.event.trigger(map,'resize',{});
-			
-			});
-	
+			} 
 		},
 		editable: true,
 		eventLimit: true, // allow "more" link when too many events      			
@@ -326,6 +308,8 @@ function showCalendar(arr) {
 	});
 
 };   
+
+
 function ajaxMyScheduleList(no) {
 	$.getJSON(serverAddr +"/schedule/list.json", function(obj) {
 		var result = obj.jsonResult
@@ -336,16 +320,58 @@ function ajaxMyScheduleList(no) {
 		var contents = ""
 		var arr = result.data
 	    var arrTest=[]
+		var dataStartMapping = []
+		var dataEndMapping = []
+		var template = Handlebars.compile($('#sideScheduleList').html())
 		for (var i in arr) {
-			if (no == arr[i].groupNo) {
+			
+			
+			
+			if (no == arr[i].groupNo) {				
 		        arrTest.push(arr[i]);
-		      }
+		        if (arr[i].id == 2) {
+		        	dataStartMapping.push(arr[i].start)		        		
+		        	dataEndMapping.push(arr[i].end)
+				}
+		        if(arr[i].titleNo) {
+		        	contents += template(arr[i])
+		        	
+		        }
+			}	
 		}
-	   
-      console.log(arrTest);
-      showCalendar(arrTest);
+		console.log(dataStartMapping)
+		
+		var now = new Date(); 
+		var dayStartChecked = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+		var a = []
+		for (var i = 0; i < dataStartMapping.length; i++) {			
+			a.push(new Date(dataStartMapping[i]))			
+		}
+		a.sort(function (a, b) {
+			  return a - b;
+		})
+		console.log(a)
+		
+	$(".side-schedhule-List").html(contents) 
+	showCalendar(arrTest);
+
+	var len = $('.scno').length    
+	var scheduleNo = $('.scno').attr('data-scno')
+	$('body').on('change', '.list-checked',function () {
+	    var listCheckedNo = $(this).attr('data-value')
+		$('.scno').each(function() {
+			if (listCheckedNo == $(this).attr('data-scno')) {
+				$(this).parent().show()
+			} else if (listCheckedNo != $(this).attr('data-scno')) {
+				$(this).parent().hide()
+			}
+		})	     
+	});
 	})
 }
+
+
+
 
 function ajaxAddSchedule(event) {
 	$.post(serverAddr +"/schedule/add.json", event, function(obj) {
@@ -354,25 +380,11 @@ function ajaxAddSchedule(event) {
 			console.log(result.data)
 			alert("등록 실패 입니다.")       
 			return
-		} 
+		}  
+		window.location.reload()   
 	}, "json" )	
 }
 
-function ajaxLoadMember(no) {
-	$.getJSON(serverAddr +"/schedule/detail.json?no=" + no, function(obj) {
-		var result = obj.jsonResult
-		if (result.state != "success") {
-			alert("조회 실패 입니다.")       
-			return
-		} 
-		// 서버에서 받은 데이터로 폼을 채운다
-		$("#no").val(result.data.no);
-		$("#name").val(result.data.name);
-		$("#nicknm").val(result.data.nicknm);
-		$("#email").val(result.data.email);
-
-	})
-}
 
 function ajaxUpdateMember(event) {	
 	$.post(serverAddr +"/schedule/update.json", event, function(obj) {
@@ -398,5 +410,4 @@ function ajaxDeleteSchedule(no) {
 	})		
 }
 
-/**/
 

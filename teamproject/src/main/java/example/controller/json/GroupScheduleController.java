@@ -1,6 +1,7 @@
 package example.controller.json;
 
 import java.util.HashMap;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,21 +9,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import example.dao.GroupMemberDao;
-import example.dao.GroupScheduleDao;
+import example.dao.GroupScheduleStatusDao;
 import example.dao.PlaceDao;
+import example.service.GroupScheduleService;
 import example.vo.Event;
+import example.vo.EventStatus;
 import example.vo.JsonResult;
 import example.vo.Place;
 
 @Controller // 페이지 컨트롤러에 붙이는 애노테이션 
 @RequestMapping("/schedule/") // 이 페이지의 컨트롤러의 기준 URL
 public class GroupScheduleController {
-	@Autowired
-	GroupScheduleDao groupScheduleDao;
-	@Autowired
-	GroupMemberDao groupMemberDao;
-	@Autowired
-	PlaceDao placeDao;
+	@Autowired GroupScheduleService groupScheduleService;
+	@Autowired GroupScheduleStatusDao groupScheduleStautsDao;
+	@Autowired GroupMemberDao groupMemberDao;
+	@Autowired PlaceDao placeDao;
 	
 	@RequestMapping(path="list")
 	public Object list(
@@ -31,13 +32,12 @@ public class GroupScheduleController {
 		
 
 		try {
-			HashMap<String,Object> map = new HashMap<>();
-			map.put("startIndex", (pageNo - 1) * length);
-			map.put("length", length);
+
+			List<Event> list = groupScheduleService.getEventList();
 			
-			
-			
-			return JsonResult.success(groupScheduleDao.selectList(map));
+
+
+			return JsonResult.success(list);
 			
 		} catch (Exception e) {
 	
@@ -52,8 +52,16 @@ public class GroupScheduleController {
 			placeDao.insert(place);
 			event.setGroupPlaceNo(place.getNo());
 			System.out.println(event);
-			groupScheduleDao.insert(event);
-			
+			groupScheduleService.insertEvent(event);
+						
+			EventStatus eventStatus = new EventStatus();				
+			eventStatus.setNo(event.getNo());
+			eventStatus.setGroupNo(event.getGroupNo());
+			eventStatus.setMemberNo(event.getMemberNo());
+			eventStatus.setStatus(true);
+			System.out.println(eventStatus);				
+			groupScheduleStautsDao.insert(eventStatus);
+
 			return JsonResult.success();
 		} catch (Exception e) {
 			
@@ -65,7 +73,7 @@ public class GroupScheduleController {
 	public Object detail(int no) throws Exception{
 		
 		try {
-			Event event = groupScheduleDao.selectOne(no);
+			Event event = groupScheduleService.getEvent(no);
 			
 			if (event == null)
 				throw new Exception("해당 번호의 게시물이 존재하지 않습니다.");
@@ -82,7 +90,7 @@ public class GroupScheduleController {
 	public Object update(Event event) throws Exception{
 
 		try {
-			groupScheduleDao.update(event);
+			groupScheduleService.updateEvent(event);
 			return JsonResult.success();
 		} catch (Exception e) {
 			
@@ -94,7 +102,7 @@ public class GroupScheduleController {
 	@RequestMapping(path="delete")
 	public Object delete(int no) throws Exception {
 		try {
-			groupScheduleDao.delete(no);
+			groupScheduleService.deleteEvent(no);
 			placeDao.delete(no);
 			return JsonResult.success();
 		} catch (Exception e) {

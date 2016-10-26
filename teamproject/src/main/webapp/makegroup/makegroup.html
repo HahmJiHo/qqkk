@@ -44,7 +44,13 @@
 			     			</div>
 			     			<!-- body -->
 		      			<div class="modal-body">
-			      			<label for="file">그룹이름</label><br> 
+		            <!-- 	<label for="study-subject">스터디 주제</label><br> 
+                  <select id="subject-list" class="selectpicker" data-live-search="true">
+									  
+									</select><br>               
+                  <label for="study-subject">스터디 부주제</label><br> 
+                  <input id="study-subject" type="text" name="study-subject" placeholder="부주제를 입력하세요."><br> -->
+			      			<label for="groupName">그룹이름</label><br> 
 		            	<input id="groupName" type="text" name="groupName" placeholder="그룹명을 입력하세요."><br>
 									<label for="file">그룹이미지</label><br> 
 									<input class="file" type="file" name="file"><br> 
@@ -68,12 +74,33 @@
 	       <li><a href="#"><i class="group-img"><img src="../images/profile.png"></i><span>그룹3</span></a></li>
 	      -->	     
 	     </ul>
-	    </div>	  	
+	    </div>
+	    <button id="prevBtn" type="button" class="btn btn-default btn-sm">이전</button>
+<span id="pageNo">1</span>
+<button id="nextBtn" type="button" class="btn btn-default btn-sm">다음</button>	  	
 	</section>
    <footer>
   
   </footer>
- 
+  <!--  
+   <script id="studyList" type="text/x-handlebars-template">
+    <option data-tokens="{{no}}">{{subject}}</option>
+  </script>
+  -->
+  <script id="liTemplateText" type="text/x-handlebars-template">
+  <li class="groupList">
+    <ul>       
+       <li class="groupTitleLink">
+          <a href="#" class="groupMore" data-no="{{groupNo}}" style="display:block">
+             <i class="group-img"><img src="../images/profile.png"></i>         
+              <p>{{groupName}}</p>
+          </a>
+        </li>
+        <li><button id="deleteBtn" class="btn btn-xs btn-default" data-no="{{no}}">x</btuuon></li>
+    </ul>
+  </li>
+  </script>
+  <script src="../node_modules/handlebars/dist/handlebars.min.js"></script>
   <script src="../node_modules/jquery/dist/jquery.js"></script>   
   <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>    
   <script type='text/javascript'  src="../js/include.js"></script>    
@@ -89,6 +116,7 @@
   <script type="text/javascript">
    ajaxLoginUser()
    ajaxMemberGroupInviteList()
+   /* ajaxStudyList() */
    if (location.search.startsWith("?")) {     
      $(".my-new").css("display","none")
     
@@ -97,20 +125,7 @@
    }
 
   </script>
-  <script id="liTemplateText" type="text/x-handlebars-template">
-  <li class="groupList">
-    <ul>       
-       <li class="groupTitleLink">
-          <a href="#" class="groupMore" data-no="{{groupNo}}" style="display:block">
-             <i class="group-img"><img src="../images/profile.png"></i>         
-              <p>{{groupName}}</p>
-          </a>
-        </li>
-        <li><button id="deleteBtn" class="btn btn-xs btn-default" data-no="{{no}}">x</btuuon></li>
-    </ul>
-  </li>
-  </script>
-  <script src="../node_modules/handlebars/dist/handlebars.min.js"></script>
+
   
 </body>
 </html>
