@@ -20,38 +20,18 @@
     float: left; 
 }
    
-
 .map li:hover{
   color:#9dc92a
 }
-
 
 .pin-align {
   text-align:center;
 }
 
-/* .pinGridWrapper {
-  width: 98%;
-  margin: auto;
-}
-.pinGridWrapper h1 {
-  font-size: 2.0em;
-  padding: 20px 0 20px 0;
-  text-align: center;
-}
-.pinGrid {
-  -webkit-column-count: 2;
-  -webkit-column-gap: 15px;
-  -moz-column-count: 2;
-  -moz-column-gap: 15px;
-  column-count: 2;
-  column-gap: 15px;
-} */
-
 .pin {
   display: inline-block;
   background: #fff;
-  border: 2px solid #fcfcfc;
+  border: 1px solid #eee;
   border-radius: 10px;
   -webkit-box-shadow: 0 6px 6px -6px #ccc;
   -moz-box-shadow: 0 6px 6px -6px #ccc;
@@ -61,12 +41,10 @@
   -moz-column-break-inside: avoid;
   column-break-inside: avoid;
   width: 320px;
-  height: 500px;
-  /* max-width: 100%; */
+  height: 450px;
 }
 
 .pin:hover{
-  /* opacity: 0.4; */
   background-color: #f6f6f6
 }
 
@@ -78,8 +56,8 @@
 
 .pin li{
     margin: 0 0 0 0;
-    padding: 10px;
     border : 0;
+    vertical-align: middle; 
     float: left; 
 }
 
@@ -87,6 +65,7 @@
     text-align: right; 
     padding: 10px 2px 3px 10px;
     color: #751471; 
+    text-overflow: ellipsis;
 }
 
 .pin li h5{
@@ -94,57 +73,68 @@
     padding: 10px 2px 3px 10px;
     color: #751471; 
 }
- 
 
-.pin li img{
-   width: 40px;
-   height: 40px;
-   border-radius: 30px;
+
+.pin .profile-img{
+   width: 80px;
+   height: 80px;
+   border-radius: 50%;
    float: left; 
 }
 
+.pin .profile{
+  text-align: left;
+}
+
+.pin .profile-names{
+  display: inline-block;
+  vertical-align: middle; 
+  /* margin-left: 1rem; */
+  font-size:15px;
+}
+
+.pin .profile-name{
+  font-weight: 300;
+  margin-bottom: 0;
+}
+
+
+.pin .profile-date{
+  font-size:12px;
+  color:#969696;
+}
 
 
 .pin img {
   width: 320px;
   height: 250px;
   padding: 10px;
-  height: auto;
   -webkit-border-radius: 10px 10px 0 0;
   -moz-border-radius: 10px 10px 0 0;
   border-radius: 10px 10px 0 0;
+  overflow: hidden;
 } 
 
 .pin h2 {
+	width: 320px;
   font-size: 1.2em;
   padding: 10px;
   border-bottom: 1px solid #ccc;
   text-align:left;
+  white-space:nowrap; 
+  overflow:hidden;
+  text-overflow: ellipsis;
 }
-
 
 
 .pin p {
-  padding: 10px 0 3px 10px;
+	width: 320px;
+  padding: 0 3px 3px 10px; 
   color: #333;
   text-align:left;
-}
-
-.pin p.tag {
-  padding: 10px 0 0 10;
-  color: #d2c999;
-  font-size: 6px;
-  text-align:left;
-  float: left; 
-}
-
-.pin p.tag:before {
-  content:"#";
-}
-
-
-.pin .pull-right {
-  float: right !important
+  white-space:nowrap; 
+  overflow:hidden;
+  text-overflow: ellipsis;
 }
 
 
@@ -208,6 +198,114 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.snip1336 {
+  font-family: 'Roboto', Arial, sans-serif;
+  position: relative;
+  float: left;
+  overflow: hidden;
+  margin: 10px 1%;
+  min-width: 230px;
+  max-width: 315px;
+  width: 100%;
+  color: #ffffff;
+  text-align: left;
+  line-height: 1.4em;
+  background-color: #141414;
+}
+.snip1336 * {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: all 0.25s ease;
+  transition: all 0.25s ease;
+}
+.snip1336 img {
+  max-width: 100%;
+  vertical-align: top;
+  opacity: 0.85;
+}
+.snip1336 figcaption {
+  width: 100%;
+  background-color: #141414;
+  padding: 25px;
+  position: relative;
+}
+.snip1336 figcaption:before {
+  position: absolute;
+  content: '';
+  bottom: 100%;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 55px 0 0 400px;
+  border-color: transparent transparent transparent #141414;
+}
+.snip1336 figcaption a {
+  padding: 5px;
+  border: 1px solid #ffffff;
+  color: #ffffff;
+  font-size: 0.7em;
+  text-transform: uppercase;
+  margin: 10px 0;
+  display: inline-block;
+  opacity: 0.65;
+  width: 47%;
+  text-align: center;
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+.snip1336 figcaption a:hover {
+  opacity: 1;
+}
+.snip1336 .profile {
+  border-radius: 50%;
+  position: absolute;
+  bottom: 100%;
+  left: 25px;
+  z-index: 1;
+  max-width: 90px;
+  opacity: 1;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+.snip1336 .follow {
+  margin-right: 4%;
+  border-color: #2980b9;
+  color: #2980b9;
+}
+.snip1336 h2 {
+  margin: 0 0 5px;
+  font-weight: 300;
+}
+.snip1336 h2 span {
+  display: block;
+  font-size: 0.5em;
+  color: #2980b9;
+}
+.snip1336 p {
+  margin: 0 0 10px;
+  font-size: 0.8em;
+  letter-spacing: 1px;
+  opacity: 0.8;
+}
 
 
 

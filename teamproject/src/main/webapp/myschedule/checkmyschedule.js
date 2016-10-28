@@ -7,24 +7,34 @@ var reloadFlag = 0;
 
 
 $("#loginBtn").click(function(event) {
-	location.href = "../auth/authApp.html"
+	location.href = "../index.html"
 });
 
 $("#logoutBtn").click(function(event) {
-	location.href = "../auth/authApp.html"
+	location.href = "../index.html"
 });
 
 $("#calendarModal").click(function() {
 
 });
 
+
+/*
 $('#calendarModal').on('shown.bs.modal', function(){
 	google_map("google_map", event.placeName);
 	//console.log(event);		
 	google.maps.event.trigger(map,'resize',{});
 
-});
+});*/
 
+function listCheck() {
+	for(var i in wholeScList) {
+		console.log("wholeScList[" + i + "]" + wholeScList[i].groupscNo + wholeScList[i].title)
+	}
+	for(var i in selectedScList) {
+		console.log("selectedScList[" + i + "]" + selectedScList[i].groupscNo +selectedScList[i].title)
+	}
+}
 
 function removeDuplication(arr) {// 배열내에 중복된 요소 제거함수
     for(var i=0; i<arr.length; i++) {
@@ -58,6 +68,7 @@ function showCalendar() {
 
 		eventClick: function(event, start, end) {
 			var location = getLatLon(event.placeName);
+			var placeName = event.placeName
 			ajaxWeather(location.lat, location.lon)
 			var moment11 = $('#calendar').fullCalendar('getDate')
 			start = moment(event.start).format('YYYY-MM-DD HH:mm')
@@ -80,6 +91,7 @@ function showCalendar() {
 			})
 
 			function google_map(mapid, addr) {
+				console.log(placeName)
 				var geocoder =  new google.maps.Geocoder();
 				geocoder.geocode( {'address': addr }, function(results, status) {
 					if (status == google.maps.GeocoderStatus.OK) {
@@ -96,7 +108,7 @@ function showCalendar() {
 						'<div class="map_Content">'+ 
 						//'TEL: <a href=tel:031-398-0902>031-398-0902</a><br />'+ 
 						//'진료시간: 00:00~24:00 연중무휴<br />' + 
-						'주소: '+ event.placeName + 
+						'주소: ' + placeName + 
 						'</div>'+ 
 						'</div></td></tr></table>'; 
 
@@ -104,22 +116,30 @@ function showCalendar() {
 							position: map.getCenter(), 
 							map: map, 
 							draggable:false,
-							animation: google.maps.Animation.DROP,  
-							title: markerTitle 
+							animation: google.maps.Animation.DROP, 
+							title: markerTitle,
 						}); 
 
 						var infowindow = new google.maps.InfoWindow({ 
 							content: contentString,
-							maxWidth: markerMaxWidth
+							maxWidth: markerMaxWidth,
+							placeName : placeName
 						}); 
-						infowindow.open(map, marker); 
+						infowindow.open(map, marker, placeName); 
 
 						google.maps.event.addListener(marker, 'click', function() { 
-							infowindow.open(map, marker); 
+							infowindow.open(map, marker, placeName); 
+							
 						}); 
 					}
 				});
 			}
+			
+			$('#calendarModal').on('shown.bs.modal', function(){
+				google_map("google_map", placeName);
+				google.maps.event.trigger(map,'resize',{});
+			
+			});
 		},
 		editable: true,
 		eventLimit: true, // allow "more" link when too many events 
@@ -136,7 +156,10 @@ function reloadWholeCalendar() {
 	$('#calendar').fullCalendar('removeEvents');
 	$('#calendar').fullCalendar('refetchEvents');
 	$('#calendar').fullCalendar('addEventSource', wholeScList);
+	$('#calendar').fullCalendar('refetchEvents');
+	
 	selectedScList = wholeScList;
+	listCheck();
 }
 function reloadCalendar() {
 	//selectedScSet = removeDuplication(selectedScList);
@@ -144,14 +167,11 @@ function reloadCalendar() {
 	$('#calendar').fullCalendar('removeEvents')
 	$('#calendar').fullCalendar('refetchEvents')
 	$('#calendar').fullCalendar('addEventSource', selectedScList)
-
-	for(var i in wholeScList) {
-		console.log("wholeScList[" + i + "]" + wholeScList[i].title)
-	}
-	for(var i in selectedScList) {
-		console.log("selectedScList[" + i + "]" + selectedScList[i].title)
-	}
+	$('#calendar').fullCalendar('refetchEvents');
+	listCheck();
+	
 }
+
 
 function getLatLon(placeName) {
 	for (var i in eventLocationList) {
@@ -166,16 +186,18 @@ function ajaxMyScheduleList() {
 	var placeName = "";
 	var lon = "";
 	var lat = "";
+	
 
 	$.getJSON(serverAddr + "/myschedule/list.json", function(obj) {
 		var result = obj.jsonResult
+		console.log(result)
 		if (result.state != "success") {
 			alert("서버에서 데이터를 가져오는데 실패했습니다.")
 			return
 		}
 
 		var contents = "";
-		var myScheduleList = result.data;
+		var myScheduleList = result.data.list;
 
 
 		var template = Handlebars.compile($('#divTemplateText').html())
@@ -189,47 +211,42 @@ function ajaxMyScheduleList() {
 		
 		$("#groupName").html(contents)
 		
-
-		
 		showCalendar();
 		
 		$("input:checkbox").change(function() {
-			var len = $("input:checkbox").length;
+			var no = $(this).attr('value');
 			if($(this).is(":checked")) {
-				var test = $(this).attr('value');
+				var tempArr = wholeScList.filter(function(item){
+					return item.groupscNo ==  no;
+				});
 
-				for (var i = 0 ; i < len; i++) {
-					for(var i in wholeScList) {
-						if ($(this).attr('value') == wholeScList[i].groupscNo) {	
-							selectedScList.push(wholeScList[i])
-						}
-					}
-				}
-			} 
-			else {
-				var test = $(this).attr('value');
-				for (var i = 0; i < len; i++) {
-					for(var i in selectedScList) {
-						if ($(this).attr('value') == selectedScList[i].groupscNo) {
-							selectedScList.splice(i, 1);
-						}
+				selectedScList.push(tempArr[0]);
+			} else {
+				var tempArr = selectedScList.filter(function(item) {
+					return item.groupscNo == no;
+				})
+				
+				for(var i in selectedScList) {
+					if(selectedScList[i].groupscNo == tempArr[0].groupscNo) {
+						selectedScList.splice(i, 1);
 					}
 				}
 			}
-				reloadCalendar();
-		}); 
-
+			reloadCalendar();
+		});
 
 		$("a#whole-grpSchedule").click(function(){
-			$('input:checkbox').each(function() {
+			$('#groupList').each(function() {
 				if($(this).is(":checked"))
-					this.checked = false;
+					$(this).attr('checked', false);
 			})
 			reloadWholeCalendar();
 		})
 	})
 	
 }
+
+
 function ajaxWeather(lat, lon) {
 	console.log(lat, lon);
 	$.getJSON(skPlanetWeather, {
@@ -269,7 +286,6 @@ function ajaxEventLocationList() {
 			alert("서버에서 데이터를 가져오는데 실패했습니다.")
 			return
 		}
-
 		eventLocationList = result.data;
 	})
 }

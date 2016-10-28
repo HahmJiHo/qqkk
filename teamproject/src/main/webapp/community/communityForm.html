@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>게시물 입력폼</title>
+
+<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap-theme.min.css">
+
+    <link rel="stylesheet" type="text/css" href="../css/common_style.css" >
+    <link rel="stylesheet" type="text/css" href="../css/community.css" >
+    
+    <!-- 아이콘 CSS -->  
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" />
+    
+    <!-- 부트스크랩 CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <script src="../node_modules/jquery/dist/jquery.js"></script> 
+    
+    <!-- 에디터 --
+    <link type="text/css" rel="stylesheet" href="jodit.min.css">
+		<script type="text/javascript" src="jodit.min.js"></script>
+		
+		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jodit/2.5.34/jodit.min.css">
+		<script src="//cdnjs.cloudflare.com/ajax/libs/jodit/2.5.34/jodit.min.js"></script>
+    <!-- 에디터 -->
+
+
+
+<style>
+      #calendar {
+      max-width: 850px;
+      margin: 0 auto;
+      float: right;
+     }
+
+     .article-schedule ul li { padding-bottom: 20px; }     
+     .my-make-schedule button:first-child {
+      margin-bottom: 20px;      
+     }
+     .my-schedule { border-top: 1px solid gray; border-bottom: 1px solid gray; padding:20px 0; }
+     .my-schedule ul { margin-bottom: 0px; }
+     .my-schedule ul li { padding: 2px 0; }
+     .my-group-member ul li { padding-bottom: 15px; padding-right: 10px; position: relative; }
+     .my-group-member ul li i { 
+     display: inline-block; float: right; width: 40px; 
+     height: 40px; background: #555; }     
+     .member-photo { display: inline-block; }
+     .member-photo img{ width: 70px; height: 70px; border-radius: 100px; }
+     .member-name { display: block; position: absolute; right: 10px; top: 50px; }
+     .state { -  width: 15px; height: 15px; }
+     .danger { background:url("../images/ximg.png") no-repeat }
+     .success { background:url("../images/successicon.png") no-repeat }
+           #map {
+        height: 300px;
+      }
+.controls {
+  margin-top: 10px;
+  border: 1px solid transparent;
+  border-radius: 2px 0 0 2px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  height: 32px;
+  outline: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+#pac-input {
+  background-color: #fff;
+  font-family: Roboto;
+  font-size: 15px;
+  font-weight: 300;
+  margin-left: 12px;
+  padding: 0 11px 0 13px;
+  text-overflow: ellipsis;
+  width: 300px;
+}
+
+#pac-input:focus {
+  border-color: #4d90fe;
+}
+
+.pac-container {
+  font-family: Roboto;
+}
+
+#type-selector {
+  color: #fff;
+  background-color: #4d90fe;
+  padding: 5px 11px 0px 11px;
+}
+
+#type-selector label {
+  font-family: Roboto;
+  font-size: 13px;
+  font-weight: 300;
+}
+     .pac-container {
+    background-color: #FFF;
+    z-index: 20;
+    position: fixed;
+    display: inline-block;
+    float: left;
+}
+.modal{
+    z-index: 20;   
+}
+.modal-backdrop{
+    z-index: 10;        
+}​
+</style>
+</head>
+<body>
+    <header>
+     <nav>
+      <div class="nav-warp">
+        <h1><a href="#">Hiba</a></h1>
+        <ul class="nav">
+          <li><a href="#">일정</a></li>
+          <li><a href="#">그룹</a></li>
+          <li><a href="#">앨범</a></li>
+          <li><a href="../community/communityApp.html">커뮤니티</a></li>
+          <li class="f-r"><a href="#"></a></li>
+          <li class="f-r glyphicon glyphicon-calendar"><a href="#"></a></li>
+          <li class="f-r glyphicon glyphicon-user"><a href="#"></a></li>
+          <li class="f-r "><a href="#"></a></li>
+        </ul>
+         <div class="navbar">
+          <i class="icon-bar"></i>
+          <i class="icon-bar"></i>
+          <i class="icon-bar"></i>
+        </div>
+        
+        <div style='position:absolute;right:0px;top:10px;font-size:15px;'>
+          <h1><span id="userName" class="my-login"></span></h1>
+          <a id="loginBtn" href='#' class="btn btn-success btn-xs my-logout">로그인</a>
+          <a id="logoutBtn" href='#' class="btn btn-success btn-xs my-login">로그아웃</a>
+        </div> 
+      </div>
+    </nav> 
+    </header>
+    
+    
+	 <section>
+	    <div class="section-wrap">
+			  <form class="form-horizontal">
+				    <h1>hiba community</h1>
+				  <div class="form-group my-view">
+				    <label for="no" class="col-sm-2 control-label">번호</label>
+				    <div class="col-sm-10">
+				      <input type="text" class="form-control" id="no" readonly>
+				    </div>
+				  </div>
+				  
+				  <!-- 
+				  <div class="form-group">
+				    <label for="userNicName" class="col-sm-2 control-label">작성자</label>
+				    <div class="col-sm-10">
+				      <input type="text" class="form-control" id="userNicName">
+				      <span id="userNicName" class="my-login"></span>
+				    </div>
+				  </div> -->
+				  
+				
+				<div class="form-group">
+				  <label for="title" class="col-sm-2 control-label">제목</label>
+				  <div class="col-sm-10">
+				    <input type="text" class="form-control" id="title" placeholder="제목입니다.">
+				  </div>
+				</div>
+				
+				<div class="form-group">
+				  <label for="contents" class="col-sm-2 control-label">내용</label>
+				  <div class="col-sm-10">
+				    <textarea id="contents" class="form-control" 
+				              cols="50" rows="10" placeholder="내용입니다."></textarea>
+				  </div>
+				</div>
+				
+       <div class="form-group">
+				  <label for="address" class="col-sm-2 control-label">주소</label>
+				  <div class="col-sm-10">
+				    <input type="text" id="address" class="form-control" placeholder="주소입니다."/>
+				  </div>
+				</div>
+				
+				<div class="form-group">
+          <label for="" class="col-sm-2 control-label">주소</label>
+          <div class="">
+					  <div id="modalBody" class="modal-body">
+		            <input id="pac-input" class="controls location" type="text" placeholder="Search Box">
+		            <div id="map"></div>
+		            <script>
+		                    $('#calendarAddModal').on('shown.bs.modal', function(){
+		                            google.maps.event.trigger(map,'resize',{});
+		                            
+		                   });
+		                   
+		                   window.initMap = function() {
+		                      var map = new google.maps.Map(document.getElementById('map'), {
+		                        center: {lat: -33.8688, lng: 151.2195},
+		                        zoom: 16,
+		                        mapTypeId: google.maps.MapTypeId.ROADMAP
+		                      });
+		                    
+		                      // Create the search box and link it to the UI element.
+		                      var input = document.getElementById('pac-input');
+		                      var searchBox = new google.maps.places.SearchBox(input);
+		                      map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+		                    
+		                      // Bias the SearchBox results towards current map's viewport.
+		                      map.addListener('bounds_changed', function() {
+		                        searchBox.setBounds(map.getBounds());
+		                      });
+		                    
+		                      var markers = [];
+		                      // [START region_getplaces]
+		                      // Listen for the event fired when the user selects a prediction and retrieve
+		                      // more details for that place.
+		                      searchBox.addListener('places_changed', function() {
+		                        var places = searchBox.getPlaces();
+		                    
+		                        if (places.length == 0) {
+		                          return;
+		                        }
+		                    
+		                        // Clear out the old markers.
+		                        markers.forEach(function(marker) {
+		                          marker.setMap(null);
+		                        });
+		                        markers = [];
+		                    
+		                        // For each place, get the icon, name and location.
+		                        var bounds = new google.maps.LatLngBounds();
+		                        places.forEach(function(place) {
+		                          var icon = {
+		                            url: place.icon,
+		                            size: new google.maps.Size(71, 71),
+		                            origin: new google.maps.Point(0, 0),
+		                            anchor: new google.maps.Point(17, 34),
+		                            scaledSize: new google.maps.Size(25, 25)
+		                          };
+		                    
+		                          // Create a marker for each place.
+		                          markers.push(new google.maps.Marker({
+		                            map: map,
+		                            icon: icon,
+		                            title: place.name,
+		                            position: place.geometry.location
+		                          }));
+		                    
+		                          if (place.geometry.viewport) {
+		                            // Only geocodes have viewport.
+		                            bounds.union(place.geometry.viewport);
+		                          } else {
+		                            bounds.extend(place.geometry.location);
+		                          }
+		                        });
+		                        map.fitBounds(bounds);
+		                      });
+		                      // [END region_getplaces]
+		                    }
+		                    
+		                  </script>
+		            <script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyAft7ukIrCdQPQYU4aXTBySOqsjQthqMNE&libraries=places&callback=initMap" 
+		                    async defer></script>
+		           </div>
+		        </div>          
+				
+				<!--  <div class="form-group">
+				  <label for="password" class="col-sm-2 control-label">암호</label>
+				  <div class="col-sm-10">
+				    <input type="password" id="password" class="form-control" 
+				           placeholder="암호입력">
+				  </div>
+				</div> -->
+        </br>
+        <div class="form-group">
+          <label class="col-sm-2 control-label" for="exampleInputFile">파일 업로드</label>
+          <div class="col-sm-10">
+	          <input type="file" id="exampleInputFile" name="file1">
+	          <p class="help-block">다중 파일 업로드는 업데이트예정!</p>
+         </div>
+        </div>
+				
+				<div class="form-group my-view">
+          <label class="col-sm-2 control-label">등록일</label>
+          <div class="col-sm-10">
+            <p id="registerDate" class="form-control-static"></p>
+          </div>
+        </div>
+				
+				
+				
+				<div class="form-group my-view">
+				  <label class="col-sm-2 control-label">조회수</label>
+				  <div class="col-sm-10">
+				    <p id="viewCount" class="form-control-static"></p>
+				  </div>
+				</div>
+				
+				<div class="form-group">
+				  <div class="col-sm-offset-2 col-sm-10">
+				    <button id="addBtn" type="button" class="btn btn-default my-new">등록</button>
+				    <button id="updateBtn" type="button" class="btn btn-default my-view">변경</button>
+				    <button id="deleteBtn" type="button" class="btn btn-default my-view">삭제</button>
+				    <button id="cancelBtn" type="button" class="btn btn-default"
+				            onclick="location.href='communityApp.html'">취소</button>
+				  </div>
+				</div>
+      </form>
+      
+      
+
+
+
+      
+      
+     <!------------------- 댓글 리스트 ---------좌우측의 공간 확보  --> 
+      
+     <table id="CommunityCommentTable" class="table table-hover">
+			<thead>
+			<tr>
+			  <th>게시판번호</th>
+			  <th>회원번호</th>
+			  <th>회원닉넴</th>
+			  <th>내용</th>
+			  <th>등록일</th>
+			  <th>버튼</th>
+			</tr>
+			</thead>
+			<tbody>
+			<td>
+			 <div class="form-group">
+          
+			<td>
+			</tbody>			
+      <table>
+
+       
+       </div>
+   </section>
+<footer>
+</footer>   
+
+     
+<script id="trTemplateText2" type="text/x-handlebars-template">
+{{#each data}}
+<tr>
+  <td>{{no}}</td>
+  <td>{{commentNo}}</td>
+  <td>{{commentUserNicName}}</td>
+  <td>{{comment}}</td>
+  <td>{{commentRegisterDate}}</td>
+  <td>
+   <div class="col-sm-offset-2 col-sm-10">
+     <button id="addCommentBtn" type="button" class="btn btn-default my-new">등록</button>
+     <button id="updateCommentBtn" type="button" class="btn btn-default my-view" data-no="{{commentNo}}">변경</button>
+     <button id="deleteCommentBtn" type="button" class="btn btn-default my-view" data-no="{{commentNo}}">삭제</button>
+   </div>
+  </td>
+</tr>
+{{/each}}
+</script>
+
+
+<script src="../node_modules/jquery/dist/jquery.min.js"></script>
+<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript" src="../js/bit.js"></script>
+<script type="text/javascript" src="communityForm.js"></script>
+<script type="text/javascript" src="communityApp.js"></script>
+<script type='text/javascript' src="../js/include.js"></script> 
+<script>
+
+ajaxLoginUser()              // 로그인 유저 정보 가져오기
+ajaxCommentCommunityList()   
+//ajaxCommentCommunityList2()   
+
+
+// URL에 no 파라미터 값이 넘어오면 조회 모드로 동작해야 한다.
+if (location.search.startsWith("?")) { // 예) ?no=xxx
+    var no = location.search.split("=")[1];
+    ajaxLoadCommunity(no)
+    $(".my-new").css("display", "none")
+} else {
+    $(".my-view").css("display", "none")
+}
+
+
+</script>
+
+
+
+</html>
+
+
+
+
+
+
+
+
