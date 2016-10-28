@@ -3,7 +3,11 @@ $("#addBtn").click(function(e) {
 			groupName : $("#groupName").val(),
 			name : $("#userName").text()
 	}
-	ajaxAddGroup(makegroup)
+	/*ajaxAddGroup(makegroup)*/
+	ajaxAddGroupPhoto()
+	
+	 
+	
 	
 });
 
@@ -37,12 +41,12 @@ $("#member").on('click', '#deleteBtn', function(e) {
 		);
 		ajaxDeleteGroup(delNo)
 	})	
-	
+
 });
 
 
 
-function ajaxAddGroup(makegroup) {
+/*function ajaxAddGroup(makegroup) {
 	$.post(serverAddr +"/group/add.json", makegroup, function(obj) {
 		var result = obj.jsonResult
 		if (result.state != "success") {
@@ -51,13 +55,16 @@ function ajaxAddGroup(makegroup) {
 			return
 		} 
 		swal(
-				  'Good job!',
-				  'You clicked the button!',
-				  'success'
-				)
+				'Good job!',
+				'You clicked the button!',
+				'success'
+		)
+
+
+
 		window.location.reload();
 	}, "json" )	
-}
+}*/
 
 
 function ajaxLoadGroup(no) {
@@ -72,7 +79,7 @@ function ajaxLoadGroup(no) {
 }
 
 function ajaxUpdateGroup(makegroup) {	
-	$.post(serverAddr +"/group/update.json", member, function(obj) {
+	$.post(serverAddr +"/group/update.json", makegroup, function(obj) {
 		var result = obj.jsonResult
 		if (result.state != "success") {
 			alert("변경 실패입니다.")
@@ -91,6 +98,30 @@ function ajaxDeleteGroup(no) {
 			alert("삭제 실패 입니다.")       
 			return
 		} 
-	ajaxGroupList()
+		ajaxGroupList()
 	})		
 }
+/*$('body').on('click',"#addBtn", function(){
+	
+})*/
+function ajaxAddGroupPhoto() {
+	var formData = new FormData();
+	formData.append("memberNumber" , $("#userName").attr('data-value'));
+	formData.append("name" , $("#userName").text());
+	formData.append("groupName", $("input[name=groupName]").val());
+	formData.append("file1", $("input[name=file1]")[0].files[0]);
+	$.ajax({
+		url: serverAddr + '/group/add.json',
+		processData: false,
+		contentType: false,
+		data: formData,
+		type: 'POST',
+		success: function(result){
+		}
+	});
+
+};
+
+
+
+
