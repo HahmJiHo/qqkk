@@ -29,6 +29,7 @@ public class Community implements Serializable {
   protected String communityBoardNo;      // 댓글회원번호
   protected String commentUserNicName;    // 댓글작성자 
   protected String comment;               // 댓글
+  protected int commentCount;          // 댓글카운트
   protected Date commentRegisterDate;     // 댓글 등록날짜
   protected String commentRegisterDate2;  
   
@@ -172,6 +173,17 @@ public class Community implements Serializable {
 		this.commentRegisterDate = Date.valueOf(str);
 		this.commentRegisterDate2 = str;
 	}
+	
+	
+	
+	public int getCommentCount() {
+		return commentCount;
+	}
+	public void setCommentCount(int commentCount) {
+		this.commentCount = commentCount;
+	}
+	
+	
 	
 	public int getFileNo() {
 		return fileNo;
