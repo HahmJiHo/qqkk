@@ -43,6 +43,9 @@
     where hiba_g_sc.gsno = #{value}
   </select>
     
-
+  <select id="countAll" resultType="int">
+    select count(*)
+    from hiba_g_sc
+  </select>
 
 </mapper>

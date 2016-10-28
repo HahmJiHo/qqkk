@@ -11,8 +11,7 @@
 	href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 <link rel="stylesheet"
 	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css"
-	href="/data/201010/IJ12877841645771/style.css" />
+
 <link href='../css/fullcalendar.css' rel='stylesheet' />
 <link rel="stylesheet" type="text/css" href="../css/detailInfo.css">
 <link href='../css/fullcalendar.print.css' rel='stylesheet'
@@ -55,6 +54,8 @@
 <title>Insert title here</title>
 </head>
 <body>
+<header>
+</header>
 <section>
 		<div class="section-wrap">
 			<div class="selectbar-left">
@@ -99,8 +100,9 @@
 							class="w3-round"><br>
 				<br>
 				
-				<a id="whole-grpSchedule" href="#" class="w3-padding">전체 그룹 일정</a>
+				
 				<div id="groupName">
+
 				</div>
 			</nav>
 			</div>
@@ -133,21 +135,24 @@
 				</div>
 				
 				<div>
-					<h3>장소</h3>
+					<h3>장소</h3>					
 					<hr class="section-bar"></hr>
+					<p class="placeName"></p>
 				</div>
 			</div>
 			</div>
 			</section>
+			<footer>
+			</footer>
 			<script id="divTemplateText" type="text/x-handlebars-template">
-				<h2 class="title">그룹1의 친구 생일 파티</h2>
+				<h2 class="title">[{{groupName}}]그룹의 [{{title}}]</h2>
 				
 				<div class="schedule-date">
 					<h3>날짜</h3>
 					<hr class="section-bar"></hr>
 					<div class="date">
-						<h1 id="dday"></h1>
-						<p class="appointmentDate"></p>
+						<h1 id="dday">D-day {{dday}}</h1>
+						<p class="appointmentDate">{{start}} ~ {{end}}</p>
 					</div>
 				</div>
 				
@@ -169,29 +174,32 @@
 				<div>
 					<h3>장소</h3>
 					<hr class="section-bar"></hr>
+						<p class="placeName">{{placeName}}</p>
 				</div>
+	</script>
+	<script id="groupTemplateText" type="text/x-handlebars-template">
+	<a>{{groupName}}</a>
 	</script>
 <script src="../node_modules/jquery/dist/jquery.min.js"></script>
 <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="../node_modules/handlebars/dist/handlebars.min.js"></script>
 <script type="text/javascript" src="../js/common.js"></script>	
+<script type="text/javascript" src="../js/include.js"></script>	
 <script type="text/javascript" src="../js/bit.js"></script>    
 <script type="text/javascript" src="../member/memberApp.js"></script>
 <script type="text/javascript" src="detailInfo.js"></script>	
 <script>
 ajaxLoginUser()
-ajaxEventLocationList()
+//ajaxEventLocationList()
 ajaxgetAreaCode()
 
-if (location.search.startsWith("?")) {
-  var no = location.search.split("=")[0];
-  ajaxMyScheduleLoad(no)
-  $(".my-new").css("display","none")
- 
+if (location.search.startsWith("?")) { // 예) ?no=xxx
+	  var no = location.search.split("=")[1];
+	  ajaxMyScheduleLoad(no)
+	  ajaxEventLocationList(no)
+	  $(".my-new").css("display", "none")
 } else {
-    $(".my-view").css("display","none")
-
-  
+	$(".my-view").css("display", "none")
 }
 
 

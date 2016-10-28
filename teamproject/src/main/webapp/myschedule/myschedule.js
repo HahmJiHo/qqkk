@@ -1,10 +1,10 @@
 
 $("#loginBtn").click(function(event) {
-	location.href = "../auth/authApp.html"
+	location.href = "../index.html"
 });
 
 $("#logoutBtn").click(function(event) {
-	location.href = "../auth/authApp.html"
+	location.href = "../index.html"
 });
 
 function computeDday(start) {
@@ -29,7 +29,7 @@ function ajaxMyScheduleList() {
 	    }
 		
 		var contents = ""
-		var arr = result.data
+		var arr = result.data.list
 		console.log(arr)
 		console.log($("#user").text())
 		var template = Handlebars.compile($('#divTemplateText').html())
@@ -39,7 +39,9 @@ function ajaxMyScheduleList() {
 			if ($("#user").attr('data-value') == arr[i].no){
 				arr[i].dday = computeDday(arr[i].start) 				
 				console.log(arr[i].dday)
-				contents += template(arr[i])
+				if (arr[i].dday > 0) {
+					contents += template(arr[i])
+				}
 			}
 	    }
 		

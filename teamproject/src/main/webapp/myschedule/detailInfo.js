@@ -1,12 +1,12 @@
-var eventLocationList;
+var detailResult;
+var eventLocation;
 var mySchedulList;
 
 $("#loginBtn").click(function(event) {
-	location.href = "../auth/authApp.html"
+	location.href = "../index.html"
 });
-
 $("#logoutBtn").click(function(event) {
-	location.href = "../auth/authApp.html"
+	location.href = "../index.html"
 });
 
 
@@ -32,18 +32,25 @@ function computeDday(start) {
 }
 
 function ajaxMyScheduleLoad(no) {
-	$.getJSON(serverAddr + "/myschedule/detailsc?no=" + no, function(obj) {
-		var result = obj.jsonResult
-		if (result.state != "success") {
+	$.getJSON(serverAddr + "/myschedule/detail.json?groupscNo=" + no, function(obj) {
+		detailResult = obj.jsonResult
+
+		if (detailResult.state != "success") {
 			alert("조회 실패입니다.")
 			return
 		}
 		
-		$("#no").val(result.data.no);
-		$("#title").val(result.data.title);
-		$("#contents").val(result.data.contents);
-		$("#createdDate").text(result.data.createdDate2);
-		$("#viewCount").text(result.data.viewCount);
+		var contents = ""
+		var template = Handlebars.compile($('#divTemplateText').html())
+		detailResult.data.dday = computeDday(detailResult.data.start)
+		contents = template(detailResult.data)
+		$("#detail").html(contents)
+		
+		var template2 = Handlebars.compile($('#groupTemplateText').html())
+		var contents2 = template2(detailResult.data.groupName)
+		console.log(detailResult.data.groupName)
+		console.log(contents2)
+		$("#groupName").html(contents2)
 	})
 }
 
@@ -87,8 +94,16 @@ function ajaxEventLocationList() {
 			return
 		}
 		
-		eventLocationList = result.data;
-		console.log(eventLocationList)
+		var arr = result.data 
+		console.log(detailResult.data.placeName)
+		for (var i in arr) {
+			if (detailResult.data.placeName == arr[i].placeName) {
+				eventLocation = arr[i]
+				
+			}
+		}
+		
+		console.log(eventLocation)
 		
 	})
 }
