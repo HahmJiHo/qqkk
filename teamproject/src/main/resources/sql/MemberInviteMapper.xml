@@ -21,7 +21,8 @@
 		<result column="mname" property="groupUserName" />
 		<result column="INVIT_NAME" property="inviteName" />
 		<result column="grno" property="groupReplyNo" />
-		<result column="gno" property="groupReplyGroupNo" />      
+		<result column="gno" property="groupReplyGroupNo" />   
+		<result column="GPHOT" property="gphoto" />      
 	</resultMap>
 
 	<select id="selectList" resultMap="memberInviteMap" parameterType="map">
@@ -29,23 +30,12 @@
 			from hiba_group inner join hiba_invit  			
 			on hiba_group.gno = hiba_invit.gno -->
     
-      select hiba_group.gno, hiba_group.gname, hiba_group.mname, hiba_invit.* , hiba_g_reply.gno, hiba_g_reply.grno
+      select hiba_group.gno, hiba_group.gname, hiba_group.mname, hiba_invit.* , hiba_g_reply.gno, hiba_g_reply.grno, hiba_group_photo.gphot
       from hiba_group
       inner join hiba_invit on hiba_group.gno = hiba_invit.gno
       inner join hiba_g_reply on hiba_invit.gno = hiba_g_reply.gno
-    <!-- 
-    select *from hiba_invit  
-   
-    SELECT hiba_membs.*, hiba_invit.*
-    FROM hiba_membs , hiba_invit 
-    WHERE hiba_membs.email = hiba_invit.INVI_EMAIL
-     
-    select * From hiba_invit left JOIN hiba_group
-    ON hiba_invit.GNO = hiba_membs.GNO
-    left JOIN hiba_group
-    ON hiba_invit.email = hiba_membs.email    
-   
-    limit #{startIndex}, #{length} -->
+      left join hiba_group_photo on hiba_group.gno = hiba_group_photo.gno and hiba_invit.mno = hiba_group_photo.mno      
+      <!-- limit #{startIndex}, #{length} --> 
   </select>
 
   <insert id="insert" parameterType="memberInvite">
@@ -69,14 +59,18 @@
   <select id="selectOneByNameAndNumber" resultMap="memberInviteMap" parameterType="map">
     select ino, gno
     from hiba_invit 
-    where ino=#{no} and gno=(#{groupNo})
+    where ino=#{no} and gno=(#{groupNo})  
   </select>
 	<select id="selectOneByGroupNoAndEmail" resultMap="memberInviteMap" parameterType="map">
 	    select gno, INVI_EMAIL
 	    from hiba_invit 
 	    where gno=#{groupNo} and INVI_EMAIL=(#{inviteEmail})
+	   
 	</select> 
-
+  <select id="selectOne" resultMap="memberInviteMap" parameterType="int">
+    select *from hiba_invit
+    where INO = #{value}
+  </select>
   <update id="update" parameterType="memberInvite">
     update hiba_invit set
     color=#{color}
@@ -96,5 +90,8 @@
     delete from hiba_invit where
     ino=#{no}
   </delete>
-
+<select id="countAll" resultType="int">
+    select count(*) 
+    from hiba_invit
+  </select>
 </mapper>

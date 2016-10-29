@@ -23,6 +23,7 @@ public class MemberInvite implements Serializable {
 	protected String groupName;
 	protected String groupReplyGroupNo;
 	protected String groupReplyNo;
+	protected String gphoto;
 	
 	public int getMemberNo() {
 		return memberNo;
@@ -143,6 +144,14 @@ public class MemberInvite implements Serializable {
 
 	public void setGroupReplyNo(String groupReplyNo) {
 		this.groupReplyNo = groupReplyNo;
+	}
+
+	public String getGphoto() {
+		return gphoto;
+	}
+
+	public void setGphoto(String gphoto) {
+		this.gphoto = gphoto;
 	}
 
 	@Override
