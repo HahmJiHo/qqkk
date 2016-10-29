@@ -5,9 +5,8 @@ function ajaxMemberInviteList() {
 			alert("서버에서 데이터를 가져오는데 실패 했습니다.-2")
 			return
 		} 
-
 		var contents = ""
-		var waitContents = ""	
+		var waitContents = ""		
 		var arr = result.data
 		var template = Handlebars.compile($('#groupli').html())	
 		var no = location.search.split("=")[1];
@@ -22,7 +21,7 @@ function ajaxMemberInviteList() {
 				} else if (arr[i].groupNo == no && arr[i].status == false){
 					waitContents += template(arr[i])
 					$(".group-member-waitlist").html(waitContents)
-				}				
+				}
 			}			
 		 }
 		 	
@@ -41,17 +40,13 @@ function ajaxMemberGroupInviteList() {
 		var arr = result.data
 	    var template = Handlebars.compile($('#liTemplateText').html())
 		for (var i in arr) {
-			if ($("#userName").attr('data-value') == arr[i].memberNo && arr[i].status == true) {
+			if ($("#userName").attr('data-value') == arr[i].memberNo && arr[i].status == true ) {															  
 				contents += template(arr[i])				
-			 }  
-
-	    }
-		$("#member").html(contents)
+			 } 			
+	    }		
+		$("#member").html(contents)			
 		$(".groupTitleLink > a").click(function (e) {
 			window.location.href = "../group/makeSc.html?no=" + $(this).attr("data-no")
-		}) 
-		
-		
-	})
-	
+		}) 				
+	})	
 }

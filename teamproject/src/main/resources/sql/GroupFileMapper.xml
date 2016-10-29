@@ -9,9 +9,10 @@
 	 자동으로 만들어 주게 설정했다. 
 	 그래서 앞에 example.vo 를 빼도 된다.
 	 -->
-		<id column="GNO" property="no" /> <!--PK 는 ID 나머지는 result -->
+		<id column="GPNO" property="GPNO" /> <!--PK 는 ID 나머지는 result -->
+		<result column="GNO" property="no" /> 
 		<result column="MNO" property="memberNo" />
-		<result column="filename" property="filename" />   
+		<result column="GPHOT" property="filename" />   
 	</resultMap>
 
 
@@ -23,7 +24,17 @@
     insert into HIBA_GROUP_PHOTO(mno, gno, GPHOT)
     values (#{memberNo}, #{no}, #{filename})
   </insert>
-
- 
+  
+  <select id="selectOneByMemberNoAndGroupNo" resultMap="groupFileMap" parameterType="map">
+    select mno, gno
+    from HIBA_GROUP_PHOTO 
+    where mno=#{memberNo} and gno=#{no}
+  </select>
+  
+ <update id="update" parameterType="groupFile">
+    update HIBA_GROUP_PHOTO set
+    GPHOT=#{filename}
+    where mno=#{memberNo} and gno=#{no}
+  </update>
 
 </mapper>

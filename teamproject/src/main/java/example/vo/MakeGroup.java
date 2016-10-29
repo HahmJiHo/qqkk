@@ -12,7 +12,7 @@ public class MakeGroup implements Serializable {
 	protected String groupName;
 	protected String name;
 	protected String email;
-	
+	protected String gphoto;
 	public String getEmail() {
 		return email;
 	}
@@ -56,10 +56,18 @@ public class MakeGroup implements Serializable {
 	public void setName(String name) {
 		this.name = name;
 	}
+	
+	
+	public String getGphoto() {
+		return gphoto;
+	}
+	public void setGphoto(String gphoto) {
+		this.gphoto = gphoto;
+	}
 	@Override
 	public String toString() {
 		return "MakeGroup [no=" + no + ", memberNumber=" + memberNumber + ", memberCount=" + memberCount + ", groupName="
-				+ groupName + ", name=" + name + ", email=" + email + ", groupPhoto=" + groupPhoto + "]";
+				+ groupName + ", name=" + name + ", email=" + email + "]";
 	}
 
 	

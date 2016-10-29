@@ -4,10 +4,17 @@ import java.io.Serializable;
 
 public class GroupFile implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+	protected int gpno;	
 	protected int no;
 	protected int memberNo;
   protected String filename;
+  
+	public int getGpno() {
+		return gpno;
+	}
+	public void setGpno(int gpno) {
+		this.gpno = gpno;
+	}
 	public int getNo() {
 		return no;
 	}
