@@ -56,14 +56,14 @@ body{ font-family:"arial", sans-serif; font-size:12px;}
 	margin-left: 1000px;
 }
 
-.schedule {
+#schedule {
 	width: 1000px;
 	height: 300px;
 	margin: 0 auto;
 }
 
-.schedule:hover {
-	background-color: gray;
+#schedule:hover {
+	background-color: light-gray;
 }
  
 

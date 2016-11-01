@@ -5,7 +5,9 @@ import java.io.Serializable;
 public class MySchedule implements Serializable {
   private static final long serialVersionUID = 1L;
   
+  protected int gpno;
   protected int no;
+  protected int groupNo;
   protected int groupscNo;
   protected String name;
   protected String nickName;
@@ -14,11 +16,23 @@ public class MySchedule implements Serializable {
   protected String start;
   protected String end;
   protected String placeName;
+  public int getGpno() {
+    return gpno;
+  }
+  public void setGpno(int gpno) {
+    this.gpno = gpno;
+  }
   public int getNo() {
     return no;
   }
   public void setNo(int no) {
     this.no = no;
+  }
+  public int getGroupNo() {
+    return groupNo;
+  }
+  public void setGroupNo(int groupNo) {
+    this.groupNo = groupNo;
   }
   public int getGroupscNo() {
     return groupscNo;
@@ -68,7 +82,6 @@ public class MySchedule implements Serializable {
   public void setPlaceName(String placeName) {
     this.placeName = placeName;
   }
- 
   
- 
+  
 }

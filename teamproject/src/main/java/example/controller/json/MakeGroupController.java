@@ -64,9 +64,9 @@ public class MakeGroupController {
 		
 		makeGroup.setEmail(member.getEmail());		
 		makeGroup.setNo(member.getNo());		
+		makeGroupService.insertMakeGroup(makeGroup, file1, uploadDir);
 		try {			
 		
-			makeGroupService.insertMakeGroup(makeGroup, file1, uploadDir);
 
 			
 			MemberInvite memberInvite = new MemberInvite();
