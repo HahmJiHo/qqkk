@@ -10,7 +10,8 @@
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="../css/common_style.css">
 <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 <link rel="stylesheet" type="text/css" href="../css/MySchedule.css">
 <link rel="stylesheet"
 	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
@@ -18,38 +19,47 @@
 
 </head>
 <body>
-<header>
-	
-	</header>
+	<header> </header>
 	<section>
+
 		<div class="section-wrap">
 			<div class="selectbar-left">
-			<h1><span id="user" class="my-login" data-value=""></span>님의 캘린더</h1>
-			<div class="my-info">
-           		<ul>
-             		<li class="my-profile"></li>     
-             		<li><a href='#' id="loginBtn" class="btn btn-xs btn-success my-logout">로그인</a></li> 
-      				<li><a href='#' id="logoutBtn" class="btn btn-xs btn-success my-login">로그 아웃</a></li> 	                          
-          		 </ul>  
-        		</div>
+				<h1>
+					<span id="user" class="my-login" data-value=""></span>님의 캘린더
+				</h1>
+				<div class="my-info">
+					<ul>
+						<li class="my-profile"></li>
+						<li><a href='#' id="loginBtn"
+							class="btn btn-xs btn-success my-logout">로그인</a></li>
+						<li><a href='#' id="logoutBtn"
+							class="btn btn-xs btn-success my-login">로그 아웃</a></li>
+					</ul>
+				</div>
 				<form class="navbar-form navbar-left" role="search">
 					<div class="form-group">
 						<input type="text" class="form-control" placeholder="Search">
-					<button type="button" class="btn btn-default"><i class="fa fa-search w3-xlarge"></i></button>
-					<button type="button" class="btn btn-default"><i class="fa fa-bars w3-xlarge" aria-hidden="true"></i></button>
-					<button type="button" class="btn btn-default"
-					onclick="location.href='checkMySchedule.html'"><i class="fa fa-calendar w3-xlarge" aria-hidden="true"></i></button>
+						<button type="button" class="btn btn-default">
+							<i class="fa fa-search w3-xlarge"></i>
+						</button>
+						<button type="button" class="btn btn-default">
+							<i class="fa fa-bars w3-xlarge" aria-hidden="true"></i>
+						</button>
+						<button type="button" class="btn btn-default"
+							onclick="location.href='checkMySchedule.html'">
+							<i class="fa fa-calendar w3-xlarge" aria-hidden="true"></i>
+						</button>
 					</div>
-			
+
 				</form>
-				
+
 			</div>
 			<div class="sectionbar-line">
-					<hr align=center width=100%>
-				</div>
-			
+				<hr align=center width=100%>
+			</div>
 
 			<div id="schedule">
+			<div id="group-Info"  data-value="">
 				<div class="gallery">
 					<div class="gallery-item">
 						<div class="gallery-item-image">
@@ -61,37 +71,32 @@
 						</div>
 					</div>
 				</div>
-
-					<div class="schedule-info">
-						<p></p>
-						<span></span><br>
-						<span> ~ </span>
-						<button id="viewSc" class="btn btn-default">
-								<span id="userSc"  data-value=""></span>일정보기</button>
-						<div>
-							<button type="button" class="btn btn-default">
-								<span class="glyphicon glyphicon-chevron-left"
-									aria-hidden="true"></span>
-							</button>
-							<span id="dday"></span>
-							<button type="button" class="btn btn-default">
-								<span class="glyphicon glyphicon-chevron-right"
-									aria-hidden="true"></span>
-							</button>
-						</div>		
+			</div>
+			<button id="btn-left" type="button" class="btn btn-default">
+						<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+			</button>
+			<div id="schedule-Info">
+				<p></p>
+				<span></span><br> <span> ~ </span>
+				<button id="viewSc" class="btn btn-default">
+					<span id="userSc" data-value=""></span>일정보기
+				</button>
+				<div id="dday-Info">
+					<span id="dday"></span>
 				</div>
-			
+			</div>
+			<button id="btn-right" type="button" class="btn btn-default">
+				<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+			</button>
 			<div class="sectionbar-line">
 				<hr align=center width=100%>
 			</div>
-			</div>
 		</div>
+	</div>
 	</section>
-		<footer>
-  
-  </footer>
+	<footer> </footer>
 	
-	
+
 	<script id="divTemplateText" type="text/x-handlebars-template">
 
 				<div class="gallery">
@@ -101,51 +106,47 @@
 						</div>
 						<div class="gallery-item-description">
 							<h3>{{groupName}}</h3>
-							<span>인원 24명 약속 5개</span>
+							<span>스케줄 {{groupscCount}}개</span>
 						</div>
 					</div>
 				</div>
-
-					<div class="schedule-info">
-						<p>{{title}}</p>
-						<span>{{placeName}}</span><br>
-						<span>{{start}} ~ {{end}}</span>
-						<button id="viewSc" class="btn btn-default"
-								onclick="location.href='checkMySchedule.html'">일정보기</button>
-						<div id="dday">
-							<button type="button" class="btn btn-default">
-								<span class="glyphicon glyphicon-chevron-left"
-									aria-hidden="true"></span>
-							</button>
-							<span id="dday">d-day {{dday}}</span>
-							<button type="button" class="btn btn-default">
-								<span class="glyphicon glyphicon-chevron-right"
-									aria-hidden="true"></span>
-							</button>
-						</div>		
-				</div>
-			<div class="sectionbar-line">
-				<hr align=center width=100%>
-			</div>
-	
 </script>
 
+<!-- 
+<script id="div2TemplateText" type="text/x-handlebars-template">
+
+				<p>{{title}}</p>
+				<span>{{placeName}}</span><br>
+				 <span>{{start}} ~ {{end}}</span>
+				<button id="viewSc" class="btn btn-default">
+					<span id="userSc" data-value=""></span>일정보기
+				</button>
+				<div id="dday-Info">
+					<span id="dday">d-day {{dday}}</span>
+				</div>
 
 
-<script src="../node_modules/jquery/dist/jquery.min.js"></script>
-<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="../node_modules/handlebars/dist/handlebars.min.js"></script>
-<script type="text/javascript" src="../js/common.js"></script>	
-<script type="text/javascript" src="../js/include.js"></script>	
-<script type="text/javascript" src="../js/bit.js"></script>    
-<script type="text/javascript" src="../member/memberApp.js"></script>
-<script type="text/javascript" src="myschedule.js"></script>
-<script>
+
+</script>
+
+-->
+
+	<script src="../node_modules/jquery/dist/jquery.min.js"></script>
+	<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="../node_modules/handlebars/dist/handlebars.min.js"></script>
+	<script type="text/javascript" src="../js/common.js"></script>
+	<script type="text/javascript" src="../js/include.js"></script>
+	<script type="text/javascript" src="../js/bit.js"></script>
+	<script type="text/javascript" src="../member/memberApp.js"></script>
+	<script type="text/javascript" src="myschedule.js"></script>
+	<script>
 ajaxLoginUser()
-ajaxMyScheduleList()
+ajaxMygroupList()
+//ajaxMyScheduleList()
 
 if (location.search.startsWith("?")) {
   var no = location.search.split("=")[0];
+  ajaxMygroupList(no)
   ajaxMyScheduleList(no)
   $(".my-new").css("display","none")
  

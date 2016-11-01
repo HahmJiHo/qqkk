@@ -37,4 +37,12 @@ public int getTotalPage(int pageSize) throws Exception {
    
    return totalPage;
 }
+ 
+ public List<MySchedule> getMyScheduleListEFGroupName(int pageNo, int length) throws Exception {
+   HashMap<String,Object> map = new HashMap<>();
+   map.put("startIndex", (pageNo - 1) * length);
+   map.put("length", length);
+   
+   return myscheduleDao.selectListefgroupName(map);
+ }
 }

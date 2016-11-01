@@ -44,6 +44,33 @@ public class MyScheduleController {
       return JsonResult.fail(e.getMessage());
     }
   }
+  
+  @RequestMapping(path="listefgroupName")
+  public Object listefgroupName(
+      @RequestParam(defaultValue="1") int pageNo,
+      @RequestParam(defaultValue="1") int length) throws Exception {
+    
+    try {
+      HashMap<String,Object> map = new HashMap<>();
+      map.put("startIndex", (pageNo - 1) * length);
+      map.put("length", length);
+      
+      List<MySchedule> list = myscheduleService.getMyScheduleListEFGroupName(pageNo, length);
+      int totalPage = myscheduleService.getTotalPage(length);
+      
+      
+      HashMap<String,Object> data = new HashMap<String,Object>();
+      data.put("list", list);
+      data.put("totalPage", totalPage);
+      data.put("pageNo", pageNo);
+      data.put("length", length);
+      
+      return JsonResult.success(data);
+
+    } catch (Exception e) {
+      return JsonResult.fail(e.getMessage());
+    }
+  }
 
   @RequestMapping(path="detail")
   public Object detail(int groupscNo) throws Exception {
