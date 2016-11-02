@@ -9,11 +9,26 @@ function showCalendar(arr) {
 					var getGroupNo = $(location).attr('search')	
 					var groupNo = getGroupNo.split("=")[1]
 					var memberNo = $("#userName").attr('data-value')
-					var a = $("#map").find('a').attr('href')
+					var a = $("#map").find('a').attr('href')					
 					var b = a.split("=")[1];
 					var c = b.split("&")[0];
 					var llet = c.split(",")[0];
 					var lot = c.split(",")[1];
+					
+					
+					var arr = $("#pac-input").val().split(" ")
+					var placeName = []
+					if (arr[0] == "대한민국") {
+						for (var i = 1; i < arr.length; i++) {	
+							placeName += arr[i] + " "
+						}
+					} else {
+						for (var i = 0; i < arr.length; i++) {	
+							placeName += arr[i] + " "
+						}
+					}
+					placeName.trim();
+					
 					if (checkPoint == false) {				
 						var count = ""
 							var len = $('.fc-event-container').length
@@ -26,7 +41,7 @@ function showCalendar(arr) {
 								end : $("#addDateEnd").val(),
 								groupNo : groupNo,
 								memberNo : memberNo,
-								placeName : $("#pac-input").val(),
+								placeName : placeName,
 								lat : llet,
 								lon : lot,
 								titleNo : count,
@@ -34,7 +49,6 @@ function showCalendar(arr) {
 						}
 						console.log(event)
 						ajaxAddSchedule(event)	
-						console.log("00000000000000000000")
 						var eventDataValue = $('.sc-list').length;
 						var errorTest = "입력하지 않은 항목이 있습니다."
 							if ($('#addeventTitle').val().length != 0 
@@ -64,7 +78,7 @@ function showCalendar(arr) {
 								end : $("#addDateEnd").val(),
 								groupNo : groupNo,
 								memberNo : memberNo,
-								placeName : $("#pac-input").val(),
+								placeName : placeName,
 								lat : llet,
 								lon : lot,
 								id : count
