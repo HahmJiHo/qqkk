@@ -11,4 +11,5 @@ public interface MyScheduleDao {
   List<MySchedule> selectList(Map<String, Object> paramMap) throws Exception;
   MySchedule selectOneByScheduleNo(int groupscNo) throws Exception;   
   int countAll() throws Exception;
+  List<MySchedule> selectListefgroupName(Map<String,Object> paramMap) throws Exception;
 }

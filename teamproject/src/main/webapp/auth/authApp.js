@@ -1,6 +1,6 @@
 $("#id02").on('click', "#loginBtn", function(event) { 
 	var user = {
-			email: $("#loginEmail").val(),
+			email: $("#LoginEmail").val(),
 			password: $("#LoginPassword").val(),
 			saveEmail: $("#saveEmail").is(":checked") 
 	}
@@ -20,7 +20,7 @@ function ajaxLogin(user) {
 				alert("로그인 실패 입니다.\n 이메일 또는 암호를 확인하세요.")       
 				return
 			} 
-			window.location.href = serverAddr + "/myschedule/checkMySchedule.html"		
+			window.location.href = serverAddr + "/myschedule/MySchedule.html"		
 		},
 		error : function(msg) {
 			alert(msg)

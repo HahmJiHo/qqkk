@@ -48,68 +48,78 @@
 }
 </style>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <script src="http://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/a549aa8780dbda16f6cff545aeabc3d71073911e/src/js/bootstrap-datetimepicker.js"></script>	
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script
+	src="http://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/a549aa8780dbda16f6cff545aeabc3d71073911e/src/js/bootstrap-datetimepicker.js"></script>
 <title>Insert title here</title>
 </head>
+<!-- test -->
+<script type="text/javascript">
+</script>
 <body>
-<header>
-</header>
-<section>
+	<header> </header>
+	<section>
 		<div class="section-wrap">
 			<div class="selectbar-left">
 
-			<div class="my-info">
-           		<ul>
-             		<li class="my-profile"></li>     
-             		<li><a href='#' id="loginBtn" class="btn btn-xs btn-success my-logout">로그인</a></li> 
-      				<li><a href='#' id="logoutBtn" class="btn btn-xs btn-success my-login">로그 아웃</a></li> 	                          
-          		 </ul>  
-        		</div>
+				<div class="my-info">
+					<ul>
+						<li class="my-profile"></li>
+						<li><a href='#' id="loginBtn"
+							class="btn btn-xs btn-success my-logout">로그인</a></li>
+						<li><a href='#' id="logoutBtn"
+							class="btn btn-xs btn-success my-login">로그 아웃</a></li>
+					</ul>
+				</div>
 				<form class="navbar-form navbar-left" role="search">
 					<div class="form-group">
 						<input type="text" class="form-control" placeholder="Search">
-					<button type="button" class="btn btn-default"><i class="fa fa-search w3-xlarge"></i></button>
-					<button type="button" class="btn btn-default"
-					onclick="location.href='MySchedule.html'"><i class="fa fa-bars w3-xlarge" aria-hidden="true"></i></button>
-					<button type="button" class="btn btn-default"
-					onclick="location.href='checkMySchedule.html'"><i class="fa fa-calendar w3-xlarge" aria-hidden="true"></i></button>
+						<button type="button" class="btn btn-default">
+							<i class="fa fa-search w3-xlarge"></i>
+						</button>
+						<button type="button" class="btn btn-default"
+							onclick="location.href='MySchedule.html'">
+							<i class="fa fa-bars w3-xlarge" aria-hidden="true"></i>
+						</button>
+						<button type="button" class="btn btn-default"
+							onclick="location.href='checkMySchedule.html'">
+							<i class="fa fa-calendar w3-xlarge" aria-hidden="true"></i>
+						</button>
 					</div>
-			
+
 				</form>
 				<div class="sectionbar-line">
 					<hr align=center width=100%>
 				</div>
 			</div>
-
 			<div id="schedule-cal">
-			<nav class="w3-sidenav w3-collapse w3-white w3-animate-left"
-				style="z-index: 3; width: 170px; height: 676px;" id="mySidenav">
-				<br>
-				<div class="w3-container">
-					<a href="#" onclick="w3_close()"
-						class="w3-hide-large w3-right w3-jumbo w3-padding"
-						title="close menu"> <i class="fa fa-remove"></i>
-					</a>
-					<h5 class="w3-padding-0">
-						<b><span id="user" class="my-login" data-value=""></span>님의 캘린더</b>
-					</h5>
-				</div>
-						<img src="../images/sangwon.jpg" style="width: 50%;"
-							class="w3-round"><br>
-				<br>
-				
-				
-				<div id="groupName">
+				<nav class="w3-sidenav w3-collapse w3-white w3-animate-left"
+					style="z-index: 3; width: 170px; height: 570px;" id="mySidenav">
+					<br>
+					<div class="w3-container">
+						<a href="#" onclick="w3_close()"
+							class="w3-hide-large w3-right w3-jumbo w3-padding"
+							title="close menu"> <i class="fa fa-remove"></i>
+						</a>
+						<h5 class="w3-padding-0">
+							<b><span id="user" class="my-login" data-value=""></span>님의
+								캘린더</b>
+						</h5>
+					</div>
+					<img src="../images/sangwon.jpg" style="width: 50%;"
+						class="w3-round"><br> <br>
 
-				</div>
-			</nav>
+
+					<div id="groupName"></div>
+				</nav>
 			</div>
-			
+
 			<div id="detail">
 				<h2 class="title">그룹1의 친구 생일 파티</h2>
-				
+
 				<div class="schedule-date">
 					<h3>날짜</h3>
 					<hr class="section-bar"></hr>
@@ -118,33 +128,35 @@
 						<p class="appointmentDate"></p>
 					</div>
 				</div>
-				
 
-				<div>
+<!--  
+	2016.11.1 수정사항 : 중기예보 XML data에 맞게 
+	도시(city) 최고기온(maxTemp) 최저기온(minTemp) 날씨 상태(state)로 수정 
+ -->
+				<div id="weather">
 					<h3>날씨</h3>
 					<hr class="section-bar"></hr>
 					<div id="weather-wrap">
-				 	 <div class="wrap-dayweather">
-				 	  <div class="weather-img"></div>
-				 	  <div class="weather-temperature-tc"></div>
-				 	  <div class="weather-sky"></div>
-				 	  <div class="weather-humidity"></div>
-				 	  <div class="weather-windspeed"></div>
-				 	 </div>
-				    </div>
+						<div class="wrap-dayweather">
+							<div class="weather-city"></div>
+							<div class="weather-img"></div>
+							<div class="weather-temperature-mx"></div>
+							<div class="weather-temperature-mn"></div>
+							<div class="weather-state"></div>
+						</div>
+					</div>
 				</div>
-				
+
 				<div>
-					<h3>장소</h3>					
+					<h3>장소</h3>
 					<hr class="section-bar"></hr>
 					<p class="placeName"></p>
 				</div>
 			</div>
-			</div>
-			</section>
-			<footer>
-			</footer>
-			<script id="divTemplateText" type="text/x-handlebars-template">
+		</div>
+	</section>
+	<footer> </footer>
+	<script id="divTemplateText" type="text/x-handlebars-template">
 				<h2 class="title">[{{groupName}}]그룹의 [{{title}}]</h2>
 				
 				<div class="schedule-date">
@@ -155,7 +167,6 @@
 						<p class="appointmentDate">{{start}} ~ {{end}}</p>
 					</div>
 				</div>
-				
 
 				<div>
 					<h3>날씨</h3>
@@ -163,8 +174,10 @@
 					<div id="weather-wrap">
 				 	 <div class="wrap-dayweather">
 				 	  <div class="weather-img"></div>
-				 	  <div class="weather-temperature-tc"></div>
-				 	  <div class="weather-sky"></div>
+				 	  <div class="weather-city">{{city}}</div>
+				 	  <div class="weather-temperature-mx">{{maxTemp}}</div>
+				 	  <div class="weather-temperature-mn">{{minTemp}}</div>
+				 	  <div class="weather-state">{{state}}</div>
 				 	  <div class="weather-humidity"></div>
 				 	  <div class="weather-windspeed"></div>
 				 	 </div>
@@ -176,27 +189,28 @@
 					<hr class="section-bar"></hr>
 						<p class="placeName">{{placeName}}</p>
 				</div>
-	</script>
+</script>
 	<script id="groupTemplateText" type="text/x-handlebars-template">
 	<a>{{groupName}}</a>
 	</script>
-<script src="../node_modules/jquery/dist/jquery.min.js"></script>
-<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="../node_modules/handlebars/dist/handlebars.min.js"></script>
-<script type="text/javascript" src="../js/common.js"></script>	
-<script type="text/javascript" src="../js/include.js"></script>	
-<script type="text/javascript" src="../js/bit.js"></script>    
-<script type="text/javascript" src="../member/memberApp.js"></script>
-<script type="text/javascript" src="detailInfo.js"></script>	
-<script>
+	<script src="../node_modules/jquery/dist/jquery.min.js"></script>
+	<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="../node_modules/handlebars/dist/handlebars.min.js"></script>
+	<script type="text/javascript" src="../js/common.js"></script>
+	<script type="text/javascript" src="../js/include.js"></script>
+	<script type="text/javascript" src="../js/bit.js"></script>
+	<script type="text/javascript" src="../member/memberApp.js"></script>
+	<script type="text/javascript" src="detailInfo.js"></script>
+	<script>
 ajaxLoginUser()
 //ajaxEventLocationList()
-ajaxgetAreaCode()
+//ajaxgetAreaCode()
 
 if (location.search.startsWith("?")) { // 예) ?no=xxx
 	  var no = location.search.split("=")[1];
 	  ajaxMyScheduleLoad(no)
 	  ajaxEventLocationList(no)
+	  //ajaxMidTermWeather()
 	  $(".my-new").css("display", "none")
 } else {
 	$(".my-view").css("display", "none")
