@@ -8,10 +8,10 @@ $("#logoutBtn").click(function(event) {
 
 $("#addBtn").click(function(event) {
 	var community = {
-	  userNo: $("#userName").attr('data-value'),
+	  userNo: $("#userNo2").attr('data-value'),
 	  title: $("#title").val(),
 	  contents: $("#contents").val(),
-	  address: $("#address").val()
+	  address: $("#pac-input").val()
 	}
 	ajaxAddCommunity(community)
 });
@@ -20,7 +20,7 @@ $("#updateBtn").click(function(event) {
   var community = {
     title: $("#title").val(),
     contents: $("#contents").val(),
-    address: $("#address").val(),
+    address: $("#pac-input").val(),
     no: $("#no").val()
   }
   ajaxUpdateCommunity(community)
@@ -66,10 +66,8 @@ $("#likeBtn").click(function(event) {
   var count = 0;
 	  function button_onclick() {
 		  count++;
-		  ajaxAddLike($("#boardLike").val())
-		  alert()
 	  }
-	});
+ });
 
 
 
@@ -92,7 +90,7 @@ function ajaxLoadCommunity(no) {
 	$.getJSON(serverAddr + "/community/detail.json?no=" + no, function(obj) {
 		var result = obj.jsonResult
 		if (result.state != "success") {
-			alert("조회 실패입니다.")
+			alert("조회 실패입니다 디테일.")
 			return
 		}
 		
@@ -100,7 +98,7 @@ function ajaxLoadCommunity(no) {
 		$("#userNicName").val(result.data.userNicName);
 		$("#title").val(result.data.title);
 		$("#contents").val(result.data.contents);
-		$("#address").val(result.data.address);
+		$("#pac-input").val(result.data.address);
 		$("#registerDate").text(result.data.registerDate2);
 		$("#viewCount").text(result.data.viewCount);
 	})
@@ -130,6 +128,7 @@ function ajaxDeleteCommunity() {
 		location.href = "communityApp.html"
 	})
 }
+
 
 
 
@@ -218,10 +217,53 @@ function ajaxLoginUser() {
 	    $('.my-logout').css("display", "none")
 	      
 	    $("#userName").text(result.data.name);
+	   
     })
 }
 
 
 
+
+function google_map(mapid, addr) {
+	var geocoder =  new google.maps.Geocoder();
+	geocoder.geocode( {'address': addr }, function(results, status) {
+		if (status == google.maps.GeocoderStatus.OK) {
+			var map = new google.maps.Map(document.getElementById(mapid), {
+				zoom: 16,
+				center: results[0].geometry.location,
+				mapTypeId: google.maps.MapTypeId.ROADMAP
+			});
+
+			var markerTitle    = "";  // 현재 위치 마커에 마우스를 올렸을때 나타나는 이름
+			var markerMaxWidth = 260;  // 마커를 클릭했을때 나타나는 말풍선의 최대 크기
+			var contentString = '<table><tr><td width=90><img src="" width="80" style="border-radius:5px;"></td><td><div>' + 
+			'<span style="padding-bottom:10px"><b>'+markerTitle+'</b></span><br />'+ 
+			'<div class="map_Content">'+ 
+			//'TEL: <a href=tel:031-398-0902>031-398-0902</a><br />'+ 
+			//'진료시간: 00:00~24:00 연중무휴<br />' + 
+			'주소: '+ event.placeName + 
+			'</div>'+ 
+			'</div></td></tr></table>'; 
+
+			var marker = new google.maps.Marker({ 
+				position: map.getCenter(), 
+				map: map, 
+				draggable:false,
+				animation: google.maps.Animation.DROP,  
+				title: markerTitle 
+			}); 
+
+			var infowindow = new google.maps.InfoWindow({ 
+				content: contentString,
+				maxWidth: markerMaxWidth
+			}); 
+			infowindow.open(map, marker); 
+
+			google.maps.event.addListener(marker, 'click', function() { 
+				infowindow.open(map, marker); 
+			}); 
+		}
+	});
+}
 
 
