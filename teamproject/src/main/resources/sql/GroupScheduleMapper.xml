@@ -17,6 +17,7 @@
 		<result column="ED_DT" property="end" />
 		<result column="SC_TITLE" property="title" />
 		<result column="PL_NAME" property="placeName" />
+		<result column="STATUS" property="STATUS" />
 		<result column="PL_LIKE" property="like" /> 
 		<result column="COLOR" property="color" />  
 		<result column="TITLE_COUNT" property="titleNo" /> 
@@ -56,7 +57,7 @@
   </select>
   
   
-  <insert id="insert" parameterType="event">
+  <insert id="insert" parameterType="event" useGeneratedKeys="true" keyColumn="gsno" keyProperty="no">
    insert into hiba_g_sc(mno, gno, gpno, st_dt, ed_dt, sc_title, title_count, ID)
     values (#{memberNo}, #{groupNo}, #{groupPlaceNo}, #{start}, #{end}, #{title}, #{titleNo}, #{id}) 
     
