@@ -246,6 +246,25 @@ function ajaxMyScheduleList() {
 	
 }
 
+function ajaxMidTermWeather(date, gpno) {
+	date = date.substring(0,10);
+	console.log(date);
+	console.log(gpno);
+	$.getJSON(serverAddr + '/myschedule/midTermWeather.json?gpno='
+			+gpno+'&date='+date, function(obj) {
+		midTermResult = obj.jsonResult;
+		console.log(midTermResult);
+		if(midTermResult.state != "success") {
+			alert("조회 실패입니다.");
+			return;
+		}
+		
+		$(".weather-city").html(midTermResult.data.city);
+		$(".weather-temperature-mx").html(midTermResult.data.maxTemp + "°C");
+		$(".weather-temperature-mn").html(midTermResult.data.minTemp + "°C");
+		$(".weather-state").html(midTermResult.data.state);
+	});
+}
 
 function ajaxWeather(lat, lon) {
 	console.log(lat, lon);

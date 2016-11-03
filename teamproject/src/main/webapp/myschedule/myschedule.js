@@ -1,4 +1,3 @@
-
 $("#loginBtn").click(function(event) {
 	location.href = "../index.html"
 });
@@ -22,39 +21,144 @@ function computeDday(start) {
 function ajaxMygroupList() {
 	$.getJSON(serverAddr + "/myschedule/list.json", function(obj) {
 		var result = obj.jsonResult
-		console.log(result.data.list)
 		if (result.state != "success") {
 			alert("서버에서 데이터를 가져오는데 실패했습니다.")
 			return
 		}
 
-		var contents = ""
 		var arr = result.data.list
-		var groupscCount;
-		var countArr = [];
+		var pastCount = 0;
+		var upcomCount = 0;
+		var arrGrp = [];
+		var arrGrp2 = [];
+		var dday = [];
 
-		var template = Handlebars.compile($('#divTemplateText').html())
 		for (var i in arr) {
-			$("#group-Info").attr('data-value', arr[i].groupNo)
-			if (countArr[i] == arr[i].groupNo) {
-				countArr[i]++;
-				console.log(countArr[i])
+			dday[i] = computeDday(arr[i].start)
+			if (dday[i] > 0) {
+				upcomCount += 1;		
+				//console.log(upcomArrGrpNo[i])
+			} else if (dday[i] == "이미 지난 스케줄입니다.") {
+				pastCount += 1;
 			}
-			console.log(countArr[i])
+			arrGrp[i] = arr[i].groupNo
+		}
+
+
+
+		arrGrp = arrGrp.sort();
+		arrGrp2 = arrGrp
+		console.log(arrGrp)
+		console.log(arrGrp2)
+
+		var count = new Object();
+
+		for (var i in arrGrp) {
+			count[arrGrp[i]] = 0;
+		}
+
+
+		for (var i = 0; i < arrGrp2.length; i++) {
+			while(1) {
+				console.log(arrGrp2[i])
+				var tmp = arrGrp.indexOf(arrGrp2[i]);
+				console.log(tmp);
+				var tmpVal = arrGrp[tmp];
+				//console.log(tmpVal)
+				if (tmp == -1) {
+					break;
+				}
+
+				count[tmpVal] += 1;
+				arrGrp.splice(tmp,1);
+			}
+			console.log(count)
+		}
+
+
+		/* 2016.11.01 내일부터 아래 코딩하기*/
+		var contents = ""
+
+			var template = Handlebars.compile($('#divTemplateText').html())
+			for (var i in arr) {
+				$("#group-Info").attr('data-value', arr[i].groupNo)
+				arr[i].dday = computeDday(arr[i].start)
+
+				if (arr[i].dday > 0 
+						&& $("#user").attr('data-value') == arr[i].no
+						&& $("#group-Info").attr('data-value') == arr[i].groupNo) {
+					//&& $("#group-Info").attr('data-value') == count(arr[i].groupNo)) {
+					arr[i].count = count[i]
+					arr[i].upcomCount = upcomCount
+					contents = template(arr[i])
+				}
+			}
+		$("#group-Info").html(contents)
+
+		var contents2 = ""
+			var template2 = Handlebars.compile($('#div2TemplateText').html())
+			var number = 0;
+		$("#schedule-Info").attr('data-value', arr[i].groupscNo)
+		var divNum = 1;
+
+		for (var i in arr) {
 			arr[i].dday = computeDday(arr[i].start)
-			if (arr[i].dday > 0) {				
-				if ($("#user").attr('data-value') == arr[i].no
-						&& $("#group-Info").attr('data-value') == arr[i].groupNo){
-					groupscCount += 1
-					arr[i].groupscCount = groupscCount
-					console.log(arr[i].groupscCount)
-					contents += template(arr[i])
+
+			if (arr[i].dday > 0 
+					&& $("#user").attr('data-value') == arr[i].no
+					&& $("#group-Info").attr('data-value') == arr[i].groupNo) {
+				//&& $("#group-Info").attr('data-value') == count(arr[i].groupNo)) {
+				number++;
+				$("#sc").attr('data-no', divNum)
+				divNum++;
+				contents2 += template2(arr[i])
+
+			}
+		}
+		var btnLength = number
+		contents2 = "<ul class='bxslider'>" + contents2 + "</ul>"
+		$("#schedule-Info").html(contents2);
+		
+		$('.bxslider').bxSlider({
+			nextSelector: '#slider-next',
+			prevSelector: '#slider-prev',
+			mode:'horizontal',
+			speed:1000,
+			slideMargin:100,
+			captions: true,
+		})
+		
+		function btnClickAction() {
+			$("#btn-left").click(function() {
+				btnLength--;
+				btnAnimate(btnLength)
+			})
+
+			$("#btn-right").click(function() {
+				btnLength++;
+				btnAnimate(btnLength)
+			})
+
+			function btnAnimate(num) {
+				$("#schedule-Info")
+				
+				if (num >= btnLength -1) {
+					$("#btn-right").hide();
+				} else {
+					$("#btn-right").show();
+				}
+				if (num >= 1) {
+					$("#btn-left").show();
+				} else {
+					$("#btn-left").hide();
 				}
 			}
 		}
-		console.log(contents)
-		$("#group-Info").html(contents)
 	})
+}
+
+function btnAction() {
+
 }
 
 /*
@@ -95,9 +199,6 @@ function ajaxMyScheduleList() {
 	})
 }
  */
-
-
-
 
 function ajaxLoginUser() {
 	$.getJSON(serverAddr +"/auth/loginUser.json", function(obj) {
