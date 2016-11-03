@@ -38,7 +38,8 @@ public class DefaultScheduleWeatherService implements ScheduleWeatherService {
     province.put("대전", 133); province.put("세종", 133); province.put("전북", 146);
     province.put("광주", 156); province.put("전라남도", 156); province.put("대구", 143);
     province.put("경상북도", 143); province.put("부산", 159); province.put("부산", 159);
-    province.put("울산", 159); province.put("경상남도", 159); province.put("제주", 184);  
+    province.put("울산", 159); province.put("경상남도", 159); province.put("제주", 184);
+    province.put("전라북도", 146); 
 
     HttpURLConnection conn = (HttpURLConnection)new URL(
         "http://www.kma.go.kr/weather/forecast/mid-term-rss3.jsp?stnId="

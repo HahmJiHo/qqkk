@@ -15,7 +15,7 @@
 <link rel="stylesheet" type="text/css" href="../css/MySchedule.css">
 <link rel="stylesheet"
 	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-
+	<link href="../js/jquery.bxslider.css" rel="stylesheet" />
 
 </head>
 <body>
@@ -59,46 +59,51 @@
 			</div>
 
 			<div id="schedule">
-			<div id="group-Info"  data-value="">
-				<div class="gallery">
-					<div class="gallery-item">
-						<div class="gallery-item-image">
-							<img src="../images/thumbnail.PNG" alt width="300" height="300">
-						</div>
-						<div class="gallery-item-description">
-							<h3></h3>
-							<span>인원 24명 약속 5개</span>
+				<div id="group-Info" data-value="">
+					<div class="gallery">
+						<div class="gallery-item">
+							<div class="gallery-item-image">
+								<img src="../images/thumbnail.PNG" alt width="300" height="300">
+							</div>
+							<div class="gallery-item-description">
+								<h3></h3>
+								<span>인원 24명 약속 5개</span>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-			<button id="btn-left" type="button" class="btn btn-default">
-						<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-			</button>
-			<div id="schedule-Info">
-				<p></p>
-				<span></span><br> <span> ~ </span>
-				<button id="viewSc" class="btn btn-default">
-					<span id="userSc" data-value=""></span>일정보기
-				</button>
-				<div id="dday-Info">
-					<span id="dday"></span>
+				<div id="scheduleInfo">
+					<button id="btn-left" type="button" class="btn btn-default">
+						<span id="slider-prev"class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+					</button>
+					<button id="btn-right" type="button" class="btn btn-default">
+						<span id="slider-next" class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+					</button>
+					<div id="schedule-Info" data-value="">
+						<ul class="bxslider">
+							<li id="sc" data-no="">
+								<p></p> <span></span><br> <span> ~ </span>
+								<button id="viewSc" class="btn btn-default">
+									<span id="userSc" data-value=""></span>일정보기
+								</button>
+								<div id="dday-Info">
+									<span id="dday"></span>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<div class="sectionbar-line">
+						<hr align=center width=100%>
+					</div>
 				</div>
 			</div>
-			<button id="btn-right" type="button" class="btn btn-default">
-				<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-			</button>
-			<div class="sectionbar-line">
-				<hr align=center width=100%>
-			</div>
 		</div>
-	</div>
 	</section>
 	<footer> </footer>
-	
+
 
 	<script id="divTemplateText" type="text/x-handlebars-template">
-
+				
 				<div class="gallery">
 					<div class="gallery-item">
 						<div class="gallery-item-image">
@@ -106,57 +111,60 @@
 						</div>
 						<div class="gallery-item-description">
 							<h3>{{groupName}}</h3>
-							<span>스케줄 {{groupscCount}}개</span>
+							<span>남은 스케줄 {{upcomCount}} / 총 스케줄 {{count}}</span>
 						</div>
 					</div>
 				</div>
 </script>
 
-<!-- 
+<!--  
+	bxslider 쓰기 위해 핸들바스 코드 수정 
+ -->
 <script id="div2TemplateText" type="text/x-handlebars-template">
-
-				<p>{{title}}</p>
-				<span>{{placeName}}</span><br>
+			 <li id="sc" data-no="">
+				<h1>{{title}}</h1>
+				<h3>{{placeName}}</h3><br>
 				 <span>{{start}} ~ {{end}}</span>
 				<button id="viewSc" class="btn btn-default">
 					<span id="userSc" data-value=""></span>일정보기
 				</button>
 				<div id="dday-Info">
-					<span id="dday">d-day {{dday}}</span>
+					<h1 id="dday">d-day {{dday}}</h1>
 				</div>
-
-
-
+			</li>
 </script>
 
--->
+
 
 	<script src="../node_modules/jquery/dist/jquery.min.js"></script>
 	<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 	<script src="../node_modules/handlebars/dist/handlebars.min.js"></script>
+	<!-- bxSlider Javascript file -->
+	<script src="../js/jquery.bxslider.min.js"></script>
+	<!-- bxSlider CSS file -->
+
+
+
 	<script type="text/javascript" src="../js/common.js"></script>
 	<script type="text/javascript" src="../js/include.js"></script>
 	<script type="text/javascript" src="../js/bit.js"></script>
 	<script type="text/javascript" src="../member/memberApp.js"></script>
 	<script type="text/javascript" src="myschedule.js"></script>
 	<script>
-ajaxLoginUser()
-ajaxMygroupList()
-//ajaxMyScheduleList()
+		ajaxLoginUser()
+		ajaxMygroupList()
+		//ajaxMyScheduleList()
 
-if (location.search.startsWith("?")) {
-  var no = location.search.split("=")[0];
-  ajaxMygroupList(no)
-  ajaxMyScheduleList(no)
-  $(".my-new").css("display","none")
- 
-} else {
-    $(".my-view").css("display","none")
+		if (location.search.startsWith("?")) {
+			var no = location.search.split("=")[0];
+			ajaxMygroupList(no)
+			ajaxMyScheduleList(no)
+			$(".my-new").css("display", "none")
 
-  
-}
+		} else {
+			$(".my-view").css("display", "none")
 
-
-</script>
+		}
+	</script>
 </body>
 </html>
