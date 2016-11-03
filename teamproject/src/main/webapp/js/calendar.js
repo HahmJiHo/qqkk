@@ -334,34 +334,28 @@ function ajaxMyScheduleList(no) {
 		var contents = ""
 		var arr = result.data
 	    var arrTest=[]
-		var dataStartMapping = []
-		var dataEndMapping = []
+		function getFormatDate(date){
+			var year = date.getFullYear();                                 
+			var month = (1 + date.getMonth());                    
+			month = month >= 10 ? month : '0' + month;  
+			var day = date.getDate();                                       
+			day = day >= 10 ? day : '0' + day;                           
+			return  year + '-' + month + '-' + day;
+		}
+
+		var date = new Date();
+		date = getFormatDate(date);
 		var template = Handlebars.compile($('#sideScheduleList').html())
 		for (var i in arr) {
 			if (no == arr[i].groupNo) {				
 		        arrTest.push(arr[i]);
-		        if (arr[i].id == 2) {
-		        	dataStartMapping.push(arr[i].start)		        		
-		        	dataEndMapping.push(arr[i].end)
-				}
 		        if(arr[i].titleNo) {
-		        	contents += template(arr[i])
-		        	
+		        	if (arr[i].start > date) {
+		        		contents += template(arr[i])
+		        	}       			        	
 		        }
 			}	
 		}
-		console.log(dataStartMapping)
-		
-		var now = new Date(); 
-		var dayStartChecked = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-		var a = []
-		for (var i = 0; i < dataStartMapping.length; i++) {			
-			a.push(new Date(dataStartMapping[i]))			
-		}
-		a.sort(function (a, b) {
-			  return a - b;
-		})
-		console.log(a)
 		
 	$(".side-schedhule-List").html(contents) 
 	showCalendar(arrTest);
