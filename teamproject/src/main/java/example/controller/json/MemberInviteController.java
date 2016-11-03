@@ -1,6 +1,5 @@
 package example.controller.json;
 
-import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import example.dao.GroupMemberDao;
+import example.dao.MemberInviteDao;
 import example.dao.ReplyContentDao;
 import example.service.GroupMemberService;
 import example.service.MemberInviteService;
@@ -21,7 +22,9 @@ import example.vo.MemberInvite;
 public class MemberInviteController {
 	@Autowired MemberInviteService memberInviteService;
 	@Autowired ReplyContentDao replyContentDao;
+	@Autowired GroupMemberDao groupMemberDao;
 	@Autowired GroupMemberService groupMemberService;
+	@Autowired MemberInviteDao memberInviteDao;
 	
 	@RequestMapping(path="list")
 	public Object list(
@@ -38,7 +41,20 @@ public class MemberInviteController {
 			return JsonResult.fail(e.getMessage());
 		}					
 	}
+	
+	@RequestMapping(path="orginlist")
+	public Object orginOList() throws Exception {
 
+		try {
+			return JsonResult.success(memberInviteDao.orginSelectList());
+
+		} catch (Exception e) {
+
+			return JsonResult.fail(e.getMessage());
+		}					
+	}
+	
+	
 	@RequestMapping(path="add")
 	public Object add(MemberInvite memberInvite) throws Exception {
 		try {
@@ -80,7 +96,7 @@ public class MemberInviteController {
 				groupMember.setGroupNo(memberInvite.getGroupNo());
 				groupMember.setNo(memberInvite.getMemberNo());
 				System.out.println(groupMember);
-				groupMemberService.insertGroupMember(groupMember);
+				groupMemberDao.insert(groupMember);
 
 			}
 			return JsonResult.success();

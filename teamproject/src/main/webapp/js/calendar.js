@@ -338,9 +338,6 @@ function ajaxMyScheduleList(no) {
 		var dataEndMapping = []
 		var template = Handlebars.compile($('#sideScheduleList').html())
 		for (var i in arr) {
-			
-			
-			
 			if (no == arr[i].groupNo) {				
 		        arrTest.push(arr[i]);
 		        if (arr[i].id == 2) {

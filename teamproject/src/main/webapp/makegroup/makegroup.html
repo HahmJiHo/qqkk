@@ -13,6 +13,7 @@
     <link href="../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/5.0.7/sweetalert2.min.css" />
+    
   <script>
   
   </script>
@@ -32,7 +33,7 @@
 		    <div class="my-info">
 		       <ul>
 		         <li class="my-profile">My 이미지</li> 
-		         <li><button class="btn btn-default" data-target="#layerpop" data-toggle="modal">그룹추가</button></li>
+		
 		       </ul>
 					 <div class="modal fade" id="layerpop" >
 	  				<div class="modal-dialog">
@@ -96,14 +97,23 @@
 	      </div>
 	    </div>
 	    </div>
-	    <div class="my-group">
-	     <ul id="member" class="member">
-	    <!--  
-	       <li><a href="makeSc.jsp"><i class="group-img"><img src="../images/profile.png"></i><span>그룹1</span></a></li>
-	       <li><a href="#"><i class="group-img"><img src="../images/profile.png"></i><span>그룹2</span></a></li>
-	       <li><a href="#"><i class="group-img"><img src="../images/profile.png"></i><span>그룹3</span></a></li>
-	      -->	     
-	     </ul>
+	    <div class="my-group">	    
+	     <div class="my-group-warp"> 
+	       <div class="add-group-box" data-target="#layerpop" data-toggle="modal" >
+	         <span class="plus-sign">
+	           <i class="fa fa-plus fa-2" aria-hidden="true" ></i>
+	         </span>
+	         <p>새로운 그룹 추가</p>
+	       </div>  
+		     <ul id="member" class="member">
+	    
+		    <!--  
+		       <li><a href="makeSc.jsp"><i class="group-img"><img src="../images/profile.png"></i><span>그룹1</span></a></li>
+		       <li><a href="#"><i class="group-img"><img src="../images/profile.png"></i><span>그룹2</span></a></li>
+		       <li><a href="#"><i class="group-img"><img src="../images/profile.png"></i><span>그룹3</span></a></li>
+		      -->	     
+		     </ul>
+	     </div>
 	    </div>
 	</section>
    <footer>
@@ -116,34 +126,60 @@
   -->
   <script id="liTemplateText" type="text/x-handlebars-template">
   <li class="groupList">
-    <ul>       
-       <li class="groupTitleLink" style="height: 200px; vertical-align:middle">
-          <a href="#" class="groupMore" data-no="{{groupNo}}" style="display:inline-block; height: 200px; vertical-align:middle">
+    <div class="group-list-box" style="border:2px solid #eee3f7; background:#fff; text-align:center ">
+      <ul>          
+        <li style="clear:both text-align:center;"><p class="group-name" 
+          style="text-align:center; border-bottom:1px solid #eee3f7; padding:5px 0; font-size:15px; ">{{groupName}}</p></li>
+        <li class="groupTitleLink" style="height: 200px; vertical-align:middle; text-align:left; padding: 20px 10px 10px 40px; float:left;">        
              <i class="group-img" style="display:block; vertical-align:middle; border:1px solid #red"> 
               {{#if gphoto}}
-                <img src="../upload/{{gphoto}}" style=" border-radius: 100px; vertical-align:middle  max-width:150px; max-height:150px;">
+                <img src="../upload/{{gphoto}}" style=" border-radius: 100px; vertical-align:middle; width:150px; height:150px;">
               {{else}}                            
-                  <img src="../images/profile.png" style=" border-radius: 100px; vertical-align:middle;">                
+                  <img src="../images/profile.png" style=" border-radius: 100px; vertical-align:middle; width:150px; height:150px;">                
               {{/if}}             
-              </i>         
-          </a>                 
-          <button class="addImage" type="button" class="btn btn-xs" style="position:absolute; float:right; z-index:1">이미지 변경</button>                   
-          <p class="group-name" style="display:block; text-align:center">{{groupName}}</p>
-        </li>      
-       
-        <li><button id="deleteBtn" class="btn btn-xs btn-default" data-no="{{no}}">x</btuuon></li>
-    </ul>
+              </i>                             
+        </li>   
+        <li style="float: left; clear:both;">인원 <span class="member-count"></span>명</li>
+        <li> <p class="ing-list">진행중인 일정</p>
+            <ul class="my-schedhule-List" data-no="{{groupNo}}">
+            
+            </ul>  
+        </li>           
+        <li style="clear:both; width:100%; border-top:1px solid #c7c5c5;">
+          <div style="width: 100%; padding-bottom:10px; text-align: center;">
+              <ul style="padding-top:10px; text-align:center;">
+                  <li style="display: inline-block; margin-right:5px;">
+                   <button class="glyphicon glyphicon-picture" type="button" data-no="{{groupNo}}"></button>               
+                 </li>
+                  <li style="display: inline-block; margin-right:5px;">
+                   <button class="addImage btn btn-xs btn-default" type="button" data-no="{{groupNo}}">이미지 변경</button>               
+                 </li>
+                  <li style="display: inline-block; margin-right:5px;>
+                    <button type="button" class="groupMore btn btn-xs btn-default" data-no="{{groupNo}}"> 바로가기  </button>
+                  </li>
+                   <li style="display: inline-block;">
+                    <button id="deleteBtn" class="btn btn-xs btn-default" data-no="{{groupNo}}">삭제</btuuon>               
+                 </li>               
+              </ul>
+         </div>            
+        </li>
+      </ul>
+    </div>
   </li>
+  </script>
+  <script id="myScheduleList" type="text/x-handlebars-template">    
+
+       <li class="ing-schedule">{{sc_title}}</li>
+       
   </script>
   <script id="groupImg" type="text/x-handlebars-template">
     <p>이미지를~등록해주세요</p>
   </script>
   <script src="../node_modules/handlebars/dist/handlebars.min.js"></script>
   <script src="../node_modules/jquery/dist/jquery.js"></script>   
-  <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-file-upload/9.13.0/js/vendor/jquery.ui.widget.js"></script>    
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-file-upload/9.13.0/js/jquery.fileupload.js"></script>   -->  
+  <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>  
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.51/jquery.form.min.js"></script>
+  <script src="https://use.fontawesome.com/bf4034f4dc.js"></script>
   <script type='text/javascript'  src="../js/include.js"></script>    
   <script type='text/javascript'  src="../js/main.js"></script>
   <script type="text/javascript" src="../js/common.js"></script>
@@ -153,12 +189,12 @@
   <script type="text/javascript" src="makegroupForm.js"></script>
   <script type="text/javascript" src="../memberInvite/memberInviteApp.js"></script>
   <script type="text/javascript" src="../memberInvite/memberInviteForm.js"></script>
+  <script type="text/javascript" src="../groupSchedule/groupScheduleApp.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/5.0.7/sweetalert2.min.js"></script>
   <script type="text/javascript">
- 
- 
   ajaxLoginUser()
   ajaxMemberGroupInviteList()
+ 
    /* ajaxStudyList() */
    if (location.search.startsWith("?")) {     
      $(".my-new").css("display","none")
@@ -172,3 +208,6 @@
   
 </body>
 </html>
+
+
+

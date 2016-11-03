@@ -5,11 +5,29 @@ $("#addBtn").click(function(e) {
 	}
 	/*ajaxAddGroup(makegroup)*/
 	ajaxAddGroupPhoto()
-	
-	 
-	
-	
 });
+$('body').on('click','.addImage', function(e) {
+	var no = $(this).attr('data-no');
+	$('#add-images-pop').modal();	
+	$('body').on('click', "#addImageBtn", function(e){
+		console.log(no)
+		var formData = new FormData();		
+		formData.append("no", no);
+		formData.append("file2", $("input[name=file2]")[0].files[0]);		
+		$.ajax({
+			url: serverAddr + '/upload/add.json',
+			processData: false,
+			contentType: false,
+			data: formData,
+			type: 'POST',
+			success: function(result){
+			}
+		});
+		window.location.reload();
+	})
+	
+})
+
 
 
 $("#color-btn").click(function(e) {  
@@ -119,9 +137,7 @@ function ajaxAddGroupPhoto() {
 		success: function(result){
 		}
 	});
-
+	window.location.reload();
 };
-
-
 
 

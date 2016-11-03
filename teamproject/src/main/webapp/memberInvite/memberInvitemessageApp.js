@@ -13,14 +13,22 @@ function ajaxGroupInviteListMessage() {
 		for (var i in arr) {
 			if (($("#userName").attr('data-value') == arr[i].memberNo) && (arr[i].status == false) && (arr[i].groupNo == arr[i].groupGroupNo)) {				 
 				inviteContents += template2(arr[i])
-				 
+				
 			 }		
 	    }
 		$('.alert-box').html(inviteContents) 
-		var inviteBox = $(".alert-box > .invite-box").length;  
+		if (inviteContents.length == 0) {
+			contents += "<div class='invite-box' style='display:none'>" +
+			"<p>초대된 그룹이 없습니다.</p>" +  
+			"</div>"
+			$('.alert-box').html(contents); 
+		}
+		var inviteBox = $(".alert-box > .invite-box > ul").length;  
 		if (inviteBox > 0) {
 			$(".alert-icon").show()
-		}
+		} 
+		
+		
 	})
 	
 }

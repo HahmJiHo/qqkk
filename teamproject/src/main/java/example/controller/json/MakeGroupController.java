@@ -50,10 +50,9 @@ public class MakeGroupController {
 			return JsonResult.fail(e.getMessage());
 		}					
 	}
-	/*@RequestMapping(value="add", produces="application/json")*/
-	@RequestMapping(path="add")
-	/*@ResponseBody*/
-	public Object add(/*@ModelAttribute*/ MakeGroup makeGroup,	
+	
+	@RequestMapping(path="add")	
+	public Object add(MakeGroup makeGroup,	
 			HttpSession session,
 			MultipartFile file1,
 			String uploadDir) throws Exception {
@@ -67,8 +66,8 @@ public class MakeGroupController {
 		makeGroupService.insertMakeGroup(makeGroup, file1, uploadDir);
 		try {			
 		
-
 			
+			System.out.println("1");	
 			MemberInvite memberInvite = new MemberInvite();
 			// 그룹 생성시 생성자 자동추가
 			memberInvite.setGroupNo(makeGroup.getNo());
@@ -101,10 +100,6 @@ public class MakeGroupController {
 			groupMember.setGroupNo(makeGroup.getNo());
 			groupMember.setNo(member.getNo());
 			groupMemberDao.insert(groupMember);		
-
-
-
-
 
 
 			return JsonResult.success();

@@ -6,10 +6,10 @@ function ajaxMemberInviteList() {
 			return
 		} 
 		var contents = ""
-		var waitContents = ""		
-		var arr = result.data
-		var template = Handlebars.compile($('#groupli').html())	
-		var no = location.search.split("=")[1];
+			var waitContents = ""		
+				var arr = result.data
+				var template = Handlebars.compile($('#groupli').html())	
+				var no = location.search.split("=")[1];
 		for (var i in arr) {					
 			if (location.search.startsWith("?")) {
 				if (arr[i].groupNo == no && arr[i].status == true) {					
@@ -23,8 +23,8 @@ function ajaxMemberInviteList() {
 					$(".group-member-waitlist").html(waitContents)
 				}
 			}			
-		 }
-		 	
+		}
+
 	})
 }
 
@@ -35,18 +35,27 @@ function ajaxMemberGroupInviteList() {
 			alert("서버에서 데이터를 가져오는데 실패 했습니다.ddd")
 			return
 		} 
+
 		var contents = ""
 		var inviteContents = ""
 		var arr = result.data
-	    var template = Handlebars.compile($('#liTemplateText').html())
+		var count = 0;
+		var template = Handlebars.compile($('#liTemplateText').html())
 		for (var i in arr) {
 			if ($("#userName").attr('data-value') == arr[i].memberNo && arr[i].status == true ) {															  
 				contents += template(arr[i])				
-			 } 			
-	    }		
-		$("#member").html(contents)			
-		$(".groupTitleLink > a").click(function (e) {
+			} 	
+		}
+		$("#member").html(contents)
+		
+			ajaxmyScheduleIng()
+		
+		
+		$(".groupMore").click(function (e) {
 			window.location.href = "../group/makeSc.html?no=" + $(this).attr("data-no")
 		}) 				
-	})	
+	})
+	
+
+	
 }

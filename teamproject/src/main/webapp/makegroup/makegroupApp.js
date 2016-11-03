@@ -23,7 +23,7 @@ function ajaxGroupList() {
 		})           
 	})
 }
-*/
+ */
 
 function ajaxGroupName() {
 	$.getJSON(serverAddr +"/group/list.json" , function(obj) {
@@ -33,19 +33,45 @@ function ajaxGroupName() {
 			return
 		} 
 		var contents = ""
-		var arr = result.data
-		var template = Handlebars.compile($('#groupNameTemplateText').html())
-			
-		for (var i in arr) {		
-			
-			if (location.search.startsWith("?")) {
-				var no = location.search.split("=")[1];
-				if (arr[i].no == no) {
-					contents += template(arr[i])
+			var arr = result.data
+			var template = Handlebars.compile($('#groupNameTemplateText').html())
+
+			for (var i in arr) {		
+
+				if (location.search.startsWith("?")) {
+					var no = location.search.split("=")[1];
+					if (arr[i].no == no) {
+						contents = template(arr[i])
+					}
 				}
+
 			}
-		 }
 		$(".make-text").append(contents)
 
 	})
 }
+function ajaxmyScheduleIng() {
+	$.getJSON(serverAddr +"/group/list.json" , function(obj) {
+		var result = obj.jsonResult
+		if (result.state != "success") {
+			alert("서버에서 데이터를 가져오는데 실패 했습니다.1111")
+			return
+		} 
+		var contents = "";
+		var arr = result.data;
+		var template = Handlebars.compile($('#myScheduleList').html());
+		$('.my-schedhule-List').each(function(i, e){			
+			for (var i in arr) {	
+				if (arr[i].no == $(this).attr('data-no')) {			
+					$(this).append(template(arr[i]))	
+				}
+			}
+				
+		});
+		
+		
+		
+
+	})
+}
+

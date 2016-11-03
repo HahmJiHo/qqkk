@@ -46,7 +46,6 @@ function ajaxAddMemberInvite(memberInvite) {
 function ajaxUpdateMemberInvite(memberInvite) {	
 	$.post(serverAddr +"/memberInvite/update.json", memberInvite, function(obj) {
 		var result = obj.jsonResult
-		console.log(result)
 		if (result.state != "success") {
 			alert("변경 실패입니다.-color")
 			return
