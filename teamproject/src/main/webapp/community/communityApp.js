@@ -26,7 +26,6 @@ $("#writeBtn").click(function (e) {
 function ajaxCommunityList() {
 	$.getJSON(serverAddr + "/community/list.json", function(obj) {
 		var result = obj.jsonResult
-		console.log(result)
 		if (result.state != "success") {
 	    	 alert("서버에서 데이터를 가져오는데 실패했습니다. 커뮤니티")
 	    	 return
@@ -57,6 +56,7 @@ function ajaxLoginUser() {
 	      
 	    $("#userName").text(resultUser.data.name);
 	    $("#userNo2").attr('data-value', resultUser.data.no);
+	    $("#userNo3").attr('data-value', resultUser.data.no);
     })
 }
 

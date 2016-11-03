@@ -1,3 +1,5 @@
+var resultUser = []
+
 $("#loginBtn").click(function(event) {
 	location.href = "../auth/authApp.html"
 });
@@ -12,8 +14,10 @@ $("#addBtn").click(function(event) {
 	  title: $("#title").val(),
 	  contents: $("#contents").val(),
 	  address: $("#pac-input").val()
+	 /* filename:$("#file1", $("input[name=file1]")[0].files[0]);*/
 	}
-	ajaxAddCommunity(community)
+  ajaxAddGroupPhoto()	
+
 });
 
 $("#updateBtn").click(function(event) {
@@ -33,39 +37,68 @@ $("#deleteBtn").click(function(event) {
 
 
 
-
 /*댓글 버튼*/
 
 $("#addCommentBtn").click(function(event) {
-	var community = {
-			commentUserNicName: $("#commentUserNicName").val(),
+	var communityComment = {
+			commentUserNo: $("#userNo3").attr('data-value'),
+			communityBoardNo:$("#no").val(),
 			comment: $("#comment").val(),
 			commentRegisterDate: $("#commentRegisterDate").val()
+
 	}
-	ajaxAddCommunity(community)
+	console.log(communityComment)
+	ajaxAddCommunityComment(communityComment)
 });
 
 $("#updateCommentBtn").click(function(event) {
-  var community = {
-			commentUserNicName: $("#commentUserNicName").val(),
-			comment: $("#comment").val(),
+  var communityComment = {
+		    commentUserNo: $("#userNo3").attr('data-value'),
+	        comment: $("#comment").val(),
 			commentRegisterDate: $("#commentRegisterDate").val(),
             commentNo: $("#commentNo").val()
   }
-  ajaxUpdateCommunity(community)
+  ajaxUpdateCommunityComment(communityComment)
 });
 
 $("#deleteCommentBtn").click(function(event) {
-  ajaxDeleteCommunity($("#commentNo").val())
+  ajaxDeleteCommunityComment($("#commentNo").val())
 });
 
 
 
+$(document.body).ready(function() {
+    $('.reAddLimit').on('keyup', function() {
+        if($(this).val().length > 50) {
+            alert("글자수는 50자 이내로 제한됩니다.!");  
+            $(this).val($(this).val().substring(0, 50));
+        }
+    });
+});
 
-$("#likeBtn").click(function(event) {
-  var count = 0;
-	  function button_onclick() {
-		  count++;
+
+$("#writeBtn").click(function (e) {
+	if (resultUser.data == null) {
+		alert("로그인하세요")
+		window.location.reload()
+	} else {
+		  var communityComment = {
+				    commentUserNo: $("#userNo3").attr('data-value'),
+			        comment: $("#comment").val(),
+					commentRegisterDate: $("#commentRegisterDate").val(),
+		            commentNo: $("#commentNo").val()
+		  }
+		  ajaxUpdateCommunityComment(communityComment)
+	}
+})	
+
+
+
+
+$("#LikeBtn").click(function(event) {
+	
+  var boardLike = {
+	    boardLike: $("#boardLike").val()
 	  }
  });
 
@@ -81,10 +114,12 @@ function ajaxAddCommunity(community) {
 		if (result.state != "success") {
 	    	 alert("등록 실패입니다.")
 	    	 return
-	    } 
-	    window.location.href = "communityApp.html"
+	    }
+	    window.location.href = "communityApp.html"	 	
 	}, "json")
 }
+
+
 
 function ajaxLoadCommunity(no) {
 	$.getJSON(serverAddr + "/community/detail.json?no=" + no, function(obj) {
@@ -101,13 +136,13 @@ function ajaxLoadCommunity(no) {
 		$("#pac-input").val(result.data.address);
 		$("#registerDate").text(result.data.registerDate2);
 		$("#viewCount").text(result.data.viewCount);
+		$("#boardLike").text(result.data.boardLike);
 	})
 }
 
 function ajaxUpdateCommunity(community) {
 	$.post(serverAddr + "/community/update.json", community, function(obj) {
 		var result = obj.jsonResult
-		console.log(result)
 		if (result.state != "success") {
 			alert("변경 실패입니다.")
 			return
@@ -118,7 +153,7 @@ function ajaxUpdateCommunity(community) {
 
 function ajaxDeleteCommunity() {
 	$.getJSON(serverAddr + "/community/delete.json", {
-		no: no,
+		commentNo: commentNo,
 	}, function(obj) {
 		var result = obj.jsonResult
 		if (result.state != "success") {
@@ -154,53 +189,116 @@ function ajaxDeleteCommunity() {
 
 
 
-function ajaxCommentCommunityList() {
+function ajaxCommentCommunityList(no) {
 	$.getJSON(serverAddr + "/communityComment/list.json", function(obj) {
-		var result = obj.jsonResult
-		if (result.state != "success") {
-	    	 alert("서버에서 데이터를 가져오는데 실패했습니다.")
-	    	 return
-	    }
-		
-		var contents = ""
-	    var arr = result.data
-	    if (location.search.startsWith("?")) { // 예) ?no=xxx
-	        var no = location.search.split("=")[1];
-	      
-        for (var i in arr) {
-          if (no == arr[i].commentNo) {
-        	contents += "<tr>" +
-          	"<td>" + arr[i].commentUserNicName + "</td>" + 
-            "<td>" + arr[i].comment + "</td>" +
-            "<td>" + arr[i].commentRegisterDate + "</td>" + 
-            "<td>" + arr[i].commentRegisterDate + "</td>" + 
-            ""
-            "</tr>"		
-        	}		
-        }
-	    }
-    
-	    $("#CommunityCommentTable tbody").html(contents)
-	   
-    })
-}  
-
-/*
-function ajaxCommentCommunityList2() {
-	$.getJSON(serverAddr + "/commnetCommunity/list.json", function(obj) {
 		var result = obj.jsonResult
 		console.log(result)
 		if (result.state != "success") {
-	    	 alert("서버에서 데이터를 가져오는데 실패했습니다.")
+	    	 alert("댓글: 서버에서 데이터를 가져오는데 실패했습니다.")
 	    	 return
-	    	 
 	    }
-	    var template = Handlebars.compile($('#tdTemplateText2').html())
-	    $("#CommunityCommentTable2 tbody").html(template(result))
+		
+		var template = Handlebars.compile($('#commentTemplateText').html())
+		var contents = ""
+	    var arr = result.data
+        for (var i in arr) {
+          if (no == arr[i].communityBoardNo) {
+        	contents += template(arr[i])
+        	}		
+          }
 	    
+	    $("#communityCommentTable").html(contents)
     })
+} 
+
+
+
+
+
+function ajaxAddCommunityComment(communityComment) {
+	$.post(serverAddr + "/communityComment/add.json", communityComment, function(obj) {
+		var result = obj.jsonResult
+		console.log(result)
+		if (result.state != "success") {
+	    	 alert("댓글: 등록 실패입니다.")
+	    	 return
+	  	   } 
+		
+		if (result.state == "success") {
+			 alert("등록 됐습니다.")
+		window.location.href = "communityApp.html"	 
+	    }
+	   
+
+	}, "json")
 }
-*/
+
+
+
+function ajaxLoadcommunityComment(no) {
+	$.getJSON(serverAddr + "/communityComment/detail.json?no=" + no, function(obj) {
+		var result = obj.jsonResult
+		if (result.state != "success") {
+			alert("댓글: 조회 실패입니다.")
+			return
+    	/*}
+		
+		$("#commentNo").val(result.data.commentNo);
+		$("#commentUserNo").val(result.data.commentUserNo);
+		$("#communityBoardNo").val(result.data.communityBoardNo);
+		$("#commentUserNicName").val(result.data.commentUserNicName);
+		$("#comment").val(result.data.comment);
+		$("#commentRegisterDate").text(result.data.commentRegisterDate2);
+		*/
+	    } else {
+	         $("#communityCommentTable div[data-no=" + no + "]").find("div:eq(4)").html(
+	         "<textarea cols='75' rows='2' class='update-contents reAddLimit' id='reUpdateLimit'></textarea>");
+	         
+	         $("#communityCommentTable div[data-no=" + no + "]").find("div:eq(7)").html(
+	         "<button type='button' class='bit-save-btn' data-no=" + no + ">저장</button>" +
+	         "<button type='button' class='bit-cancel-btn' data-no=" + no + ">취소</button>");
+	         
+	         $("#communityCommentTable div[data-no=" + no + "]").find(".update-contents").val(result.data.comment);
+	         
+	   }
+	})
+}
+
+
+function ajaxUpdateCommunityComment(communityComment) {
+	$.post(serverAddr + "/communityComment/update.json", communityComment, function(obj) {
+		var result = obj.jsonResult
+		console.log(result)
+		if (result.state != "success") {
+			alert("변경 실패입니다.")
+			return
+		} 
+		window.location.href = "community.html"
+	}, "json")
+}
+
+function ajaxDeleteCommunityComment() {
+	$.getJSON(serverAddr + "/communityComment/delete.json", {
+		no: no,
+	}, function(obj) {
+		var result = obj.jsonResult
+		if (result.state != "success") {
+			alert("삭제 실패입니다.")
+			return
+		}
+		location.href = "communityApp.html"
+	})
+}
+
+
+
+
+
+
+
+
+
+
 
 
 //_______________________________________________[로그인]기능_____________________________________________________//
@@ -208,16 +306,17 @@ function ajaxCommentCommunityList2() {
 
 function ajaxLoginUser() {
 	$.getJSON(serverAddr + "/auth/loginUser.json", function(obj) {
-		var result = obj.jsonResult
-	    if (result.state != "success") { // 로그아웃 상태일 경우 로그인 상태와 관련된 태그를 감춘다.
+		resultUser = obj.jsonResult
+	    if (resultUser.state != "success") { // 로그아웃 상태일 경우 로그인 상태와 관련된 태그를 감춘다.
 	         $('.my-login').css("display", "none")
 	         return
 	    }
 	      
 	    $('.my-logout').css("display", "none")
 	      
-	    $("#userName").text(result.data.name);
-	   
+	    $("#userName").text(resultUser.data.name);
+	    $("#userNo2").attr('data-value', resultUser.data.no);
+	    $("#userNo3").attr('data-value', resultUser.data.no);
     })
 }
 

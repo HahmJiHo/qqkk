@@ -24,7 +24,7 @@ public class CommunityController {
 	@RequestMapping(path="list")
 	public String list(
 			@RequestParam(defaultValue="1")int pageNo,
-			@RequestParam(defaultValue="5")int length,
+			@RequestParam(defaultValue="30")int length,
 			Model model) throws Exception {
 		List<Community> list = communityService.getCommunityList(pageNo, length);
 		model.addAttribute("list", list);			

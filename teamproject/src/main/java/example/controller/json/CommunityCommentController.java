@@ -2,14 +2,17 @@ package example.controller.json;
 
 import java.util.HashMap;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import example.dao.CommunityCommentDao;
-import example.vo.JsonResult;
 import example.vo.CommunityComment;
+import example.vo.JsonResult;
+import example.vo.Member;
 
 @Controller // 페이지 컨트롤러에 붙이는 애노테이션 
 @RequestMapping("/communityComment/") // 이 페이지의 컨트롤러의 기준 URL
@@ -20,7 +23,7 @@ public class CommunityCommentController {
 	@RequestMapping(path="list")
 	public Object list(
 			@RequestParam(defaultValue="1") int pageNo,
-			@RequestParam(defaultValue="30") int length) throws Exception {
+			@RequestParam(defaultValue="5") int length) throws Exception {
 
 		try {
 			HashMap<String,Object> map = new HashMap<>();
@@ -34,9 +37,12 @@ public class CommunityCommentController {
 	}
 
 	@RequestMapping(path="add")
-	public Object add(CommunityComment CommunityComment) throws Exception {
+	public Object add(CommunityComment CommunityComment, HttpSession session) throws Exception {
 		// 성공하든 실패하든 클라이언트에게 데이터를 보내야 한다.
 		try {
+    /*  Member member = (Member)session.getAttribute("member");
+      member.setNicknm(member.getNicknm());
+*/
 			communityCommentDao.insert(CommunityComment);
 			return JsonResult.success();
 
