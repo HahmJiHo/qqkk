@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="example.dao.AlbumDao">
+	<resultMap type="album" id="albumMap">
+	<!-- type 
+	 스프링 설정 에서 typeAliasesPackage 에 지정함 별명을 앞에 example.vo 으로 
+	 자동으로 만들어 주게 설정했다. 
+	 그래서 앞에 example.vo 를 빼도 된다.
+	 -->
+		<id column="ALNO" property="ALNO" /> <!--PK 는 ID 나머지는 result -->
+		<result column="GNO" property="groupNo" />
+		<result column="MNO" property="memberNo" />
+		<result column="GSNO" property="groupScheduleNo" />
+		<result column="sc_title" property="groupScheduleName"/>
+		<result column="gname" property="groupName" />
+		<result column="AL_PHOT" property="filename" />
+		<result column="CRE_DT" property="createdDate" />   
+	</resultMap>
+  
+ <insert id="insert" parameterType="album">
+    insert into hiba_g_al(mno, gno, gsno, AL_PHOT,CRE_DT)
+    values (#{memberNo}, #{groupNo}, #{groupScheduleNo},#{filename},now())
+  </insert>
+  <select id="selectList" resultMap="albumMap" parameterType="map">
+  select hiba_membs.mno, hiba_g_sc.gsno, hiba_g_membs.gno, hiba_group.gname, hiba_g_sc.sc_title from hiba_g_membs
+  inner join hiba_membs on hiba_g_membs.mno=hiba_membs.mno
+  inner join hiba_group on hiba_g_membs.gno=hiba_group.gno
+  inner join hiba_g_sc on hiba_g_membs.mno=hiba_g_sc.mno and hiba_g_membs.gno=hiba_g_sc.gno
+  </select>
+
+   <select id="selectOneByGroupNoScheduleNo" resultMap="albumMap" parameterType="map">
+ 	select gno, gsno from hiba_g_al
+    where  gno=#{groupNo} and gsno=#{groupScheduleNo}
+  </select> 
+
+ <select id="countAll" resultType="int">
+    select count(*)
+    from hiba_g_sc
+    </select>
+ <update id="update" parameterType="album">
+    update HIBA_G_AL set
+    AL_PHOT=#{filename}
+    where mno=#{memberNo} and gno=#{groupNo} and gsno=#{groupScheduleNo} and CRE_DT=#{createdDate}
+  </update>
+</mapper>
