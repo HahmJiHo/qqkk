@@ -16,7 +16,7 @@ $("#addBtn").click(function(event) {
 	  address: $("#pac-input").val()
 	 /* filename:$("#file1", $("input[name=file1]")[0].files[0]);*/
 	}
-  ajaxAddGroupPhoto()	
+	ajaxAddCommunity(community)	
 
 });
 
@@ -45,10 +45,9 @@ $("#addCommentBtn").click(function(event) {
 			communityBoardNo:$("#no").val(),
 			comment: $("#comment").val(),
 			commentRegisterDate: $("#commentRegisterDate").val()
-
 	}
-	console.log(communityComment)
 	ajaxAddCommunityComment(communityComment)
+
 });
 
 $("#updateCommentBtn").click(function(event) {
@@ -61,36 +60,38 @@ $("#updateCommentBtn").click(function(event) {
   ajaxUpdateCommunityComment(communityComment)
 });
 
-$("#deleteCommentBtn").click(function(event) {
+/*$("#deleteCommentBtn").click(function(event) {
   ajaxDeleteCommunityComment($("#commentNo").val())
+  ajaxDeleteCommunity($("#no").val())
+});
+*/
+
+$("#deleteCommentBtn").click(function(event) {
+   var no = {commentNo: $("#commentNo").attr('data-no'),}
+   ajaxDeleteCommunityComment(no)
+
+  
 });
 
 
 
-$(document.body).ready(function() {
-    $('.reAddLimit').on('keyup', function() {
-        if($(this).val().length > 50) {
-            alert("글자수는 50자 이내로 제한됩니다.!");  
-            $(this).val($(this).val().substring(0, 50));
-        }
-    });
-});
-
-
-$("#writeBtn").click(function (e) {
+/*$("#writeBtn").click(function (e) {
 	if (resultUser.data == null) {
 		alert("로그인하세요")
 		window.location.reload()
-	} else {
+	  } else {
 		  var communityComment = {
-				    commentUserNo: $("#userNo3").attr('data-value'),
-			        comment: $("#comment").val(),
-					commentRegisterDate: $("#commentRegisterDate").val(),
-		            commentNo: $("#commentNo").val()
-		  }
-		  ajaxUpdateCommunityComment(communityComment)
-	}
-})	
+					commentUserNo: $("#userNo3").attr('data-value'),
+					communityBoardNo:$("#no").val(),
+					comment: $("#comment").val(),
+					commentRegisterDate: $("#commentRegisterDate").val()
+
+			}
+	  ajaxAddCommunityComment(communityComment)
+	  }
+})*/	
+
+
 
 
 
@@ -151,9 +152,9 @@ function ajaxUpdateCommunity(community) {
 	}, "json")
 }
 
-function ajaxDeleteCommunity() {
+function ajaxDeleteCommunity(no) {
 	$.getJSON(serverAddr + "/community/delete.json", {
-		commentNo: commentNo,
+		no: no,
 	}, function(obj) {
 		var result = obj.jsonResult
 		if (result.state != "success") {
@@ -218,24 +219,18 @@ function ajaxCommentCommunityList(no) {
 function ajaxAddCommunityComment(communityComment) {
 	$.post(serverAddr + "/communityComment/add.json", communityComment, function(obj) {
 		var result = obj.jsonResult
+		var no = location.search.split("=")[1];
 		console.log(result)
 		if (result.state != "success") {
 	    	 alert("댓글: 등록 실패입니다.")
-	    	 return
 	  	   } 
-		
-		if (result.state == "success") {
-			 alert("등록 됐습니다.")
-		window.location.href = "communityApp.html"	 
-	    }
-	   
-
+		 ajaxCommentCommunityList(no)
 	}, "json")
 }
 
 
 
-function ajaxLoadcommunityComment(no) {
+function ajaxLoadCommunityComment(no) {
 	$.getJSON(serverAddr + "/communityComment/detail.json?no=" + no, function(obj) {
 		var result = obj.jsonResult
 		if (result.state != "success") {
@@ -268,12 +263,11 @@ function ajaxLoadcommunityComment(no) {
 function ajaxUpdateCommunityComment(communityComment) {
 	$.post(serverAddr + "/communityComment/update.json", communityComment, function(obj) {
 		var result = obj.jsonResult
-		console.log(result)
 		if (result.state != "success") {
-			alert("변경 실패입니다.")
+			alert("댓글: 변경 실패입니다.")
 			return
 		} 
-		window.location.href = "community.html"
+		window.location.href = "communityApp.html"
 	}, "json")
 }
 
@@ -283,7 +277,7 @@ function ajaxDeleteCommunityComment() {
 	}, function(obj) {
 		var result = obj.jsonResult
 		if (result.state != "success") {
-			alert("삭제 실패입니다.")
+			alert("댓글: 삭제 실패입니다.")
 			return
 		}
 		location.href = "communityApp.html"
@@ -306,17 +300,16 @@ function ajaxDeleteCommunityComment() {
 
 function ajaxLoginUser() {
 	$.getJSON(serverAddr + "/auth/loginUser.json", function(obj) {
-		resultUser = obj.jsonResult
-	    if (resultUser.state != "success") { // 로그아웃 상태일 경우 로그인 상태와 관련된 태그를 감춘다.
+		var result = obj.jsonResult
+	    if (result.state != "success") { // 로그아웃 상태일 경우 로그인 상태와 관련된 태그를 감춘다.
 	         $('.my-login').css("display", "none")
 	         return
 	    }
 	      
 	    $('.my-logout').css("display", "none")
 	      
-	    $("#userName").text(resultUser.data.name);
-	    $("#userNo2").attr('data-value', resultUser.data.no);
-	    $("#userNo3").attr('data-value', resultUser.data.no);
+	    $("#userName").text(result.data.name);
+	   
     })
 }
 
