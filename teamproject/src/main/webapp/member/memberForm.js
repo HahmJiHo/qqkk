@@ -1,12 +1,23 @@
-$("#addBtn").click(function(e) { 
-	var member = {
-			name : $("#name").val(),
-			nicknm : $("#nicknm").val(),
-			email : $("#email").val(),
-			password : $("#password").val()
-	}
-	ajaxAddMember(member)
+$('body').on('click', "#addBtn", function(e) { 
+	
+	var formData = new FormData();	
+	formData.append("name", $("#name").val());
+	formData.append("nicknm", $("#nicknm").val());
+	formData.append("email", $("#email").val());
+	formData.append("password", $("#password").val())
+	formData.append("file", $("input[name=filename]")[0].files[0]);
+
+	console.log("name= " + formData.get("name"));
+	console.log("nicknm= " + formData.get("nicknm"));
+	console.log("email= " + formData.get("email"));
+	console.log("password= " + formData.get("password"));
+	console.log("file= " + formData.get("file"));
+	
+	ajaxJoinMember(formData)
 });
+
+
+
 
 
 $("#updateBtn").click(function(e) {  
@@ -78,3 +89,39 @@ function ajaxDeleteMember(no, password) {
 		location.href = "memberApp.html"    		
 	})		
 }
+
+
+
+function ajaxJoinMember(formData) {
+	
+	console.log("name= " + formData.get("name"));
+	console.log("nicknm= " + formData.get("nicknm"));
+	console.log("email= " + formData.get("email"));
+	console.log("password= " + formData.get("password"));
+	console.log("file= " + formData.get("file"));
+	
+	console.log("formData Start");
+	
+	
+	$.ajax({
+		url: serverAddr + '/member/add.json',
+		data: formData,
+		processData: false,
+		contentType: false,
+		type: 'POST',
+		success: function(result){
+			alert("18");
+		}
+	});
+	window.location.reload(true);
+}
+
+
+
+
+
+
+
+
+
+

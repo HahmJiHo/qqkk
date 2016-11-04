@@ -188,7 +188,6 @@ h3{font-family: 'Coiny', cursive;}
 
 
 
-			<!-- JoIN Button Modal -->
 
 		<div id="id01" class="w3-modal">
 			<div class="w3-modal-content w3-card-8 w3-animate-zoom"	style="max-width: 600px">
@@ -200,7 +199,7 @@ h3{font-family: 'Coiny', cursive;}
 						alt="Avatar" style="width: 10%" class="w3 w3-margin-top">
 				</div>
 
-				<form class="w3-container" >
+				<!-- <form class="w3-container" >
 					<div class="w3-section">
 						
 							
@@ -213,12 +212,30 @@ h3{font-family: 'Coiny', cursive;}
 						<label><b>비밀번호</b></label> <input id="password" class="w3-input w3-border" type="password" placeholder="비밀번호 입력" name="psw" required> 
 						
 						<button id="addBtn" class="w3-btn-block w3-green w3-section w3-padding" type="button">가 입 하 기</button>
+						<label><b>비밀번호 확인</b></label> <input id="password" class="w3-input w3-border" type="password"	placeholder="비밀번호 확인" name="pswCheck" required>
+						<input class="w3-check w3-margin-top" type="checkbox" checked="checked"> Remember me
+					
+					</div>
+				</form> -->
+		<form class="w3-container"  method="post" enctype="multipart/form-data">
+					<div class="w3-section">
+						
+					<label><b>이름</b></label> <input id="name"	class="w3-input w3-border w3-margin-bottom" type="text" placeholder="이름 입력" name="usrId" required>
+							
+					<label><b>닉네임</b></label> <input id="nicknm" class="w3-input w3-border w3-margin-bottom" type="text" placeholder="닉네임 입력" name="usrName" required>
+						
+					<label><b>이메일</b></label> <input id="email" class="w3-input w3-border w3-margin-bottom" type="text"	placeholder="이메일 입력" name="email" required> 
+						
+					<label><b>비밀번호</b></label> <input id="password" class="w3-input w3-border" type="password" placeholder="비밀번호 입력" name="psw" required>
+						
+					<label for="file">사진 등록</label><br> 
+          <input type="file" name="filename" id="PHOT_PATH"/>
+					<button id="addBtn" class="w3-btn-block w3-green w3-section w3-padding" type="button">가 입 하 기</button>
 						<!-- <label><b>비밀번호 확인</b></label> <input id="password" class="w3-input w3-border" type="password"	placeholder="비밀번호 확인" name="pswCheck" required> -->
 						<input class="w3-check w3-margin-top" type="checkbox" checked="checked"> Remember me
 					
 					</div>
 				</form>
-
 
 		<div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
 					<button
@@ -352,7 +369,8 @@ h3{font-family: 'Coiny', cursive;}
  
 	<footer></footer> 
 	<script src="node_modules/jquery/dist/jquery.min.js"></script>
-	<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>		
+	<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.51/jquery.form.min.js"></script>		
 	<script src="js/main.js"></script>
 	<script src="js/carousel.js"></script>
 	<script type="text/javascript" src="js/common.js"></script>

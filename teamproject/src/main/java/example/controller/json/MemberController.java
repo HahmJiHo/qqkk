@@ -1,30 +1,27 @@
 package example.controller.json;
 
+import java.io.File;
 import java.util.HashMap;
-import java.util.List;
+
+import javax.servlet.ServletContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-
-import com.google.gson.Gson;
+import org.springframework.web.multipart.MultipartFile;
 
 import example.dao.MemberDao;
+import example.util.FileUploadUtil;
 import example.vo.JsonResult;
 import example.vo.Member;
 
 @Controller // 페이지 컨트롤러에 붙이는 애노테이션 
 @RequestMapping("/member/") // 이 페이지의 컨트롤러의 기준 URL
 public class MemberController {
-	@Autowired
-	MemberDao memberDao;
+	@Autowired MemberDao memberDao;
+	@Autowired ServletContext sc;
+	
 	
 	@RequestMapping(path="list")
 	public Object list(
@@ -44,26 +41,40 @@ public class MemberController {
 	}
 		
 	@RequestMapping(path="add")
-	public Object add(Member Member) throws Exception {
-		// 성공하든 실패하든 클라이언트에게 데이터를 보내야 한다.
+	public Object add(Member member,
+		MultipartFile file,
+		String uploadDir) throws Exception {
+		
+		System.out.println("member : " + member); 
+		System.out.println("file : " + file); 
+		uploadDir = sc.getRealPath("/upload") + "/";
 		try {
-			memberDao.insert(Member);
-			return JsonResult.success();
+			String newFilename = null;			
+	    if (file != null && !file.isEmpty()) {
+	      newFilename = FileUploadUtil.getNewFilename(file.getOriginalFilename());
+	      file.transferTo(new File(uploadDir + newFilename));
+	      member.setFilename(newFilename);
+	    }
+	    
+	    memberDao.insert(member);
+	    return JsonResult.success();
+	    
 		} catch (Exception e) {
-			
+	      
 			return JsonResult.fail(e.getMessage());
 		}						
 	}
+			
 	
 	@RequestMapping(path="detail")
 	public Object detail(int no) throws Exception{
 		
 		try {
-			Member member = memberDao.selectOne(no);
+			Member Member = memberDao.selectOne(no);
 			
-			if (member == null)
+			if (Member == null)
 				throw new Exception("해당 번호의 게시물이 존재하지 않습니다.");
-			return JsonResult.success(member);
+			return JsonResult.success(Member);
 			
 		} catch (Exception e) {
 			return JsonResult.fail(e.getMessage());
@@ -73,17 +84,17 @@ public class MemberController {
 	
 	
 	@RequestMapping(path="update")
-	public Object update(Member member) throws Exception{
+	public Object update(Member Member) throws Exception{
 
 		try {
 			HashMap<String,Object> paramMap = new HashMap<>();
-			paramMap.put("no", member.getNo());
-			paramMap.put("password", member.getPassword());
+			paramMap.put("no", Member.getNo());
+			paramMap.put("password", Member.getPassword());
 
 			if (memberDao.selectOneByPassword(paramMap) == null) {
 				throw new Exception("해당 게시물이 없거나 암호가 일치하지 않습니다.!");
 			}
-			memberDao.update(member);
+			memberDao.update(Member);
 			return JsonResult.success();
 		} catch (Exception e) {
 			
