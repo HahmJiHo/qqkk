@@ -21,7 +21,7 @@ import example.vo.Member;
 public class MemberController {
 	@Autowired MemberDao memberDao;
 	@Autowired ServletContext sc;
-	
+	 
 	
 	@RequestMapping(path="list")
 	public Object list(

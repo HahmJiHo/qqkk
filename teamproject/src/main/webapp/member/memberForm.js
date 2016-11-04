@@ -8,7 +8,7 @@ $('body').on('click', "#addBtn", function(e) {
 	formData.append("file", $("input[name=filename]")[0].files[0]);
 
 	console.log("name= " + formData.get("name"));
-	console.log("nicknm= " + formData.get("nicknm"));
+	console.log("nicknm= " + formData.get("nicknm")); 
 	console.log("email= " + formData.get("email"));
 	console.log("password= " + formData.get("password"));
 	console.log("file= " + formData.get("file"));
