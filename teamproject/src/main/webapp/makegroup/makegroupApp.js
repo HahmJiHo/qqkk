@@ -59,19 +59,28 @@ function ajaxmyScheduleIng() {
 		} 
 		var contents = "";
 		var arr = result.data;
+		function getFormatDate(date){
+			var year = date.getFullYear();                                 
+			var month = (1 + date.getMonth());                    
+			month = month >= 10 ? month : '0' + month;  
+			var day = date.getDate();                                       
+			day = day >= 10 ? day : '0' + day;                           
+			return  year + '-' + month + '-' + day;
+		}
+		var date = new Date();
+		date = getFormatDate(date);
+		
 		var template = Handlebars.compile($('#myScheduleList').html());
 		$('.my-schedhule-List').each(function(i, e){			
 			for (var i in arr) {	
 				if (arr[i].no == $(this).attr('data-no')) {			
-					$(this).append(template(arr[i]))	
+					if (arr[i].start > date) {
+						$(this).append(template(arr[i]))
+					}
 				}
 			}
 				
 		});
-		
-		
-		
-
 	})
 }
 

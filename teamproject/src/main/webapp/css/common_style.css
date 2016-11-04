@@ -33,11 +33,14 @@ body{ font-family:"arial", sans-serif; font-size:12px;}
 header { border-top:5px solid #9dc92a; background:#f2f2f2; color:#fff; height: 50px;}
 nav{  width: 100%; }
 .nav-warp { margin: 0 auto;  width: 1024px; }
-.nav-warp h1{ float: left; margin-right: 5px; font-size: 20px;  }
-.nav-warp h2{left; margin-right: 5px; font-size: 20px;background-image: url('../images/hiba_logo_main.png'); background-repeat: no-repeat; background-position: left top;
-             overflow: hidden; float: left; }
+.nav-warp h1{ float: left; margin-right: 5px; font-size: 20px; margin-top: 0px; margin-bottom: 0px; }
+.nav-warp h2{ margin-right: 5px; font-size: 20px; background-image: url('../images/hiba_logo_main.png'); 
+              background-repeat: no-repeat; background-position: left top;
+              overflow: hidden; float: left; }
 .nav-warp .nav li{ float: left; margin-right: 10px; font-size:16px; }
 .nav-warp .nav li a { color: #5b5b5b; }
+.aside-nav { float: right; }
+.aside-nav li { float: left;}
 .navbar { display: none; position: fixed; right:20px; top:10px; cursor: pointer; }
 .navbar i { display: block; width: 20px; height: 3px; background: #fff; margin:4px 0; }
 
@@ -66,15 +69,19 @@ footer { background: #404040; color: #c0c0c0; padding: 10px 0; clear: both;}
 .nav-warp .nav li a {color: #5b5b5b; }
 .mobile-add-caledar {display: none; }
 
-@media (min-width: 1080px) {	 
+
+
+@media (min-width: 1080px) {   
   .nav-warp li{ float: left; margin-right: 10px; font-size:14px;}
-  .nav-warp .nav { display:block !important; }
+  .aside-nav { margin-right: 70px; }
+  .nav-warp .nav { display: inline-block !important; }
   .nav-warp .nav li.logout { float: right; }
 }
 
 @media (min-width: 980px) and (max-width: 1080px) {
   .header-warp, .nav-warp, .section-wrap { width: auto; }
-  .nav-warp .nav { display:block !important; }
+  .aside-nav { margin-right: 70px; }
+  .nav-warp .nav { display:inline-block  !important; }
   .title-menu{ float: none; }
   .member-join { float: none; }
   .nav-warp .nav li.logout { float: right; }
@@ -84,6 +91,7 @@ footer { background: #404040; color: #c0c0c0; padding: 10px 0; clear: both;}
 @media (min-width: 768px) and (max-width: 979px) {
   .header-warp, .nav-warp, .section-wrap { width: auto; }
   .nav-warp .nav { display: none; position: absolute; width:100%; background: #111;}
+  .aside-nav { margin-right: 70px; }
   .nav-warp .nav li{ float: none; padding:14px; }
   .nav-warp .navbar { display: block; position: absolute; }
   .title-menu { float: none; }
@@ -93,6 +101,7 @@ footer { background: #404040; color: #c0c0c0; padding: 10px 0; clear: both;}
 
 @media (max-width: 768px) {
  .mobile-add-caledar { display: block; }
+  .aside-nav { margin-right: 70px; }
  .header-warp, .nav-warp, .section-wrap { width: auto; }
  .nav-warp .nav { display: none; position: absolute; width:100%; background: #111;}
  .nav-warp .nav { display: none; }
@@ -103,6 +112,7 @@ footer { background: #404040; color: #c0c0c0; padding: 10px 0; clear: both;}
 
 }
 @media (max-width: 500px) {
+	 .aside-nav { margin-right: 70px; }
   .mobile-add-caledar { display: block; }
 }
 

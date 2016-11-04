@@ -27,8 +27,7 @@ function ajaxGroupInviteListMessage() {
 		if (inviteBox > 0) {
 			$(".alert-icon").show()
 		} 
-		
-		
+
 	})
 	
 }

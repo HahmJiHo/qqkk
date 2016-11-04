@@ -13,12 +13,71 @@
     <link href="../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/5.0.7/sweetalert2.min.css" />
-    
-  <script>
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+
+  <style>
+  /* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {display:none;}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+  </style>
   
-  </script>
   </head>
-  
+    
 <body>
 	<header>
   
@@ -32,7 +91,8 @@
 		    </div>
 		    <div class="my-info">
 		       <ul>
-		         <li class="my-profile">My 이미지</li> 
+		        <li class="my-profile"><img src="" id="profilePhoto"/>My 이미지</li> 
+		         <li><button class="btn btn-default" data-target="#layerpop" data-toggle="modal">그룹추가</button></li> 
 		
 		       </ul>
 					 <div class="modal fade" id="layerpop" >
@@ -59,6 +119,8 @@
 										<form id="frm" action="/group/add" method="post" enctype="multipart/form-data">
 											<label for="groupName">그룹이름</label><br> 
                       <input id="groupName" type="text" name="groupName" placeholder="그룹명을 입력하세요."><br>
+                      <label for="groupText">그룹설명</label><br> 
+                      <input id="groupText" type="text" name="groupText" placeholder="그룹명을 입력하세요."><br>
 											<label for="file">그룹이미지</label><br> 
 											<input type="file" name="file1" />
 											 <button type="button" id="addBtn" class="btn btn-default" data-dismiss="modal">만들기</button>
@@ -106,7 +168,7 @@
 	         <p>새로운 그룹 추가</p>
 	       </div>  
 		     <ul id="member" class="member">
-	    
+	           
 		    <!--  
 		       <li><a href="makeSc.jsp"><i class="group-img"><img src="../images/profile.png"></i><span>그룹1</span></a></li>
 		       <li><a href="#"><i class="group-img"><img src="../images/profile.png"></i><span>그룹2</span></a></li>
@@ -125,45 +187,57 @@
   </script>
   -->
   <script id="liTemplateText" type="text/x-handlebars-template">
-  <li class="groupList">
-    <div class="group-list-box" style="border:2px solid #eee3f7; background:#fff; text-align:center ">
-      <ul>          
-        <li style="clear:both text-align:center;"><p class="group-name" 
-          style="text-align:center; border-bottom:1px solid #eee3f7; padding:5px 0; font-size:15px; ">{{groupName}}</p></li>
-        <li class="groupTitleLink" style="height: 200px; vertical-align:middle; text-align:left; padding: 20px 10px 10px 40px; float:left;">        
-             <i class="group-img" style="display:block; vertical-align:middle; border:1px solid #red"> 
+  <li class="groupList" style="float: left; margin:5px 12px; position: relative;">    
+      <div class="sw-box" style="position: relative; z-index: 1">    
+        <label class="switch"  style="position: absolute; left:5px; top:5px; ">
+        <input class="sw-btn" type="checkbox" >
+         <div class="slider round"></div>
+        </label>   
+    </div>
+    <div class="group-list-box list-article" style="background:#fff; text-align:center; position: relative; height: 300px;">
+      <ul>         
+        <li class="groupTitleLink" style="height: 200px; vertical-align:middle; text-align:left; padding-top: 20px ; display: block;">        
+           <a href="#" class="groupMore" data-no="{{groupNo}}">   
+             <i class="group-img" style="display:block; vertical-align:middle; text-align:center;"> 
               {{#if gphoto}}
                 <img src="../upload/{{gphoto}}" style=" border-radius: 100px; vertical-align:middle; width:150px; height:150px;">
               {{else}}                            
                   <img src="../images/profile.png" style=" border-radius: 100px; vertical-align:middle; width:150px; height:150px;">                
               {{/if}}             
-              </i>                             
+              </i>      
+            </a>                       
         </li>   
-        <li style="float: left; clear:both;">인원 <span class="member-count"></span>명</li>
-        <li> <p class="ing-list">진행중인 일정</p>
+        <li style="display: block; clear: both; text-align:center;"><p class="group-name" style="font-size:17px;">{{groupName}}<br>
+          <span style="font-size:12px;">인원 <span class="member-count" style="font-size:12px;"></span>명</span></p>
+        </li>
+        <li class="groupTextlist" style="border-top: 1px solid #888; padding:5px 0;">{{groupText}}</li>         
+      </ul>
+    </div>
+    <div class="list-more-box2 list-article" style="background:#fff; text-align:center; position: relative; display:none; height: 300px;">
+       <div style="text-align: left; padding: 40px 0 0 20px; "> 
+         <ul>
+          <li> 
+             <p class="ing-list" style="font-size:16px;">진행중인 일정</p>
             <ul class="my-schedhule-List" data-no="{{groupNo}}">
             
             </ul>  
-        </li>           
-        <li style="clear:both; width:100%; border-top:1px solid #c7c5c5;">
-          <div style="width: 100%; padding-bottom:10px; text-align: center;">
-              <ul style="padding-top:10px; text-align:center;">
-                  <li style="display: inline-block; margin-right:5px;">
-                   <button class="glyphicon glyphicon-picture" type="button" data-no="{{groupNo}}"></button>               
+            </li>
+          </ul>  
+       </div>         
+
+         <div class="list-more-box" style="position:absolute; width:100%; bottom:0px; border-top: 1px solid #888; padding:5px 0;">      
+              <ul style="">
+                 <li style="float:left; margin-right: 5px;">
+                   <p data-no="{{groupNo}}">갤러리</p>               
                  </li>
-                  <li style="display: inline-block; margin-right:5px;">
-                   <button class="addImage btn btn-xs btn-default" type="button" data-no="{{groupNo}}">이미지 변경</button>               
+                 <li style="float:left; margin-right: 5px;">
+                   <p class="addImage" data-no="{{groupNo}}">이미지 변경</p>               
                  </li>
-                  <li style="display: inline-block; margin-right:5px;>
-                    <button type="button" class="groupMore btn btn-xs btn-default" data-no="{{groupNo}}"> 바로가기  </button>
-                  </li>
-                   <li style="display: inline-block;">
+                  <li style="float:left; margin-right: 5px;">
                     <button id="deleteBtn" class="btn btn-xs btn-default" data-no="{{groupNo}}">삭제</btuuon>               
                  </li>               
               </ul>
-         </div>            
-        </li>
-      </ul>
+         </div>
     </div>
   </li>
   </script>
@@ -203,7 +277,9 @@
        $(".my-view").css("display","none")
    }
 
-  </script>  
+  </script>
+
+  
 </body>
 </html>
 
