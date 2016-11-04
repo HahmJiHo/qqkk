@@ -15,7 +15,7 @@
 <link rel="stylesheet" type="text/css" href="../css/MySchedule.css">
 <link rel="stylesheet"
 	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-	<link href="../js/jquery.bxslider.css" rel="stylesheet" />
+<link href="../js/jquery.bxslider.css" rel="stylesheet" />
 
 </head>
 <body>
@@ -60,6 +60,7 @@
 
 			<div id="schedule">
 				<div id="group-Info" data-value="">
+				
 					<div class="gallery">
 						<div class="gallery-item">
 							<div class="gallery-item-image">
@@ -70,14 +71,17 @@
 								<span>인원 24명 약속 5개</span>
 							</div>
 						</div>
-					</div>
+					
 				</div>
-				<div id="scheduleInfo">
+				</div>
+				<div id="scheduleInfo" >
 					<button id="btn-left" type="button" class="btn btn-default">
-						<span id="slider-prev"class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+						<span id="slider-prev" class="glyphicon glyphicon-chevron-left"
+							aria-hidden="true"></span>
 					</button>
 					<button id="btn-right" type="button" class="btn btn-default">
-						<span id="slider-next" class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+						<span id="slider-next" class="glyphicon glyphicon-chevron-right"
+							aria-hidden="true"></span>
 					</button>
 					<div id="schedule-Info" data-value="">
 						<ul class="bxslider">
@@ -103,24 +107,27 @@
 
 
 	<script id="divTemplateText" type="text/x-handlebars-template">
-				
+			<div id="group-Info" data-value="">
 				<div class="gallery">
 					<div class="gallery-item">
 						<div class="gallery-item-image">
 							<img src="../images/thumbnail.PNG" alt width="300" height="300">
 						</div>
 						<div class="gallery-item-description">
+					
 							<h3>{{groupName}}</h3>
+
 							<span>남은 스케줄 {{upcomCount}} / 총 스케줄 {{count}}</span>
 						</div>
 					</div>
 				</div>
+		
 </script>
 
-<!--  
+	<!--  
 	bxslider 쓰기 위해 핸들바스 코드 수정 
  -->
-<script id="div2TemplateText" type="text/x-handlebars-template">
+	<script id="div2TemplateText" type="text/x-handlebars-template">
 			 <li id="sc" data-no="">
 				<h1>{{title}}</h1>
 				<h3>{{placeName}}</h3><br>
