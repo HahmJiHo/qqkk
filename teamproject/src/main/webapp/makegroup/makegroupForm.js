@@ -127,6 +127,7 @@ function ajaxAddGroupPhoto() {
 	formData.append("memberNumber" , $("#userName").attr('data-value'));
 	formData.append("name" , $("#userName").text());
 	formData.append("groupName", $("input[name=groupName]").val());
+	formData.append("groupText", $("input[name=groupText]").val());
 	formData.append("file1", $("input[name=file1]")[0].files[0]);
 	$.ajax({
 		url: serverAddr + '/group/add.json',
@@ -140,4 +141,8 @@ function ajaxAddGroupPhoto() {
 	window.location.reload();
 };
 
+$('body').on('click', '.sw-btn', function(){
+	$(this).parents().children('.list-article').toggle();
+	/*$(this).nextAll(".list-more-bg").toggleClass('list-active')*/
+})
 
