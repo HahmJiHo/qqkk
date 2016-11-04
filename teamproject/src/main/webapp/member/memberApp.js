@@ -66,5 +66,7 @@ function ajaxLoginUser() {
 		$("#groupName").text(result.data.name)
 		$("#userName").attr('data-value', result.data.no)		
 		$("#userName").text(result.data.name)		
+		$("profilePhoto").attr("src", "../upload/" + result.data.filename)
+		
 	})
 }
