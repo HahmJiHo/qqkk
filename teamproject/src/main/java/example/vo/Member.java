@@ -7,12 +7,12 @@ public class Member implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	protected int no;
-	protected String color;
 	protected String name;
 	protected String nicknm;
 	protected String email;
 	protected transient String password;
-	public int getNo() {
+	protected String filename;
+	public int getNo() { 
 		return no;
 	}
 	public void setNo(int no) {
@@ -42,14 +42,19 @@ public class Member implements Serializable {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String getColor() {
-		return color;
+	public String getFilename() {
+		return filename;
 	}
-	public void setColor(String color) {
-		this.color = color;
+	public void setFilename(String filename) {
+		this.filename = filename;
+	}
+	@Override
+	public String toString() {
+		return "Member [no=" + no + ", name=" + name + ", nicknm=" + nicknm + ", email=" + email + ", filename=" + filename
+				+ "]";
 	}
 	
-
+	
 	
 	
 	
