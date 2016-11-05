@@ -16,12 +16,14 @@
 		<result column="EMAIL" property="email" />
 		<result column="MNAME" property="name" />
 		<result column="GPHOT" property="gphoto" />
-		<result column="sc_title" property="sc_title" />      
+		<result column="sc_title" property="sc_title" />    
+		<result column="GTEXT" property="groupText" />
+		<result column="ST_DT" property="start" />      
 	</resultMap>
 
 	<select id="selectList" resultMap="makeGroupMap" parameterType="map">
        
-     select  hiba_group.*, hiba_group_photo.* , hiba_g_sc.sc_title
+     select  hiba_group.*, hiba_group_photo.* , hiba_g_sc.sc_title, hiba_g_sc.st_dt
      from hiba_group
      inner join hiba_g_sc on hiba_g_sc.gno = hiba_group.gno
      left join hiba_group_photo on hiba_group.gno = hiba_group_photo.gno and hiba_group.mno = hiba_group_photo.mno;    
@@ -39,7 +41,7 @@ FROM hibadb.hiba_invit    hiba_invit
   </select>
 
   <select id="selectOne" parameterType="int" resultMap="makeGroupMap">
-    select gno, mno, gname
+    select gno, mno, gname, gtext
     from hiba_group
     where mno = #{no}
   </select>
@@ -50,11 +52,12 @@ FROM hibadb.hiba_invit    hiba_invit
     insert into hiba_group(mno, gname, gphot)
     values (#{memberNo}, #{groupName}, gphot(#{groupPhoto}))
   -->
-    insert into hiba_group(mno, email, mname, gname)
+    insert into hiba_group(mno, email, mname, gname, gtext)
     select mno,
           #{email}, 
           #{name},  
-          #{groupName} 
+          #{groupName},
+          #{groupText}
     from hiba_membs
     where email=#{email}      
   </insert>
