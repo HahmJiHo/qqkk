@@ -52,12 +52,9 @@
 <script src='../js/moment.min.js'></script>
 <script src='../js/fullcalendar.min.js' charset="UTF-8"></script>
 <script src='../js/ko.js'></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-<script
-	src="http://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/a549aa8780dbda16f6cff545aeabc3d71073911e/src/js/bootstrap-datetimepicker.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="http://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/a549aa8780dbda16f6cff545aeabc3d71073911e/src/js/bootstrap-datetimepicker.js"></script>	
 </head>
 <style>
 #calendar {
@@ -76,61 +73,57 @@
 ​
 </style>
 <body>
-	<header> </header>
+<header>
+	
+	</header>
 	<section>
 		<div class="section-wrap">
 			<div class="selectbar-left">
 
-				<div class="my-info">
-					<ul>
-						<li class="my-profile"></li>
-						<li><a href='#' id="loginBtn"
-							class="btn btn-xs btn-success my-logout">로그인</a></li>
-						<li><a href='#' id="logoutBtn"
-							class="btn btn-xs btn-success my-login">로그 아웃</a></li>
-					</ul>
-				</div>
+			<div class="my-info">
+           		<ul>
+             		<li class="my-profile"></li>     
+             		<li><a href='#' id="loginBtn" class="btn btn-xs btn-success my-logout">로그인</a></li> 
+      				<li><a href='#' id="logoutBtn" class="btn btn-xs btn-success my-login">로그 아웃</a></li> 	                          
+          		 </ul>  
+        		</div>
 				<form class="navbar-form navbar-left" role="search">
 					<div class="form-group">
 						<input type="text" class="form-control" placeholder="Search">
-						<button type="button" class="btn btn-default">
-							<i class="fa fa-search w3-xlarge"></i>
-						</button>
-						<button type="button" class="btn btn-default"
-							onclick="location.href='MySchedule.html'">
-							<i class="fa fa-bars w3-xlarge" aria-hidden="true"></i>
-						</button>
-						<button type="button" class="btn btn-default"
-							onclick="location.href='checkMySchedule.html'">
-							<i class="fa fa-calendar w3-xlarge" aria-hidden="true"></i>
-						</button>
+					<button type="button" class="btn btn-default"><i class="fa fa-search w3-xlarge"></i></button>
+					<button type="button" class="btn btn-default"
+					onclick="location.href='MySchedule.html'"><i class="fa fa-bars w3-xlarge" aria-hidden="true"></i></button>
+					<button type="button" class="btn btn-default"
+					onclick="location.href='checkMySchedule.html'"><i class="fa fa-calendar w3-xlarge" aria-hidden="true"></i></button>
 					</div>
-
+			
 				</form>
 				<div class="sectionbar-line">
 					<hr align=center width=100%>
 				</div>
 			</div>
-
+			
 			<div id="schedule-cal">
-				<nav class="w3-sidenav w3-collapse w3-white w3-animate-left"
-					style="z-index: 3; width: 170px; height: 676px;" id="mySidenav">
-					<br>
-					<div class="w3-container">
-						<a href="#" onclick="w3_close()"
-							class="w3-hide-large w3-right w3-jumbo w3-padding"
-							title="close menu"> <i class="fa fa-remove"></i>
-						</a>
-						<h5 class="w3-padding-0">
-							<b><span id="user" class="my-login" data-value=""></span>님의
-								캘린더</b>
-						</h5>
-					</div>
-					<img src="../images/sangwon.jpg" style="width: 50%;"
-						class="w3-round"><br> <br> <a
-						id="whole-grpSchedule" href="#" class="w3-padding">전체 일정 보기</a>
-					<div id="groupName"></div>
-				</nav>
+			<nav class="w3-sidenav w3-collapse w3-white w3-animate-left"
+				style="z-index: 3; width: 170px; height: 676px;" id="mySidenav">
+				<br>
+				<div class="w3-container">
+					<a href="#" onclick="w3_close()"
+						class="w3-hide-large w3-right w3-jumbo w3-padding"
+						title="close menu"> <i class="fa fa-remove"></i>
+					</a>
+					<h5 class="w3-padding-0">
+						<b><span id="user" class="my-login" data-value=""></span>님의 캘린더</b>
+					</h5>
+				</div>
+						<img src="../images/sangwon.jpg" style="width: 50%;"
+							class="w3-round"><br>
+				<br>
+				
+				<a id="whole-grpSchedule" href="#" class="w3-padding">전체 일정 보기</a>
+				<div id="groupName">
+				</div>
+			</nav>
 			</div>
 
 			<div id='calendar'></div>
@@ -149,28 +142,25 @@
 							<p class="modal-place"></p>
 							<p class="modal-description"></p>
 							<div id="modal-weather">
-								<h4>날씨</h4>
-								<div id="weather-wrap">
-									<div class="wrap-dayweather">
-										<div class="weather-city"></div>
-										<div class="weather-img"></div>
-										<div class="weather-temperature-mx"></div>
-										<div class="weather-temperature-mn"></div>
-										<div class="weather-state"></div>
-									</div>
-								</div>
+								<div class="humidity">습도: </div>
+								<div class="precipitation">강수량: </div>
+								<div class="sky">날씨: </div>
+								<div class="temperature-tc">현재온도: </div>
+								<div class="temperature-tmax">최고온도: </div>
+								<div class="temperature-tmin">최저온도: </div>
+								<div class="timeObservation"></div>
 							</div>
 						</div>
 						<div id="modalBody" class="modal-body">
-							<div style="margin-top: 5px;">
-								<h4 class="detail-sc-day">장소</h4>
-								<div id="google_map" style="width: 100%; height: 450px;"></div>
-							</div>
+							<div style="margin-top:5px;">
+                    <h4 class="detail-sc-day">장소</h4>
+							     <div id="google_map"style="width:100%; height:450px;"></div>
+							    </div>	
 						</div>
 						<div class="modal-footer">
 							<button id="detailBtn" type="button" class="btn btn-default">상세정보</button>
 							<button type="button" class="btn btn-default"
-								onclick="location.href=''">앨범</button>
+									onclick="location.href=''">앨범</button>
 							<button type="button" class="btn btn-default"
 								data-dismiss="modal">닫기</button>
 						</div>
@@ -186,157 +176,157 @@
 
 
 	</section>
-	<footer> </footer>
+	<footer>
+	
+	</footer>
 	<script id="divTemplateText" type="text/x-handlebars-template">
-		<input id="groupList" type="checkbox" href="#" class="w3-padding" value="{{groupscNo}}">{{groupName}}</a><br>
+		<input id="groupList" type="checkbox" href="#" class="w3-padding" value="{{groupscNo}}" data-value="{{groupNo}}">{{groupName}}</a><br>
 		<!--<a id="groupNo" href="#" class="w3-padding" data-value="{{groupscNo}}">{{groupName}}</a>-->
 	</script>
+	
+
+<script src="../node_modules/handlebars/dist/handlebars.min.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>	
+<script type="text/javascript" src="../js/bit.js"></script>    
+<script type="text/javascript" src="../member/memberApp.js"></script>
+<script type='text/javascript' src="../js/include.js"></script>
+<!-- <script type='text/javascript' src='../js/cal_custom.js'></script> -->
+<script type='text/javascript' src="../js/main.js"></script>
+<script type='text/javascript' src="checkmyschedule.js"></script>
+	
+<script>
+ajaxLoginUser()
+ajaxMyScheduleList()
+ajaxEventLocationList()
+
+if (location.search.startsWith("?")) {
+  var no = location.search.split("=")[0];
+  ajaxMyScheduleList(no)
+  $(".my-new").css("display","none")
+ 
+} else {
+    $(".my-view").css("display","none")
+}
 
 
-	<script src="../node_modules/handlebars/dist/handlebars.min.js"></script>
-	<script type="text/javascript" src="../js/common.js"></script>
-	<script type="text/javascript" src="../js/bit.js"></script>
-	<script type="text/javascript" src="../member/memberApp.js"></script>
-	<script type='text/javascript' src="../js/include.js"></script>
-	<!-- <script type='text/javascript' src='../js/cal_custom.js'></script> -->
-	<script type='text/javascript' src="../js/main.js"></script>
-	<script type='text/javascript' src="checkmyschedule.js"></script>
+window.initMap = function() {
+	   var map = new google.maps.Map(document.getElementById('map'), {
+	     center: {lat: -33.8688, lng: 151.2195},
+	     zoom: 16,
+	     mapTypeId: google.maps.MapTypeId.ROADMAP
+	   });
+	 
+	   // Create the search box and link it to the UI element.
+	   var input = document.getElementById('pac-input');
+	   var searchBox = new google.maps.places.SearchBox(input);
+	   map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+	 
+	   // Bias the SearchBox results towards current map's viewport.
+	   map.addListener('bounds_changed', function() {
+	     searchBox.setBounds(map.getBounds());
+	   });
+	 
+	   var markers = [];
+	   // [START region_getplaces]
+	   // Listen for the event fired when the user selects a prediction and retrieve
+	   // more details for that place.
+	   searchBox.addListener('places_changed', function() {
+	     var places = searchBox.getPlaces();
+	 
+	     if (places.length == 0) {
+	       return;
+	     }
+	 
+	     // Clear out the old markers.
+	     markers.forEach(function(marker) {
+	       marker.setMap(null);
+	     });
+	     markers = [];
+	 
+	     // For each place, get the icon, name and location.
+	     var bounds = new google.maps.LatLngBounds();
+	     places.forEach(function(place) {
+	       var icon = {
+	         url: place.icon,
+	         size: new google.maps.Size(71, 71),
+	         origin: new google.maps.Point(0, 0),
+	         anchor: new google.maps.Point(17, 34),
+	         scaledSize: new google.maps.Size(25, 25)
+	       };
+	 
+	       // Create a marker for each place.
+	       markers.push(new google.maps.Marker({
+	         map: map,
+	         icon: icon,
+	         title: place.name,
+	         position: place.geometry.location
+	       }));
+	 
+	       if (place.geometry.viewport) {
+	         // Only geocodes have viewport.
+	         bounds.union(place.geometry.viewport);
+	       } else {
+	         bounds.extend(place.geometry.location);
+	       }
+	     });
+	     map.fitBounds(bounds);
+	   });
+	   // [END region_getplaces]
+	 }
 
-	<script>
-		ajaxLoginUser()
-		ajaxMyScheduleList()
-		ajaxEventLocationList()
 
-		if (location.search.startsWith("?")) {
-			var no = location.search.split("=")[0];
-			ajaxMyScheduleList(no)
-			$(".my-new").css("display", "none")
-
-		} else {
-			$(".my-view").css("display", "none")
-		}
-
-		window.initMap = function() {
-			var map = new google.maps.Map(document.getElementById('map'), {
-				center : {
-					lat : -33.8688,
-					lng : 151.2195
-				},
-				zoom : 16,
-				mapTypeId : google.maps.MapTypeId.ROADMAP
-			});
-
-			// Create the search box and link it to the UI element.
-			var input = document.getElementById('pac-input');
-			var searchBox = new google.maps.places.SearchBox(input);
-			map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-
-			// Bias the SearchBox results towards current map's viewport.
-			map.addListener('bounds_changed', function() {
-				searchBox.setBounds(map.getBounds());
-			});
-
-			var markers = [];
-			// [START region_getplaces]
-			// Listen for the event fired when the user selects a prediction and retrieve
-			// more details for that place.
-			searchBox.addListener('places_changed', function() {
-				var places = searchBox.getPlaces();
-
-				if (places.length == 0) {
-					return;
-				}
-
-				// Clear out the old markers.
-				markers.forEach(function(marker) {
-					marker.setMap(null);
-				});
-				markers = [];
-
-				// For each place, get the icon, name and location.
-				var bounds = new google.maps.LatLngBounds();
-				places.forEach(function(place) {
-					var icon = {
-						url : place.icon,
-						size : new google.maps.Size(71, 71),
-						origin : new google.maps.Point(0, 0),
-						anchor : new google.maps.Point(17, 34),
-						scaledSize : new google.maps.Size(25, 25)
-					};
-
-					// Create a marker for each place.
-					markers.push(new google.maps.Marker({
-						map : map,
-						icon : icon,
-						title : place.name,
-						position : place.geometry.location
-					}));
-
-					if (place.geometry.viewport) {
-						// Only geocodes have viewport.
-						bounds.union(place.geometry.viewport);
-					} else {
-						bounds.extend(place.geometry.location);
-					}
-				});
-				map.fitBounds(bounds);
-			});
-			// [END region_getplaces]
-		}
 	</script>
-	<script type="text/javascript"
-		src="http://maps.google.com/maps/api/js?key=AIzaSyAft7ukIrCdQPQYU4aXTBySOqsjQthqMNE&libraries=places&callback=initMap"
-		async defer></script>
+	<script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyAft7ukIrCdQPQYU4aXTBySOqsjQthqMNE&libraries=places&callback=initMap" async defer></script>
 	<script>
-		/*
-		$("#calendarModal").click(function() {
-		$.getJSON(serverAddr + '/myschedule/listWeather.json', function(obj){
-			var result = obj.jsonResult
-			if (result.state != "success") {
-				alert("서버에서 데이터를 가져오는데 실패했습니다.")
-				return
-			}
-			var lon = ""
-			var lat = ""
-			var arr = result.data
-			console.log(arr)
-			for (var i in arr) {
-				if ()
-				lat += arr[i].lat
-				lon += arr[i].lon
-			}
-			console.log(lat)
-			console.log(lon)
-			
-		})
-		});
+	/*
+	$("#calendarModal").click(function() {
+	$.getJSON(serverAddr + '/myschedule/listWeather.json', function(obj){
+		var result = obj.jsonResult
+		if (result.state != "success") {
+			alert("서버에서 데이터를 가져오는데 실패했습니다.")
+			return
+		}
+		var lon = ""
+		var lat = ""
+		var arr = result.data
+		console.log(arr)
+		for (var i in arr) {
+			if ()
+			lat += arr[i].lat
+			lon += arr[i].lon
+		}
+		console.log(lat)
+		console.log(lon)
 		
-		
-		$("#calendarModal").click(function() {
-			$.getJSON(skPlanetWeather + {
-				"lon": lon,
-				"lat": lat,
-				"version": "1",
-				"appKey": "6e62a500-8f2f-36d6-ac6d-2fcc4b4a5a23"
-			}, function(data) {
-				var arr = data.result
-				if (arr.message != "성공") {
-						alert("서버에서 데이터를 가져오는데 실패했습니다.")
-						return
-					
-				}
-				console.log(arr) 
-				for (var i in arr) {
-					if (arr[i] == "weather") 
-						contents += arr[i]
-				}
+	})
+});
+	
+	
+	$("#calendarModal").click(function() {
+		$.getJSON(skPlanetWeather + {
+			"lon": lon,
+			"lat": lat,
+			"version": "1",
+			"appKey": "6e62a500-8f2f-36d6-ac6d-2fcc4b4a5a23"
+		}, function(data) {
+			var arr = data.result
+			if (arr.message != "성공") {
+					alert("서버에서 데이터를 가져오는데 실패했습니다.")
+					return
 				
-				$(".modal-weather").html(contents)
-			})
-		});
-		 */
+			}
+			console.log(arr) 
+			for (var i in arr) {
+				if (arr[i] == "weather") 
+					contents += arr[i]
+			}
+			
+			$(".modal-weather").html(contents)
+		})
+	});
+	*/
 	</script>
-
-
+	
+	
 </body>
 </html>

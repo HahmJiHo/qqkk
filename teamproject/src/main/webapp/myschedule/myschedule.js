@@ -5,6 +5,18 @@ $("#loginBtn").click(function(event) {
 $("#logoutBtn").click(function(event) {
    location.href = "../index.html"
 });
+function loadBxSlider(num) {
+	var bx = "#bxslider" + num;
+	console.log(bx)
+	$(bx).bxSlider({
+		//nextSelector: '#slider-next'+num,
+		//prevSelector: '#slider-prev'+num,
+		mode:'horizontal',
+		speed:1000,
+		slideMargin:100,
+		captions: true
+	})
+}
 
 function computeDday(start) {
    var now = new Date();
@@ -97,7 +109,7 @@ function ajaxMygroupList() {
       /* 2016.11.01 내일부터 아래 코딩하기*/
       var contents = "";
       var contents2 = "";
-      var tempContents = [];
+      var tempContents = new Array();
       var template = Handlebars.compile($('#divTemplateText').html())
       var template2 = Handlebars.compile($('#div2TemplateText').html())
       var mygroupArr = [];
@@ -128,25 +140,20 @@ function ajaxMygroupList() {
          //console.log(contents)
          for (var j in mygroupArr) {
             if (newArr[i].groupNo == mygroupArr[j].groupNo) {
+            	console.log(mygroupArr[j]);
                tempContents[i] += template2(mygroupArr[j])
             } 
          }
       }
       console.log(tempContents);
       for(var i in tempContents) {
-    	  contents2 += "<ul class='bxslider" + i + "'>" + tempContents[i] + "</ul>";
+    	  contents2 += "<ul id='bxslider" + i + "'>" + tempContents[i] + "</ul>";
       }
       console.log("t2" + contents2)
       $("#schedule-Info").html(contents2);
+      
       for(var i in tempContents) {
-    	  $(".bxslider" + i).bxSlider({
-    		  //nextSelector: '#slider-next',
-    		  //prevSelector: '#slider-prev',
-    		  mode:'horizontal',
-    		  speed:1000,
-    		  slideMargin:100,
-    		  captions: true
-    	  })
+    	  loadBxSlider(i);
       }
 
       
