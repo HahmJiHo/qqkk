@@ -20,7 +20,7 @@ function ajaxLogin(user) {
 				alert("로그인 실패 입니다.\n 이메일 또는 암호를 확인하세요.")       
 				return
 			} 
-			window.location.href = serverAddr + "/myschedule/MySchedule.html"		
+			window.location.href = serverAddr + "/makegroup/makegroup.html"		
 		},
 		error : function(msg) {
 			alert(msg)
