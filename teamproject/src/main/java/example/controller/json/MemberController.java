@@ -2,12 +2,15 @@ package example.controller.json;
 
 import java.io.File;
 import java.util.HashMap;
+
 import javax.servlet.ServletContext;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+
 import example.dao.MemberDao;
 import example.util.FileUploadUtil;
 import example.vo.JsonResult;
@@ -18,7 +21,7 @@ import example.vo.Member;
 public class MemberController {
 	@Autowired MemberDao memberDao;
 	@Autowired ServletContext sc;
-	 
+	
 	
 	@RequestMapping(path="list")
 	public Object list(
@@ -118,6 +121,8 @@ public class MemberController {
 			return JsonResult.fail(e.getMessage());
 		}					
 	}
+	
+	
 	
 	
 }

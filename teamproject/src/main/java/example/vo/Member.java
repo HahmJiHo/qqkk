@@ -12,7 +12,9 @@ public class Member implements Serializable {
 	protected String email;
 	protected transient String password;
 	protected String filename;
-	public int getNo() { 
+	
+	
+	public int getNo() {
 		return no;
 	}
 	public void setNo(int no) {
@@ -48,15 +50,5 @@ public class Member implements Serializable {
 	public void setFilename(String filename) {
 		this.filename = filename;
 	}
-	@Override
-	public String toString() {
-		return "Member [no=" + no + ", name=" + name + ", nicknm=" + nicknm + ", email=" + email + ", filename=" + filename
-				+ "]";
-	}
-	
-	
-	
-	
-	
 	
 }

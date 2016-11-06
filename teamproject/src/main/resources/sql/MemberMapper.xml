@@ -10,12 +10,16 @@
 	 그래서 앞에 example.vo 를 빼도 된다.
 	 -->
 		<id column="MNO" property="no" /> <!--PK 는 ID 나머지는 result -->
+		<result column="EMAIL" property="email" />
 		<result column="PWD" property="password" />
+		<result column="NICKNM" property="nicknm" />
+		<result column="NAME" property="name" />
+		<result column="PHOT_PATH" property="filename"/>
 		   
 	</resultMap>
 
 	<select id="selectList" resultMap="memberMap" parameterType="map">
-    select mno, name, nicknm, email
+    select mno, name, nicknm, email, PHOT_PATH
     from hiba_membs
   
     limit #{startIndex}, #{length}
@@ -23,28 +27,27 @@
 
   <select id="selectOne" parameterType="int" resultMap="memberMap">
     select mno,
-    name, nicknm, email
+    name, nicknm, email, PHOT_PATH
     from hiba_membs
     where mno = #{value}
   </select>
 
   <select id="selectOneByPassword" resultMap="memberMap" parameterType="map">
-    select mno, name, nicknm, email
+    select mno, name, nicknm, email, PHOT_PATH
     from hiba_membs 
     where mno=#{no} and pwd=password(#{password})
   </select>
   
    <select id="selectOneByEmailAndPassword" resultMap="memberMap" parameterType="map">
-    select mno, name, nicknm, email
+    select mno, name, nicknm, email ,PHOT_PATH
     from hiba_membs 
     where EMAIL=#{email} and PWD=password(#{password})
   </select>
   
   
-  <insert id="insert" parameterType="member" useGeneratedKeys="true" keyColumn="mno" keyProperty="no">
-    insert into hiba_membs(name,
-    nicknm,  email, pwd)
-    values (#{name}, #{nicknm}, #{email}, password(#{password}))
+  <insert id="insert" parameterType="member">
+    insert into hiba_membs(name, nicknm, email, pwd, PHOT_PATH)
+    values (#{name}, #{nicknm}, #{email}, password(#{password}), #{filename})
   </insert>
 
   <update id="update" parameterType="member">
