@@ -203,14 +203,15 @@
 	<script type="text/javascript" src="detailInfo.js"></script>
 	<script>
 ajaxLoginUser()
+ajaxTourAreaCode();
 //ajaxEventLocationList()
 //ajaxgetAreaCode()
 
 if (location.search.startsWith("?")) { // 예) ?no=xxx
 	  var no = location.search.split("=")[1];
 	  ajaxMyScheduleLoad(no)
-	  ajaxEventLocationList(no)
-	  //ajaxMidTermWeather()
+// 	  ajaxEventLocationList(no)
+ 	  //ajaxMidTermWeather()
 	  $(".my-new").css("display", "none")
 } else {
 	$(".my-view").css("display", "none")
