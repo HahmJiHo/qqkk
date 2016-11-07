@@ -139,7 +139,9 @@
 					<div id="weather-wrap">
 						<div class="wrap-dayweather">
 							<div class="weather-city"></div>
-							<div class="weather-img"></div>
+							<div class="weather-img">
+								<img src="">
+								</div>
 							<div class="weather-temperature-mx"></div>
 							<div class="weather-temperature-mn"></div>
 							<div class="weather-state"></div>
@@ -203,15 +205,14 @@
 	<script type="text/javascript" src="detailInfo.js"></script>
 	<script>
 ajaxLoginUser()
-ajaxTourAreaCode();
 //ajaxEventLocationList()
 //ajaxgetAreaCode()
 
 if (location.search.startsWith("?")) { // 예) ?no=xxx
 	  var no = location.search.split("=")[1];
 	  ajaxMyScheduleLoad(no)
-// 	  ajaxEventLocationList(no)
- 	  //ajaxMidTermWeather()
+	  ajaxEventLocationList(no)
+	  //ajaxMidTermWeather()
 	  $(".my-new").css("display", "none")
 } else {
 	$(".my-view").css("display", "none")
