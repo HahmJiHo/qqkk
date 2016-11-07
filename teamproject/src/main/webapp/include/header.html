@@ -1,42 +1,63 @@
+
 <script>
 $(function () {
     $('[data-toggle="tooltip"]').tooltip()
   })
 </script>
 
-<!-- 파미콘 S-->  
-<link href="favicon.icon" rel="shortcut icon" type="image/x-icon" />
-<nav>
-  <div class="nav-warp" style="position: relative">
-    <h1><a href="../myschedule/MySchedule.html"><img src = "../images/hiba_logo_main.png"></a></h1>
-    <ul class="nav">
-      <li><a href="../myschedule/MySchedule.html">일정</a></li>
-      <li><a href="../makegroup/makegroup.html">그룹</a></li>
-      <li><a href="#">앨범</a></li>
-      <li><a href="../community/communityApp.html">커뮤니티</a></li>
-    </ul>
-     <ul class="aside-nav">
-       <li class="f-r"><a href="#"></a></li>     
-	      <li class="f-r iconMemberPlus" data-toggle="tooltip" data-placement="bottom" title="그룹추가하기"><a href="#"></a></li>
-	      <li class="f-r iconSchedulePlus" data-toggle="tooltip" data-placement="bottom" title="일정추가하기"><a href="#"></a></li>
-	      <li class="f-r iconBell user-alert"  style="display:block; cursor:pointer">
-	        <i class="glyphicon glyphicon-exclamation-sign alert-icon" 
-	        style="color: red; position: absolute; font-size:15px; right:0px; display:none"></i>
-	      </li>
-	      <li class="f-r "><a href="#"></a></li>
-     </ul>
-     <div class="navbar">
-      <i class="icon-bar"></i>
-      <i class="icon-bar"></i>
-      <i class="icon-bar"></i>
-    </div>
+<!-- 파미콘 S-->
+<div class="container">
+	<div class="navbar-header">
+		<!-- responsive nav button -->
+		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+			<span class="sr-only">Toggle navigation</span> 
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span> 
+			<span class="icon-bar"></span>
+		</button>
+		<!-- /responsive nav button -->
+		<!-- logo -->
+		<h1 class="navbar-brand">
+			<a href="t3.java85.com:8080/teamproject/index_h.html"> <img src="../images/hiba_logo_main.png"
+				alt="HIBA">
+			</a>
+		</h1>
+	</div>
+	<!-- /logo -->
+	<aside style="float: right;">
+		<ul class="aside-nav">
+			<li class="f-r"><a href="#"></a></li>
+			<li class="f-r iconMemberPlus" data-toggle="tooltip"
+				data-placement="bottom" title="그룹추가하기"><a href="#"></a></li>
+			<li class="f-r iconSchedulePlus" data-toggle="tooltip"
+				data-placement="bottom" title="일정추가하기"><a href="#"></a></li>
+			<li class="f-r iconBell user-alert"
+				style="display: block; cursor: pointer"><i
+				class="glyphicon glyphicon-exclamation-sign alert-icon"
+				style="color: red; position: absolute; font-size: 15px; right: 0px; display: none"></i>
+			</li>
+			<li class="f-r "><a href="#"></a></li>
+		</ul>
+	</aside>
+	<nav class="collapse navigation navbar-collapse navbar-right nav-warp"
+		role="navigation">
 
-  </div>
-  <div class="alert-box" style="position:absolute; background-color:rgba(0, 0, 0, 0.5); max-width:250px; margin:10px; right:330px; top: 50px; color:#fff">             
-    
-   </div>
-</nav>   
-  <script id="inviteMessage" type="text/x-handlebars-template">       
+			<ul id="nav" class="nav navbar-nav">
+				<li><a href="../myschedule/MySchedule.html">일정</a></li>
+				<li><a href="../makegroup/makegroup.html">그룹</a></li>
+				<li><a href="#">앨범</a></li>
+				<li><a href="../community/communityApp.html">커뮤니티</a></li>
+			</ul>
+
+	
+		<div class="alert-box"
+			style="position: absolute; background-color: rgba(0, 0, 0, 0.5); max-width: 250px; margin: 10px; right: 330px; top: 50px; color: #fff">
+
+		</div>
+	</nav>
+
+</div>
+<script id="inviteMessage" type="text/x-handlebars-template">       
     <div class="invite-box" style="display:none" data-value="{{memberNo}}">             
       <p>{{name}} 님이 <span id="inviteGroupNo" > {{groupName}} 그룹에 초대하였습니다</span></p>
         <ul>
@@ -45,7 +66,8 @@ $(function () {
         </ul>     
      </div>  
   </script>
-  <script type="text/javascript" src="../memberInvite/memberInvitemessageApp.js"></script>
+<script type="text/javascript"
+	src="../memberInvite/memberInvitemessageApp.js"></script>
 <script>
 ajaxGroupInviteListMessage()
 </script>

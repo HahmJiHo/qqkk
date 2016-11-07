@@ -1,20 +1,32 @@
 <!DOCTYPE html>
-<html lang="ko">
+<!--[if lt IE 7]>      <html lang="en" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="ko" class="no-js"> <!--<![endif]-->
   <head>
-   <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+   <meta charset="utf-8">   
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>프로젝트-스케쥴</title>
     <!--[if lt IE 9]>
       <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+    <link href="../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
+      <!-- header 애니메이션 끝 -->
+    <link rel="stylesheet" href="../css/main/jquery.fancybox.css">
+    <link rel="stylesheet" href="../css/main/owl.carousel.css">
+    <link rel="stylesheet" type="text/css" href="../css/main/main.css" >
+    <link rel="stylesheet" href="../css/main/responsive.css">
+    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">    
+    <link rel="stylesheet" href="../css/main/animate.css">
+    <!-- header 애니메이션 끝 -->    
     <link rel="stylesheet" type="text/css" href="../css/common_style.css" >
     <link rel="stylesheet" type="text/css" href="../css/makeCal.css" >
     <link rel="stylesheet" type="text/css" href="../css/makegroup.css">        
-    <link href="../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/5.0.7/sweetalert2.min.css" />
     <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
-
+        
+   
   <style>
   /* The switch - the box around the slider */
 .switch {
@@ -79,7 +91,7 @@ input:checked + .slider:before {
   </head>
     
 <body>
-	<header>
+	<header id="navigation" class="navbar-fixed-top sub-header">
   
   </header>
 	<section>
@@ -253,9 +265,23 @@ input:checked + .slider:before {
   <script src="../node_modules/jquery/dist/jquery.js"></script>   
   <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>  
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.51/jquery.form.min.js"></script>
-  <script src="https://use.fontawesome.com/bf4034f4dc.js"></script>
+  <script src="https://use.fontawesome.com/bf4034f4dc.js"></script>  
   <script type='text/javascript'  src="../js/include.js"></script>    
-  <script type='text/javascript'  src="../js/main.js"></script>
+  
+  <!-- header 애니메이션 -->
+
+  <script src="../js/vendor/modernizr-2.6.2.min.js"></script> 
+  <script src="../js/main/jquery.nav.js"></script>
+  <script src="../js/main/jquery.mixitup.min.js"></script>
+  <script src="../js/main/jquery.fancybox.pack.js"></script>
+  <script src="../js/main/jquery.appear.js"></script>
+  <script src="../js/main/jquery-countTo.js"></script>
+  <script src="../js/main/owl.carousel.min.js"></script>
+  <script src="../js/main/wow.min.js"></script>
+  <script type="text/javascript" src="../js/main/main_nav.js"></script>
+  <!-- header 애니메이션끝 -->
+  
+  <script type='text/javascript'  src="../js/main.js"></script>  
   <script type="text/javascript" src="../js/common.js"></script>
   <script type="text/javascript" src="../js/bit.js"></script>   
   <script type="text/javascript" src="../member/memberApp.js"></script>

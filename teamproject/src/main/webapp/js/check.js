@@ -11,9 +11,9 @@ $('#email').keyup(function() {
 		}),
 		success : function(response) {
 			if (JSON.stringify(response).length > 3) {
-				$('#checkedEmail').html("이미 가입된 이메일 입니다");
+				$('#checkedEmail').html("이미 가입된 이메일 입니다").css("color", "red");
 			} else if (JSON.stringify(response).length < 3){				
-				$('#checkedEmail').html("사용 가능한 이메일 입니다.");
+				$('#checkedEmail').html("사용 가능한 이메일 입니다.").css("color", "green");
 			} 	 
 			if ($("#email").val() == 0){
 				$('#checkedEmail').html("");

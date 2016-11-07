@@ -1,8 +1,8 @@
 $(document).ready(function() {    
   
-  $('header').on("click", ".navbar", function(e) {
+  /*$('header').on("click", ".navbar", function(e) {
 	$('.nav').slideToggle();	
-  });  
+  });*/  
   
 
   $('header').on("click", ".user-alert", function(e) {
@@ -20,9 +20,15 @@ $(document).ready(function() {
     });
   $(".title-nav li").eq(0).click();  
   
-  
+  $(window).load(function() {
+	    $(".main-element").each(function(){
+	    var $this = $(this);
+	    $this.typed({
+	    strings: $this.attr('data-elements').split(','),
+	    typeSpeed: 100, // typing speed
+	    backDelay: 3000 // pause before backspacing
+	    });
+	   })
+	  })
   
 })
-
-  
-  
