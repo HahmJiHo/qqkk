@@ -36,70 +36,50 @@
 							class="btn btn-xs btn-success my-login">로그 아웃</a></li>
 					</ul>
 				</div>
-				<form class="navbar-form navbar-left" role="search">
-					<div class="form-group">
-						<input type="text" class="form-control" placeholder="Search">
-						<button type="button" class="btn btn-default">
-							<i class="fa fa-search w3-xlarge"></i>
-						</button>
-						<button type="button" class="btn btn-default">
-							<i class="fa fa-bars w3-xlarge" aria-hidden="true"></i>
-						</button>
-						<button type="button" class="btn btn-default"
-							onclick="location.href='checkMySchedule.html'">
-							<i class="fa fa-calendar w3-xlarge" aria-hidden="true"></i>
-						</button>
+				<div class="well well-sm">
+					<strong>Display</strong>
+					<div class="btn-group">
+						<a href="#" id="list" class="btn btn-default btn-sm"><span
+							class="glyphicon glyphicon-th-list"> </span>List</a> <a href="#"
+							id="grid" class="btn btn-default btn-sm"><span
+							class="glyphicon glyphicon-th"></span>Grid</a>
 					</div>
-
-				</form>
-
+				</div>
 			</div>
 			<div class="sectionbar-line">
 				<hr align=center width=100%>
 			</div>
 
 			<div id="schedule">
-				<div id="group-Info" data-value="">
-				
-					<div class="gallery">
-						<div class="gallery-item">
-							<div class="gallery-item-image">
-								<img src="../images/thumbnail.PNG" alt width="300" height="300">
-							</div>
-							<div class="gallery-item-description">
-								<h3></h3>
-								<span>인원 24명 약속 5개</span>
+				<div class="container">
+
+					<div id="products" class="row list-group">
+						<div class="item  col-xs-4 col-lg-4">
+							<div class="thumbnail">
+								<img class="group list-group-image"
+									src="http://placehold.it/400x250/000/fff" alt="" />
+								<div class="caption">
+									<h4 class="group inner list-group-item-heading">Product
+										title</h4>
+									<p class="group inner list-group-item-text">Product
+										description... Lorem ipsum dolor sit amet, consectetuer
+										adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
+										laoreet dolore magna aliquam erat volutpat.</p>
+									<div class="row">
+										<div class="col-xs-12 col-md-6">
+											<p class="lead">$21.000</p>
+										</div>
+										<div class="col-xs-12 col-md-6">
+											<a class="btn btn-success"
+												href="http://www.jquery2dotnet.com">Add to cart</a>
+										</div>
+									</div>
+								</div>
 							</div>
 						</div>
-					
-				</div>
-				</div>
-				<div id="scheduleInfo" >
-					<button id="btn-left" type="button" class="btn btn-default">
-						<span id="slider-prev" class="glyphicon glyphicon-chevron-left"
-							aria-hidden="true"></span>
-					</button>
-					<button id="btn-right" type="button" class="btn btn-default">
-						<span id="slider-next" class="glyphicon glyphicon-chevron-right"
-							aria-hidden="true"></span>
-					</button>
-					<div id="schedule-Info" data-value="">
-						<ul class="bxslider">
-							<li id="sc" data-no="">
-								<p></p> <span></span><br> <span> ~ </span>
-								<button id="viewSc" class="btn btn-default">
-									<span id="userSc" data-value=""></span>일정보기
-								</button>
-								<div id="dday-Info">
-									<span id="dday"></span>
-								</div>
-							</li>
-						</ul>
-					</div>
-					<div class="sectionbar-line">
-						<hr align=center width=100%>
 					</div>
 				</div>
+
 			</div>
 		</div>
 	</section>
