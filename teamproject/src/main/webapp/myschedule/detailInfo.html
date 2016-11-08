@@ -43,9 +43,12 @@
 	crossorigin="anonymous">
 
 <style>
-.container {
-	width: 600px;
-}
+.container {width: 600px;}
+h3{color:rgb(157, 201, 42);}
+
+
+
+
 </style>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script
@@ -74,6 +77,10 @@
 							class="btn btn-xs btn-success my-login">로그 아웃</a></li>
 					</ul>
 				</div>
+				
+				
+				
+				
 				<form class="navbar-form navbar-left" role="search">
 					<div class="form-group">
 						<input type="text" class="form-control" placeholder="Search">
@@ -89,12 +96,15 @@
 							<i class="fa fa-calendar w3-xlarge" aria-hidden="true"></i>
 						</button>
 					</div>
-
 				</form>
+	
 				<div class="sectionbar-line">
 					<hr align=center width=100%>
 				</div>
 			</div>
+			
+			
+			
 			<div id="schedule-cal">
 				<nav class="w3-sidenav w3-collapse w3-white w3-animate-left"
 					style="z-index: 3; width: 170px; height: 570px;" id="mySidenav">
@@ -109,9 +119,11 @@
 								캘린더</b>
 						</h5>
 					</div>
-					<img src="../images/sangwon.jpg" style="width: 50%;"
-						class="w3-round"><br> <br>
-
+				<div class="my-Info">
+					<ul>	 
+						<li class="my-profile"><img src="" id="profilePhoto"/></li>
+					</ul>
+				</div>
 
 					<div id="groupName"></div>
 				</nav>
@@ -129,19 +141,19 @@
 					</div>
 				</div>
 
+
+
 <!--  
 	2016.11.1 수정사항 : 중기예보 XML data에 맞게 
 	도시(city) 최고기온(maxTemp) 최저기온(minTemp) 날씨 상태(state)로 수정 
  -->
 				<div id="weather">
 					<h3>날씨</h3>
-					<hr class="section-bar"></hr>
+					<div class="colorbar"></div>
 					<div id="weather-wrap">
 						<div class="wrap-dayweather">
 							<div class="weather-city"></div>
-							<div class="weather-img">
-								<img src="">
-								</div>
+							<div class="weather-img"></div>
 							<div class="weather-temperature-mx"></div>
 							<div class="weather-temperature-mn"></div>
 							<div class="weather-state"></div>
@@ -198,6 +210,7 @@
 	<script src="../node_modules/jquery/dist/jquery.min.js"></script>
 	<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 	<script src="../node_modules/handlebars/dist/handlebars.min.js"></script>
+	<script type="text/javascript" src="../member/memberApp.js"></script>
 	<script type="text/javascript" src="../js/common.js"></script>
 	<script type="text/javascript" src="../js/include.js"></script>
 	<script type="text/javascript" src="../js/bit.js"></script>

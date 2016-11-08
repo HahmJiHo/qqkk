@@ -286,5 +286,6 @@ function ajaxLoginUser() {
       $("#user").text(result.data.name)
       $("#user").attr('data-value', result.data.no)
       $("#userSc").attr('data-value', result.data.no)
+      $("#profilePhoto").attr("src", "../upload/" + result.data.filename)
    })
 }
