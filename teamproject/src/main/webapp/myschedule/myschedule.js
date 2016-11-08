@@ -9,8 +9,8 @@ function loadBxSlider(num) {
 	var bx = "#bxslider" + num;
 	console.log(bx)
 	$(bx).bxSlider({
-		//nextSelector: '#slider-next'+num,
-		//prevSelector: '#slider-prev'+num,
+//		nextSelector: '#slider-next'+num,
+//		prevSelector: '#slider-prev'+num,
 		mode:'horizontal',
 		speed:1000,
 		slideMargin:100,
@@ -109,9 +109,11 @@ function ajaxMygroupList() {
       /* 2016.11.01 내일부터 아래 코딩하기*/
       var contents = "";
       var contents2 = "";
+
       var tempContents = new Array();
       var template = Handlebars.compile($('#divTemplateText').html())
       var template2 = Handlebars.compile($('#div2TemplateText').html())
+      
       var mygroupArr = [];
 
       for (var i in arr) {
@@ -135,19 +137,32 @@ function ajaxMygroupList() {
       console.log(mygroupArr);
       for (var i in newArr) {
     	  contents += template(newArr[i])
+    	  
          $("#group-Info").html(contents)
+       
          //console.log(i)
          //console.log(contents)
          for (var j in mygroupArr) {
             if (newArr[i].groupNo == mygroupArr[j].groupNo) {
             	console.log(mygroupArr[j]);
+//            	var tempP = "slider-prev" + i;
+//            	var tempN = "slider-next" + i;
+//            	$("#slider-prev").attr("id", tempP);
+//            	$("#slider-next").attr("id", tempN);
                tempContents[i] += template2(mygroupArr[j])
             } 
          }
       }
+      
       console.log(tempContents);
       for(var i in tempContents) {
-    	  contents2 += "<ul id='bxslider" + i + "'>" + tempContents[i] + "</ul>";
+		/*var button = '<button id="btn-left" type="button" class="btn btn-default">'
+		+ '<span id="slider-prev'+ i + '"class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>'
+		+ '</button>'
+		+ '<button id="btn-right" type="button" class="btn btn-default">'
+		+ '<span id="slider-next'+ i + '"class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>'
+		+ '</button>';*/
+    	  contents2 += "<ul class='caption' id='bxslider" + i + "'>" + tempContents[i] + "</ul>";
       }
       console.log("t2" + contents2)
       $("#schedule-Info").html(contents2);

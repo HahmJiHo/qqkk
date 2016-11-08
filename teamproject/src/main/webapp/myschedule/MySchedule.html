@@ -1,21 +1,66 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta charset="UTF-8">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="viewport"
+	<meta charset="UTF-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport"
 	content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
-<title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="../css/common_style.css">
-<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
-<link rel="stylesheet"
+	<title>Insert title here</title>
+	<link rel="stylesheet" type="text/css" href="../css/common_style.css">
+	<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+	<link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
-<link rel="stylesheet" type="text/css" href="../css/MySchedule.css">
-<link rel="stylesheet"
+	<link rel="stylesheet" type="text/css" href="../css/MySchedule.css">
+	<link rel="stylesheet"
 	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-<link href="../js/jquery.bxslider.css" rel="stylesheet" />
+	<link href="../js/jquery.bxslider.css" rel="stylesheet" />
+
+
+	<style>
+	.myThumbnail {
+		position:relative;
+		z-index:1;
+		margin-bottom: 20px;
+		width:1000px;
+		height: 325px;
+		padding: 0px;
+		-webkit-border-radius: 0px;
+		-moz-border-radius: 0px;
+		border-radius: 0px;
+	}
+
+	.myThumbnail:hover {
+		border: 20px solid #9dc92a;
+	}
+
+	/* .thumbnail > img,
+	.thumbnail a > img,
+	.carousel-inner > .item > img,
+	.carousel-inner > .item > a > img {
+	display: block;
+	max-width: 100%;
+	height: auto;
+}
+.img-rounded {
+border-radius: 6px;
+}
+.img-thumbnail {
+display: inline-block;
+max-width: 100%;
+height: auto;
+padding: 4px;
+line-height: 1.42857143;
+background-color: #fff;
+border: 1px solid #ddd;
+border-radius: 4px;
+-webkit-transition: all .2s ease-in-out;
+-o-transition: all .2s ease-in-out;
+transition: all .2s ease-in-out;
+}
+*/
+</style>
 
 </head>
 <body>
@@ -32,112 +77,136 @@
 						<li class="my-profile"></li>
 						<li><a href='#' id="loginBtn"
 							class="btn btn-xs btn-success my-logout">로그인</a></li>
-						<li><a href='#' id="logoutBtn"
-							class="btn btn-xs btn-success my-login">로그 아웃</a></li>
-					</ul>
-				</div>
-				<div class="well well-sm">
-					<strong>Display</strong>
-					<div class="btn-group">
-						<a href="#" id="list" class="btn btn-default btn-sm"><span
-							class="glyphicon glyphicon-th-list"> </span>List</a> <a href="#"
-							id="grid" class="btn btn-default btn-sm"><span
-							class="glyphicon glyphicon-th"></span>Grid</a>
-					</div>
-				</div>
-			</div>
-			<div class="sectionbar-line">
-				<hr align=center width=100%>
-			</div>
+							<li><a href='#' id="logoutBtn"
+								class="btn btn-xs btn-success my-login">로그 아웃</a></li>
+							</ul>
+						</div>
+						<form class="navbar-form navbar-left" role="search">
+							<div class="form-group">
+								<input type="text" class="form-control" placeholder="Search">
+								<button type="button" class="btn btn-default">
+									<i class="fa fa-search w3-xlarge"></i>
+								</button>
+								<button type="button" class="btn btn-default">
+									<i class="fa fa-bars w3-xlarge" aria-hidden="true"></i>
+								</button>
+								<button type="button" class="btn btn-default"
+								onclick="location.href='checkMySchedule.html'">
+								<i class="fa fa-calendar w3-xlarge" aria-hidden="true"></i>
+							</button>
+						</div>
 
-			<div id="schedule">
-				<div class="container">
+					</form>
 
-					<div id="products" class="row list-group">
-						<div class="item  col-xs-4 col-lg-4">
-							<div class="thumbnail">
-								<img class="group list-group-image"
-									src="http://placehold.it/400x250/000/fff" alt="" />
-								<div class="caption">
-									<h4 class="group inner list-group-item-heading">Product
-										title</h4>
-									<p class="group inner list-group-item-text">Product
-										description... Lorem ipsum dolor sit amet, consectetuer
-										adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
-										laoreet dolore magna aliquam erat volutpat.</p>
-									<div class="row">
-										<div class="col-xs-12 col-md-6">
-											<p class="lead">$21.000</p>
-										</div>
-										<div class="col-xs-12 col-md-6">
-											<a class="btn btn-success"
-												href="http://www.jquery2dotnet.com">Add to cart</a>
-										</div>
+				</div>
+				<div class="sectionbar-line">
+					<hr align=center width=100%>
+				</div>
+
+					<div id="schedule">
+
+						<div id="group-Info" data-value="">
+
+				<div id="myThumbnail" class="myThumbnail">
+				</div>
+							<div class="gallery">
+								<div class="gallery-item">
+									<div class="gallery-item-image">
+										<img src="../images/thumbnail.PNG" alt width="200"
+										height="180">
+									</div>
+									<div class="gallery-item-description">
+										<h3></h3>
+										<span>인원 24명 약속 5개</span>
 									</div>
 								</div>
+							</div>
+							<div class="separate"></div>
+						</div>
+						<div id="scheduleInfo">
+							<div id="schedule-Info" data-value="">
+								<ul class="bxslider">
+									<li id="sc" data-no="">
+										<p></p> <span></span><br> <span> ~ </span>
+										<button id="viewSc" class="btn btn-default">
+											<span id="userSc" data-value=""></span>일정보기
+										</button>
+										<div id="dday-Info">
+											<span id="dday"></span>
+										</div>
+									</li>
+								</ul>
+							</div>
+							<div class="sectionbar-line">
+								<hr align=center width=100%>
 							</div>
 						</div>
 					</div>
 				</div>
-
-			</div>
-		</div>
-	</section>
-	<footer> </footer>
+		</section>
+		<footer> </footer>
 
 
-	<script id="divTemplateText" type="text/x-handlebars-template">
-			<div id="group-Info" data-value="">
+		<script id="divTemplateText" type="text/x-handlebars-template">
+
+				<div id="myThumbnail" class="myThumbnail">
+				</div>
+			<div id="group-Info" class="groupInfo" data-value="">
 				<div class="gallery">
 					<div class="gallery-item">
+						{{#if groupPhoto}}
 						<div class="gallery-item-image">
-							<img src="../images/thumbnail.PNG" alt width="300" height="300">
+							<img src="../upload/{{groupPhoto}}" alt width="200" height="180">
 						</div>
+						{{else}}
+						<div class="gallery-item-image">
+							<img src="../images/profile.png" alt width="200" height="180">
+						</div>
+						{{/if}}
 						<div class="gallery-item-description">
-					
 							<h3>{{groupName}}</h3>
-
-							<span>남은 스케줄 {{upcomCount}} / 총 스케줄 {{count}}</span>
+							<span>총 스케줄 갯수 {{count}}</span>
 						</div>
 					</div>
 				</div>
-		
-</script>
+</div>
+				<div class="separate"> </div>
+			</script>
 
-	<!--  
-	bxslider 쓰기 위해 핸들바스 코드 수정 
- -->
-	<script id="div2TemplateText" type="text/x-handlebars-template">
-			 <li id="sc" data-no="">
-				<h1>{{title}}</h1>
-				<h3>{{placeName}}</h3><br>
-				 <span>{{start}} ~ {{end}}</span>
-				<button id="viewSc" class="btn btn-default">
+			<!--
+			bxslider 쓰기 위해 핸들바스 코드 수정
+		-->
+		<script id="div2TemplateText" type="text/x-handlebars-template">
+			<li id="sc" data-no="">
+				<h1 class="list-group-item-text">{{title}}</h1>
+				<h3 class="list-group-item-text">{{placeName}}</h3><br>
+				<span class="list-group-item-text">{{start}} ~ {{end}}</span>
+				<button id="viewSc" class="btn btn-success">
 					<span id="userSc" data-value=""></span>일정보기
 				</button>
 				<div id="dday-Info">
 					<h1 id="dday">d-day {{dday}}</h1>
 				</div>
 			</li>
-</script>
+		</script>
 
 
 
-	<script src="../node_modules/jquery/dist/jquery.min.js"></script>
-	<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-	<script src="../node_modules/handlebars/dist/handlebars.min.js"></script>
-	<!-- bxSlider Javascript file -->
-	<script src="../js/jquery.bxslider.min.js"></script>
-	<!-- bxSlider CSS file -->
+		<script src="../node_modules/jquery/dist/jquery.min.js"></script>
+		<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+		<script src="../node_modules/handlebars/dist/handlebars.min.js"></script>
+		<!-- bxSlider Javascript file -->
+		<script src="../js/jquery.bxslider.min.js"></script>
+		<!-- bxSlider CSS file -->
 
 
 
-	<script type="text/javascript" src="../js/common.js"></script>
-	<script type="text/javascript" src="../js/include.js"></script>
-	<script type="text/javascript" src="../js/bit.js"></script>
-	<script type="text/javascript" src="../member/memberApp.js"></script>
-	<script type="text/javascript" src="myschedule.js"></script>
-	<script>
+		<script type="text/javascript" src="../js/common.js"></script>
+		<script type="text/javascript" src="../js/include.js"></script>
+		<script type="text/javascript" src="../js/bit.js"></script>
+		<script type="text/javascript" src="../member/memberApp.js"></script>
+		<script type="text/javascript" src="myschedule.js"></script>
+		<script>
 		ajaxLoginUser()
 		ajaxMygroupList()
 		//ajaxMyScheduleList()
@@ -152,6 +221,6 @@
 			$(".my-view").css("display", "none")
 
 		}
-	</script>
-</body>
-</html>
+		</script>
+	</body>
+	</html>

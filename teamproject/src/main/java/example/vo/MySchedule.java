@@ -16,6 +16,16 @@ public class MySchedule implements Serializable {
   protected String start;
   protected String end;
   protected String placeName;
+  protected String groupPhoto;
+  
+  
+  public String getGroupPhoto() {
+    return groupPhoto;
+  }
+  public void setGroupPhoto(String groupPhoto) {
+    this.groupPhoto = groupPhoto;
+  }
+  
   public int getGpno() {
     return gpno;
   }

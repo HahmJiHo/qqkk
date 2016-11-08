@@ -32,9 +32,9 @@
 .bx-wrapper .bx-viewport {
 	-moz-box-shadow: 0 0 5px #ccc;
 	-webkit-box-shadow: 0 0 5px #ccc;
-	box-shadow: 0 0 5px #ccc;
-	border:  5px solid #fff;
-	left: -5px;
+	box-shadow: 0 0 5px #751471;
+	border:  3px solid #fff;
+	left: -45px;
 	background: #fff;
 	
 	/*fix other elements on the page moving (on Chrome)*/
