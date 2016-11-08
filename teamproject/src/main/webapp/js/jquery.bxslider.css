@@ -16,8 +16,11 @@
 
 .bx-wrapper {
 	position: relative;
-	margin: 0 auto 60px;
+	margin: 0 auto 98px;
 	padding: 0;
+	top: 26px;
+	left: auto;
+	right: 38px;
 	*zoom: 1;
 }
 
@@ -29,12 +32,22 @@
 /** THEME
 ===================================*/
 
+.bx-viewport {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    height: 250px;
+    background-color: white;
+    color: black;
+}
+
+
 .bx-wrapper .bx-viewport {
 	-moz-box-shadow: 0 0 5px #ccc;
 	-webkit-box-shadow: 0 0 5px #ccc;
-	box-shadow: 0 0 5px #751471;
+	box-shadow: 0 0 5px #fff;
 	border:  3px solid #fff;
-	left: -45px;
+	left: 10px;
 	background: #fff;
 	
 	/*fix other elements on the page moving (on Chrome)*/
@@ -83,6 +96,9 @@
 	*display: inline;
 }
 
+.bx-pager .bx-default-pager {bottom: -74px; right: 55px;}
+
+
 .bx-wrapper .bx-pager.bx-default-pager a {
 	background: #666;
 	text-indent: -9999px;
@@ -104,12 +120,13 @@
 /* DIRECTION CONTROLS (NEXT / PREV) */
 
 .bx-wrapper .bx-prev {
-	left: 10px;
+	left: -5px;
+	right: 386px;
 	background: url(images/controls.png) no-repeat 0 -32px;
 }
 
 .bx-wrapper .bx-next {
-	right: 10px;
+	left: 575px;
 	background: url(images/controls.png) no-repeat -43px -32px;
 }
 

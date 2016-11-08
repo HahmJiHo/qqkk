@@ -134,7 +134,12 @@ body{ font-family:"arial", sans-serif; font-size:12px;}
 	text-align: center;
 }
 
-
+.bxslider {
+    max-width: 580px;
+    max-height: 200px;
+    margin-bottom: 150px;
+    margin-top: 37px;
+}
 
 #scheduleInfo {
 	width: 680px;
@@ -154,15 +159,15 @@ body{ font-family:"arial", sans-serif; font-size:12px;}
 .groupInfo {
 	z-index:2;
 	top:-325px;
-	margin-left:20px;
+	margin-left: 30px 30px 30px 45px;
 	position:relative;
-	width: 300px;
-	height: 280px;
+	width: 200px;
+	height: 180px;
 	float: left;
 }
 
 #schedule-Info {
-	width: 680px;
+	width: 600px;
 	height: 250px;
 	float: right;
 }
@@ -177,12 +182,13 @@ body{ font-family:"arial", sans-serif; font-size:12px;}
 
 
 .gallery{
-  width: 200px;
-  height: 180px;
+  width: 280px;
+  height: 250px;
   margin: 0;
   padding: 0;
   outline: 0;
-  
+  margin-top: 6px;
+  margin-left: 28px;
   
   display: -webkit-box;
   display: -webkit-flex;
@@ -217,9 +223,9 @@ body{ font-family:"arial", sans-serif; font-size:12px;}
 	float: left;
 }
 .gallery-item{
-  box-shadow: 2px 2px 8px -1px #751471;
-  width: 300px;
-  height: 180px;
+  box-shadow: 2px 2px 8px -1px #fff;
+  width: 280px;
+  height: 250px;
   background: #000;
   position: relative;
   cursor: pointer;

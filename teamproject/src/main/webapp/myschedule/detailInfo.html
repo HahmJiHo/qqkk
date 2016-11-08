@@ -226,7 +226,7 @@ ajaxLoginUser()
 if (location.search.startsWith("?")) { // 예) ?no=xxx
 	  var no = location.search.split("=")[1];
 	  ajaxMyScheduleLoad(no)
-	  ajaxEventLocationList(no)
+	  //ajaxEventLocationList(no)
 	  //ajaxMidTermWeather()
 	  $(".my-new").css("display", "none")
 } else {
