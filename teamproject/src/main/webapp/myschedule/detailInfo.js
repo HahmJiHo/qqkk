@@ -188,25 +188,25 @@ function ajaxMidTermWeather(date, gpno) {
       switch(midTermResult.data.state) {
       case "맑음":
     	  $(".weather-img").addClass("sunny");
-    	  
+    	  break;
       case "구름조금":
     	  $(".weather-img").addClass("partlyCloudyDay");
-    	  
+    	  break;
       case "구름많음" :
     	  $(".weather-img").addClass("heavyClouds");
-    	  
+    	  break;
       case "흐림" :
     	  $(".weather-img").addClass("clouds");
-    	  
+    	  break;
       case "비":
     	  $(".weather-img").addClass("rain");
-    	  
+    	  break;
       case "흐리고 비":
     	  $(".weather-img").addClass("rainWithClouds");
-    	  
-     /* case "구름많고 비/눈":
-    	  $(".weather-img").addClass("snowAndRain");*/
-   
+    	  break;
+     case "구름많고 비/눈":
+    	  $(".weather-img").addClass("snowAndRain");
+    	  break;
        };
       $(".weather-state").html(midTermResult.data.state);
    });
