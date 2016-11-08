@@ -4,10 +4,10 @@
 	margin-left: 170px;
 }
 
-.sunny{background: url('../images/sunny.png')no-repeat center; width:50px; height:50px; }
-.partlyCloudyDay{background: url('../images/sligtlyCoveredSky.png')no-repeat center; width:50px; height:50px;}
-.heavyClouds{background: url('../images/veryCloudSky.png')no-repeat center; width:50px; height:50px;}
-.clouds{background: url('../images/clouds.png')no-repeat center; width:50px; height:50px;}
-.rain{background: url('../images/rainy.png')no-repeat center; width:50px; height:50px;}
-.rainWithClouds{background: url('../images/rainWithClouds.png')no-repeat center; width:50px; height:50px;}
-.snowAndRain{background: url('../images/snowandRain.png')no-repeat center; width:50px; height:50px;}
+.sunny{background: url('../images/sunny.png') no-repeat center; width:50px; height:50px; }
+.partlyCloudyDay{background: url('../images/partlyCloudDay.png') no-repeat center; width:50px; height:50px;}
+.heavyClouds{background: url('../images/partlyCloudDay.png') no-repeat center; width:50px; height:50px;}
+.clouds{background: url('../images/clouds.png') no-repeat center; width:50px; height:50px;}
+.rain{background: url('../images/rain.png') no-repeat center; width:50px; height:50px;}
+.rainWithClouds{background: url('../images/rainWithClouds.png') no-repeat center; width:50px; height:50px;}
+.snowAndRain{background: url('../images/snowAndRain.png') no-repeat center; width:50px; height:50px;}
