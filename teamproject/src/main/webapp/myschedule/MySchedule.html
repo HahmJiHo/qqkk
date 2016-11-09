@@ -64,7 +64,7 @@ transition: all .2s ease-in-out;
 </style>
 
 </head>
-<body>
+<body bgcolor="gray">
 	<header> </header>
 	<section>
 
@@ -127,11 +127,10 @@ transition: all .2s ease-in-out;
 						<div id="scheduleInfo">
 							<div id="schedule-Info" data-value="">
 								<ul class="bxslider">
-									<li id="sc" data-no="">
+									<li id="sc">
 										<p></p> <span></span><br> <span> ~ </span>
-										<button id="viewSc" class="btn btn-default">
-											<span id="userSc" data-value=""></span>일정보기
-										</button>
+										<a href='#' id="viewSc"
+										class="btn btn-xs btn-success my-detail" data-no="">일정보기</a>
 										<div id="dday-Info">
 											<span id="dday"></span>
 										</div>
@@ -145,7 +144,7 @@ transition: all .2s ease-in-out;
 					</div>
 				</div>
 		</section>
-		<footer> </footer>
+		
 
 
 		<script id="divTemplateText" type="text/x-handlebars-template">
@@ -178,13 +177,12 @@ transition: all .2s ease-in-out;
 			bxslider 쓰기 위해 핸들바스 코드 수정
 		-->
 		<script id="div2TemplateText" type="text/x-handlebars-template">
-			<li id="sc" data-no="">
+			<li id="sc">
 				<h1 class="list-group-item-text">{{title}}</h1>
 				<h3 class="list-group-item-text">{{placeName}}</h3><br>
 				<span class="list-group-item-text">{{start}} ~ {{end}}</span>
-				<button id="viewSc" class="btn btn-success">
-					<span id="userSc" data-value=""></span>일정보기
-				</button>
+				<a href='#' id="viewSc"
+				class="btn btn-xs btn-success my-detail" data-no="">일정보기</a>
 				<div id="dday-Info">
 					<h1 id="dday">d-day {{dday}}</h1>
 				</div>
@@ -223,5 +221,6 @@ transition: all .2s ease-in-out;
 
 		}
 		</script>
+		<footer> </footer>
 	</body>
 	</html>
