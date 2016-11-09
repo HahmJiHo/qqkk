@@ -28,11 +28,13 @@ body{ font-family:"arial", sans-serif; font-size:12px;}
 
 #profilePhoto{width:100px; height:100px; border-radius:50%; }
 
+.groupNameList {width: 100px; margin: 0 0 0 68px;}
 
-.btn-group {
-	margin-left: 980px;
+.groupListTitle {
+    width: 215px;
+    font-size: 30px;
+    margin: 0 0 20px 0px;
 }
 
-.w3-container {
-	float: left;
-}
+#groupList {width: 100px; font-size: 23px; magin: 0px;}
+

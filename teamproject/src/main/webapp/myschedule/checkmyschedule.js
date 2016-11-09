@@ -216,7 +216,6 @@ function ajaxMyScheduleList() {
       var myScheduleList = result.data.list;
       var newArr = removeDuplicate(myScheduleList)
       var template = Handlebars.compile($('#divTemplateText').html())
-      console.log(newArr)
       
       for (var i in newArr) {
          if ($("#user").attr('data-value') == newArr[i].no){
@@ -228,21 +227,13 @@ function ajaxMyScheduleList() {
       
       for (var i in myScheduleList) {
          if ($("#user").attr('data-value') == myScheduleList[i].no){
-            
             wholeScList.push(myScheduleList[i]);
-            $("#groupNo").attr('data-value', myScheduleList[i].groupscNo) // 그 원지선이 가진 no중에서 groupscNo 넣어주는거
+            $("#groupList").attr('data-no', myScheduleList[i].groupscNo) // 그 원지선이 가진 no중에서 groupscNo 넣어주는거
          }
-         
          
       }
       
-      
-      /*for (var i in newArr) {
-         contents += newArr[i]
-      }*/
-      
-      $("#groupName").html(contents)
-      
+      $("#groupList").html(contents)
       showCalendar();
       
       $("input:checkbox").change(function() {

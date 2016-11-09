@@ -2,14 +2,16 @@
 <!--[if lt IE 7]>      <html lang="en" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html lang="en" class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html lang="en" class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html lang="ko" class="no-js"> <!--<![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="ko" class="no-js">
+<!--<![endif]-->
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
-<title>Insert title here</title>
-  <!--[if lt IE 9]>
+<title>프로젝트-스케줄</title>
+<!--[if lt IE 9]>
       <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
@@ -42,15 +44,14 @@
 <script src='../js/moment.min.js'></script>
 <script src='../js/fullcalendar.min.js' charset="UTF-8"></script>
 <script src='../js/ko.js'></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-<script src="http://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/a549aa8780dbda16f6cff545aeabc3d71073911e/src/js/bootstrap-datetimepicker.js"></script>	
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
 </head>
 <style>
 #calendar {
-	max-width: 850px;
-	margin: 0 auto;
-	float: right;
+	max-width: 980px;
+	margin: auto;
+
 }
 
 .modal {
@@ -63,89 +64,71 @@
 ​
 </style>
 <body>
-<header>
-	
-	</header>
+	<header> </header>
 	<section class="panel">
-		<!-- <aside class="header-top" style="float: left; ">
-    <ul class="aside-nav"> 
-      <li class="f-r"><a href="#"></a></li>
-      <li class="f-r iconMemberPlus" data-toggle="tooltip"
-        data-placement="bottom" title="그룹추가하기"><a href="#"></a></li>
-      <li class="f-r iconSchedulePlus" data-toggle="tooltip"
-        data-placement="bottom" title="일정추가하기"><a href="#"></a></li>
-      <li class="f-r iconBell user-alert"
-        style="display: block; cursor: pointer"><i
-        class="glyphicon glyphicon-exclamation-sign alert-icon"
-        style="color: red; position: absolute; font-size: 15px; top:10px; display: none"></i>
-      </li>
-    
-    </ul>
-      <p class="f-r logout" style="float: right;"><a href="#">로그아웃</a></p>
-    <div class="alert-box"
-      style="position: absolute; background-color: rgba(0, 0, 0, 0.5); max-width: 250px; margin: 10px; left: 50px; top: 60px; color: #fff">
-    </div>
-  </aside> -->
-	
-	
+		<aside class="header-top" style="float: left;">
+			<ul class="aside-nav">
+				<li class="f-r"><a href="#"></a></li>
+				<li class="f-r iconMemberPlus" data-toggle="tooltip"
+					data-placement="bottom" title="그룹추가하기"><a href="#"></a></li>
+				<li class="f-r iconSchedulePlus" data-toggle="tooltip"
+					data-placement="bottom" title="일정추가하기"><a href="#"></a></li>
+				<li class="f-r iconBell user-alert"
+					style="display: block; cursor: pointer"><i
+					class="glyphicon glyphicon-exclamation-sign alert-icon"
+					style="color: red; position: absolute; font-size: 15px; top: 10px; display: none"></i>
+				</li>
+
+			</ul>
+			<p class="f-r logout" style="float: right;">
+				<a href="#">로그아웃</a>
+			</p>
+			<div class="alert-box"
+				style="position: absolute; background-color: rgba(0, 0, 0, 0.5); max-width: 250px; margin: 10px; left: 50px; top: 60px; color: #fff">
+			</div>
+		</aside>
+
+
 		<div class="section-wrap">
-         <div class="make-top">
-            <div class="make-text"
-               style="position: fixed; left: 20px; z-index: 2;">
-               <h2>
-                  <span class="my-profile"
-                     style="display: block; text-align: center; padding-left: 0px;">
-                     <img src="" id="profilePhoto" style="width: 80px; height: 80px; margin-top: 90px;" />
-                  </span><br> <span id="userName" class="my-login" data-value=""></span>님
-                  안녕하세요?
-               </h2>
-            </div>
-         </div>
-      
-				<form class="navbar-form navbar-left" role="search">
-					<div class="form-group">
-						<input type="text" class="form-control" placeholder="Search">
-					<button type="button" class="btn btn-default"><i class="fa fa-search w3-xlarge"></i></button>
+			<div class="make-top">
+				<div class="make-text"
+					style="position: fixed; left: 20px; z-index: 2;">
+					<h2>
+						<span class="my-profile"
+							style="display: block; text-align: center; padding-left: 0px;">
+							<img src="" id="profilePhoto"
+							style="width: 80px; height: 80px; margin-top: 90px;" />
+						</span><br> <span id="user" class="my-login" data-value=""></span>님
+						안녕하세요?
+					</h2>
+				</div>
+			</div>
+
+			<form class="navbar-form navbar-left" role="search">
+				<div class="form-group">
 					<button type="button" class="btn btn-default"
-					onclick="location.href='MySchedule.html'"><i class="fa fa-bars w3-xlarge" aria-hidden="true"></i></button>
+						onclick="location.href='MySchedule.html'">
+						<i class="fa fa-bars w3-xlarge" aria-hidden="true"></i>
+					</button>
 					<button type="button" class="btn btn-default"
-					onclick="location.href='checkMySchedule.html'"><i class="fa fa-calendar w3-xlarge" aria-hidden="true"></i></button>
-					</div>
-				</form>
-				
-				
-				
-			 	<div class="sectionbar-line">
-					<hr align=center width=100%>
+						onclick="location.href='checkMySchedule.html'">
+						<i class="fa fa-calendar w3-xlarge" aria-hidden="true"></i>
+					</button>
+				</div>
+			</form>
+
+
+			<div class="sectionbar-line">
+				<hr align=center width=100%>
+			</div>
+
+			<div class="groupNameList"> 
+			<h1 class="groupListTitle">나의 그룹 리스트</h1>
+				<div id="groupList">
+					<input type="checkbox" data-no="" data-value="">
 				</div>
 			</div>
-			
-			<div id="schedule-cal">
-				<div class="w3-sidenav w3-collapse w3-white w3-animate-left"
-				style="z-index: 3; width: 170px; height: 676px;" id="mySidenav">
-				<br>
-				<div class="w3-container">
-					<a href="#" onclick="w3_close()"
-						class="w3-hide-large w3-right w3-jumbo w3-padding"
-						title="close menu"> <i class="fa fa-remove"></i>
-					</a>
-					<h5 class="w3-padding-0">
-						<b><span id="user" class="my-login" data-value=""></span>님의 캘린더</b>
-					</h5>
-				</div>
-			<div class="my-Info">
-					<ul>	 
-						<li class="my-profile"><img src="" id="profilePhoto"/></li>
-					</ul>
-			</div>
-						<a id="whole-grpSchedule" href="#" class="w3-padding">전체 일정 보기</a>
-						<div id="groupName"></div>
-				</div>
-			</div>
-					
-					
-					
-					
+
 			<div id='calendar'></div>
 
 			<div id="calendarModal" class="modal fade">
@@ -164,47 +147,38 @@
 							<div id="modal-weather" class="weather-img">
 								<img src="">
 							</div>
+						</div>
+
+
+
+
 					</div>
-							
-							
-							
-							
+					<div id="modalBody" class="modal-body">
+						<div style="margin-top: 5px;">
+							<h4 class="detail-sc-day">장소</h4>
+							<div id="google_map" style="width: 100%; height: 450px;"></div>
 						</div>
-						<div id="modalBody" class="modal-body">
-							<div style="margin-top:5px;">
-                    <h4 class="detail-sc-day">장소</h4>
-							     <div id="google_map"style="width:100%; height:450px;"></div>
-							    </div>	
-						</div>
-						<div class="modal-footer">
-							<button id="detailBtn" type="button" class="btn btn-default">상세정보</button>
-							<button type="button" class="btn btn-default"
-									onclick="location.href=''">앨범</button>
-							<button type="button" class="btn btn-default"
-								data-dismiss="modal">닫기</button>
-						</div>
+					</div>
+					<div class="modal-footer">
+						<button id="detailBtn" type="button" class="btn btn-default">상세정보</button>
+						<button type="button" class="btn btn-default"
+							onclick="location.href=''">앨범</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
 					</div>
 				</div>
 			</div>
-
-
-
-
 		</div>
 
-
-
 	</section>
-	<footer>
-	
-	</footer>
+
 	<script id="divTemplateText" type="text/x-handlebars-template">
-		<input id="groupList" type="checkbox" href="#" class="w3-padding" value="{{groupscNo}}" data-value="{{groupNo}}">{{groupName}}</a><br>
-		<!--<a id="groupNo" href="#" class="w3-padding" data-value="{{groupscNo}}">{{groupName}}</a>-->
+		<div id="groupList">
+		<input type="checkbox"  data-no="{{groupscNo}}" data-value="{{groupNo}}">{{groupName}}
+		</div>
 	</script>
-	
-	
-	
+
+
+
 	<script id="inviteMessage" type="text/x-handlebars-template">       
     <div class="invite-box" style="display:none" data-value="{{memberNo}}">             
       <p>{{name}} 님이 <span id="inviteGroupNo" > {{groupName}} 그룹에 초대하였습니다</span></p>
@@ -215,150 +189,153 @@
      </div>  
   </script>
 
-<script src="../node_modules/handlebars/dist/handlebars.min.js"></script>
-<script type="text/javascript" src="../member/memberApp.js"></script>	
-<script type="text/javascript" src="../js/common.js"></script>	
-<script type="text/javascript" src="../js/bit.js"></script>    
-<script type='text/javascript' src="../js/include.js"></script>
-<!-- <script type='text/javascript' src='../js/cal_custom.js'></script> -->
-<script type="text/javascript" src="../memberInvite/memberInvitemessageApp.js"></script>
-<script type='text/javascript' src="../js/main.js"></script>
-<script type='text/javascript' src="checkmyschedule.js"></script>
-	
-<script>
-ajaxLoginUser()
-ajaxMyScheduleList()
-ajaxEventLocationList()
-ajaxGroupInviteListMessage() 
+	<script src="../node_modules/handlebars/dist/handlebars.min.js"></script>
+	<script type="text/javascript" src="../member/memberApp.js"></script>
+	<script type="text/javascript" src="../js/common.js"></script>
+	<script type="text/javascript" src="../js/bit.js"></script>
+	<script type='text/javascript' src="../js/include.js"></script>
+	<!-- <script type='text/javascript' src='../js/cal_custom.js'></script> -->
+	<script type="text/javascript"
+		src="../memberInvite/memberInvitemessageApp.js"></script>
+	<script type='text/javascript' src="../js/main.js"></script>
+	<script type='text/javascript' src="checkmyschedule.js"></script>
 
-if (location.search.startsWith("?")) {
-  var no = location.search.split("=")[0];
-  ajaxMyScheduleList(no)
-  $(".my-new").css("display","none")
- 
-} else {
-    $(".my-view").css("display","none")
-}
-
-
-window.initMap = function() {
-	   var map = new google.maps.Map(document.getElementById('map'), {
-	     center: {lat: -33.8688, lng: 151.2195},
-	     zoom: 16,
-	     mapTypeId: google.maps.MapTypeId.ROADMAP
-	   });
-	 
-	   // Create the search box and link it to the UI element.
-	   var input = document.getElementById('pac-input');
-	   var searchBox = new google.maps.places.SearchBox(input);
-	   map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-	 
-	   // Bias the SearchBox results towards current map's viewport.
-	   map.addListener('bounds_changed', function() {
-	     searchBox.setBounds(map.getBounds());
-	   });
-	 
-	   var markers = [];
-	   // [START region_getplaces]
-	   // Listen for the event fired when the user selects a prediction and retrieve
-	   // more details for that place.
-	   searchBox.addListener('places_changed', function() {
-	     var places = searchBox.getPlaces();
-	 
-	     if (places.length == 0) {
-	       return;
-	     }
-	 
-	     // Clear out the old markers.
-	     markers.forEach(function(marker) {
-	       marker.setMap(null);
-	     });
-	     markers = [];
-	 
-	     // For each place, get the icon, name and location.
-	     var bounds = new google.maps.LatLngBounds();
-	     places.forEach(function(place) {
-	       var icon = {
-	         url: place.icon,
-	         size: new google.maps.Size(71, 71),
-	         origin: new google.maps.Point(0, 0),
-	         anchor: new google.maps.Point(17, 34),
-	         scaledSize: new google.maps.Size(25, 25)
-	       };
-	 
-	       // Create a marker for each place.
-	       markers.push(new google.maps.Marker({
-	         map: map,
-	         icon: icon,
-	         title: place.name,
-	         position: place.geometry.location
-	       }));
-	 
-	       if (place.geometry.viewport) {
-	         // Only geocodes have viewport.
-	         bounds.union(place.geometry.viewport);
-	       } else {
-	         bounds.extend(place.geometry.location);
-	       }
-	     });
-	     map.fitBounds(bounds);
-	   });
-	   // [END region_getplaces]
-	 }
-
-
-	</script>
-	<script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyAft7ukIrCdQPQYU4aXTBySOqsjQthqMNE&libraries=places&callback=initMap" async defer></script>
 	<script>
-	/*
-	$("#calendarModal").click(function() {
-	$.getJSON(serverAddr + '/myschedule/listWeather.json', function(obj){
-		var result = obj.jsonResult
-		if (result.state != "success") {
-			alert("서버에서 데이터를 가져오는데 실패했습니다.")
-			return
+		ajaxLoginUser()
+		ajaxMyScheduleList()
+		//ajaxEventLocationList()
+		ajaxGroupInviteListMessage()
+
+		if (location.search.startsWith("?")) {
+			var no = location.search.split("=")[0];
+			ajaxMyScheduleList(no)
+			$(".my-new").css("display", "none")
+
+		} else {
+			$(".my-view").css("display", "none")
 		}
-		var lon = ""
-		var lat = ""
-		var arr = result.data
-		console.log(arr)
-		for (var i in arr) {
-			if ()
-			lat += arr[i].lat
-			lon += arr[i].lon
+
+		window.initMap = function() {
+			var map = new google.maps.Map(document.getElementById('map'), {
+				center : {
+					lat : -33.8688,
+					lng : 151.2195
+				},
+				zoom : 16,
+				mapTypeId : google.maps.MapTypeId.ROADMAP
+			});
+
+			// Create the search box and link it to the UI element.
+			var input = document.getElementById('pac-input');
+			var searchBox = new google.maps.places.SearchBox(input);
+			map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+			// Bias the SearchBox results towards current map's viewport.
+			map.addListener('bounds_changed', function() {
+				searchBox.setBounds(map.getBounds());
+			});
+
+			var markers = [];
+			// [START region_getplaces]
+			// Listen for the event fired when the user selects a prediction and retrieve
+			// more details for that place.
+			searchBox.addListener('places_changed', function() {
+				var places = searchBox.getPlaces();
+
+				if (places.length == 0) {
+					return;
+				}
+
+				// Clear out the old markers.
+				markers.forEach(function(marker) {
+					marker.setMap(null);
+				});
+				markers = [];
+
+				// For each place, get the icon, name and location.
+				var bounds = new google.maps.LatLngBounds();
+				places.forEach(function(place) {
+					var icon = {
+						url : place.icon,
+						size : new google.maps.Size(71, 71),
+						origin : new google.maps.Point(0, 0),
+						anchor : new google.maps.Point(17, 34),
+						scaledSize : new google.maps.Size(25, 25)
+					};
+
+					// Create a marker for each place.
+					markers.push(new google.maps.Marker({
+						map : map,
+						icon : icon,
+						title : place.name,
+						position : place.geometry.location
+					}));
+
+					if (place.geometry.viewport) {
+						// Only geocodes have viewport.
+						bounds.union(place.geometry.viewport);
+					} else {
+						bounds.extend(place.geometry.location);
+					}
+				});
+				map.fitBounds(bounds);
+			});
+			// [END region_getplaces]
 		}
-		console.log(lat)
-		console.log(lon)
-		
-	})
-});
-	
-	
-	$("#calendarModal").click(function() {
-		$.getJSON(skPlanetWeather + {
-			"lon": lon,
-			"lat": lat,
-			"version": "1",
-			"appKey": "6e62a500-8f2f-36d6-ac6d-2fcc4b4a5a23"
-		}, function(data) {
-			var arr = data.result
-			if (arr.message != "성공") {
-					alert("서버에서 데이터를 가져오는데 실패했습니다.")
-					return
-				
-			}
-			console.log(arr) 
-			for (var i in arr) {
-				if (arr[i] == "weather") 
-					contents += arr[i]
-			}
-			
-			$(".modal-weather").html(contents)
-		})
-	});
-	*/
 	</script>
-	
-	
+	<script type="text/javascript"
+		src="http://maps.google.com/maps/api/js?key=AIzaSyAft7ukIrCdQPQYU4aXTBySOqsjQthqMNE&libraries=places&callback=initMap"
+		async defer></script>
+	<script>
+		/*
+		$("#calendarModal").click(function() {
+		$.getJSON(serverAddr + '/myschedule/listWeather.json', function(obj){
+			var result = obj.jsonResult
+			if (result.state != "success") {
+				alert("서버에서 데이터를 가져오는데 실패했습니다.")
+				return
+			}
+			var lon = ""
+			var lat = ""
+			var arr = result.data
+			console.log(arr)
+			for (var i in arr) {
+				if ()
+				lat += arr[i].lat
+				lon += arr[i].lon
+			}
+			console.log(lat)
+			console.log(lon)
+			
+		})
+		});
+		
+		
+		$("#calendarModal").click(function() {
+			$.getJSON(skPlanetWeather + {
+				"lon": lon,
+				"lat": lat,
+				"version": "1",
+				"appKey": "6e62a500-8f2f-36d6-ac6d-2fcc4b4a5a23"
+			}, function(data) {
+				var arr = data.result
+				if (arr.message != "성공") {
+						alert("서버에서 데이터를 가져오는데 실패했습니다.")
+						return
+					
+				}
+				console.log(arr) 
+				for (var i in arr) {
+					if (arr[i] == "weather") 
+						contents += arr[i]
+				}
+				
+				$(".modal-weather").html(contents)
+			})
+		});
+		 */
+	</script>
+
+
 </body>
 </html>
