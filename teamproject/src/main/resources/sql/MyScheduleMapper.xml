@@ -11,6 +11,7 @@
 		<result column="GSNO" property="groupscNo" />
 		<result column="NAME" property="name" />
 		<result column="GNAME" property="groupName" />
+		<result column="GPHOT" property="groupPhoto"/>
 		<result column="SC_TITLE" property="title" />
 		<result column="ST_DT" property="start" />
 		<result column="ED_DT" property="end" />
@@ -24,12 +25,13 @@
 		select hiba_membs.mno, hiba_group.gno, hiba_g_sc.gsno,
 		hiba_membs.name, hiba_membs.nicknm,hiba_group.gname,
 		hiba_g_sc.sc_title, hiba_place.pl_name, hiba_g_sc.st_dt,
-		hiba_g_sc.ed_dt from hiba_g_membs
+		hiba_g_sc.ed_dt, hiba_group_photo.gphot from hiba_g_membs
 		inner join hiba_membs on hiba_g_membs.mno=hiba_membs.mno
 		inner join hiba_group on hiba_g_membs.gno=hiba_group.gno
 		inner join hiba_g_sc on hiba_g_membs.mno=hiba_g_sc.mno and
 		hiba_g_membs.gno=hiba_g_sc.gno
 		inner join hiba_place on hiba_g_sc.gpno=hiba_place.gpno
+		left join hiba_group_photo on hiba_group.gno = hiba_group_photo.gno and hiba_group.mno = hiba_group_photo.mno
 	</select>
 
 	<select id="selectListefgroupName" resultMap="myscheduleMap"
