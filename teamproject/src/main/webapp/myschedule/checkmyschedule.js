@@ -232,6 +232,8 @@ function ajaxMyScheduleList() {
             wholeScList.push(myScheduleList[i]);
             $("#groupNo").attr('data-value', myScheduleList[i].groupscNo) // 그 원지선이 가진 no중에서 groupscNo 넣어주는거
          }
+         
+         
       }
       
       
@@ -275,12 +277,13 @@ function ajaxMyScheduleList() {
          })
          reloadWholeCalendar();
       })
+      
    })
    
 }
 
 
-function ajaxWeather(lat, lon) {
+/*function ajaxWeather(lat, lon) {
    console.log(lat, lon);
    $.getJSON(skPlanetWeather, {
       "lat": lat,
@@ -304,11 +307,11 @@ function ajaxWeather(lat, lon) {
       $(".temperature-tmin").html(calendarWeather.minutely[0].temperature.tmin)
       $(".timeObservation").html(calendarWeather.minutely[0].timeObservation)
 
-      /*
+      
       for (var i in arr) {
          if (arr[i].weather)
             contents += arr[i]
-      }*/
+      }
    })
 }
 
@@ -322,6 +325,63 @@ function ajaxEventLocationList() {
       eventLocationList = result.data;
    })
 }
+*/
+
+function ajaxMidTermWeather(date, gpno) {
+	date = date.substring(0,10);
+	console.log(date);
+	console.log(gpno);
+	$.getJSON(serverAddr + '/myschedule/midTermWeather.json?gpno='
+			+gpno+'&date='+date, function(obj) {
+		midTermResult = obj.jsonResult;
+		console.log(midTermResult);
+		if(midTermResult.state != "success") {
+			alert("조회 실패입니다.");
+			return;
+		}
+		
+		$(".weather-city").html(midTermResult.data.city);
+		$(".weather-temperature-mx").html(midTermResult.data.maxTemp + "°C");
+		$(".weather-temperature-mn").html(midTermResult.data.minTemp + "°C");
+	
+		switch(midTermResult.data.state) {
+	      case "맑음":
+	    	  $(".weather-img").addClass("sunny");
+	    	  break;
+	    	  
+	      case "구름조금":
+	    	  $(".weather-img").addClass("partlyCloudyDay");
+	    	  break;
+	      case "구름많음" :
+	    	  $(".weather-img").addClass("heavyClouds");
+	    	  break;
+	      case "흐림" :
+	    	  $(".weather-img").addClass("clouds");
+	    	  break;
+	      case "비":
+	    	  $(".weather-img").addClass("rain");
+	    	  break;
+	      case "흐리고 비":
+	    	  $(".weather-img").addClass("rainWithClouds");
+	    	  break;
+	     case "구름많고 비/눈":
+	    	  $(".weather-img").addClass("snowAndRain");
+	    	  break;
+	       };
+		$(".weather-state").html(midTermResult.data.state);
+	});
+}
+
+
+
+
+
+
+
+
+
+
+
 
 function ajaxLoginUser() {
    $.getJSON(serverAddr +"/auth/loginUser.json", function(obj) {

@@ -1,10 +1,17 @@
 <!DOCTYPE html>
-<html lang="ko">
+<!--[if lt IE 7]>      <html lang="en" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="ko" class="no-js"> <!--<![endif]-->
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+<title>Insert title here</title>
+  <!--[if lt IE 9]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
 <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Raleway">
@@ -18,30 +25,13 @@
 	media='print' />
 
 
-<title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="../css/common_style.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <link href='../css/fullcalendar.css' rel='stylesheet' />
 <link href='../css/fullcalendar.print.css' rel='stylesheet'
 	media='print' />
-<link
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"
-	rel="stylesheet" />
-<link
-	href="http://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/a549aa8780dbda16f6cff545aeabc3d71073911e/build/css/bootstrap-datetimepicker.css"
-	rel="stylesheet" />
-
 <script src='../js/moment.min.js'></script>
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-	crossorigin="anonymous">
 
-<!-- Optional theme -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
-	integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
-	crossorigin="anonymous">
 
 <style>
 .container {
@@ -52,9 +42,9 @@
 <script src='../js/moment.min.js'></script>
 <script src='../js/fullcalendar.min.js' charset="UTF-8"></script>
 <script src='../js/ko.js'></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <script src="http://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/a549aa8780dbda16f6cff545aeabc3d71073911e/src/js/bootstrap-datetimepicker.js"></script>	
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="http://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/a549aa8780dbda16f6cff545aeabc3d71073911e/src/js/bootstrap-datetimepicker.js"></script>	
 </head>
 <style>
 #calendar {
@@ -76,17 +66,42 @@
 <header>
 	
 	</header>
-	<section>
+	<section class="panel">
+		<!-- <aside class="header-top" style="float: left; ">
+    <ul class="aside-nav"> 
+      <li class="f-r"><a href="#"></a></li>
+      <li class="f-r iconMemberPlus" data-toggle="tooltip"
+        data-placement="bottom" title="그룹추가하기"><a href="#"></a></li>
+      <li class="f-r iconSchedulePlus" data-toggle="tooltip"
+        data-placement="bottom" title="일정추가하기"><a href="#"></a></li>
+      <li class="f-r iconBell user-alert"
+        style="display: block; cursor: pointer"><i
+        class="glyphicon glyphicon-exclamation-sign alert-icon"
+        style="color: red; position: absolute; font-size: 15px; top:10px; display: none"></i>
+      </li>
+    
+    </ul>
+      <p class="f-r logout" style="float: right;"><a href="#">로그아웃</a></p>
+    <div class="alert-box"
+      style="position: absolute; background-color: rgba(0, 0, 0, 0.5); max-width: 250px; margin: 10px; left: 50px; top: 60px; color: #fff">
+    </div>
+  </aside> -->
+	
+	
 		<div class="section-wrap">
-			<div class="selectbar-left">
-
-			<div class="my-info">
-           		<ul>
-             		<li class="my-profile"></li>     
-             		<li><a href='#' id="loginBtn" class="btn btn-xs btn-success my-logout">로그인</a></li> 
-      				<li><a href='#' id="logoutBtn" class="btn btn-xs btn-success my-login">로그 아웃</a></li> 	                          
-          		 </ul>  
-        		</div>
+         <div class="make-top">
+            <div class="make-text"
+               style="position: fixed; left: 20px; z-index: 2;">
+               <h2>
+                  <span class="my-profile"
+                     style="display: block; text-align: center; padding-left: 0px;">
+                     <img src="" id="profilePhoto" style="width: 80px; height: 80px; margin-top: 90px;" />
+                  </span><br> <span id="userName" class="my-login" data-value=""></span>님
+                  안녕하세요?
+               </h2>
+            </div>
+         </div>
+      
 				<form class="navbar-form navbar-left" role="search">
 					<div class="form-group">
 						<input type="text" class="form-control" placeholder="Search">
@@ -96,15 +111,17 @@
 					<button type="button" class="btn btn-default"
 					onclick="location.href='checkMySchedule.html'"><i class="fa fa-calendar w3-xlarge" aria-hidden="true"></i></button>
 					</div>
-			
 				</form>
-				<div class="sectionbar-line">
+				
+				
+				
+			 	<div class="sectionbar-line">
 					<hr align=center width=100%>
 				</div>
 			</div>
 			
 			<div id="schedule-cal">
-			<nav class="w3-sidenav w3-collapse w3-white w3-animate-left"
+				<div class="w3-sidenav w3-collapse w3-white w3-animate-left"
 				style="z-index: 3; width: 170px; height: 676px;" id="mySidenav">
 				<br>
 				<div class="w3-container">
@@ -116,20 +133,19 @@
 						<b><span id="user" class="my-login" data-value=""></span>님의 캘린더</b>
 					</h5>
 				</div>
-				
 			<div class="my-Info">
 					<ul>	 
 						<li class="my-profile"><img src="" id="profilePhoto"/></li>
-						</ul>
+					</ul>
 			</div>
-				
-				
-				<a id="whole-grpSchedule" href="#" class="w3-padding">전체 일정 보기</a>
-				<div id="groupName">
+						<a id="whole-grpSchedule" href="#" class="w3-padding">전체 일정 보기</a>
+						<div id="groupName"></div>
 				</div>
-			</nav>
 			</div>
-
+					
+					
+					
+					
 			<div id='calendar'></div>
 
 			<div id="calendarModal" class="modal fade">
@@ -145,15 +161,14 @@
 							<p class="modal-end-date"></p>
 							<p class="modal-place"></p>
 							<p class="modal-description"></p>
-							<div id="modal-weather">
-								<div class="humidity">습도: </div>
-								<div class="precipitation">강수량: </div>
-								<div class="sky">날씨: </div>
-								<div class="temperature-tc">현재온도: </div>
-								<div class="temperature-tmax">최고온도: </div>
-								<div class="temperature-tmin">최저온도: </div>
-								<div class="timeObservation"></div>
+							<div id="modal-weather" class="weather-img">
+								<img src="">
 							</div>
+					</div>
+							
+							
+							
+							
 						</div>
 						<div id="modalBody" class="modal-body">
 							<div style="margin-top:5px;">
@@ -188,6 +203,17 @@
 		<!--<a id="groupNo" href="#" class="w3-padding" data-value="{{groupscNo}}">{{groupName}}</a>-->
 	</script>
 	
+	
+	
+	<script id="inviteMessage" type="text/x-handlebars-template">       
+    <div class="invite-box" style="display:none" data-value="{{memberNo}}">             
+      <p>{{name}} 님이 <span id="inviteGroupNo" > {{groupName}} 그룹에 초대하였습니다</span></p>
+        <ul>
+           <li style="display:inline"><button type="button" class="btn addTrue"  data-value="{{no}}" data-no="{{groupNo}}" data-chat="{{groupReplyNo}}">수락</button></li>
+           <li style="display:inline"><button type="button" class="btn addFail" data-value="{{no}}">거절</button></li>
+        </ul>     
+     </div>  
+  </script>
 
 <script src="../node_modules/handlebars/dist/handlebars.min.js"></script>
 <script type="text/javascript" src="../member/memberApp.js"></script>	
@@ -195,6 +221,7 @@
 <script type="text/javascript" src="../js/bit.js"></script>    
 <script type='text/javascript' src="../js/include.js"></script>
 <!-- <script type='text/javascript' src='../js/cal_custom.js'></script> -->
+<script type="text/javascript" src="../memberInvite/memberInvitemessageApp.js"></script>
 <script type='text/javascript' src="../js/main.js"></script>
 <script type='text/javascript' src="checkmyschedule.js"></script>
 	
@@ -202,6 +229,7 @@
 ajaxLoginUser()
 ajaxMyScheduleList()
 ajaxEventLocationList()
+ajaxGroupInviteListMessage() 
 
 if (location.search.startsWith("?")) {
   var no = location.search.split("=")[0];

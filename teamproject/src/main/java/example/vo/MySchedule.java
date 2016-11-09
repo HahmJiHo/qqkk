@@ -19,7 +19,8 @@ public class MySchedule implements Serializable {
   protected String groupPhoto;
   
   
-  public String getGroupPhoto() {
+ 
+	public String getGroupPhoto() {
     return groupPhoto;
   }
   public void setGroupPhoto(String groupPhoto) {

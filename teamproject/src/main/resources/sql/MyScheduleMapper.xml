@@ -9,6 +9,7 @@
 		<id column="MNO" property="no" /> <!--PK 는 ID 나머지는 result -->
 		<result column="GNO" property="groupNo" />
 		<result column="GSNO" property="groupscNo" />
+		<result column="GPNO" property="gpno"/>		
 		<result column="NAME" property="name" />
 		<result column="GNAME" property="groupName" />
 		<result column="GPHOT" property="groupPhoto"/>
@@ -22,7 +23,7 @@
 	</resultMap>
 
 	<select id="selectList" resultMap="myscheduleMap" parameterType="map">
-		select hiba_membs.mno, hiba_group.gno, hiba_g_sc.gsno,
+		select hiba_membs.mno, hiba_g_sc.gpno, hiba_group.gno, hiba_g_sc.gsno,
 		hiba_membs.name, hiba_membs.nicknm,hiba_group.gname,
 		hiba_g_sc.sc_title, hiba_place.pl_name, hiba_g_sc.st_dt,
 		hiba_g_sc.ed_dt, hiba_group_photo.gphot from hiba_g_membs
