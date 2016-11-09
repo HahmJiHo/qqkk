@@ -1,73 +1,31 @@
-
 <script>
 $(function () {
     $('[data-toggle="tooltip"]').tooltip()
   })
 </script>
-
-<!-- 파미콘 S-->
-<div class="container">
-	<div class="navbar-header">
-		<!-- responsive nav button -->
-		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-			<span class="sr-only">Toggle navigation</span> 
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span> 
-			<span class="icon-bar"></span>
-		</button>
-		<!-- /responsive nav button -->
+<div class="side-header-warp" style="background:url('../images/sidebar-4.jpg') no-repeat; background-size:cover">
+<div class="side-header">
+	<div class="navbar-header" style="border-bottom:1px solid #fff; width:100%; padding:10px;">
 		<!-- logo -->
-		<h1 class="navbar-brand">
-			<a href="t3.java85.com:8080/teamproject/index_h.html"> <img src="../images/hiba_logo_main.png"
-				alt="HIBA">
-			</a>
+		<h1 class="navbar-brand" style="">
+			<a href="t3.java85.com:8080/teamproject/index_h.html"> <img src="../images/hiba_logo_main_w.png" alt="HIBA"></a>
 		</h1>
 	</div>
 	<!-- /logo -->
-	<aside style="float: right;">
-		<ul class="aside-nav">
-			<li class="f-r"><a href="#"></a></li>
-			<li class="f-r iconMemberPlus" data-toggle="tooltip"
-				data-placement="bottom" title="그룹추가하기"><a href="#"></a></li>
-			<li class="f-r iconSchedulePlus" data-toggle="tooltip"
-				data-placement="bottom" title="일정추가하기"><a href="#"></a></li>
-			<li class="f-r iconBell user-alert"
-				style="display: block; cursor: pointer"><i
-				class="glyphicon glyphicon-exclamation-sign alert-icon"
-				style="color: red; position: absolute; font-size: 15px; right: 0px; display: none"></i>
-			</li>
-			<li class="f-r "><a href="#"></a></li>
-		</ul>
-	</aside>
-	<nav class="collapse navigation navbar-collapse navbar-right nav-warp"
-		role="navigation">
-
+	
+	<nav class="nav-warp" style="padding-top: 220px;">
 			<ul id="nav" class="nav navbar-nav">
 				<li><a href="../myschedule/MySchedule.html">일정</a></li>
 				<li><a href="../makegroup/makegroup.html">그룹</a></li>
 				<li><a href="#">앨범</a></li>
 				<li><a href="../community/communityApp.html">커뮤니티</a></li>
 			</ul>
-
-	
-		<div class="alert-box"
-			style="position: absolute; background-color: rgba(0, 0, 0, 0.5); max-width: 250px; margin: 10px; right: 330px; top: 50px; color: #fff">
-
-		</div>
+     <div class="mininavbar">
+      <i class="icon-bar"></i>
+      <i class="icon-bar"></i>
+      <i class="icon-bar"></i>
+    </div>
 	</nav>
-
 </div>
-<script id="inviteMessage" type="text/x-handlebars-template">       
-    <div class="invite-box" style="display:none" data-value="{{memberNo}}">             
-      <p>{{name}} 님이 <span id="inviteGroupNo" > {{groupName}} 그룹에 초대하였습니다</span></p>
-        <ul>
-           <li style="display:inline"><button type="button" class="btn addTrue"  data-value="{{no}}" data-no="{{groupNo}}" data-chat="{{groupReplyNo}}">수락</button></li>
-           <li style="display:inline"><button type="button" class="btn addFail" data-value="{{no}}">거절</button></li>
-        </ul>     
-     </div>  
-  </script>
-<script type="text/javascript"
-	src="../memberInvite/memberInvitemessageApp.js"></script>
-<script>
-ajaxGroupInviteListMessage()
-</script>
+</div>
+

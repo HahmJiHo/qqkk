@@ -25,6 +25,7 @@
 		<result column="GPHOT" property="gphoto" />      
 		<result column="sc_title" property="sc_title" />
 		<result column="GTEXT" property="groupText" />
+		<result column="PHOT_PATH" property="filename"/>
 	</resultMap>
 
 	<select id="selectList" resultMap="memberInviteMap" parameterType="map">
@@ -32,9 +33,10 @@
 			from hiba_group inner join hiba_invit  			
 			on hiba_group.gno = hiba_invit.gno -->
     
-     select hiba_group.gno, hiba_group.gname, hiba_group.gtext, hiba_group.mname, hiba_invit.* , hiba_g_reply.gno, hiba_g_reply.grno, hiba_group_photo.gphot      
+     select hiba_group.gno, hiba_group.gname, hiba_group.gtext, hiba_group.mname, hiba_invit.* , hiba_g_reply.gno, hiba_g_reply.grno, hiba_group_photo.gphot, hiba_membs.PHOT_PATH      
       from hiba_group
       inner join hiba_invit on hiba_group.gno = hiba_invit.gno
+      left join hiba_membs on hiba_invit.mno = hiba_membs.mno
       inner join hiba_g_reply on hiba_invit.gno = hiba_g_reply.gno      
       left join hiba_group_photo on hiba_group.gno = hiba_group_photo.gno and hiba_invit.mno = hiba_group_photo.mno
       

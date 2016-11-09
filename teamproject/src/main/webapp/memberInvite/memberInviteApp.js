@@ -1,3 +1,6 @@
+
+
+$('.wrap').removeClass('display-none');
 function ajaxMemberInviteList() {
 	$.getJSON(serverAddr +"/memberInvite/list.json", function(obj) {
 		var result = obj.jsonResult
@@ -14,8 +17,9 @@ function ajaxMemberInviteList() {
 			if (location.search.startsWith("?")) {
 				if (arr[i].groupNo == no && arr[i].status == true) {					
 					contents += template(arr[i])
+					console.log(arr)
 					if ($('#userName').text() == arr[i].inviteName) {
-						$('#color-btn').attr('data-no', arr[i].no)					
+						$('#color-btn').attr('data-no', arr[i].no)				
 					}
 					$('.group-member-list').html(contents)
 				} else if (arr[i].groupNo == no && arr[i].status == false){
@@ -24,10 +28,10 @@ function ajaxMemberInviteList() {
 				}
 			}			
 		}
-
+	    $('.wrap').addClass('display-none');
 	})
 }
-
+$('.wrap').removeClass('display-none');
 function ajaxMemberGroupInviteList() {
 	$.getJSON(serverAddr +"/memberInvite/list.json",function(obj) {
 		var result = obj.jsonResult
@@ -35,7 +39,6 @@ function ajaxMemberGroupInviteList() {
 			alert("서버에서 데이터를 가져오는데 실패 했습니다.ddd")
 			return
 		} 
-
 		var contents = ""
 		var inviteContents = ""
 		var arr = result.data
@@ -46,16 +49,11 @@ function ajaxMemberGroupInviteList() {
 				contents += template(arr[i])				
 			} 	
 		}
-		$("#member").html(contents)
-		
-			ajaxmyScheduleIng()
-		
-		
+		$("#member").html(contents)	
+		ajaxmyScheduleIng()	
 		$(".groupMore").click(function (e) {
 			window.location.href = "../group/makeSc.html?no=" + $(this).attr("data-no")
-		}) 				
-	})
-	
-
-	
+		}) 	
+		$('.wrap').addClass('display-none');
+	})	
 }

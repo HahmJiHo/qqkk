@@ -1,4 +1,4 @@
-$("#id02").on('click', "#loginBtn", function(event) { 
+$('body').on('click', "#loginBtn", function() { 
 	var user = {
 			email: $("#LoginEmail").val(),
 			password: $("#LoginPassword").val(),
@@ -22,9 +22,16 @@ function ajaxLogin(user) {
 			} 
 			window.location.href = serverAddr + "/makegroup/makegroup.html"		
 		},
+		beforeSend:function(){
+	        $('.wrap').removeClass('display-none');
+	    },
+	    complete:function(){
+	        $('.wrap').addClass('display-none');
+	 
+	    },
 		error : function(msg) {
 			alert(msg)
-		}
+		} 
 	})
 }
 

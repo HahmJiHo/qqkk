@@ -13,133 +13,161 @@
         <meta charset="utf-8">
 
         <!-- Site Title -->
-        <title>HIBA</title>
-        
-        <!--
-        Google Fonts
-        ============================================= -->
+        <title>HIBA</title>        
         <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700" rel="stylesheet" type="text/css">
-		
-        <!--
-        CSS
-        ============================================= -->
-        <!-- Fontawesome -->
         <link rel="stylesheet" href="css/main/font-awesome.min.css">
-        <!-- Bootstrap -->
         <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
-        <!-- Fancybox -->
         <link rel="stylesheet" href="css/main/jquery.fancybox.css">
-        <!-- owl carousel -->
         <link rel="stylesheet" href="css/main/owl.carousel.css">
-        <!-- Animate -->
         <link rel="stylesheet" href="css/main/animate.css">
-        <!-- Main Stylesheet -->
         <link rel="stylesheet" href="css/main/main.css">
-        <!-- Main Responsive -->
+        <link rel="stylesheet" href="css/main.css">
         <link rel="stylesheet" href="css/main/responsive.css">
 		    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
-		    <!-- Modernizer Script for old Browsers -->
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
         <link rel="stylesheet" type="text/css" href="css/animate.css">
-        <link rel="stylesheet" type="text/css" href="css/color/rose.css">
+        <link rel="stylesheet" type="text/css" href="css/color/violet.css">
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" />
 		    <style>
 .Btn2 { background-color: #e7e7e7;color: black;} /* Gray */
 .Btn3 { background-color:rgb(157, 201, 42); color: black;} /* Gray */
-/* form starting stylings ------------------------------- */
-.group            { 
-  position:relative; 
-  margin-bottom:45px; 
-}
-input               {
-  font-size:15px;
-  padding:10px 10px 10px 5px;
-  display:block;
-  width:100%;
-  border:none;
-  border-bottom:1px solid #757575;
-}
-input:focus         { outline:none; }
 
-/* LABEL ======================================= */
-label                {
-  color:#999; 
-  font-size:18px;
-  font-weight:normal;
-  position:absolute;
-  pointer-events:none;
-  left:5px;
-  top:10px;
-  transition:0.2s ease all; 
-  -moz-transition:0.2s ease all; 
-  -webkit-transition:0.2s ease all;
-}
-label.file-label {
-  top: -10px
-}
-/* active state */
-input:focus ~ label, input:valid ~ label        {
-  top:-20px;
-  font-size:14px;
-  color:#5264AE;
+.wrap {
+  position: relative;
+  top: 150px;
+  width: 150px;
+  margin: 0 auto;
 }
 
-/* BOTTOM BARS ================================= */
-.bar    { position:relative; display:block; width:100%; }
-.bar:before, .bar:after     {
-  content:'';
-  height:2px; 
-  width:0;
-  bottom:1px; 
-  position:absolute;
-  background:#5264AE; 
-  transition:0.2s ease all; 
-  -moz-transition:0.2s ease all; 
-  -webkit-transition:0.2s ease all;
-}
-.bar:before {
-  left:50%;
-}
-.bar:after {
-  right:50%; 
+.loader {
+  position: absolute;
+  top: 0;
+  z-index: 10;
+  width: 50px;
+  height: 50px;
+  border: 15px solid;
+  border-radius: 50%;
+  border-top-color: rgba(44,44,44,0);
+  border-right-color: rgba(55,55,55,0);
+  border-bottom-color: rgba(66,66,66,0);
+  border-left-color: rgba(33,33,33,0);
+  animation: loadEr 3s infinite;
 }
 
-/* active state */
-input:focus ~ .bar:before, input:focus ~ .bar:after {
-  width:50%;
+@keyframes loadEr {
+  0% {
+    border-top-color: rgba(44,44,44,0);
+    border-right-color: rgba(55,55,55,0);
+    border-bottom-color: rgba(66,66,66,0);
+    border-left-color: rgba(33,33,33,0);
+    
+  }
+  10.4% {
+    border-top-color: rgba(44,44,44,0.5);
+    border-right-color: rgba(55,55,55,0);
+    border-bottom-color: rgba(66,66,66,0);
+    border-left-color: rgba(33,33,33,0);
+  }
+  20.8% {
+    border-top-color: rgba(44,44,44,0);
+    border-right-color: rgba(55,55,55,0);
+    border-bottom-color: rgba(66,66,66,0);
+    border-left-color: rgba(33,33,33,0);
+  }
+31.2% {
+  border-top-color: rgba(44,44,44,0);
+    border-right-color: rgba(55,55,55,0.5);
+    border-bottom-color: rgba(66,66,66,0);
+    border-left-color: rgba(33,33,33,0);
+}
+41.6% {
+  border-top-color: rgba(44,44,44,0);
+    border-right-color: rgba(55,55,55,0);
+    border-bottom-color: rgba(66,66,66,0);
+    border-left-color: rgba(33,33,33,0);
+  transform: rotate(40deg);
+}
+52% {
+  border-top-color: rgba(44,44,44,0);
+    border-right-color: rgba(55,55,55,0);
+    border-bottom-color: rgba(66,66,66,0.5);
+    border-left-color: rgba(33,33,33,0);
+}
+62.4% {
+  border-top-color: rgba(44,44,44,0);
+    border-right-color: rgba(55,55,55,0);
+    border-bottom-color: rgba(66,66,66,0);
+    border-left-color: rgba(33,33,33,0);
+}
+72.8% {
+  border-top-color: rgba(44,44,44,0);
+    border-right-color: rgba(55,55,55,0);
+    border-bottom-color: rgba(66,66,66,0);
+    border-left-color: rgba(33,33,33,0.5);
+}
 }
 
-/* HIGHLIGHTER ================================== */
-.highlight {
-  position:absolute;
-  height:60%; 
-  width:100%; 
-  top:25%; 
-  left:0;
-  pointer-events:none;
-  opacity:0.5;
+.loaderbefore {
+  width: 50px;
+  height:50px;
+  border: 15px solid #ddd;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  z-index: 9;
 }
 
-/* active state */
-input:focus ~ .highlight {
-  -webkit-animation:inputHighlighter 0.3s ease;
-  -moz-animation:inputHighlighter 0.3s ease;
-  animation:inputHighlighter 0.3s ease;
+.circular {
+  position: absolute;
+  top: -15px;
+  left: -15px;
+  width: 70px;
+  height: 70px;
+  border: 20px solid;
+  border-radius: 50%;
+  border-top-color: #333;
+  border-left-color: #fff;
+  border-bottom-color: #333;
+  border-right-color: #fff;
+  opacity: 0.2;
+  animation: poof 5s infinite;
+}
+@keyframes poof {
+  0% {transform: scale(1,1) rotate(0deg); opacity: 0.2;}
+  50% {transform: scale(4,4) rotate(360deg); opacity: 0;}
+}
+.another {
+  opacity: 0.1;
+  transform: rotate(90deg);
+  animation: poofity 5s infinite;
+  animation-delay: 1s;
+}
+@keyframes poofity {
+  0% {transform: scale(1,1) rotate(90deg); opacity: 0.1;}
+  50% {transform: scale(4,4) rotate(-360deg); opacity: 0;}
 }
 
-/* ANIMATIONS ================ */
-@-webkit-keyframes inputHighlighter {
-    from { background:#5264AE; }
-  to    { width:0; background:transparent; }
+.text {
+  position: absolute;
+  top: 95px;
+  left: 8px;
+  font-family: Arial;
+  text-transform: uppercase;
+  color: #888;
+  animation: opaa 10s infinite;
 }
-@-moz-keyframes inputHighlighter {
-    from { background:#5264AE; }
-  to    { width:0; background:transparent; }
+@keyframes opaa {
+  0% {opacity: 1;}
+10% {opacity: 0.5}
+15% {opacity: 1;}
+30% {opacity: 1;}
+65% {opacity: 0.3;}
+90% {opacity: 0.8;}
 }
-@keyframes inputHighlighter {
-    from { background:#5264AE; }
-  to    { width:0; background:transparent; }
-}
-
+.display-none{ /*감추기*/
+        display:none;
+    }
+    
 .main-heading-content {
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
@@ -192,6 +220,13 @@ input:focus ~ .highlight {
     </head>
 	
     <body>
+<div class="wrap display-none">
+  <div class="loader"></div>
+  <div class="loaderbefore"></div>
+  <div class="circular"></div>
+  <div class="circular another"></div>
+  <div class="text">Loading</div>
+</div>
 
         <!--
         Fixed Navigation
@@ -212,7 +247,7 @@ input:focus ~ .highlight {
                     <!-- logo -->
                     <h1 class="navbar-brand">
                         <a href="#body">
-                            <img src="images/hiba_logo_main.png" alt="HIBA">
+                            <img src="images/hiba_logo_main_w.png" alt="HIBA">
                         </a>
                     </h1>
                     <!-- /logo -->
@@ -226,7 +261,7 @@ input:focus ~ .highlight {
                             <li class="current"><a href="#home">Home</a></li>
                             <li><a href="#service">Service</a></li>
                             <li><a href="#about">About</a></li>
-                            <li id="ModalLoginBtn" onclick="document.getElementById('id02').style.display='block'"><a href="#">Sign In</a></li>
+                          <!--   <li id="ModalLoginBtn" onclick="document.getElementById('id02').style.display='block'"><a href="#">Sign In</a></li> -->
                             <li onclick="document.getElementById('id01').style.display='block'"><a href="#">Join Hiba</a></li>
                         </ul>
                     </nav>
@@ -241,16 +276,59 @@ input:focus ~ .highlight {
         ==================================== -->
         
         <div id="id01" class="w3-modal">
-      <div class="w3-modal-content w3-card-8 w3-animate-zoom" style="max-width: 500px">
-
-        <div class="w3-center">
-          <br> <span onclick="document.getElementById('id01').style.display='none'"
-            class="w3-closebtn w3-hover-red w3-container w3-padding-8 w3-display-topright"
-            title="Close Modal">&times;</span> <img src="images/newLogo1.png"
-            alt="Avatar" style="width: 10%; padding-bottom:20px; margin-top: -10px!important;" class="w3 w3-margin-top">
-        </div>
-    <form class="w3-container"  method="post" enctype="multipart/form-data">
-          <div class="w3-section" style="margin-top:0px!important; margin-bottom:0px!important; ">
+        <div class="login-sign-box">
+           <ul class="login-nav">
+                <li class="login-nav__item active">
+                  <a href="#">Sign In</a>
+                </li>
+                <li class="login-nav__item">
+                  <a href="#">Sign Up</a>
+                </li>
+             </ul>
+              <span onclick="document.getElementById('id01').style.display='none'"
+              class="w3-closebtn w3-hover-red w3-container w3-padding-8 w3-display-topright"
+              style="z-index:10000"
+            title="Close Modal">&times;</span>
+            <div class="login-container">	   
+						  <form method="post" class="form-login">
+						    <label for="LoginEmail" class="login__label">Email</label>
+						    <input id="LoginEmail" class="login__input" type="text" />
+						   
+						    <label for="LoginPassword" class="login__label">Password</label>
+						    <input id="LoginPassword" class="login__input" type="password" />
+						   
+						    <label for="" class="login__label--checkbox">
+						      <input id="saveEmail" type="checkbox" class="login__input--checkbox" />
+						      Keep me Signed in
+						    </label>
+						    <button type="button" class="login__submit" id="loginBtn">Sign in</button>
+						  </form>
+						</div>
+						 <div class="login-container">
+                <form class="form-login"  method="post" enctype="multipart/form-data">
+                  <label for="name" class="login__label">NAME</label>
+                   <input type="text" id="name" class="login__input" name="usrId" required>
+                   
+                   <label for="nicknm" class="login__label">NICKNAME</label>
+                   <input type="text" id="nicknm" class="login__input" name="usrName" required>
+                  
+                   <label for="email" class="login__label">EMAIL</label>
+                   <input type="text" id="email" class="login__input" name="email" required>
+                   
+                   <div class="join-email-box" style="position: relative;">
+				             <p id="checkedEmail" style="position: absolute; top:-40px; margin:0px"></p>
+				           </div>
+				           
+				           <label for="password" class="login__label">PASSWORD</label>
+				           <input type="password" id="password" class="login__input" name="psw" required>
+				           
+				           <label for="file" class="file-label login__label">PHOTO</label><br> 
+                   <input type="file" name="filename" id="PHOT_PATH"/>
+                   <button type="button" id="addBtn" class="login__submit" type="button">SIGN UP</button>
+                </form>
+             </div>
+          </div>
+        <!--   <div class="w3-section" style="margin-top:0px!important; margin-bottom:0px!important; ">
             
             <div class="group">      
               <input type="text" id="name" name="usrId" required>
@@ -287,73 +365,15 @@ input:focus ~ .highlight {
            <label for="file" class="file-label">사진 등록</label><br> 
             <input type="file" name="filename" id="PHOT_PATH"/>
            <button id="addBtn" class="w3-btn-block w3-green w3-section w3-padding" type="button">가 입 하 기</button>
-              <!-- <label><b>비밀번호 확인</b></label> <input id="password" class="w3-input w3-border" type="password"  placeholder="비밀번호 확인" name="pswCheck" required> -->
+              <label><b>비밀번호 확인</b></label> <input id="password" class="w3-input w3-border" type="password"  placeholder="비밀번호 확인" name="pswCheck" required>
                <p style="text-align:center; padding-top: 0px;">
                   <input class="w3-check w3-margin-top" style="display:inline-block" type="checkbox" checked="checked">
                   <span style="display:inline-block"> Remember me</span>
               </p>
           </div>
-        </div>
-      </form>
-
-
-      </div>
+        </div> -->
     </div>
-        
-        
- <div id="id02" class="w3-modal">
-    <div class="w3-modal-content w3-card-8 w3-animate-zoom" style="max-width: 600px">
-      <div class="w3-center" style="padding: 10px; background-color:rgb(125, 20, 133)">
-        <br> <span onclick="document.getElementById('id02').style.display='none'"
-            class="w3-closebtn w3-hover-red w3-container w3-padding-8 w3-display-topright"
-            title="Close Modal">&times;</span> <!-- <img src="images/loginIMG.png"
-            alt="Avatar" style="width: 10%" class="w3-circle w3-margin-top"> -->
-  </div>
-  
 
-
-          <!-- login 버튼 -->
-<div>
-    <form method="post" class="form-horizontal" style="padding-top: 30px;">
-      <div class="form-group">
-        <label for="email" class="col-sm-2 control-label">이메일</label>
-        <div class="col-sm-10">
-          <input type="text" class="form-control" id="LoginEmail"
-            placeholder="예) hong@bit.com">
-        </div>
-      </div>
-
-
-      <div class="form-group">
-        <label for="password" class="col-sm-2 control-label">암호</label>
-        <div class="col-sm-10">
-
-          <input type="password" id="LoginPassword" class="form-control"
-            placeholder="암호">
-        </div>
-      </div>
-
-      <div class="form-group">
-        <div class="col-sm-offset-2 col-sm-10">
-          <div class="checkbox">
-            <label style="float:left;"> <input id="saveEmail" type="checkbox">
-              Remember me
-            </label>
-          </div>
-        </div>
-      </div>
- 
-      <div class="form-group"  style="padding-bottom: 30px;">
-        <div class="col-sm-offset-2 col-sm-10">
-          <button id="loginBtn" type="button" class="btn btn-default">로그인</button>
-        </div>
-      </div>
-    </form>
-      
-      </div>
-    </div>
-  </div>
-        
         <section id="home">     
           <div id="home-carousel" class="carousel slide" data-interval="false">
               <div class="carousel-inner">
@@ -529,7 +549,7 @@ input:focus ~ .highlight {
                                     <img src="img/client/1.jpg" alt="Client" class="img-circle">
                                     <div class="tst-content">
                                         <p>Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Mauris blandit aliquet elit, eget tincidunt.</p>
-                                        <span>원지선</span>
+                                        <span>이상원</span>
                                     </div>
                                 </div>
                             </div>
@@ -539,7 +559,7 @@ input:focus ~ .highlight {
                                     <img src="img/client/2.jpg" alt="Client" class="img-circle">
                                     <div class="tst-content">
                                         <p>Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Mauris blandit aliquet elit, eget tincidunt.</p>
-                                        <span>이상원</span>
+                                        <span>원지선</span>
                                     </div>
                                 </div>
                                 <div class="tst-single clearfix">
@@ -593,17 +613,13 @@ input:focus ~ .highlight {
                     <div class="col-lg-12">
 
                         <div class="footer-logo wow fadeInDown">
-                            <img src="img/logo.png" alt="logo">
+                             <img src="images/hiba_logo_main.png" alt="HIBA">
                         </div>
 
                         <div class="footer-social wow fadeInUp">
                             <h3>We are social</h3>
-                            <ul class="text-center list-inline">
-                                <li><a href="#"><i class="fa fa-facebook fa-lg"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter fa-lg"></i></a></li>
-                                <li><a href="#"><i class="fa fa-google-plus fa-lg"></i></a></li>
-                                <li><a href="#"><i class="fa fa-dribbble fa-lg"></i></a></li>
-                            </ul>
+														<i class="fa fa-github" aria-hidden="true"></i>
+                            <p><a href="https://github.com/HahmJiHo/qqkk">https://github.com/HahmJiHo/qqkk</a></p>
                         </div>
 
                         <div class="copyright">
@@ -619,28 +635,18 @@ input:focus ~ .highlight {
         <!-- main jQuery -->
         <script src="node_modules/jquery/dist/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.51/jquery.form.min.js"></script>    
-        <!-- Bootstrap -->
         <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-        <!-- jquery.nav -->
         <script src="js/main/jquery.nav.js"></script>
-        <!-- Portfolio Filtering -->
         <script src="js/main/jquery.mixitup.min.js"></script>
-        <!-- Fancybox -->
         <script src="js/main/jquery.fancybox.pack.js"></script>
-        <!-- Parallax sections -->
         <script src="js/main/jquery.parallax-1.1.3.js"></script>
-        <!-- jQuery Appear -->
         <script src="js/main/jquery.appear.js"></script>
-        <!-- countTo -->
         <script src="js/main/jquery-countTo.js"></script>
-        <!-- owl carousel -->
         <script src="js/main/owl.carousel.min.js"></script>
-        <!-- WOW script -->
         <script src="js/main/wow.min.js"></script>
-        <!-- theme custom scripts -->
         <script type="text/javascript" src="js/typed.js"></script>
-        <script type="text/javascript" src="js/main/main_nav.js"></script>
         <script type="text/javascript" src="js/main.js"></script>
+        <script type="text/javascript" src="js/main/main_nav.js"></script>
 			  <script type="text/javascript" src="js/check.js"></script>			  
 			  <script type="text/javascript" src="js/common.js"></script>
 			  <script type="text/javascript" src="js/bit.js"></script>

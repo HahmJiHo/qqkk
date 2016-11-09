@@ -26,7 +26,7 @@ public class MemberInvite implements Serializable {
 	protected String gphoto;
 	protected String sc_title;
 	protected String groupText;
-	
+	protected String filename;
 	public int getMemberNo() {
 		return memberNo;
 	}
@@ -169,6 +169,14 @@ public class MemberInvite implements Serializable {
 
 	public void setGroupText(String groupText) {
 		this.groupText = groupText;
+	}
+
+	public String getFilename() {
+		return filename;
+	}
+
+	public void setFilename(String filename) {
+		this.filename = filename;
 	}
 
 	@Override

@@ -1,11 +1,16 @@
-$(document).ready(function() {    
-  
-  /*$('header').on("click", ".navbar", function(e) {
-	$('.nav').slideToggle();	
-  });*/  
-  
 
-  $('header').on("click", ".user-alert", function(e) {
+	
+	$(".login-nav li").click(function() {
+		 var thisIndex = $(this).index();
+	     $(".login-container").hide();
+	     $(".login-container").eq(thisIndex).show();
+
+	     $(".login-nav  li").removeClass("active");
+	     $(".login-nav li").eq(thisIndex).addClass("active");
+	});
+	$(".login-nav li").eq(0).click();
+	
+  $('body').on("click", ".user-alert", function(e) {
 		$('.invite-box').slideToggle();	
   });  
 
@@ -31,4 +36,3 @@ $(document).ready(function() {
 	   })
 	  })
   
-})

@@ -25,7 +25,7 @@
        
      select  hiba_group.*, hiba_group_photo.* , hiba_g_sc.sc_title, hiba_g_sc.st_dt
      from hiba_group
-     inner join hiba_g_sc on hiba_g_sc.gno = hiba_group.gno
+     left join hiba_g_sc on hiba_g_sc.gno = hiba_group.gno
      left join hiba_group_photo on hiba_group.gno = hiba_group_photo.gno and hiba_group.mno = hiba_group_photo.mno;    
    <!--s
     select hiba_group.gno, hiba_group.mno, hiba_group.gname, hiba_invit.status

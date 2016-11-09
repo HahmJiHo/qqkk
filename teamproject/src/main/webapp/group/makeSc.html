@@ -1,32 +1,33 @@
 <!DOCTYPE html>
-<html lang="ko">
+<!--[if lt IE 7]>      <html lang="en" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="ko" class="no-js"> <!--<![endif]-->
   <head>
-   <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+   <meta charset="utf-8">   
+    <meta name="viewport" content="width=device-width, initial-scale=1">    
     <title>프로젝트-스케쥴</title>
     <!--[if lt IE 9]>
       <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-   <!--  <script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyAft7ukIrCdQPQYU4aXTBySOqsjQthqMNE&libraries=places&callback=initAutocomplete" async defer></script>-->
+    <![endif]-->   
    
-    <link rel="stylesheet" type="text/css" href="../css/common_style.css" > 
 		<link href='../css/fullcalendar.css' rel='stylesheet' />
 		<link href='../css/fullcalendar.print.css' rel='stylesheet' media='print' />
 		<link href="../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
 		<link href="http://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/a549aa8780dbda16f6cff545aeabc3d71073911e/build/css/bootstrap-datetimepicker.css" rel="stylesheet"/>
-		<!-- Optional theme -->
-		<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap-theme.min.css">
-		<!-- Latest compiled and minified JavaScript -->
+		<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap-theme.min.css">		
+		 <link rel="stylesheet" type="text/css" href="../css/common_style.css" > 
 	  <link rel="stylesheet" type="text/css" href="../css/makeCal.css" >
 	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/5.0.7/sweetalert2.min.css" />
     <link rel="stylesheet" href="../css/jquery.minicolors.css">
 	
 	
 	  <style>
-	    #calendar {
-	    max-width: 800px;
-	    margin: 0 auto;
-	    float: right;
+	    #calendar {	
+	    position:absolute;   
+	    max-width:800px;
+	    left:240px;
+	    top: 80px;
      }
 
      .article-schedule ul li { padding-bottom: 20px; }     
@@ -172,23 +173,52 @@ top: 4px;
   </style>
 </head>
 <body>
+<div class="wrap display-none">
+  <div class="loader"></div>
+  <div class="loaderbefore"></div>
+  <div class="circular"></div>
+  <div class="circular another"></div>
+  <div class="text">Loading</div>
+</div>
+<div class="wrapper">
+
+
 	<header>
 	
 	</header>
-  <section>
+  <section class="panel">
+     <aside class="header-top" style="float: left; ">
+    <ul class="aside-nav"> 
+      <li class="f-r"><a href="#"></a></li>
+      <li class="f-r iconMemberPlus" data-toggle="tooltip"
+        data-placement="bottom" title="그룹추가하기"><a href="#"></a></li>
+      <li class="f-r iconSchedulePlus" data-toggle="tooltip"
+        data-placement="bottom" title="일정추가하기"><a href="#"></a></li>
+      <li class="f-r iconBell user-alert"
+        style="display: block; cursor: pointer"><i
+        class="glyphicon glyphicon-exclamation-sign alert-icon"
+        style="color: red; position: absolute; font-size: 15px; right: 0px; display: none"></i>
+      </li>
+    
+    </ul>
+      <p class="f-r logout" style="float: right;"><a href="#">로그아웃</a></p>
+    <div class="alert-box"
+      style="position: absolute; background-color: rgba(0, 0, 0, 0.5); max-width: 250px; margin: 10px; right: 330px; top: 50px; color: #fff">
+    </div>
+  </aside>
     <div class="section-wrap">
       <div class="make-top">
         <div class="make-text">
          <h2><span id="userName" class="my-login"></span> 님의 캘린더.</h2>  
         </div>        
-        <div class="my-info">
+     <!--    <div class="my-info">
            <ul>
              <li class="my-profile"></li>             
-              <li><a href='#' id="logoutBtn" class="btn btn-xs btn-success my-login">로그 아웃</a></li>                      
+                           
            </ul>  
-        </div>
+        </div> -->
       </div>
-      <div class="artice" style="float: right;">
+      <div class="artice">
                    
         <div id='calendar'></div>   
                
@@ -259,7 +289,7 @@ top: 4px;
              </div>
           </div>
       </div>   
-       <div class="aside" style="float: left; width: auto;">
+       <div class="aside" style="float: left; padding:20px 20px 0 20px;width: auto;">
          <div class="my-make-schedule">
             <button type="button" class="make-sc-btn btn btn-sm" style="cursor: pointer">일정 추가하기</button>
             <button type="button" class="add-member-btn btn btn-sm" style="cursor: pointer">멤버 추가하기</button>
@@ -396,15 +426,14 @@ top: 4px;
         </div>
        </div>
     </div>
-  </section>                    
-  <footer>  
-  </footer>
+  </section>       
+  </div>             
   <script id="groupReplyMore" type="text/x-handlebars-template"> 
   <button id="group-reply-btn"class="btn btn-primary" type="button" data-no="{{no}}">그룹 댓글</button>
   </script>
   <script id="groupli" type="text/x-handlebars-template"> 
     <li>
-      <span class="member-photo"><img class="member-color" style="border: 4px solid {{color}}" src="../images/514741.jpg"></span>                   
+      <span class="member-photo"><img class="member-color" style="border: 4px solid {{color}}" src="../upload/{{filename}}"></span>                   
       <span class="member-name" data-value="{{no}}">{{inviteName}}</span>      
     </li>
   </script>
@@ -432,7 +461,15 @@ top: 4px;
   </script>
    <script id="moreScheduleAccept" type="text/x-handlebars-template"> 
      <span>{{name}}</span>
-
+  </script>
+  <script id="inviteMessage" type="text/x-handlebars-template">       
+    <div class="invite-box" style="display:none" data-value="{{memberNo}}">             
+      <p>{{name}} 님이 <span id="inviteGroupNo" > {{groupName}} 그룹에 초대하였습니다</span></p>
+        <ul>
+           <li style="display:inline"><button type="button" class="btn addTrue"  data-value="{{no}}" data-no="{{groupNo}}" data-chat="{{groupReplyNo}}">수락</button></li>
+           <li style="display:inline"><button type="button" class="btn addFail" data-value="{{no}}">거절</button></li>
+        </ul>     
+     </div>  
   </script>
   <script src="../node_modules/jquery/dist/jquery.js"></script>  
   <script src='../js/moment.min.js'></script>
@@ -444,7 +481,8 @@ top: 4px;
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/5.0.7/sweetalert2.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
   <script type="text/javascript" src="http://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/a549aa8780dbda16f6cff545aeabc3d71073911e/src/js/bootstrap-datetimepicker.js"></script>   
-  <script type='text/javascript' src="../js/include.js"></script>    
+  <script type='text/javascript' src="../js/include.js"></script>
+  <script src="../js/light-bootstrap-dashboard.js"></script>
   <script type='text/javascript' src="../js/main.js"></script>
   <script type="text/javascript" src="../js/common.js"></script>
   <script type='text/javascript' src="../js/calendar.js"></script>   
@@ -460,6 +498,7 @@ top: 4px;
   <script type="text/javascript" src="../groupSchedule/groupScheduleForm.js"></script>  
   <script type="text/javascript" src="../schedulestatus/schedulestatusApp.js"></script> 
   <script type="text/javascript" src="../schedulestatus/schedulestatusForm.js"></script> 
+  <script type="text/javascript" src="../memberInvite/memberInvitemessageApp.js"></script>
   <script>  
   ajaxLoginUser()
   ajaxGroupBtn()
@@ -467,6 +506,7 @@ top: 4px;
   ajaxMemberInviteList()
   ajaxMemberList()
   ajaxGroupName()
+   ajaxGroupInviteListMessage() 
 	if (location.search.startsWith("?")) {
 	  var no = location.search.split("=")[1];
 	  ajaxMyScheduleList(no)
@@ -547,5 +587,6 @@ window.initMap = function() {
  
   </script>
   <script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyAft7ukIrCdQPQYU4aXTBySOqsjQthqMNE&libraries=places&callback=initMap" async defer></script>
+  
 </body>
 </html>

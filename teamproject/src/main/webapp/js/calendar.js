@@ -149,7 +149,7 @@ function showCalendar(arr) {
 		navLinks: true, // can click day/week names to navigate views
 		selectable: false,
 		selectHelper: true,
-		disableDragging : true,
+		disableDragging : false,
 		/*select: function(start, end) {
 			var title = swal({
 				  title: '이벤트를 입력해 주세요',
@@ -207,20 +207,7 @@ function showCalendar(arr) {
 			/* 일정 추가 팝업*/
 			
 			$('.fc-content').data('data-scno', event.id)
-			$(".fc-myCustomButton-button").addClass("btn btn-primary")
-			$('.fc-myCustomButton-button').css({ "opacity": "0.0" , "position" : "absolute"});
-			$('#addeventTitle').val('') 
-			$('#addDateStart').val('')
-			$('#addDateEnd').val('')
-			$('#pac-input').val('')
-			$('.make-sc-btn').on('click', function(e) {
-				$('#calendarAddModal').modal();				
-				$('.fc-myCustomButton-button').css({ "opacity": "1.0" ,  "position" : "static" });
-				if ($('.fc-myCustomButton-button').length <= 1) {				
-					$(".fc-myCustomButton-button").appendTo('#add-moadl-footer')					
-
-				}	
-			})		
+	
 			var ntoday = new Date().getTime();
 			var eventEnd = moment(event.end).valueOf();
 			var eventStart = moment(event.start).valueOf();
@@ -319,6 +306,23 @@ function showCalendar(arr) {
 		$('#addDateStart').val('');
 		$('#addDateEnd').val('');
 		$('#addeventTitle').val('');
+		
+		$(".fc-myCustomButton-button").addClass("btn btn-primary")
+		$('.fc-myCustomButton-button').css({ "opacity": "0.0" , "position" : "absolute"});
+		$('#addeventTitle').val('') 
+		$('#addDateStart').val('')
+		$('#addDateEnd').val('')
+		$('#pac-input').val('')
+		$('body').on('click', '.make-sc-btn', function(e) {
+			console.log("11")
+			$('#calendarAddModal').modal();				
+			$('.fc-myCustomButton-button').css({ "opacity": "1.0" ,  "position" : "static" });
+			if ($('.fc-myCustomButton-button').length <= 1) {				
+				$(".fc-myCustomButton-button").appendTo('#add-moadl-footer')					
+
+			}	
+		})	
+		
 	});
 
 };   

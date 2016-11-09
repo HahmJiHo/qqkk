@@ -128,7 +128,7 @@ width: 11px;
 }
 
 .btn-blue {
-  background-color: #00c7fc;
+  background-color: #9dc92a;
   color: #fff;
   font-size: 16px;
   line-height: 24px;
@@ -188,8 +188,8 @@ width: 11px;
 }
 
 .navigation .navbar-nav > li.current > a {
-  color: #00C7FC;
-  border-bottom: 1px solid #00C7FC;
+  color: #9dc92a;
+  border-bottom: 1px solid #9dc92a;
 }
 
 .animated-nav .navigation .navbar-nav > li.current > a {
@@ -319,7 +319,7 @@ width: 11px;
 }
 
 .carousel-indicators .active {
-  background-color: #00c7fc;
+  background-color: #9dc92a;
   border: 0;
 }
 
@@ -333,7 +333,7 @@ width: 11px;
 }
 
 #service .media .media-body h3{
-    color: #00C7FC;
+    color: #9dc92a;
     font-weight: 400;
     font-size: 20px;
     margin-bottom: 15px;
@@ -367,7 +367,7 @@ width: 11px;
 }
 
 .service-item h3 {
-  color: #00c7fc;
+  color: #9dc92a;
   font-size: 20px;
   margin-bottom: 28px;
 }
@@ -456,7 +456,7 @@ width: 11px;
 
 .project-filter ul li a:hover,
 .project-filter ul li a.active {
-    background-color: #00C7FC;
+    background-color: #9dc92a;
     color: #fff;
 }
 
@@ -666,8 +666,8 @@ figcaption.mask span {
 
 .owl-controls .owl-page.active span,
 .owl-controls .owl-page:hover span {
-  background-color: #00C7FC;
-  border-color: #00C7FC;
+  background-color: #9dc92a;
+  border-color: #9dc92a;
 }
 
 
@@ -690,7 +690,7 @@ figcaption.mask span {
 .progress .bar {
   width: 0;
   height: 25px;
-  background-color: #00C7FC;
+  background-color: #9dc92a;
 
   -webkit-transition: width 0.6s ease;
      -moz-transition: width 0.6s ease;
@@ -711,7 +711,7 @@ figcaption.mask span {
 }
 
 .progress-success .bar, .progress-green .bar {
-  background-color: #00C7FC;
+  background-color: #9dc92a;
 
 }
 
@@ -749,7 +749,7 @@ figcaption.mask span {
 }
 
 .pricing-table .price {
-  border-top: 1px solid #00c7fc;
+  border-top: 1px solid #9dc92a;
   padding: 35px 0 45px;
 }
 
@@ -777,8 +777,8 @@ figcaption.mask span {
 }
 
 .pricing-table ul {
-  border-bottom: 1px solid #00c7fc;
-  border-top: 1px solid #00c7fc;
+  border-bottom: 1px solid #9dc92a;
+  border-top: 1px solid #9dc92a;
 }
 
 .pricing-table ul li {
@@ -788,7 +788,7 @@ figcaption.mask span {
 }
 
 .pricing-table ul li:after {
-  border-bottom: 1px solid #00c7fc;
+  border-bottom: 1px solid #9dc92a;
   bottom: 0;
   content: "";
   display: block;
@@ -807,7 +807,7 @@ figcaption.mask span {
 }
 
 .btn-price {
-  border: 1px solid #00c7fc;
+  border: 1px solid #9dc92a;
   color: #1f2021;
   margin-top: 40px;
   padding: 10px 30px;
@@ -855,7 +855,7 @@ figcaption.mask span {
 }
 
 .subscription-form #mail-submit {
-  background-color: #00c7fc;
+  background-color: #9dc92a;
   border: 0 none;
   color: #fff;
   padding: 16px 35px;
@@ -950,7 +950,7 @@ figcaption.mask span {
 }
 
 .footer-social ul li a:hover {
-  color: #00C7FC;
+  color: #9dc92a;
 }
 
 .copyright {
@@ -960,7 +960,7 @@ figcaption.mask span {
 }
 
 .copyright a {
-    color: #00C7FC;
+    color: #9dc92a;
 }
 
 .copyright a:hover {
