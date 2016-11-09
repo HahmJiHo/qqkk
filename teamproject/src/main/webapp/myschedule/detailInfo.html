@@ -33,9 +33,11 @@
 	width: 600px;
 }
 
-h3 {
-	color: rgb(157, 201, 42);
-}
+
+.detailFont{font-size:20px; color: rgb(157, 201, 42);}
+.title{font-size:30px;}
+#dday{font-size:50px; font-weight:bold;}
+
 </style>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script
@@ -83,8 +85,7 @@ h3 {
 						<span class="my-profile"
 							style="display: block; text-align: center; padding-left: 0px;">
 							<img src="" id="profilePhoto" style="width: 80px; height: 80px; margin-top: 90px;" />
-						</span><br> <span id="user" class="my-login" data-value=""></span>님
-						안녕하세요?
+						</span><br> <span id="user" class="my-login" data-value=""></span>님의 상세정보
 					</h2>
 				</div>
 			</div>
@@ -117,18 +118,15 @@ h3 {
 
 
 		<div id="schedule-cal">
-			
-
-				<div id="groupName"></div>
-
+			<div id="groupName"></div>
 		</div>
+
 
 		<div id="detail">
 			<h2 class="title">그룹1의 친구 생일 파티</h2>
-
 			<div class="schedule-date">
 				<h3>날짜</h3>
-				<hr class="section-bar"></hr>
+				<hr class="section-bar" style="border:solid; color: rgb(157, 201, 42);"></hr>
 				<div class="date">
 					<h1 id="dday"></h1>
 					<p class="appointmentDate"></p>
@@ -153,49 +151,53 @@ h3 {
 						<div class="weather-temperature-mx"></div>
 						<div class="weather-temperature-mn"></div>
 						<div class="weather-state"></div>
+						<hr class="section-bar" style="border:solid; color: rgb(157, 201, 42);"></hr>
 					</div>
 				</div>
 			</div>
 
 			<div>
 				<h3>장소</h3>
-				<hr class="section-bar"></hr>
+				<hr class="section-bar" style="border:solid; color: rgb(157, 201, 42);"></hr>
 				<p class="placeName"></p>
 			</div>
 		</div>
-		</div>
 	</section>
 	<script id="divTemplateText" type="text/x-handlebars-template">
-				<h2 class="title">[{{groupName}}]그룹의 [{{title}}]</h2>
-				
+				<h1 class="title">{{groupName}}  그룹의  {{title}} 일정입니다.</h1><br>
+			
+
 				<div class="schedule-date">
-					<h3>날짜</h3>
-					<hr class="section-bar"></hr>
+					<div class="detailFont">날짜</div>
+					<hr class="section-bar" style="border:solid; color: rgb(157, 201, 42);"></hr>
 					<div class="date">
 						<h1 id="dday">D-day {{dday}}</h1>
-						<p class="appointmentDate">{{start}} ~ {{end}}</p>
+							<p class="appointmentDate">{{start}} ~ {{end}}</p>
 					</div>
-				</div>
-
+				</div><br>
+				<br>
 				<div>
-					<h3>날씨</h3>
-					<hr class="section-bar"></hr>
+					<div class="detailFont">날씨</div>
+						<hr class="section-bar" style="border:solid; color: rgb(157, 201, 42);"></hr>
 					<div id="weather-wrap">
 				 	 <div class="wrap-dayweather">
-				 	  <div class="weather-img"></div>
-				 	  <div class="weather-city">{{city}}</div>
-				 	  <div class="weather-temperature-mx">{{maxTemp}}</div>
-				 	  <div class="weather-temperature-mn">{{minTemp}}</div>
-				 	  <div class="weather-state">{{state}}</div>
-				 	  <div class="weather-humidity"></div>
-				 	  <div class="weather-windspeed"></div>
+				 	  	<div class="weather-img">
+								<img src="">
+							</div>
+				 	  	<div class="weather-temperature-mx">{{maxTemp}}</div>
+				 	  	<div class="weather-temperature-mn">{{minTemp}}</div>
+				 	  	<div class="weather-city">{{city}}</div>
+				 	  	<div class="weather-state">{{state}}</div>
+				 	  	<div class="weather-humidity"></div>
+				 	  	<div class="weather-windspeed"></div>
 				 	 </div>
-				    </div>
-				</div>
+				  </div>
+				</div><br>
+				<br>
 				
 				<div>
-					<h3>장소</h3>
-					<hr class="section-bar"></hr>
+					<div class="detailFont">장소</div>
+					<hr class="section-bar" style="border:solid; color: rgb(157, 201, 42);"></hr>
 						<p class="placeName">{{placeName}}</p>
 				</div>
 </script>
