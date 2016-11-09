@@ -53,9 +53,12 @@ background-color: transparent; color:#00C7FC; } */
 .add-group-box { cursor: pointer; text-align: center; }
 
 
+@media (min-width: 1081px) and (max-width: 1520px) {   
+	#member .groupList { width: 45% !important;}
+}
 
 @media (min-width: 980px) and (max-width: 1080px) {
-	#member .groupList { float : none !important; width: 100% !important; margin-left:0px !important;}
+	#member .groupList { width: 30% !important; margin-left:0px !important;}
 	.my-group-warp { width: 100%;}
 	.add-group-box { width: 100%; }
   .group-img img{ width: 80%; height: 80%;}

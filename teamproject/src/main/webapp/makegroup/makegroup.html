@@ -13,7 +13,8 @@
     <link href="../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
     <link rel="stylesheet" type="text/css" href="../css/common_style.css" >
     <link rel="stylesheet" type="text/css" href="../css/makeCal.css" >
-    <link rel="stylesheet" type="text/css" href="../css/makegroup.css">        
+    <link rel="stylesheet" type="text/css" href="../css/makegroup.css">       
+    <link rel="stylesheet" type="text/css" href="../css/modal_style.css">        
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/5.0.7/sweetalert2.min.css" />
     <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
@@ -130,46 +131,30 @@ input:checked + .slider:before {
 		    </div>
 		    <div class="my-info">
 	
-					 <div class="modal fade" id="layerpop" >
-	  				<div class="modal-dialog">
-		    			<div class="modal-content">
-			     			 <!-- header -->
-		      			<div class="modal-header">
-			       		 	 <!-- 닫기(x) 버튼 -->
-	       		       <button type="button" class="close" data-dismiss="modal">×</button>
-		        		   <!-- header title -->
-			        		 <h4 class="modal-title">그룹생성</h4>
-			     			</div>
-			     			<!-- body -->
-		      			<div class="modal-body">
-		            <!-- 	<label for="study-subject">스터디 주제</label><br> 
-                  <select id="subject-list" class="selectpicker" data-live-search="true">
-									  
-									</select><br>               
-                  <label for="study-subject">스터디 부주제</label><br> 
-                  <input id="study-subject" type="text" name="study-subject" placeholder="부주제를 입력하세요."><br> -->
-			      			
-									
-										
-										<form id="frm" action="/group/add" method="post" enctype="multipart/form-data">
-											<label for="groupName">그룹이름</label><br> 
-                      <input id="groupName" type="text" name="groupName" placeholder="그룹명을 입력하세요."><br>
-                      <label for="groupText">그룹설명</label><br> 
-                      <input id="groupText" type="text" name="groupText" placeholder="그룹명을 입력하세요."><br>
-											<label for="file">그룹이미지</label><br> 
-											<input type="file" name="file1" />
-											 <button type="button" id="addBtn" class="btn btn-default" data-dismiss="modal">만들기</button>
-										</form>
-							  
-		      			</div>
-		      			<!-- Footer -->
-		      			<div class="modal-footer">
-					      	<button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
-					        <!-- <button type="button" id="addBtn" class="btn btn-default" data-dismiss="modal">만들기</button> -->
-					      </div>
-					    </div>
-		        </div>
-	       </div> 
+			
+ 				<div id="id01" class="w3-modal">	     			 
+      		<div class="modal-sign-box2">	       	
+      		  <ul class="login-nav" style="border-bottom:1px solid #696969; padding-bottom:10px;">	       		     	     			     	
+	      			<li> <h4 style="font-size: 20px; color:#fff ">그룹 생성</h4></li>
+	      			<li style="float:right;">
+	      			   <button type="button" class="close" class="btn btn-default" style="color:#fff" onclick="document.getElementById('id01').style.display='none'">×</button>
+	      			</li>                        
+            </ul>             
+      			<div class="login-container">
+      			  		            			      																			
+						  <form id="frm" class="form-login" action="/group/add" method="post" enctype="multipart/form-data">
+                <label for="groupName" class="login__label">그룹이름</label>
+                <input id="groupName" class="login__input" type="text" name="groupName" placeholder="그룹명을 입력하세요.">
+                <label for="groupText"  class="login__label">그룹설명</label> 
+                <input id="groupText"class="login__input"  type="text" name="groupText" placeholder="그룹명을 입력하세요.">
+                <label for="file"  class="login__label">그룹이미지</label>
+                <input type="file" name="file1" />
+                <button type="button" id="addBtn" class="make-group-submit">만들기</button>
+                <!-- <button type="button" class="btn btn-default" onclick="document.getElementById('id01').style.display='none'">취소</button> -->
+              </form>         		  
+      			</div>
+					</div>      	
+      	</div>	      
 	       
 	       <div class="modal fade" id="add-images-pop" >
             <div class="modal-dialog">
@@ -196,7 +181,7 @@ input:checked + .slider:before {
 	    </div>
 	    <div class="my-group">	    
 	     <div class="my-group-warp"> 
-	       <div class="add-group-box" data-target="#layerpop" data-toggle="modal" >
+	       <div class="add-group-box" onclick="document.getElementById('id01').style.display='block'" >
 	         <span class="plus-sign">
 	           <i class="fa fa-plus fa-2" aria-hidden="true" ></i>
 	         </span>
