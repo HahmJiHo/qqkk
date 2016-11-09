@@ -7,9 +7,11 @@ public class CommunityFile implements Serializable{
   
   protected int no;
   protected int communityNo;
-  protected String fileName;
+  protected int fileUpMember;
+  protected String filename;
   
-  public int getNo() {
+
+	public int getNo() {
     return no;
   }
   public void setNo(int no) {
@@ -21,12 +23,18 @@ public class CommunityFile implements Serializable{
   public void setCommunityNo(int communityNo) {
     this.communityNo = communityNo;
   }
-  public String getFileName() {
-    return fileName;
+  public String getFilename() {
+    return filename;
   }
-  public void setFileName(String fileName) {
-    this.fileName = fileName;
+  public void setFilename(String filename) {
+    this.filename = filename;
   }
   
+  public int getFileUpMember() {
+		return fileUpMember;
+	}
+	public void setFileUpMember(int fileUpMember) {
+		this.fileUpMember = fileUpMember;
+	}
   
 }

@@ -1,56 +1,77 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>게시물 입력폼</title>
-
+<!--[if lt IE 7]>      <html lang="en" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="ko" class="no-js"> <!--<![endif]-->
+  <head>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <title>하이바 커뮤니티</title>
+    
     <link rel="stylesheet" type="text/css" href="../css/common_style.css" >
     <link rel="stylesheet" type="text/css" href="../css/community.css" >
     
-    
-    <!-- 아이콘 CSS -->  
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" />
-    
+     <!-- makegroupd에서 가져온 CSS -->
+    <link href="../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="../css/common_style.css" >
+    <link rel="stylesheet" type="text/css" href="../css/makeCal.css" >
+    <link rel="stylesheet" type="text/css" href="../css/makegroup.css">        
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/5.0.7/sweetalert2.min.css" />
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+        
+
     <!-- 부트스크랩 CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <script src="../node_modules/jquery/dist/jquery.js"></script> 
     
-    <!-- 에디터 --
-    <link type="text/css" rel="stylesheet" href="jodit.min.css">
-		<script type="text/javascript" src="jodit.min.js"></script>
-		
-		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jodit/2.5.34/jodit.min.css">
-		<script src="//cdnjs.cloudflare.com/ajax/libs/jodit/2.5.34/jodit.min.js"></script>
-    <!-- 에디터 -->
-
-
 
 <style>
-      #calendar {
-      max-width: 850px;
-      margin: 0 auto;
-      float: right;
-     }
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+}
 
-     .article-schedule ul li { padding-bottom: 20px; }     
-     .my-make-schedule button:first-child {
-      margin-bottom: 20px;      
-     }
-     .my-schedule { border-top: 1px solid gray; border-bottom: 1px solid gray; padding:20px 0; }
-     .my-schedule ul { margin-bottom: 0px; }
-     .my-schedule ul li { padding: 2px 0; }
-     .my-group-member ul li { padding-bottom: 15px; padding-right: 10px; position: relative; }
-     .my-group-member ul li i { 
-     display: inline-block; float: right; width: 40px; 
-     height: 40px; background: #555; }     
-     .member-photo { display: inline-block; }
-     .member-photo img{ width: 70px; height: 70px; border-radius: 100px; }
-     .member-name { display: block; position: absolute; right: 10px; top: 50px; }
-     .state { -  width: 15px; height: 15px; }
-     .danger { background:url("../images/ximg.png") no-repeat }
-     .success { background:url("../images/successicon.png") no-repeat }
-           #map {
-        height: 300px;
+/* Hide default HTML checkbox */
+.switch input {display:none;}
+
+      body {
+      background: #f7f7f8;
+      }
+ 
+.bodyform-width {
+ width: 850px;
+}      
+      
+      
+/* Google Calendar*/      
+ #calendar {
+ max-width: 850px;
+ margin: 0 auto;
+ float: right;
+}
+
+.article-schedule ul li { padding-bottom: 20px; }     
+.my-make-schedule button:first-child {
+ margin-bottom: 20px;      
+}
+.my-schedule { border-top: 1px solid gray; border-bottom: 1px solid gray; padding:20px 0; }
+.my-schedule ul { margin-bottom: 0px; }
+.my-schedule ul li { padding: 2px 0; }
+.my-group-member ul li { padding-bottom: 15px; padding-right: 10px; position: relative; }
+.my-group-member ul li i { 
+display: inline-block; float: right; width: 40px; 
+height: 40px; background: #555; }     
+.member-photo { display: inline-block; }
+.member-photo img{ width: 70px; height: 70px; border-radius: 100px; }
+.member-name { display: block; position: absolute; right: 10px; top: 50px; }
+.state { -  width: 15px; height: 15px; }
+.danger { background:url("../images/ximg.png") no-repeat }
+.success { background:url("../images/successicon.png") no-repeat }
+#map {
+   height: 300px;
       }
 .controls {
   margin-top: 10px;
@@ -105,64 +126,57 @@
 }
 .modal-backdrop{
     z-index: 10;        
-}
-
-
-
-
-
-​
+}    
 </style>
 </head>
 <body>
-      <div style='position:absolute;right:0px;top:10px;font-size:15px;'>
-          <span id="userName" class="my-login"></span>
-          <a id="loginBtn" href='../index.html' class="btn btn-success btn-xs my-logout">로그인</a>
-          <a id="logoutBtn" href='../index.html' class="btn btn-success btn-xs my-login">로그아웃</a>
-      </div> 
-    <header>
-    </header>
+  <div class="wrap display-none">
+    <div class="loader"></div>
+    <div class="loaderbefore"></div>
+    <div class="circular"></div>
+    <div class="circular another"></div>
+    <div class="text">Loading</div>
+  </div>
+  <div class="wrapper">
+  <header> </header>
 
-    
-	 <section>
-
-      
-   <div class="section-wrap">
-			  <form class="form-horizontal">
-				    <h1 id="userNo2" data-no="">hiba community</h1>
-				  <div class="form-group my-view">
-				    <label for="no" class="col-sm-2 control-label">번호</label>
-				    <div class="col-sm-10">
-				      <input type="text" class="form-control" id="no" readonly>
-				    </div>
-				  </div>
-				  
-				 <div class="form-group my-view">
-            <label for="userNicName" class="col-sm-2 control-label" >작성자</label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control" id="userNicName" readonly>
-            </div>
+  <section class="panel" style=""> 
+   <aside class="header-top" style="float: left; ">
+    <ul class="aside-nav"> 
+      <li class="f-r"><a href="#"></a></li>
+      <li class="f-r iconMemberPlus" data-toggle="tooltip"
+        data-placement="bottom" title="그룹추가하기"><a href="#"></a></li>
+      <li class="f-r iconSchedulePlus" data-toggle="tooltip"
+        data-placement="bottom" title="일정추가하기"><a href="#"></a></li>
+      <li class="f-r iconBell user-alert"
+        style="display: block; cursor: pointer"><i
+        class="glyphicon glyphicon-exclamation-sign alert-icon"
+        style="color: red; position: absolute; font-size: 15px; top:10px; display: none"></i>
+      </li>
+    </ul>
+      <p class="f-r logout" style="float: right;"><a href="#">로그아웃</a></p>
+    <div class="alert-box"
+      style="position: absolute; background-color: rgba(0, 0, 0, 0.5); max-width: 250px; margin: 10px; left: 50px; top: 60px; color: #fff">
+    </div>
+  </aside>
+          
+        <!-- <form> -->
+        <div class="form-group">
+          <label for="title" class="col-sm-2 control-label">제목</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="title" placeholder="제목입니다.">
           </div>
-          
-          
-				
-				<div class="form-group">
-				  <label for="title" class="col-sm-2 control-label">제목</label>
-				  <div class="col-sm-10">
-				    <input type="text" class="form-control" id="title" placeholder="제목입니다.">
-				  </div>
-				</div>
-				
-				<div class="form-group">
-				  <label for="contents" class="col-sm-2 control-label">내용</label>
-				  <div class="col-sm-10">
-				    <textarea id="contents" class="form-control" 
-				              cols="50" rows="10" placeholder="내용입니다."></textarea>
-				  </div>
-				</div>
-				
-				
-				<div class="form-group">
+        </div>
+        
+        <div class="form-group">
+          <label for="contents" class="col-sm-2 control-label">내용</label>
+          <div class="col-sm-10">
+            <textarea id="contents" class="form-control" 
+                      cols="50" rows="10" placeholder="내용입니다."></textarea>
+          </div>
+        </div>
+        
+        <div class="form-group">
           <label for="address" class="col-sm-2 control-label">주소</label>
           <div class="col-sm-10">
              <div id="modalBody" class="modal-body">
@@ -170,60 +184,55 @@
                   <div id="map"></div>
              </div>
           </div>
-			 </div>
-			 
-				 
+       </div>
+         
         <br>
+        <form  action="/upload/add" method="post" enctype="multipart/form-data">
         <div class="form-group">
-          <label class="col-sm-2 control-label" for="exampleInputFile">파일 업로드</label>
+          <label class="col-sm-2 control-label" for="file">파일 업로드</label>
           <div class="col-sm-10">
-	          <input type="file" id="exampleInputFile" name="file1">
-	          <p class="help-block">업로드는 업데이트예정!</p>
+            <input type="file" id="" name="file1">
+            <p class="help-block">업로드는 업데이트 중!</p>
          </div>
+        </form>
         </div>
-				
-				<div class="form-group my-view">
+        
+        
+        <div class="form-group my-view">
           <label class="col-sm-2 control-label">등록일</label>
           <div class="col-sm-10">
             <p id="registerDate" class="form-control-static"></p>
           </div>
         </div>
-				
-				
-				
-				<div class="form-group my-view">
-				  <label class="col-sm-2 control-label">조회수</label>
-				  <div class="col-sm-10">
-				    <p id="viewCount" class="form-control-static"></p>
-				  </div>
-				</div>
-				
-				
-				<div class="form-group my-view">
+        
+        
+<!--         
+        <div class="form-group my-view">
+          <label class="col-sm-2 control-label">조회수</label>
+          <div class="col-sm-10">
+            <p id="viewCount" class="form-control-static"></p>
+          </div>
+        </div>
+        
+        
+        <div class="form-group my-view">
           <label class="col-sm-2 control-label">좋아요</label>
           <div class="col-sm-10">
             <p id="boardLike" class="form-control-static"></p>
           <button id="LikeBtn" type="button" class="btn btn-default my-view">♥버튼</button> 
           </div>
+        </div> -->
+      
+        
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <button id="addBtn" type="button" class="btn btn-default my-new">등록</button>
+            <button id="updateBtn" type="button" class="btn btn-default my-view">변경</button>
+            <button id="deleteBtn" type="button" class="btn btn-default my-view">삭제</button>
+            <button id="cancelBtn" type="button" class="btn btn-default"
+                    onclick="location.href='communityApp.html'">취소</button>
+          </div>
         </div>
-			
-				
-				<div class="form-group">
-				  <div class="col-sm-offset-2 col-sm-10">
-				    <button id="addBtn" type="button" class="btn btn-default my-new">등록</button>
-				    <button id="updateBtn" type="button" class="btn btn-default my-view">변경</button>
-				    <button id="deleteBtn" type="button" class="btn btn-default my-view">삭제</button>
-				    <button id="cancelBtn" type="button" class="btn btn-default"
-				            onclick="location.href='communityApp.html'">취소</button>
-				  </div>
-				</div>
-      </form>
-      
-      
-
-
-
-      
       
       
       
@@ -262,12 +271,9 @@
       <p class="totop">  <a href="#top">Back to top</a> </p>
        </div>
     
-    
-    
-    </div>
    </section>
-<footer>
-</footer>   
+   </div>
+  
 
 
 
@@ -302,7 +308,7 @@
 </script>
 
 
-
+<!-- 
 <script type="text/javascript">
 $(function () {
     $("div").slice(0, 4).show();
@@ -333,7 +339,7 @@ $(window).scroll(function () {
     }
 });
 </script>
-
+ -->
 
 
 
@@ -353,8 +359,8 @@ ajaxLoginUser()              // 로그인 유저 정보 가져오기
 // URL에 no 파라미터 값이 넘어오면 조회 모드로 동작해야 한다.
 if (location.search.startsWith("?")) { // 예) ?no=xxx
     var no = location.search.split("=")[1];
-    ajaxCommentCommunityList(no)
     ajaxLoadCommunity(no)
+    ajaxCommentCommunityList(no)
     $(".my-new").css("display", "none")
 } else {
     $(".my-view").css("display", "none")
@@ -363,69 +369,69 @@ if (location.search.startsWith("?")) { // 예) ?no=xxx
 
 
 window.initMap = function() {
-	   var map = new google.maps.Map(document.getElementById('map'), {
-	     center: {lat: -33.8688, lng: 151.2195},
-	     zoom: 16,
-	     mapTypeId: google.maps.MapTypeId.ROADMAP
-	   });
-	 
-	   // Create the search box and link it to the UI element.
-	   var input = document.getElementById('pac-input');
-	   var searchBox = new google.maps.places.SearchBox(input);
-	   map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-	 
-	   // Bias the SearchBox results towards current map's viewport.
-	   map.addListener('bounds_changed', function() {
-	     searchBox.setBounds(map.getBounds());
-	   });
-	 
-	   var markers = [];
-	   // [START region_getplaces]
-	   // Listen for the event fired when the user selects a prediction and retrieve
-	   // more details for that place.
-	   searchBox.addListener('places_changed', function() {
-	     var places = searchBox.getPlaces();
-	 
-	     if (places.length == 0) {
-	       return;
-	     }
-	 
-	     // Clear out the old markers.
-	     markers.forEach(function(marker) {
-	       marker.setMap(null);
-	     });
-	     markers = [];
-	 
-	     // For each place, get the icon, name and location.
-	     var bounds = new google.maps.LatLngBounds();
-	     places.forEach(function(place) {
-	       var icon = {
-	         url: place.icon,
-	         size: new google.maps.Size(71, 71),
-	         origin: new google.maps.Point(0, 0),
-	         anchor: new google.maps.Point(17, 34),
-	         scaledSize: new google.maps.Size(25, 25)
-	       };
-	 
-	       // Create a marker for each place.
-	       markers.push(new google.maps.Marker({
-	         map: map,
-	         icon: icon,
-	         title: place.name,
-	         position: place.geometry.location
-	       }));
-	 
-	       if (place.geometry.viewport) {
-	         // Only geocodes have viewport.
-	         bounds.union(place.geometry.viewport);
-	       } else {
-	         bounds.extend(place.geometry.location);
-	       }
-	     });
-	     map.fitBounds(bounds);
-	   });
-	   // [END region_getplaces]
-	 }
+     var map = new google.maps.Map(document.getElementById('map'), {
+       center: {lat: -33.8688, lng: 151.2195},
+       zoom: 16,
+       mapTypeId: google.maps.MapTypeId.ROADMAP
+     });
+   
+     // Create the search box and link it to the UI element.
+     var input = document.getElementById('pac-input');
+     var searchBox = new google.maps.places.SearchBox(input);
+     map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+   
+     // Bias the SearchBox results towards current map's viewport.
+     map.addListener('bounds_changed', function() {
+       searchBox.setBounds(map.getBounds());
+     });
+   
+     var markers = [];
+     // [START region_getplaces]
+     // Listen for the event fired when the user selects a prediction and retrieve
+     // more details for that place.
+     searchBox.addListener('places_changed', function() {
+       var places = searchBox.getPlaces();
+   
+       if (places.length == 0) {
+         return;
+       }
+   
+       // Clear out the old markers.
+       markers.forEach(function(marker) {
+         marker.setMap(null);
+       });
+       markers = [];
+   
+       // For each place, get the icon, name and location.
+       var bounds = new google.maps.LatLngBounds();
+       places.forEach(function(place) {
+         var icon = {
+           url: place.icon,
+           size: new google.maps.Size(71, 71),
+           origin: new google.maps.Point(0, 0),
+           anchor: new google.maps.Point(17, 34),
+           scaledSize: new google.maps.Size(25, 25)
+         };
+   
+         // Create a marker for each place.
+         markers.push(new google.maps.Marker({
+           map: map,
+           icon: icon,
+           title: place.name,
+           position: place.geometry.location
+         }));
+   
+         if (place.geometry.viewport) {
+           // Only geocodes have viewport.
+           bounds.union(place.geometry.viewport);
+         } else {
+           bounds.extend(place.geometry.location);
+         }
+       });
+       map.fitBounds(bounds);
+     });
+     // [END region_getplaces]
+   }
 
 </script>
 

@@ -24,20 +24,30 @@ public class Community implements Serializable {
   
   protected int boardLike;                // 좋아요
   
-  protected String commentNo;             // 댓글번호
-  protected String commentUserNo;         // 댓글회원번호
-  protected String communityBoardNo;      // 댓글회원번호
-  protected String commentUserNicName;    // 댓글작성자 
+  protected String commentNo;             // 댓글 번호
+  protected String commentUserNo;         // 댓글 회원번호
+  protected String communityBoardNo;      // 댓글 회원번호
+  protected String commentUserNicName;    // 댓글 작성자 
   protected String comment;               // 댓글
-  protected int commentCount;          // 댓글카운트
+  protected int commentCount;             // 댓글 카운트
   protected Date commentRegisterDate;     // 댓글 등록날짜
   protected String commentRegisterDate2;  
   
   protected int fileNo;                   // 업로드 파일넘버
-  protected String fileName;              // 업로드 파일사진
+  protected String filename;              // 업로드 파일사진
+  protected String fileBoardNo;           // 업로드 파일사진
+  protected int fileUpMember;             // 업로드 회원번호
   
   
-  
+
+	public int getFileUpMember() {
+		return fileUpMember;
+	}
+	public void setFileUpMember(int fileUpMember) {
+		this.fileUpMember = fileUpMember;
+	}
+	
+
 	public static SimpleDateFormat getFormat() {
 		return format;
 	}
@@ -192,14 +202,20 @@ public class Community implements Serializable {
 		this.fileNo = fileNo;
 	}
 	
-	public String getFileName() {
-		return fileName;
+	public String getFilename() {
+		return filename;
 	}
-	public void setFileName(String fileName) {
-		this.fileName = fileName;
+	public void setFilename(String filename) {
+		this.filename = filename;
 	}
 	
-
+	public String getFileBoardNo() {
+		return fileBoardNo;
+	}
+	public void setFileBoardNo(String fileBoardNo) {
+		this.fileBoardNo = fileBoardNo;
+	}
+	
 	
 }
 

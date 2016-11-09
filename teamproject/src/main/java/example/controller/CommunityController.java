@@ -1,5 +1,6 @@
 package example.controller;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.ServletContext;
@@ -11,14 +12,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import example.dao.CommunityDao;
 import example.service.CommunityService;
 import example.vo.Community;
 
 @Controller // 페이지 컨트롤러에 붙이는 애노테이션 
 @RequestMapping("/community/") // 이 페이지의 컨트롤러의 기준 URL
 public class CommunityController {
+	
   @Autowired ServletContext sc;
   @Autowired CommunityService communityService;
+  @Autowired CommunityDao communityDao;
 	
 	
 	@RequestMapping(path="list")
@@ -26,24 +30,16 @@ public class CommunityController {
 			@RequestParam(defaultValue="1")int pageNo,
 			@RequestParam(defaultValue="30")int length,
 			Model model) throws Exception {
-		List<Community> list = communityService.getCommunityList(pageNo, length);
+		List<Community> list = communityService.getCommunityList();
 		model.addAttribute("list", list);			
 		
 		return "community/CommunityList";	
 	}
 	
-	@RequestMapping(path="add")
-	public String add(
-			Community community,
-      MultipartFile file1,
-      MultipartFile file2) throws Exception {
-    String uploadDir = sc.getRealPath("/upload") + "/";
-    try {
-      communityService.insertCommunity(community, file1, file2, uploadDir);
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
-    return "redirect:list.do";
+	@RequestMapping("add")
+	public String add(Community community) throws Exception {
+		communityDao.insert(community);		
+		return "redirect:list.do";
   }
 	
 	@RequestMapping("detail")
@@ -55,7 +51,13 @@ public class CommunityController {
 	
 	@RequestMapping("update")
 	public String update(Community community) throws Exception{
-		communityService.updateCommunity(community);
+		HashMap<String,Object> paramMap = new HashMap<>();
+		paramMap.put("no", community.getNo());
+
+		if (communityDao.selectOneByPassword(paramMap) == null) {
+			throw new Exception("해당 게시물이 없거나 암호가 일치하지 않습니다.!");
+		}
+		communityDao.update(community);
 		return "redirect:list.do";
 	}
 	

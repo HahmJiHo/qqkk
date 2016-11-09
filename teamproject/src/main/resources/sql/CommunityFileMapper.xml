@@ -4,13 +4,32 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="example.dao.CommunityFileDao">
   <resultMap type="communityFile" id="communityFileMap">
-    <id column="no" property="no"/> 
+    <id column="fno" property="no"/> 
     <result column="cno" property="communityNo"/>
-    <result column="filename" property="fileName"/>
+    <result column="file_path" property="filename"/>
+    <result column="mno" property="fileUpMember"/>
   </resultMap>
   
+  <select id="selectList" resultMap="communityFileMap" parameterType="map">
+    select *from HIBA_BRD_FILE
+  </select>
+  
   <insert id="insert" parameterType="communityFile">
-    insert into hiba_board(cno, filename)
-    values(#{communityNo}, #{fileName})
+    insert into hiba_board(no, cno, filename, mno)
+    values(#{fno}, #{communityNo}, #{file_path}, #{fileUpMember})
   </insert>
+  
+  
+  <select id="selectOne" resultMap="communityFileMap" parameterType="map">
+    select mno, fno
+    from HIBA_BRD_FILE 
+    where mno=#{fileUpMember} and fno=#{no}
+  </select>
+  
+ <update id="update" parameterType="communityFile">
+    update HIBA_BRD_FILE set
+    filename=#{file_path}
+    where mno=#{fileUpMember} and fno=#{no}
+  </update>
+  
 </mapper>

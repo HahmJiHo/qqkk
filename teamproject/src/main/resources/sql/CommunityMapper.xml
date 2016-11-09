@@ -9,7 +9,6 @@
    자동으로 만들어 주게 설정했다. 
    그래서 앞에 example.vo 를 빼도 된다.
    -->
-   
     
     <id column="CNO" property="no" />
     <result column="MNO" property="userNo" />
@@ -22,57 +21,38 @@
     
     <result column="NICKNM" property="userNicName"/>
     
-    <!-- 
-    <id column="CNO" property="no" />
-    <result column="MNO" property="userNo" />
-    <result column="NICKNM" property="userNicName" />
-    <result column="PHOT_PATH" property="userPhoto" />
-    
-    <result column="TITL" property="title" />
-    <result column="CONTS" property="contents" />
-    <result column="IMG" property="contentsPhoto" />
-    <result column="ADDS" property="address" />
-    
-    <result column="RG_DT" property="registerDate" />
-    <result column="VWCT" property="viewCount" />
-    
-    <result column="B_LIKE" property="boardLike" />
-    <result column="RNO" property="commentNo" />
-    <result column="MNO" property="commentUserNo" />
-    <result column="CNO" property="communityBoardNo" />
-    <result column="NICKNM" property="commentUserNicName" />
-    <result column="CONTS" property="comment" />
-    <result column="RG_DT" property="commentRegisterDate" />-->
-
-
+    <result column="file_path" property="filename"/>
   </resultMap>
 
   <select id="selectList" resultMap="communityMap" parameterType="map">
-    select hiba_board.cno, hiba_board.mno, hiba_board.titl, hiba_board.conts,
-           hiba_board.vwct, hiba_board.b_like, hiba_board.rg_dt, hiba_membs.nicknm
-      from hiba_board inner join hiba_membs on hiba_board.mno = hiba_membs.mno
-    <where>
+    select hiba_board.*, hiba_brd_file.*, hiba_membs.nicknm
+      from hiba_board 
+      inner join hiba_membs on hiba_board.mno = hiba_membs.mno
+      left join hiba_brd_file on hiba_board.cno = hiba_brd_file.cno and hiba_membs.mno = hiba_brd_file.mno;  
+<!--     <where>
       <if test="title != null">title like concat('%', #{title}, '%')</if>
-    </where>
-     order by 
-    <choose>
-      <when test="titleOrder == 'asc'">titl asc</when>
-      <when test="titleOrder == 'desc'">titl desc</when>
-      <when test="viewCountOrder == 'asc'">vwcn asc</when>
-      <when test="viewCountOrder == 'desc'">vwcn desc</when>
+    </where> 
+    order by 
+   <choose>
       <when test="noOrder == 'asc'"> cno asc</when>
       <otherwise>cno desc</otherwise>
-    </choose>   
-    limit #{startIndex}, #{length}
+    </choose>  
+    limit #{startIndex}, #{length}-->
   </select>
   
 
   <select id="selectOne" resultMap="communityMap" parameterType="int">
-    select hiba_board.cno, hiba_board.mno, hiba_board.titl, hiba_board.conts, 
+    select hiba_board.*, hiba_brd_file.*, hiba_membs.nicknm
+    from hiba_board 
+    inner join hiba_membs on hiba_board.mno = hiba_membs.mno
+    left join hiba_brd_file on hiba_board.cno = hiba_brd_file.cno and hiba_membs.mno = hiba_brd_file.mno
+    where hiba_board.cno = #{value}
+    
+<!--select hiba_board.cno, hiba_board.mno, hiba_board.titl, hiba_board.conts, 
            hiba_board.rg_dt, hiba_board.vwct, hiba_board.b_like, 
            hiba_board.adds, hiba_membs.nicknm
     from hiba_board inner join hiba_membs on hiba_board.mno = hiba_membs.mno
-    where cno = #{value}
+    where cno = #{value} -->
   </select>
   
   
@@ -97,7 +77,7 @@
     where cno=#{no}
   </update>
   
-
+<!-- 
   <update id="updateHitCnt" parameterType="community">
     <![CDATA[
         UPDATE HIBA_BOARD 
@@ -106,7 +86,7 @@
         WHERE
             IDX = #{IDX}    
     ]]>
-	</update>
+	</update> -->
 	
 
 

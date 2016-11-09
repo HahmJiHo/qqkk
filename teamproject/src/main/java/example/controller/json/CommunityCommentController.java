@@ -37,13 +37,13 @@ public class CommunityCommentController {
 	}
 
 	@RequestMapping(path="add")
-	public Object add(CommunityComment CommunityComment, HttpSession session) throws Exception {
+	public Object add(CommunityComment communityComment, HttpSession session) throws Exception {
 		// 성공하든 실패하든 클라이언트에게 데이터를 보내야 한다.
 		try {
     /*  Member member = (Member)session.getAttribute("member");
       member.setNicknm(member.getNicknm());
 */
-			communityCommentDao.insert(CommunityComment);
+			communityCommentDao.insert(communityComment);
 			return JsonResult.success();
 
 		} catch (Exception e) {
@@ -55,11 +55,11 @@ public class CommunityCommentController {
 	public Object detail(int no) throws Exception{
 
 		try {
-			CommunityComment CommunityComment = communityCommentDao.selectOne(no);
+			CommunityComment communityComment = communityCommentDao.selectOne(no);
 
-			if (CommunityComment == null)
+			if (communityComment == null)
 				throw new Exception("해당 번호의 게시물이 존재하지 않습니다.");
-			return JsonResult.success(CommunityComment);
+			return JsonResult.success(communityComment);
 
 		} catch (Exception e) {
 			return JsonResult.fail(e.getMessage());
@@ -69,7 +69,7 @@ public class CommunityCommentController {
 
 
 	@RequestMapping(path="update")
-	public Object update(CommunityComment CommunityComment) throws Exception{
+	public Object update(CommunityComment communityComment) throws Exception{
 
 		try {
 			/*HashMap<String,Object> paramMap = new HashMap<>();
@@ -78,7 +78,7 @@ public class CommunityCommentController {
 			if (communityCommentDao.selectOneByPassword(paramMap) == null) {
 				throw new Exception("해당 게시물이 없거나 암호가 일치하지 않습니다.!");
 			}*/
-			communityCommentDao.update(CommunityComment);
+			communityCommentDao.update(communityComment);
 			return JsonResult.success();
 		} catch (Exception e) {
 

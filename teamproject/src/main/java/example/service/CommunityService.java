@@ -7,13 +7,14 @@ import org.springframework.web.multipart.MultipartFile;
 import example.vo.Community;
 
 public interface CommunityService {
-  List<Community> getCommunityList(int pageNo, int length) throws Exception;
-  void insertCommunity(Community community, MultipartFile file1, MultipartFile file2, String uploadDir) throws Exception;
+	
+  List<Community> getCommunityList() throws Exception;
   Community getCommunity(int no) throws Exception;
-  Community getCommunity(int no, String password) throws Exception;
-  int getTotalPage(int pageSize) throws Exception;
+  void insertCommunity(Community community, MultipartFile file1,String uploadDir) throws Exception;
   void updateCommunity(Community community) throws Exception;
   void deleteCommunity(int no) throws Exception;
+  
+  int getTotalPage(int pageSize) throws Exception;
 }
 
 
