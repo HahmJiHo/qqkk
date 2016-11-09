@@ -9,17 +9,41 @@ $("#logoutBtn").click(function(event) {
 });
 
 $("#addBtn").click(function(event) {
-	var community = {
-	  userNo: $("#userNo2").attr('data-value'),
-	  title: $("#title").val(),
-	  contents: $("#contents").val(),
-	  address: $("#pac-input").val()
-	 /* filename:$("#file1", $("input[name=file1]")[0].files[0]);*/
-	}
-	ajaxAddCommunity(community)	
-
+		var formData = new FormData();
+		formData.append("userNo" , $("#userNo2").attr('data-value'));
+		formData.append("title" , $("#title").val());
+		formData.append("contents" , $("#contents").val());
+		formData.append("address" , $("#pac-input").val());
+		formData.append("file1", $("input[name=file1]")[0].files[0]);
+		console.log(formData)
+		$.ajax({
+			url: serverAddr + '/community/add.json',
+			processData: false,
+			contentType: false,
+			data: formData,
+			type: 'POST',
+			success: function(result){
+			},
+			error: function(jqXHR, textStatus, errorThrown) {
+		          console.log('error : ' + textStatus + " " + errorThrown);
+		     }
+		});
+		window.location.reload();
 });
 
+
+/*$("#addBtn").click(function(event) {
+	var community = {
+			userNo: $("#userNo2").attr('data-value'),
+			title: $("#title").val(),
+			contents: $("#contents").val(),
+			address: $("#pac-input").val()
+			 filename:$("#file1", $("input[name=file1]")[0].files[0]);
+	}
+	ajaxAddCommunity(community)	
+	ajaxAddFilePath()
+});
+*/
 $("#updateBtn").click(function(event) {
   var community = {
     title: $("#title").val(),
@@ -38,8 +62,12 @@ $("#deleteBtn").click(function(event) {
 
 
 /*댓글 버튼*/
-
 $("#addCommentBtn").click(function(event) {
+	if (resultUser.data == null) {
+		alert("로그인하세요")
+		window.location.reload()
+		return
+	  } 
 	var communityComment = {
 			commentUserNo: $("#userNo3").attr('data-value'),
 			communityBoardNo:$("#no").val(),
@@ -47,7 +75,7 @@ $("#addCommentBtn").click(function(event) {
 			commentRegisterDate: $("#commentRegisterDate").val()
 	}
 	ajaxAddCommunityComment(communityComment)
-
+	
 });
 
 $("#updateCommentBtn").click(function(event) {
@@ -122,7 +150,30 @@ function ajaxAddCommunity(community) {
 
 
 
+//_________________[파일업로드]기능_____________________________________________________//
+
+/*function ajaxAddFilePath() {
+	var formData = new FormData();
+	formData.append("fileUpMember" , $("#userName").attr('data-value'));
+	formData.append("file1", $("input[name=file1]")[0].files[0]);
+	$.ajax({
+		url: serverAddr + '/community/add.json',
+		processData: false,
+		contentType: false,
+		data: formData,
+		type: 'POST',
+		success: function(result){
+		}
+	});
+	window.location.reload();
+};*/
+
+
+
+
+
 function ajaxLoadCommunity(no) {
+	console.log(no)
 	$.getJSON(serverAddr + "/community/detail.json?no=" + no, function(obj) {
 		var result = obj.jsonResult
 		if (result.state != "success") {
@@ -164,7 +215,6 @@ function ajaxDeleteCommunity(no) {
 		location.href = "communityApp.html"
 	})
 }
-
 
 
 
