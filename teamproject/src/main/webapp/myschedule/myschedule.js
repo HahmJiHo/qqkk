@@ -120,7 +120,7 @@ function ajaxMygroupList() {
       var tempContents = new Array();
       var template = Handlebars.compile($('#divTemplateText').html())
       var template2 = Handlebars.compile($('#div2TemplateText').html())
-      
+ 
       var mygroupArr = [];
 
       for (var i in arr) {
@@ -172,7 +172,8 @@ function ajaxMygroupList() {
 		+ '<button id="btn-right" type="button" class="btn btn-default">'
 		+ '<span id="slider-next'+ i + '"class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>'
 		+ '</button>';*/
-    	  contents2 += "<ul class='caption' id='bxslider" + i + "'>" + tempContents[i] + "</ul>";
+    	  contents2 += "<ul class='caption'  style='z-index:11' id='bxslider" + i + "'>" + tempContents[i] + "</ul>";
+    	 
       }
       console.log("t2" + contents2)
       $("#schedule-Info").html(contents2);
@@ -256,7 +257,9 @@ function ajaxMyScheduleList() {
    })
 }
  */
-
+$('body').on('click', 'viewSc', function() {
+	console.log("111")
+})
 function ajaxLoginUser() {
    $.getJSON(serverAddr +"/auth/loginUser.json", function(obj) {
       var result = obj.jsonResult

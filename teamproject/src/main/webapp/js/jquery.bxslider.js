@@ -54,7 +54,7 @@
 		// CONTROLS
 		controls: true,
 		nextText: 'Next',
-		prevText: 'Prev',
+		prevText: 'Prev',		
 		nextSelector: null,
 		prevSelector: null,
 		autoControls: false,
@@ -68,7 +68,7 @@
 		pause: 4000,
 		autoStart: true,
 		autoDirection: 'next',
-		autoHover: false,
+		autoHover: true,
 		autoDelay: 0,
 		autoSlideForOnePage: false,
 

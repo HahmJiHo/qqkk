@@ -122,7 +122,7 @@ body{ font-family:"arial", sans-serif; font-size:12px;}
 #schedule {
 	width: 1000px;
 	height: 300px;
-	margin: 0 auto;
+  padding-left:25px;
 }
 
 #schedule:hover {
@@ -141,35 +141,35 @@ body{ font-family:"arial", sans-serif; font-size:12px;}
     margin-top: 37px;
 }
 
-#scheduleInfo {
-	width: 680px;
-	height: 300px;
-	float: right;
-	/*margin-top: 20px;*/
-	/*overflow:hidden;*/
-}
 
 #group-Info {
 	z-index:2;
 	position:relative;
 	width: 300px;
-	height: 280px;
 	float: left;
 }
 .groupInfo {
 	z-index:2;
-	top:-325px;
 	margin-left: 30px 30px 30px 45px;
 	position:relative;
 	width: 200px;
-	height: 180px;
+	
 	float: left;
+}
+#scheduleInfo {
+  position: absolute;
+  width: 680px;
+  height: 300px;
+  right : -20px;
+
 }
 
 #schedule-Info {
 	width: 600px;
 	height: 250px;
-	float: right;
+	position: absolute;
+	right: 50px;
+	top: 0px;
 }
 
 
@@ -181,15 +181,14 @@ body{ font-family:"arial", sans-serif; font-size:12px;}
 
 
 
-.gallery{
+.gallery{ 
+	position: absolute;
+	left: 10px; top: 20px;
   width: 280px;
   height: 250px;
   margin: 0;
   padding: 0;
-  outline: 0;
-  margin-top: 6px;
-  margin-left: 28px;
-  
+  outline: 0;  
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;

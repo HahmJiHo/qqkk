@@ -16,12 +16,13 @@
 
 .bx-wrapper {
 	position: relative;
-	margin: 0 auto 98px;
+	margin: 0 auto 0px;
 	padding: 0;
-	top: 26px;
+	top: 20px;
 	left: auto;
 	right: 38px;
 	*zoom: 1;
+	height: 300px;
 }
 
 .bx-wrapper img {
@@ -57,7 +58,8 @@
     	-o-transform: translatez(0);
     	transform: translatez(0);
 }
-
+.bx-controls { top : 0px; position:relative; }
+.bx-controls-direction { position:relative; top: -50px; }
 .bx-wrapper .bx-pager,
 .bx-wrapper .bx-controls-auto {
 	position: absolute;
@@ -126,7 +128,7 @@
 }
 
 .bx-wrapper .bx-next {
-	left: 575px;
+	left: 595px;
 	background: url(images/controls.png) no-repeat -43px -32px;
 }
 
@@ -148,7 +150,10 @@
 	text-indent: -9999px;
 	z-index: 9999;
 }
-
+#viewSc {display:block; position: absolute; z-index: 9999 !importent; top: 50%; outline: 0; *zoom: 1;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;}
 .bx-wrapper .bx-controls-direction a.disabled {
 	display: none;
 }
@@ -210,6 +215,7 @@
 	background: #666\9;
 	background: rgba(80, 80, 80, 0.75);
 	width: 100%;
+	
 }
 
 .bx-wrapper .bx-caption span {
@@ -218,4 +224,32 @@
 	display: block;
 	font-size: .85em;
 	padding: 10px;
+}
+
+.caption1 {
+    z-index:9999
+}
+
+.caption1{
+    position:absolute;
+    bottom:0px;
+    left:0px;
+    z-index:10;
+    width: 100%;
+   color:white;
+    background: none repeat scroll 0% 0% rgba(80, 80, 80, 0.75);
+    background-color: rgba(80, 80, 80, 0.75);
+    background-image: none;
+    background-repeat: repeat;
+    background-attachment: scroll;
+    background-position: 0% 0%;
+    background-clip: border-box;
+    background-origin: padding-box;
+    background-size: auto auto;
+}
+.caption2{
+    font-size:28px;
+}
+.caption2:hover{
+    color: pink;
 }

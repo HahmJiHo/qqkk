@@ -1,40 +1,26 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
+<!--[if lt IE 7]>      <html lang="en" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="ko" class="no-js"> <!--<![endif]-->
+  <head>
 	<meta charset="UTF-8">
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="viewport"
-	content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+	<meta name="viewport" content="width=device-width, initial-scale=1">	
 	<title>Insert title here</title>
+	<!--[if lt IE 9]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+	<link href="../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
 	<link rel="stylesheet" type="text/css" href="../css/common_style.css">
 	<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
 	<link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="../css/MySchedule.css">
-	<link rel="stylesheet"
-	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 	<link href="../js/jquery.bxslider.css" rel="stylesheet" />
 
 
 	<style>
-	.myThumbnail {
-		position:relative;
-		z-index:1;
-		margin-bottom: 20px;
-		width:1000px;
-		height: 325px;
-		padding: 0px;
-		-webkit-border-radius: 0px;
-		-moz-border-radius: 0px;
-		border-radius: 0px;
-	}
 
-	.myThumbnail:hover {
-		border: 2px solid #9dc92a;
-	}
-	
 
 	/* .thumbnail > img,
 	.thumbnail a > img,
@@ -64,22 +50,50 @@ transition: all .2s ease-in-out;
 </style>
 
 </head>
-<body bgcolor="gray">
+<body>
 	<header> </header>
-	<section>
-
+	<section class="panel" style="min-height:100%;">
+	
+    <aside class="header-top" style="float: left; ">
+	    <ul class="aside-nav"> 
+	      <li class="f-r"><a href="#"></a></li>
+	      <li class="f-r iconMemberPlus" data-toggle="tooltip"
+	        data-placement="bottom" title="그룹추가하기"><a href="#"></a></li>
+	      <li class="f-r iconSchedulePlus" data-toggle="tooltip"
+	        data-placement="bottom" title="일정추가하기"><a href="#"></a></li>
+	      <li class="f-r iconBell user-alert"
+	        style="display: block; cursor: pointer"><i
+	        class="glyphicon glyphicon-exclamation-sign alert-icon"
+	        style="color: red; position: absolute; font-size: 15px; top:10px; display: none"></i>
+	      </li>
+	    
+	    </ul>
+	      <p class="f-r logout" style="float: right;"><a href="#">로그아웃</a></p>
+	    <div class="alert-box"
+	      style="position: absolute; background-color: rgba(0, 0, 0, 0.5); max-width: 250px; margin: 10px; left: 50px; top: 60px; color: #fff">
+	    </div>
+   </aside>
+    
+    
+    
 		<div class="section-wrap">
+		<div class="make-text" style="position:fixed; left:20px; z-index:2;">
+
+         <h2>
+          <span class="my-profile" style="display:block; text-align:center; padding-left:0px;">
+              <img src="" id="profilePhoto" style="width:80px; height:80px; "/>
+          </span><br>
+          <span id="userName user" class="my-login" data-value=""></span>님 안녕하세요?
+         </h2>
+         <p>
+          <span id="user" class="my-login" data-value=""></span>님의 캘린더
+        </p>
+        </div>
 			<div class="selectbar-left">
-				<h1>
-					<span id="user" class="my-login" data-value=""></span>님의 캘린더
-				</h1>
+
 				<div class="my-info">
 					<ul>
 						<li class="my-profile"></li>
-						<li><a href='#' id="loginBtn"
-							class="btn btn-xs btn-success my-logout">로그인</a></li>
-							<li><a href='#' id="logoutBtn"
-								class="btn btn-xs btn-success my-login">로그 아웃</a></li>
 							</ul>
 						</div>
 						<form class="navbar-form navbar-left" role="search">
@@ -105,53 +119,52 @@ transition: all .2s ease-in-out;
 				</div>
 
 					<div id="schedule">
-
+           <div class="user-group-info" style="position:relative; ">
 						<div id="group-Info" data-value="">
-
-				<div id="myThumbnail" class="myThumbnail">
-				</div>
-							<div class="gallery">
-								<div class="gallery-item">
-									<div class="gallery-item-image">
-										<img src="../images/thumbnail.PNG" alt width="200"
-										height="180">
-									</div>
-									<div class="gallery-item-description">
-										<h3></h3>
-										<span>인원 24명 약속 5개</span>
-									</div>
-								</div>
-							</div>
-							<div class="separate"></div>
+          
+			<!-- 			<div id="myThumbnail" class="myThumbnail">
 						</div>
-						<div id="scheduleInfo">
+									<div class="gallery">
+										<div class="gallery-item">
+											<div class="gallery-item-image">
+												<img src="../images/thumbnail.PNG" alt width="200"
+												height="180">
+											</div>
+											<div class="gallery-item-description">
+												<h3></h3>
+												<span>인원 24명 약속 5개</span>
+											</div>
+										</div>
+									</div>
+									<div class="separate"></div> -->
+						</div>
+						<div id="scheduleInfo" style="z-index:11">
 							<div id="schedule-Info" data-value="">
-								<ul class="bxslider">
-									<li id="sc">
+								  <div class="bxslider">
+								<!--<li id="sc">
 										<p></p> <span></span><br> <span> ~ </span>
 										<a href='#' id="viewSc"
-										class="btn btn-xs btn-success my-detail" data-no="">일정보기</a>
+										class="btn btn-xs btn-success my-detail" data-no="" style="z-index:1000;">일정보기</a>
 										<div id="dday-Info">
 											<span id="dday"></span>
 										</div>
-									</li>
-								</ul>
-							</div>
-							<div class="sectionbar-line">
-								<hr align=center width=100%>
+									</li> -->
+								</div>
 							</div>
 						</div>
+						</div>
 					</div>
+				</div>
 				</div>
 		</section>
 		
 
 
 		<script id="divTemplateText" type="text/x-handlebars-template">
-
-				<div id="myThumbnail" class="myThumbnail">
-				</div>
-			<div id="group-Info" class="groupInfo" data-value="">
+<div class="g_sc_border">
+  <div id="group-Info2" style="width:950px; height:300px; background:#fff; margin-bottom:15px;">
+ <div class="g_sc" style="width:300px; height:300px; overflow:hidden;"> 
+			<div class="groupInfo" data-value="">
 				<div class="gallery">
 					<div class="gallery-item">
 						{{#if groupPhoto}}
@@ -165,49 +178,59 @@ transition: all .2s ease-in-out;
 						{{/if}}
 						<div class="gallery-item-description">
 							<h3>{{groupName}}</h3>
-							<span>총 스케줄 갯수 {{count}}</span>
+							<span>총 스케줄 갯수 {{count}}</span>        
 						</div>
 					</div>
 				</div>
+      </div>
+      </div>
 </div>
-				<div class="separate"> </div>
 			</script>
 
 			<!--
 			bxslider 쓰기 위해 핸들바스 코드 수정
 		-->
 		<script id="div2TemplateText" type="text/x-handlebars-template">
-			<li id="sc">
+	
+	   <li id="sc">
 				<h1 class="list-group-item-text">{{title}}</h1>
 				<h3 class="list-group-item-text">{{placeName}}</h3><br>
 				<span class="list-group-item-text">{{start}} ~ {{end}}</span>
-				<a href='#' id="viewSc"
-				class="btn btn-xs btn-success my-detail" data-no="">일정보기</a>
-				<div id="dday-Info">
-					<h1 id="dday">d-day {{dday}}</h1>
+
+        <a href='#' class="btn btn-xs btn-success my-detail" data-no="">일정보기</a>	
+		    
+	 			<div id="dday-Info">
+					<h1 id="dday"  style="font-size:30px; font-weight:bold;">D-day {{dday}}</h1>
+ 
 				</div>
 			</li>
+
 		</script>
 
+ <script id="inviteMessage" type="text/x-handlebars-template">       
+    <div class="invite-box" style="display:none" data-value="{{memberNo}}">             
+      <p>{{name}} 님이 <span id="inviteGroupNo" > {{groupName}} 그룹에 초대하였습니다</span></p>
+        <ul>
+           <li style="display:inline"><button type="button" class="btn addTrue"  data-value="{{no}}" data-no="{{groupNo}}" data-chat="{{groupReplyNo}}">수락</button></li>
+           <li style="display:inline"><button type="button" class="btn addFail" data-value="{{no}}">거절</button></li>
+        </ul>     
+     </div>  
+  </script>
 
-
+		<script src="../node_modules/handlebars/dist/handlebars.min.js"></script>		
 		<script src="../node_modules/jquery/dist/jquery.min.js"></script>
 		<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-		<script src="../node_modules/handlebars/dist/handlebars.min.js"></script>
-		<!-- bxSlider Javascript file -->
-		<script src="../js/jquery.bxslider.min.js"></script>
-		<!-- bxSlider CSS file -->
-
-
-
-		<script type="text/javascript" src="../js/common.js"></script>
+		<script src="../js/jquery.bxslider.min.js"></script>		
 		<script type="text/javascript" src="../js/include.js"></script>
+		<script type="text/javascript" src="../js/common.js"></script>
 		<script type="text/javascript" src="../js/bit.js"></script>
 		<script type="text/javascript" src="../member/memberApp.js"></script>
 		<script type="text/javascript" src="myschedule.js"></script>
+		<script type="text/javascript" src="../memberInvite/memberInvitemessageApp.js"></script>
 		<script>
 		ajaxLoginUser()
 		ajaxMygroupList()
+		ajaxGroupInviteListMessage() 
 		//ajaxMyScheduleList()
 
 		if (location.search.startsWith("?")) {
@@ -221,6 +244,5 @@ transition: all .2s ease-in-out;
 
 		}
 		</script>
-		<footer> </footer>
 	</body>
 	</html>
