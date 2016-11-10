@@ -218,7 +218,8 @@ function ajaxMyScheduleList() {
       var template = Handlebars.compile($('#divTemplateText').html())
       
       for (var i in newArr) {
-         if ($("#user").attr('data-value') == newArr[i].no){
+         if ($("#user").attr('data-value') == newArr[i].no
+        		 && newArr[i].myScheduleStatus == 1){
             contents += template(newArr[i])
             $("#groupList").attr('data-value', newArr[i].groupNo)
          }
@@ -226,7 +227,8 @@ function ajaxMyScheduleList() {
       
       
       for (var i in myScheduleList) {
-         if ($("#user").attr('data-value') == myScheduleList[i].no){
+         if ($("#user").attr('data-value') == myScheduleList[i].no
+        		 && myScheduleList[i].myScheduleStatus == 1){
             wholeScList.push(myScheduleList[i]);
             $("#groupList").attr('data-no', myScheduleList[i].groupscNo) // 그 원지선이 가진 no중에서 groupscNo 넣어주는거
          }

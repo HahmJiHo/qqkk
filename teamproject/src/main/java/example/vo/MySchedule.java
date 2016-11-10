@@ -9,6 +9,7 @@ public class MySchedule implements Serializable {
   protected int no;
   protected int groupNo;
   protected int groupscNo;
+  protected int MyScheduleStatus;
   protected String name;
   protected String nickName;
   protected String groupName;
@@ -19,8 +20,13 @@ public class MySchedule implements Serializable {
   protected String groupPhoto;
   
   
- 
-	public String getGroupPhoto() {
+	public int getMyScheduleStatus() {
+    return MyScheduleStatus;
+  }
+  public void setMyScheduleStatus(int myScheduleStatus) {
+    MyScheduleStatus = myScheduleStatus;
+  }
+  public String getGroupPhoto() {
     return groupPhoto;
   }
   public void setGroupPhoto(String groupPhoto) {
