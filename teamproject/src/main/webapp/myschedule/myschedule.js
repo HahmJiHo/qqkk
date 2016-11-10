@@ -130,7 +130,8 @@ function ajaxMygroupList() {
          arr[i].dday = computeDday(arr[i].start)
          if (arr[i].dday > 0 
                && $("#user").attr('data-value') == arr[i].no
-               && $("#group-Info").attr('data-value') == arr[i].groupNo) {
+               && $("#group-Info").attr('data-value') == arr[i].groupNo
+               && arr[i].myScheduleStatus == 1) {
             //&& $("#group-Info").attr('data-value') == count(arr[i].groupNo)) {(
 
         	 $("#viewSc").attr('data-no', arr[i].groupscNo)
@@ -139,7 +140,8 @@ function ajaxMygroupList() {
             mygroupArr.push(arr[i]);
          }
       }   
-
+      
+      console.log(mygroupArr)
       var newArr = removeDuplicate(mygroupArr) 
       console.log("new");
       console.log(newArr);
