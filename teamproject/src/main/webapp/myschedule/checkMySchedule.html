@@ -49,9 +49,10 @@
 </head>
 <style>
 #calendar {
-	max-width: 980px;
-	margin: auto;
-
+	position: absolute;
+	max-width: 800px;
+	left: 310px;
+	top: 150px;
 }
 
 .modal {
@@ -61,115 +62,124 @@
 .modal-backdrop {
 	z-index: 10;
 }
+
+.line {
+	margin-top: 20px;
+	margin-bottom: 20px;
+	border: 0;
+	border-top: 3px solid #9dc92a;
+}
 ​
 </style>
 <body>
-	<header> </header>
-	<section class="panel">
-		<aside class="header-top" style="float: left;">
-			<ul class="aside-nav">
-				<li class="f-r"><a href="#"></a></li>
-				<li class="f-r iconMemberPlus" data-toggle="tooltip"
-					data-placement="bottom" title="그룹추가하기"><a href="#"></a></li>
-				<li class="f-r iconSchedulePlus" data-toggle="tooltip"
-					data-placement="bottom" title="일정추가하기"><a href="#"></a></li>
-				<li class="f-r iconBell user-alert"
-					style="display: block; cursor: pointer"><i
-					class="glyphicon glyphicon-exclamation-sign alert-icon"
-					style="color: red; position: absolute; font-size: 15px; top: 10px; display: none"></i>
-				</li>
+	<div class="wrapper">
+		<header> </header>
+		<section class="panel">
+			<aside class="header-top" style="float: left;">
+				<ul class="aside-nav">
+					<li class="f-r"><a href="#"></a></li>
+					<li class="f-r iconMemberPlus" data-toggle="tooltip"
+						data-placement="bottom" title="그룹추가하기"><a href="#"></a></li>
+					<li class="f-r iconSchedulePlus" data-toggle="tooltip"
+						data-placement="bottom" title="일정추가하기"><a href="#"></a></li>
+					<li class="f-r iconBell user-alert"
+						style="display: block; cursor: pointer"><i
+						class="glyphicon glyphicon-exclamation-sign alert-icon"
+						style="color: red; position: absolute; font-size: 15px; top: 10px; display: none"></i>
+					</li>
 
-			</ul>
-			<p class="f-r logout" style="float: right;">
-				<a href="#">로그아웃</a>
-			</p>
-			<div class="alert-box"
-				style="position: absolute; background-color: rgba(0, 0, 0, 0.5); max-width: 250px; margin: 10px; left: 50px; top: 60px; color: #fff">
-			</div>
-		</aside>
-
-
-		<div class="section-wrap">
-			<div class="make-top">
-				<div class="make-text"
-					style="position: fixed; left: 20px; z-index: 2;">
-					<h2>
-						<span class="my-profile"
-							style="display: block; text-align: center; padding-left: 0px;">
-							<img src="" id="profilePhoto"
-							style="width: 80px; height: 80px; margin-top: 90px;" />
-						</span><br> <span id="user" class="my-login" data-value=""></span>님
-						안녕하세요?
-					</h2>
+				</ul>
+				<p class="f-r logout" style="float: right;">
+					<a href="#">로그아웃</a>
+				</p>
+				<div class="alert-box"
+					style="position: absolute; background-color: rgba(0, 0, 0, 0.5); max-width: 250px; margin: 10px; left: 50px; top: 60px; color: #fff">
 				</div>
-			</div>
+			</aside>
 
-			<form class="navbar-form navbar-left" role="search">
-				<div class="form-group">
-					<button type="button" class="btn btn-default"
-						onclick="location.href='MySchedule.html'">
-						<i class="fa fa-bars w3-xlarge" aria-hidden="true"></i>
-					</button>
-					<button type="button" class="btn btn-default"
-						onclick="location.href='checkMySchedule.html'">
-						<i class="fa fa-calendar w3-xlarge" aria-hidden="true"></i>
-					</button>
+
+			<div class="section-wrap">
+				<div class="make-top">
+					<div class="make-text"
+						style="position: fixed; left: 20px; z-index: 2;">
+						<h2>
+							<span class="my-profile"
+								style="display: block; text-align: center; padding-left: 0px;">
+								<img src="" id="profilePhoto"
+								style="width: 80px; height: 80px; margin-top: 90px;" />
+							</span><br> <span id="user" class="my-login" data-value=""></span>님
+							안녕하세요?
+						</h2>
+					</div>
 				</div>
-			</form>
+
+				<form class="navbar-form navbar-left" role="search">
+					<div class="form-group">
+						<button type="button" class="btn btn-default"
+							onclick="location.href='MySchedule.html'">
+							<i class="fa fa-bars w3-xlarge" aria-hidden="true"></i>
+						</button>
+						<button type="button" class="btn btn-default"
+							onclick="location.href='checkMySchedule.html'">
+							<i class="fa fa-calendar w3-xlarge" aria-hidden="true"></i>
+						</button>
+					</div>
+				</form>
 
 
-			<div class="sectionbar-line">
-				<hr align=center width=100%>
-			</div>
-
-			<div class="groupNameList"> 
-			<h1 class="groupListTitle">나의 그룹 리스트</h1>
-				<div id="groupList">
-					<input type="checkbox" data-no="" data-value="">
+				<div class="sectionbar-line">
+					<hr class="line" align=center width=100%>
 				</div>
-			</div>
 
-			<div id='calendar'></div>
+				<div class="aside"
+					style="float: left; padding: 20px 20px 0 20px; width: auto;">
+					<div class="groupNameList">
+						<h1 class="groupListTitle">나의 그룹 리스트</h1>
+						<div id="groupList">
+							<input type="checkbox" data-no="" data-value="">
+						</div>
+					</div>
+				</div>
 
-			<div id="calendarModal" class="modal fade">
-				<div class="modal-dialog">
-					<div class="modal-content">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal">
-								<span aria-hidden="true">×</span> <span class="sr-only">close</span>
-							</button>
-							<h1 id="modalTitle" class="modal-title"></h1>
-							<p class="modal-groupName"></p>
-							<p class="modal-start-date"></p>
-							<p class="modal-end-date"></p>
-							<p class="modal-place"></p>
-							<p class="modal-description"></p>
-							<div id="modal-weather" class="weather-img">
-								<img src="">
+				<div id='calendar'></div>
+
+				<div id="calendarModal" class="modal fade">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal">
+									<span aria-hidden="true">×</span> <span class="sr-only">close</span>
+								</button>
+								<span class="modal-groupName"></span> <span id="modalTitle"
+									class="modal-title"></span><br> <span
+									class="modal-start-date"></span> <span class="modal-end-date"></span><br>
+								<span class="modal-place"></span> <span
+									class="modal-description"></span> <span id="modal-weather"
+									class="weather-img"> </span> <img src="">
+							</div>
+
+
+							<div id="modalBody" class="modal-body">
+								<div style="margin-top: 5px;">
+									<h4 class="detail-sc-day">장소</h4>
+									<div id="google_map" style="width: 100%; height: 450px;"></div>
+								</div>
+							</div>
+
+							<div class="modal-footer">
+								<button id="detailBtn" type="button" class="btn btn-default">상세정보</button>
+								<button type="button" class="btn btn-default"
+									onclick="location.href=''">앨범</button>
+								<button type="button" class="btn btn-default"
+									data-dismiss="modal">닫기</button>
 							</div>
 						</div>
-
-
-
-
-					</div>
-					<div id="modalBody" class="modal-body">
-						<div style="margin-top: 5px;">
-							<h4 class="detail-sc-day">장소</h4>
-							<div id="google_map" style="width: 100%; height: 450px;"></div>
-						</div>
-					</div>
-					<div class="modal-footer">
-						<button id="detailBtn" type="button" class="btn btn-default">상세정보</button>
-						<button type="button" class="btn btn-default"
-							onclick="location.href=''">앨범</button>
-						<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
 					</div>
 				</div>
 			</div>
-		</div>
 
-	</section>
+		</section>
+	</div>
 
 	<script id="divTemplateText" type="text/x-handlebars-template">
 		<div id="groupList">
@@ -189,7 +199,10 @@
      </div>  
   </script>
 
-	<script src="../node_modules/handlebars/dist/handlebars.min.js"></script>
+	<script type="text/javascript"
+		src="../node_modules/handlebars/dist/handlebars.min.js"></script>
+	<script type="text/javascript"
+		src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="../member/memberApp.js"></script>
 	<script type="text/javascript" src="../js/common.js"></script>
 	<script type="text/javascript" src="../js/bit.js"></script>

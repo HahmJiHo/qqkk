@@ -28,7 +28,7 @@ body{ font-family:"arial", sans-serif; font-size:12px;}
 
 #profilePhoto{width:100px; height:100px; border-radius:50%; }
 
-.groupNameList {width: 100px; margin: 0 0 0 68px;}
+.groupNameList {width: 100px;}
 
 .groupListTitle {
     width: 215px;
@@ -37,4 +37,9 @@ body{ font-family:"arial", sans-serif; font-size:12px;}
 }
 
 #groupList {width: 100px; font-size: 23px; magin: 0px;}
+.modal-groupName {font-size: 30px;}
+.modal-title {font-size: 45px;}
+.modal-start-date {font-size: x-large; color: #9dc92a;}
+.modal-end-date {font-size: x-large; color: #9dc92a;}
+.modal-place {font-size: medium;}
 
