@@ -1,34 +1,47 @@
 var resultUser = []
 
 
-
-
 $("#loginBtn").click(function (e) {
 	location.href = "../auth/authApp.html"
-})
+});
 
 $("#logoutBtn").click(function (e) {
 	location.href = "../auth/authApp.html"
-})
+});
 
+
+$("#prevBtn").click(function(event) {
+	pageNo--;
+	ajaxBoardList();
+});
+
+$("#nextBtn").click(function(event) {
+	pageNo++;
+	ajaxBoardList();
+});
+
+// 글로벌 변수 = window 프로퍼티 
+var pageNo = 1, /* window.pageNo */
+    pageLength = 5; /* window.pageLength */
 
 $("#writeBtn").click(function (e) {
+	console.log(resultUser)
 	if (resultUser.data == null) {
 		alert("로그인하세요")
 		location.href = "../index_h.html"
 		return
 	  } 
 	location.href = "communityForm.html"
-})		
+});		
 
 
-/*$("#writeBtn").click(function (e) {
+/*
+$("#writeBtn").click(function (e) {
 	if (resultUser.data == null) {
 		alert("로그인하세요")
 		window.location.reload()
 		return
-		location.href = "../index_h.html"
-	} 
+	  } 
 	location.href = "communityForm.html"
 })	
 */
@@ -36,11 +49,9 @@ $("#writeBtn").click(function (e) {
 
 
 
-
 function ajaxCommunityList() {
 	$.getJSON(serverAddr + "/community/list.json", function(obj) {
 		var result = obj.jsonResult
-
 		if (result.state != "success") {
 	    	 alert("커뮤니티: 서버에서 데이터를 가져오는데 실패했습니다.")
 	    	 return
@@ -51,14 +62,32 @@ function ajaxCommunityList() {
 	    
 	    $(".titleLink").click(function(event) {
 		    window.location.href = "communityForm.html?no=" + $(this).attr("data-no")
-		    
 	    })
+	    
+	      // 현재 페이지 번호를 span 태그에 출력한다.
+	    pageNo = result.data.pageNo;
+	    totalPage = result.data.totalPage;
+	    $('#pageNo').text(pageNo);
+	    
+	    // 페이지 번호가 1이면 [이전] 버튼을 비활성화시킨다.
+	    if (pageNo <= 1) {
+	    	$('#prevBtn').attr('disabled', true);
+	    } else {
+	    	$('#prevBtn').removeAttr('disabled');
+	    } 
+	    
+	    // 페이지 번호가 마지막 페이지라면 [다음] 버튼을 비활성화시킨다.
+	    if (pageNo >= totalPage) {
+	    	$('#nextBtn').attr('disabled', true);
+	    } else {
+	    	$('#nextBtn').removeAttr('disabled');
+	    }
     })
 }
 
 
 	
-	
+
 function ajaxLoginUser() {
 	$.getJSON(serverAddr + "/auth/loginUser.json", function(obj) {
 		resultUser = obj.jsonResult
@@ -70,15 +99,97 @@ function ajaxLoginUser() {
 	    $('.my-logout').css("display", "none")
 	      
 	    $("#userName").text(resultUser.data.name);
+	    $("#userName").attr('data-value', resultUser.data.no);
 	    $("#userNo2").attr('data-value', resultUser.data.no);
 	    $("#userNo3").attr('data-value', resultUser.data.no);
+	    $("#profilePhoto").attr("src", "../upload/" + resultUser.data.filename)
+	    $("#profilePhoto2").attr("src", "../upload/" + resultUser.data.filename)
+	    
+		if (resultUser.data.filename == null) {
+			$("#profilePhoto").attr("src", "../upload/user-3.png")
+			$("#profilePhoto2").attr("src", "../upload/user-3.png")
+			return
+		  } 
     })
 }
 
 
 
+
+
+window.initMap = function() {
+    var map = new google.maps.Map(document.getElementById('map'), {
+      center: {lat: -33.8688, lng: 151.2195},
+      zoom: 16,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
+  
+    // Create the search box and link it to the UI element.
+    var input = document.getElementById('pac-input');
+    var searchBox = new google.maps.places.SearchBox(input);
+    map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+  
+    // Bias the SearchBox results towards current map's viewport.
+    map.addListener('bounds_changed', function() {
+      searchBox.setBounds(map.getBounds());
+    });
+  
+    var markers = [];
+    // [START region_getplaces]
+    // Listen for the event fired when the user selects a prediction and retrieve
+    // more details for that place.
+    searchBox.addListener('places_changed', function() {
+      var places = searchBox.getPlaces();
+  
+      if (places.length == 0) {
+        return;
+      }
+  
+      // Clear out the old markers.
+      markers.forEach(function(marker) {
+        marker.setMap(null);
+      });
+      markers = [];
+  
+      // For each place, get the icon, name and location.
+      var bounds = new google.maps.LatLngBounds();
+      places.forEach(function(place) {
+        var icon = {
+          url: place.icon,
+          size: new google.maps.Size(71, 71),
+          origin: new google.maps.Point(0, 0),
+          anchor: new google.maps.Point(17, 34),
+          scaledSize: new google.maps.Size(25, 25)
+        };
+  
+        // Create a marker for each place.
+        markers.push(new google.maps.Marker({
+          map: map,
+          icon: icon,
+          title: place.name,
+          position: place.geometry.location
+        }));
+  
+        if (place.geometry.viewport) {
+          // Only geocodes have viewport.
+          bounds.union(place.geometry.viewport);
+        } else {
+          bounds.extend(place.geometry.location);
+        }
+      });
+      map.fitBounds(bounds);
+    });
+    // [END region_getplaces]
+  }
+
+
+
+
+
+
+
 function createdatawithcheck(data){
-	 //
+	
 	 var sec = 60;
 	 var mins = 60;
 	 var hours = 24;
@@ -118,7 +229,8 @@ function createdatawithcheck(data){
 	  msg=Math.floor(difftime) + "년";
 	 }
 	return msg;
-	 } 
+ } 
+
 
 
 
