@@ -14,6 +14,7 @@ public interface CommunityDao {
   Community selectOneByPassword(Map<String, Object> paramMap) throws Exception;    
   int insert(Community community) throws Exception;
   int update(Community community) throws Exception;
+  int updateViewCount(int no) throws Exception;
   int delete(int no) throws Exception;
   int countAll() throws Exception;
 }

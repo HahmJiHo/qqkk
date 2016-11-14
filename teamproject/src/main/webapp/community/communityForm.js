@@ -8,14 +8,23 @@ $("#logoutBtn").click(function(event) {
 	location.href = "../auth/authApp.html"
 });
 
+
+
+$('input[name=commentCount1]').length
+
 $("#addBtn").click(function(event) {
+	   
 		var formData = new FormData();
-		formData.append("userNo" , $("#userNo2").attr('data-value'));
+		formData.append("userNo" , $("#userName").attr('data-value'));
 		formData.append("title" , $("#title").val());
 		formData.append("contents" , $("#contents").val());
 		formData.append("address" , $("#pac-input").val());
 		formData.append("file1", $("input[name=file1]")[0].files[0]);
-		console.log(formData)
+		console.log($("#userName").attr('data-value'))
+		console.log($("#title").val())
+		console.log($("#contents").val())
+		console.log($("input[name=file1]")[0].files[0])
+		console.log($("#pac-input").val())
 		$.ajax({
 			url: serverAddr + '/community/add.json',
 			processData: false,
@@ -28,7 +37,7 @@ $("#addBtn").click(function(event) {
 		          console.log('error : ' + textStatus + " " + errorThrown);
 		     }
 		});
-		window.location.reload();
+		/*window.location.reload();*/
 });
 
 
@@ -65,7 +74,8 @@ $("#deleteBtn").click(function(event) {
 $("#addCommentBtn").click(function(event) {
 	if (resultUser.data == null) {
 		alert("로그인하세요")
-		window.location.reload()
+		/*window.location.reload()*/
+		location.href = "../index_h.html"
 		return
 	  } 
 	var communityComment = {
@@ -135,9 +145,8 @@ $("#LikeBtn").click(function(event) {
 
 
 
-function ajaxAddCommunity(community) {
+/*function ajaxAddCommunity(community) {
 	$.post(serverAddr + "/community/add.json", community, function(obj) {
-		console.log(obj)
 		var result = obj.jsonResult
 		console.log(result)
 		if (result.state != "success") {
@@ -148,7 +157,7 @@ function ajaxAddCommunity(community) {
 	}, "json")
 }
 
-
+*/
 
 //_________________[파일업로드]기능_____________________________________________________//
 
@@ -173,9 +182,9 @@ function ajaxAddCommunity(community) {
 
 
 function ajaxLoadCommunity(no) {
-	console.log(no)
 	$.getJSON(serverAddr + "/community/detail.json?no=" + no, function(obj) {
 		var result = obj.jsonResult
+		console.log(result)
 		if (result.state != "success") {
 			alert("조회 실패입니다 디테일.")
 			return
@@ -188,6 +197,8 @@ function ajaxLoadCommunity(no) {
 		$("#pac-input").val(result.data.address);
 		$("#registerDate").text(result.data.registerDate2);
 		$("#viewCount").text(result.data.viewCount);
+		$("#fileNo").text(result.data.fileNo);
+		$("#filename > img").attr("src", "../upload/" + result.data.filename);
 		$("#boardLike").text(result.data.boardLike);
 	})
 }
@@ -221,21 +232,6 @@ function ajaxDeleteCommunity(no) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //_______________________________________________[댓글]기능_____________________________________________________//
 
 
@@ -248,6 +244,8 @@ function ajaxCommentCommunityList(no) {
 	    	 alert("댓글: 서버에서 데이터를 가져오는데 실패했습니다.")
 	    	 return
 	    }
+		
+
 		
 		var template = Handlebars.compile($('#commentTemplateText').html())
 		var contents = ""
@@ -337,31 +335,21 @@ function ajaxDeleteCommunityComment() {
 
 
 
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
 
+        reader.onload = function (e) {
+            $('#blah')
+                .attr('src', e.target.result);
+        };
 
-
-
-
-
-
-
-//_______________________________________________[로그인]기능_____________________________________________________//
-
-
-function ajaxLoginUser() {
-	$.getJSON(serverAddr + "/auth/loginUser.json", function(obj) {
-		var result = obj.jsonResult
-	    if (result.state != "success") { // 로그아웃 상태일 경우 로그인 상태와 관련된 태그를 감춘다.
-	         $('.my-login').css("display", "none")
-	         return
-	    }
-	      
-	    $('.my-logout').css("display", "none")
-	      
-	    $("#userName").text(result.data.name);
-	   
-    })
+        reader.readAsDataURL(input.files[0]);
+    }
 }
+
+
+
 
 
 
@@ -407,5 +395,6 @@ function google_map(mapid, addr) {
 		}
 	});
 }
+
 
 

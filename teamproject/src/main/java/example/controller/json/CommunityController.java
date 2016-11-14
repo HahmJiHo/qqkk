@@ -12,10 +12,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import example.dao.CommunityCommentDao;
 import example.dao.CommunityDao;
 import example.service.CommunityService;
 import example.vo.Community;
+import example.vo.CommunityFile;
 import example.vo.JsonResult;
+import example.vo.Member;
 
 @Controller 
 @RequestMapping("/community/")
@@ -45,14 +48,16 @@ public class CommunityController {
   		HttpSession session,
 			MultipartFile file1,
 			String uploadDir) throws Exception {
- // 성공하든 실패하든 클라이언트에게 데이터를 보내야 한다.
-   System.out.println(file1);
- 		
+  // 성공하든 실패하든 클라이언트에게 데이터를 보내야 한다.
+   
+  	Member member = (Member)session.getAttribute("member");
+		uploadDir = sc.getRealPath("/upload") + "/";
+		System.out.println("file1 --: " + file1);
+	
+		community.setUserNo(member.getNo());	
  		communityService.insertCommunity(community, file1, uploadDir);
-
  		try {
  			System.out.println("1");
-      communityDao.insert(community);
       return JsonResult.success();
       
     } catch (Exception e) {
@@ -64,6 +69,8 @@ public class CommunityController {
   public Object detail(int no) throws Exception {
     try {
       Community community = communityDao.selectOne(no);
+      communityService.updateViewCount(no);
+      
       
       if (community == null) 
         throw new Exception("해당 번호의 게시물이 존재하지 않습니다.");
@@ -88,6 +95,12 @@ public class CommunityController {
       return JsonResult.fail(e.getMessage());
     }
   }
+  
+  
+  
+   
+  
+  
   
   @RequestMapping(path="delete")
   public Object delete(int no, String password) throws Exception {
