@@ -17,6 +17,7 @@ function ajaxGroupName() { // gno , gsno 불러오는 function
 			return
 		} 
 		var contents = ""
+			var contents2 = ""	
 			var arr = result.data.list
 			//	console.log(arr)
 			var template = Handlebars.compile($('#groupNameTemplateText').html())
@@ -32,21 +33,36 @@ function ajaxGroupName() { // gno , gsno 불러오는 function
 			
 			for (var i in arr) {
 				var sch = arr[i].scheduleList
-				$("#groupinfo").attr('data-value', arr[i].groupNo)
-				contents +=  "<a onclick='myAccFunc()' href='javascript:void(0)' class='w3-text-black' id='groupinfo' data-value='{{"+ arr[i].groupNo +"}}'>" + arr[i].groupName + "<i class='fa fa-caret-down'></i>" + "</a>";
-				for (var x in sch) {					
-					console.log(" 번호 : " + x + " 스케쥴번호 : " + sch[x].groupscNo)
-					$("#scheduleList").attr('data-gsno', sch[x].groupscNo)	
-					contents += template(sch[x])
+				$("#groupinfo").attr('data-value', arr[i].groupNo)								
+				contents +=
+				"<a href='javascript:void(0)' class='w3-text-black' id='groupinfo' data-value=" + arr[i].groupNo+ ">" + arr[i].groupName + "<i class='fa fa-caret-down'></i></a>";
+				for (var j = 0; j < arr[i].scheduleList.length; j++) {
 					
+					if (arr[i].groupNo == arr[i].scheduleList[j].groupNo) {						
+						$("#scheduleList").attr('data-gsno', arr[i].scheduleList[j].groupscNo)							
+						
+						contents += template(arr[i].scheduleList[j])
+					}
 				}
+				
+				
 			}
-		console.log(arr)
-		$("#albumlist").html(contents)
+	//	console.log(arr)
+		$('#albumlist').html(contents)	
+		/*$("#albumlist").html(contents)*/
 		     
 	})
 }
+$(document).ready(function(){
+	$('body').on('click',"#groupinfo", function(){
+	var x = $(this).attr('data-value')
+	console.log(x)
+	var arr = $('.asdf').attr('data-vo')
+	console.log(arr)
+    });
+});
 
+/*window.location.href = "../album/album02.html?no=" + $(this).attr("data-gsno")*/
 function ajaxAddGroupPhoto() {
 	var formData = new FormData();
 	formData.append("memberNo", $("#userName").attr('data-value'));
@@ -56,8 +72,8 @@ function ajaxAddGroupPhoto() {
 	console.log(formData)
 	console.log($("#file-0a")[0].files[0])
 	console.log($("#userName").attr('data-value'))
-	console.log($("#albumgroup").attr('data-no'))
-	console.log($("#albumgsno").attr('data-no'))
+	console.log($("#groupinfo").attr('data-value'))
+	console.log($("#showList").attr('data-gsno'))
 
 	$.ajax({
 		url: serverAddr + '/album/add.json',
@@ -119,14 +135,8 @@ function w3_close() {
     document.getElementById("mySidenav").style.display = "none";
     document.getElementById("myOverlay").style.display = "none";
 }
-function myAccFunc() {
-    var x = document.getElementById("demoAcc");
-    if (x.className.indexOf("w3-show") == -1) {
-        x.className += " w3-show";
-    } else {
-        x.className = x.className.replace(" w3-show", "");
-    }
-}
+
+
 
 
 

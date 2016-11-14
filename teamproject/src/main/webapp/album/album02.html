@@ -95,7 +95,9 @@
 .w3-sidenav a {font-family: "Roboto", sans-serif}
 body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 </style>
-
+<header>
+	
+</header>
 <body class="w3-content" style="max-width: 1200px">
 
 	<!-- Sidenav/menu -->
@@ -114,9 +116,11 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 			<div id="albumlist">
 				<div class="w3-accordion">
 					<!-- 그룹이름 -->
-					<div id="scheduleList"
+					<div 
 						class="w3-accordion-content w3-padding-large w3-medium">
+						<div class="w3-light-grey w3-show">
 						<!-- 스케줄이름 -->
+						</div>
 					</div>
 				</div>
 			</div>
@@ -168,11 +172,16 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 		<div id="imagesContainer"></div>
 	</div>
 	<script id="groupNameTemplateText" type="text/x-handlebars-template">
-        <div id="showList" class="w3-light-grey w3-show"><a href="#" data-gsno="{{groupscNo}}"><i class="fa fa-caret-right w3-margin-right"></i>{{title}}</a></div>
+ 	<div class="asdf" data-vo="{{groupNo}}">
+ 	
+		<ul>
+			<li> <a href="#" id="scheduleList" data-gsno="{{groupscNo}}"><i class="fa fa-caret-right w3-margin-right"></i>{{title}}</a></li>
+		</ul>
+	</div>
 
- 
-</script>
-
+	</script>
+	
+	
 	<script id="albumTemplateText" type="text/x-handlebars-template">
 	<img src="../upload/{{filename}}" style=" border-radius: 100px; vertical-align:middle; width:150px; height:150px;">
 </script>
@@ -191,14 +200,13 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 	<script type="text/javascript" src="../js/common.js"></script>
 	<script type="text/javascript" src="../js/bit.js"></script>
 	<script type="text/javascript" src="album02.js"></script>
-
+	
 
 	<script type="text/javascript"
 		src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/5.0.7/sweetalert2.min.js"></script>
 	<script type="text/javascript">
   ajaxLoginUser()
   ajaxGroupName()
-  ajaxImagesLoad()
    /* ajaxStudyList() */
    if (location.search.startsWith("?")) {     
      $(".my-new").css("display","none")
