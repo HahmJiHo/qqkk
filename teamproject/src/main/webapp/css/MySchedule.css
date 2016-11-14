@@ -119,11 +119,7 @@ body{ font-family:"arial", sans-serif; font-size:12px;}
 	margin-left: 1000px;
 }
 
-#schedule {
-	width: 1000px;
-	height: 300px;
-  padding-left:25px;
-}
+
 
 #schedule:hover {
 	background-color: light-gray;
@@ -147,6 +143,7 @@ body{ font-family:"arial", sans-serif; font-size:12px;}
 	position:relative;
 	width: 300px;
 	float: left;
+	height: 100%;
 }
 .groupInfo {
 	z-index:2;
@@ -262,3 +259,57 @@ body{ font-family:"arial", sans-serif; font-size:12px;}
   position: absolute;
   bottom:0;
 }
+.article-sc { position:relative; width: 1024px; top: 100px;}
+#schedule {
+	width: 100%;
+  position: absolute;
+  right: 0px;
+  overflow:hidden;
+  padding-left:25px;
+  
+}
+.g-sc { width:300px; height:300px; overflow:hidden; }
+
+
+@media (min-width: 1025px) and (max-width: 1304px) {
+	.article-sc { position:relative; width: 820px; top: 100px;}
+  #schedule { width: 100%; }
+  #group-Info { width: 250px; }
+  .g_sc { width: 250px; height:300px; overflow:hidden;  }
+  .gallery{ width:250px; }
+  .gallery-item { width: 250px;}
+  #scheduleInfo { width: 500px;  left: 350px; right:0px;}
+  #schedule-Info { width: 500px; }
+  .bx-wrapper .bx-next { left: 500px !important; }
+}
+
+@media (min-width: 980px) and (max-width: 1024px) {
+	.article-sc { position:relative; width: 800px; top: 100px;}
+	#schedule { width: 100%; }
+  #group-Info { width: 200px; }
+	.g_sc { width: 200px; height:300px; overflow:hidden;  }
+	.gallery{ width:200px; }
+	.gallery-item { width: 200px;}
+	#scheduleInfo { width: 470px;  left: 300px; right:0px;}
+	#schedule-Info { width: 470px; }
+  .bx-wrapper .bx-next { left: 470px !important; }
+}
+
+@media (min-width: 768px) and (max-width: 979px) {
+.article-sc { position:relative; width: 720px; top: 100px;}
+  #schedule { width: 100%; }
+  #group-Info { width: 200px; height:200px;}
+  .g_sc { width: 200px; height:200px; overflow:hidden;  }
+  .gallery{ width:200px; height:200px;}
+  .gallery-item { width: 200px;}
+  #scheduleInfo { width: 440px;  left: 300px; right:0px;}
+  #schedule-Info { width: 440px; }
+  .bx-wrapper .bx-next { left: 440px !important; }
+	}
+
+@media (max-width: 768px) {
+
+}
+@media (max-width: 500px) {
+
+	}

@@ -1,6 +1,5 @@
-
-
 $('.wrap').removeClass('display-none');
+$('body').css({"background" : "#fff"})
 function ajaxMemberInviteList() {
 	$.getJSON(serverAddr +"/memberInvite/list.json", function(obj) {
 		var result = obj.jsonResult
@@ -29,9 +28,14 @@ function ajaxMemberInviteList() {
 			}			
 		}
 	    $('.wrap').addClass('display-none');
+	    $('body').css({"background" : ""})
 	})
 }
+
+
+
 $('.wrap').removeClass('display-none');
+$('body').css({"background" : "#fff"})
 function ajaxMemberGroupInviteList() {
 	$.getJSON(serverAddr +"/memberInvite/list.json",function(obj) {
 		var result = obj.jsonResult
@@ -49,11 +53,13 @@ function ajaxMemberGroupInviteList() {
 				contents += template(arr[i])				
 			} 	
 		}
-		$("#member").html(contents)	
+		$(".gallery").append(contents)
+		console.log(arr)
 		ajaxmyScheduleIng()	
 		$(".groupMore").click(function (e) {
 			window.location.href = "../group/makeSc.html?no=" + $(this).attr("data-no")
 		}) 	
 		$('.wrap').addClass('display-none');
+		 $('body').css({"background" : ""})
 	})	
 }

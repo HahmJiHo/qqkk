@@ -2,7 +2,7 @@ $('#email').keyup(function() {
 	var email = $(this).val();
 
 	$.ajax({
-		url : 'http://localhost:8989/teamproject/index.html',
+		url : 'http://t3.java85.com:8989/teamproject/index.html',
 		dataType: "jsonp",
 		jsonpCallback: 'callback',
         contentType: "application/json; charset=UTF-8",

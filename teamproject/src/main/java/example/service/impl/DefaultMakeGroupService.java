@@ -61,11 +61,12 @@ public class DefaultMakeGroupService implements MakeGroupService{
 	public void insertMakeGroup(MakeGroup makeGroup, MultipartFile file1, String uploadDir) throws Exception {
 		makeGroupDao.insert(makeGroup);
 		System.out.println(makeGroup);
+		String newFilename = null;
+
 		
-		String newFilename = null;			
 		System.out.println("---서비스 file1 :" + file1);
 		if (file1 != null && !file1.isEmpty()) {
-			newFilename = FileUploadUtil.getNewFilename(file1.getOriginalFilename());
+			newFilename = FileUploadUtil.getNewFilename(file1.getOriginalFilename());			
 			file1.transferTo(new File(uploadDir + newFilename));
 			GroupFile groupFile = new GroupFile();
 			groupFile.setFilename(newFilename);
@@ -73,7 +74,8 @@ public class DefaultMakeGroupService implements MakeGroupService{
 			groupFile.setMemberNo(makeGroup.getMemberNumber());
 			System.out.println(groupFile);
 			groupFileDao.insert(groupFile);
-
+	
+			
 		}
 
 	}

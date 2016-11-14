@@ -59,6 +59,7 @@ public class MakeGroupController {
 		// 성공하든 실패하든 클라이언트에게 데이터를 보내야 한다.
 		Member member = (Member)session.getAttribute("member");
 		uploadDir = sc.getRealPath("/upload") + "/";
+		
 		System.out.println("file1 --: " + file1);
 		
 		makeGroup.setEmail(member.getEmail());		

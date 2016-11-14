@@ -15,8 +15,8 @@
 	<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
 	<link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="../css/MySchedule.css">
 	<link href="../js/jquery.bxslider.css" rel="stylesheet" />
+	<link rel="stylesheet" type="text/css" href="../css/MySchedule.css">
 
 
 	<style>
@@ -47,12 +47,22 @@ border-radius: 4px;
 transition: all .2s ease-in-out;
 }
 */
+
 </style>
 
 </head>
 <body>
+<div class="wrap display-none">
+  <div class="loader"></div>
+  <div class="loaderbefore"></div>
+  <div class="circular"></div>
+  <div class="circular another"></div>
+  <div class="text">Loading</div>
+</div>
+<div class="wrapper">
+
 	<header> </header>
-	<section class="panel" style="min-height:100%;">
+	<section class="panel">
 	
     <aside class="header-top" style="float: left; ">
 	    <ul class="aside-nav"> 
@@ -114,12 +124,23 @@ transition: all .2s ease-in-out;
 					</form>
 
 				</div>
-				<div class="sectionbar-line">
-					<hr align=center width=100%>
-				</div>
-
-					<div id="schedule">
+				<div class="article-sc">
+					<div id="schedule" style="clear: both; text-align: center; min-height: 800px; padding: 0 20px;">
            <div class="user-group-info" style="position:relative; ">
+						  <div id="scheduleInfo" style="z-index:11; position:absolute;">
+                      <div id="schedule-Info" data-value="">
+                        <div class="bxslider">
+                      <!--<li id="sc">
+                          <p></p> <span></span><br> <span> ~ </span>
+                          <a href='#' id="viewSc"
+                          class="btn btn-xs btn-success my-detail" data-no="" style="z-index:1000;">일정보기</a>
+                          <div id="dday-Info">
+                            <span id="dday"></span>
+                          </div>
+                        </li> -->
+                          </div>
+                       </div>
+                   </div>
 						<div id="group-Info" data-value="">
           
 			<!-- 			<div id="myThumbnail" class="myThumbnail">
@@ -137,55 +158,18 @@ transition: all .2s ease-in-out;
 										</div>
 									</div>
 									<div class="separate"></div> -->
-						</div>
-						<div id="scheduleInfo" style="z-index:11">
-							<div id="schedule-Info" data-value="">
-								  <div class="bxslider">
-								<!--<li id="sc">
-										<p></p> <span></span><br> <span> ~ </span>
-										<a href='#' id="viewSc"
-										class="btn btn-xs btn-success my-detail" data-no="" style="z-index:1000;">일정보기</a>
-										<div id="dday-Info">
-											<span id="dday"></span>
-										</div>
-									</li> -->
-								</div>
-							</div>
-						</div>
+	
+					     	</div>
+					        
 						</div>
 					</div>
-				</div>
-				</div>
+					</div>
+				</div>	
 		</section>
-		
+		</div>
 
 
-		<script id="divTemplateText" type="text/x-handlebars-template">
-<div class="g_sc_border">
-  <div id="group-Info2" style="width:950px; height:300px; background:#fff; margin-bottom:15px;">
- <div class="g_sc" style="width:300px; height:300px; overflow:hidden;"> 
-			<div class="groupInfo" data-value="">
-				<div class="gallery">
-					<div class="gallery-item">
-						{{#if groupPhoto}}
-						<div class="gallery-item-image">
-							<img src="../upload/{{groupPhoto}}" alt width="280" height="250">
-						</div>
-						{{else}}
-						<div class="gallery-item-image">
-							<img src="../images/profile.png" alt width="280" height="250">
-						</div>
-						{{/if}}
-						<div class="gallery-item-description">
-							<h3>{{groupName}}</h3>
-							<span>총 스케줄 갯수 {{count}}</span>        
-						</div>
-					</div>
-				</div>
-      </div>
-      </div>
-</div>
-			</script>
+
 
 			<!--
 			bxslider 쓰기 위해 핸들바스 코드 수정
@@ -206,7 +190,31 @@ transition: all .2s ease-in-out;
 			</li>
 
 		</script>
-
+    <script id="divTemplateText" type="text/x-handlebars-template">
+<div class="g_sc_border">
+ <div class="g_sc" style="height: 300px;"> 
+      <div class="groupInfo" data-value="">
+        <div class="gallery">
+          <div class="gallery-item">
+            {{#if groupPhoto}}
+            <div class="gallery-item-image">
+              <img src="../upload/{{groupPhoto}}" alt width="100%" height="100%">
+            </div>
+            {{else}}
+            <div class="gallery-item-image">
+              <img src="../images/profile.png" alt width="100%" height="100%">
+            </div>
+            {{/if}}
+            <div class="gallery-item-description">
+              <h3>{{groupName}}</h3>
+              <span>총 스케줄 갯수 {{count}}</span>        
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+</div>
+      </script>
  <script id="inviteMessage" type="text/x-handlebars-template">       
     <div class="invite-box" style="display:none" data-value="{{memberNo}}">             
       <p>{{name}} 님이 <span id="inviteGroupNo" > {{groupName}} 그룹에 초대하였습니다</span></p>
@@ -220,8 +228,8 @@ transition: all .2s ease-in-out;
 		<script src="../node_modules/handlebars/dist/handlebars.min.js"></script>		
 		<script src="../node_modules/jquery/dist/jquery.min.js"></script>
 		<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-		<script src="../js/jquery.bxslider.min.js"></script>		
 		<script type="text/javascript" src="../js/include.js"></script>
+		<script src="../js/jquery.bxslider.min.js"></script>		
 		<script type="text/javascript" src="../js/common.js"></script>
 		<script type="text/javascript" src="../js/bit.js"></script>
 		<script type="text/javascript" src="../member/memberApp.js"></script>
