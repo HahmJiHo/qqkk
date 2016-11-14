@@ -164,31 +164,41 @@
 		</div>
 	</section>
 	<script id="divTemplateText" type="text/x-handlebars-template">
-				<h1 class="title">{{groupName}}  그룹의  {{title}} 일정입니다.</h1><br>
+				<h1 class="title"><span class="joinGroup1">{{groupName}}</span>  그룹의  <span class="joinGroup2">{{title}}</span> 일정입니다.</h1><br>
 			
 
 				<div class="schedule-date">
 					<div class="detailFont">날짜</div>
 					<hr class="section-bar" style="border:solid; color: rgb(157, 201, 42);"></hr>
-					<div class="date">
+				
+
+				<div class="date">
 						<h1 id="dday">D-day {{dday}}</h1>
-							<p class="appointmentDate">{{start}} ~ {{end}}</p>
+							<p class="appointmentDate"><span class="dateText1">Start On:</span>{{start}}<br>
+																				 <span class="dateText2">End On:</span>&nbsp;&nbsp;{{end}}</p>
 					</div>
 				</div><br>
 				<br>
+				
+
 				<div>
 					<div class="detailFont">날씨</div>
 						<hr class="section-bar" style="border:solid; color: rgb(157, 201, 42);"></hr>
 					<div id="weather-wrap">
 				 	 <div class="wrap-dayweather">
-				 	  	<div class="weather-img">
+							<div class="weather-img">
 								<img src="">
 							</div>
-				 	  	<div class="weather-temperature-mx">{{maxTemp}}</div>
-				 	  	<div class="weather-temperature-mn">{{minTemp}}</div>
+				 	  	
+				 	  	<div class="weather-temperature-mx"> MAX:{{maxTemp}}</div>
+				 	  	<div class="weather-temperature-mn"> LOW:{{minTemp}}</div>
+
+						<div>
 				 	  	<div class="weather-city">{{city}}</div>
 				 	  	<div class="weather-state">{{state}}</div>
-				 	  	<div class="weather-humidity"></div>
+				 	 	</div> 
+
+								<div class="weather-humidity"></div>
 				 	  	<div class="weather-windspeed"></div>
 				 	 </div>
 				  </div>

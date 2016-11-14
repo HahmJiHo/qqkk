@@ -67,20 +67,25 @@ function showCalendar() {
       disableDragging : true,
 
       eventClick: function(event, start, end) {
-         var location = getLatLon(event.placeName);
          var placeName = event.placeName
-         ajaxWeather(location.lat, location.lon)
+         var gpno = event.gpno
          var moment11 = $('#calendar').fullCalendar('getDate')
          start = moment(event.start).format('YYYY-MM-DD HH:mm')
          end = moment(event.end).format('YYYY-MM-DD HH:mm')
-
+         ajaxMidTermWeather(start, gpno)
+         //console.log(start)
+         //console.log(end)
+         
          //alert("Event title: " + event.title + " Start Date: " + start + " End Date: " + end );
+         
+         console.log(event)
          $('#calendarModal').modal()
+         console.log("11111111111")
+         $('.modal-groupName').html(event.groupName + "그룹의")
          $('#modalTitle').html(event.title)
-         $('.modal-groupName').html(event.groupName)
-         $('.modal-start-date').html(start)
+         $('.modal-start-date').html(start + "~")
          $('.modal-end-date').html(end)
-         $(".modal-place").html(event.placeName)
+         $(".modal-place").html(placeName)
          $('#modalBody').html(event.description)
          $('#eventUrl').attr('href',event.url)
          var groupscNo = event.groupscNo
@@ -183,12 +188,14 @@ function getLatLon(placeName) {
 
 
 function removeDuplicate(inArray) {
-      console.log(inArray)
+	console.log(inArray)
       var arr = {};
 
-      for ( var i=0, len=inArray.length; i < len; i++ )
+      for (var i in inArray ) {
+    	  console.log(inArray[i])
          arr[inArray[i]['groupNo']] = inArray[i];
-
+      }
+      
       inArray = new Array();
 
       for ( var key in arr )
@@ -206,15 +213,24 @@ function ajaxMyScheduleList() {
 
    $.getJSON(serverAddr + "/myschedule/list.json", function(obj) {
       var result = obj.jsonResult
-      console.log(result)
       if (result.state != "success") {
          alert("서버에서 데이터를 가져오는데 실패했습니다.")
          return
       }
 
       var contents = "";
-      var myScheduleList = result.data.list;
+      var prevmyScheduleList = result.data.list;
+      var myScheduleList = [];
+      
+      for (var i in prevmyScheduleList) {
+    	  console.log($("#user").attr('data-value'))
+    	  if ($("#user").attr('data-value') == prevmyScheduleList[i].no
+    			  && prevmyScheduleList[i].myScheduleStatus == 1) 
+    		  myScheduleList[i] = prevmyScheduleList[i]
+      }
+      
       var newArr = removeDuplicate(myScheduleList)
+
       var template = Handlebars.compile($('#divTemplateText').html())
       
       for (var i in newArr) {
@@ -226,12 +242,9 @@ function ajaxMyScheduleList() {
       }
       
       
-      for (var i in myScheduleList) {
-         if ($("#user").attr('data-value') == myScheduleList[i].no
-        		 && myScheduleList[i].myScheduleStatus == 1){
+      for (var i in myScheduleList) {       
             wholeScList.push(myScheduleList[i]);
             $("#groupList").attr('data-no', myScheduleList[i].groupscNo) // 그 원지선이 가진 no중에서 groupscNo 넣어주는거
-         }
          
       }
       
@@ -322,8 +335,7 @@ function ajaxEventLocationList() {
 
 function ajaxMidTermWeather(date, gpno) {
 	date = date.substring(0,10);
-	console.log(date);
-	console.log(gpno);
+
 	$.getJSON(serverAddr + '/myschedule/midTermWeather.json?gpno='
 			+gpno+'&date='+date, function(obj) {
 		midTermResult = obj.jsonResult;
