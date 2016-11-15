@@ -45,6 +45,9 @@
 #dday {
 	font-size: 50px;
 	font-weight: bold;
+	
+	
+	
 }
 </style>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -179,10 +182,10 @@
 
 						<div class="btn-group">
 						<ul>
-							<li><a href="#" id="list" class="btn btn-default btn-sm"><span
+							<li><a href="#" id="list" class="btn btn-default"><span
 								class="glyphicon glyphicon-th-list"> </span>축제</a></li>
 							<li> <a href="#"
-								id="grid" class="btn btn-default btn-sm"><span
+								id="grid" class="btn btn-default"><span
 								class="glyphicon glyphicon-th"></span>숙박</a></li>
 						</ul>
 						</div>
@@ -291,45 +294,55 @@
 				<div>
 					<div class="detailFont">장소</div>
 					<hr class="section-bar" style="border:solid; color: rgb(157, 201, 42);"></hr>
-						<p class="placeName">{{placeName}}</p>
+						<p class="placeName">{{placeName}}</p><br>
+					<br>
 					
+					<div class="detailFont">축제 / 숙박</div>
+					<hr class="section-bar" style="border:solid; color: rgb(157, 201, 42);"></hr>
+
+				
+
+
 					<div class="btn-group">
 						<ul>
-							<li><a href="#" id="list" class="btn btn-default btn-sm"><span
-								class="glyphicon glyphicon-th-list"> </span>축제</a></li>
-							<li> <a href="#"
-								id="grid" class="btn btn-default btn-sm"><span
-								class="glyphicon glyphicon-th"></span>숙박</a></li>
+							<li class="festiBtn"><a href="#" id="list" class="btn btn-primary"><span
+								class="glyphicon glyphicon-heart"></span>	축제</a></li>
+
+							<li class="accBtn"><a href="#" id="grid" class="btn btn-primary"><span
+								class="glyphicon glyphicon-home"></span>	숙박</a></li>
 						</ul>
-						</div>
+					</div>
 						
-					<article id="products" class="row list-group">
-					</article>
-
-					<article id="products2" class="row list-group" style="display:none;">
-					</article>
-
+					<article id="products" class="row list-group"></article>
+					<article id="products2" class="row list-group" style="display:none;"></article>
 				</div>
+
+
+
+
 </script>
 
 	<script id="festiResult" type="text/x-handlebars-template">
-		<div class="item  col-xs-4 col-lg-4">
-							<div class="thumbnail">
-								<img class="group list-group-image"
-									src={{firstimage}} alt="" />
-								<div class="caption">
-									<h4 class="group inner list-group-item-heading">{{title}}</h4>
-									<p class="group inner list-group-item-text">{{addr1}} {{addr2}}</p>
-									<p class="group inner list-group-item-text">{{tel}}</p>
-									<div class="row">
-										<div class="col-xs-12 col-md-6">
-										</div>
-										<div class="col-xs-12 col-md-6">
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
+	      <div class="item  col-xs-4 col-lg-4">
+                     <div class="thumbnail">
+ 											{{#if firstimage}}
+                        <img class="group list-group-image" src="{{firstimage}}" alt="" />
+												{{else}}  
+													<img class="group list-group-image" src="../images/default.jpg" alt=""/>
+ 											{{/if}} 
+                        <div class="caption">
+                           <h4 class="group inner list-group-item-heading">{{title}}</h4>
+                           <p class="group inner list-group-item-text">{{addr1}} {{addr2}}</p>
+                           <p class="group inner list-group-item-text">{{tel}}</p>
+                           <div class="row">
+                              <div class="col-xs-12 col-md-6">
+                              </div>
+                              <div class="col-xs-12 col-md-6">
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
 	</script>
 	
 	
@@ -337,9 +350,12 @@
 <script id="accResult" type="text/x-handlebars-template">
 		<div class="item  col-xs-4 col-lg-4">
 							<div class="thumbnail">
-								<img class="group list-group-image"
-									src={{firstimage}} alt="" />
-								<div class="caption">
+ 											{{#if firstimage}}
+                        <img class="group list-group-image" src="{{firstimage}}" alt="" />
+												{{else}}  
+													<img class="group list-group-image" src="../images/default.jpg" alt=""/>
+ 											{{/if}} 
+                        <div class="caption">
 									<h4 class="group inner list-group-item-heading">{{title}}</h4>
 									<p class="group inner list-group-item-text">{{addr1}} {{addr2}}</p>
 									<p class="group inner list-group-item-text">{{tel}}</p>
