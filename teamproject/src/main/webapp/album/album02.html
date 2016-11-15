@@ -152,6 +152,11 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 				<span id="userName" class="my-login" data-value=""
 					style='font-family: "Nanum Gothic", sans-serif;"'></span> 님의 앨범
 			</h2>
+			<div id="groupNa">
+				<h2>
+					<span id="groupinfo" data-value=""></span> 그룹
+				</h2>
+			</div>
 		</div>
 		<br>
 		<form id="fileForm" enctype="multipart/form-data">
@@ -161,7 +166,7 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 		<br>
 		<div class="row" id="album_option">
 			<form>
-				<button type="submit" class="btn btn-primary">Submit</button>
+				<button type=button class="btn btn-primary al-btn">Submit</button>
 				<button type="reset" class="btn btn-default">Reset</button>
 
 				<button type="button" class="btn btn-info btn-md">공유하기</button>
@@ -180,8 +185,13 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 	</div>
 
 	</script>
-	
-	
+	<script id="groupNameTemplateText2" type="text/x-handlebars-template">
+	<h2>
+					<span id="groupinfo" data-value="{{groupNo}}">{{groupName}}</span> 그룹
+				</h2>
+</script>
+
+	</script>
 	<script id="albumTemplateText" type="text/x-handlebars-template">
 	<img src="../upload/{{filename}}" style=" border-radius: 100px; vertical-align:middle; width:150px; height:150px;">
 </script>
@@ -207,6 +217,8 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 	<script type="text/javascript">
   ajaxLoginUser()
   ajaxGroupName()
+  ajaxAddAlbumPhoto()
+  ajaxGroupNa()
    /* ajaxStudyList() */
    if (location.search.startsWith("?")) {     
      $(".my-new").css("display","none")
