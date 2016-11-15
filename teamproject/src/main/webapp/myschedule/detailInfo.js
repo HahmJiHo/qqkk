@@ -98,7 +98,7 @@ function ajaxTourInfo(tourAreaCode, sigunguCode) {
     	  contents += template(festiResult[i])
       }
       
-      console.log(contents)
+      //console.log(contents)
       
        $("#products").html(contents)
       
@@ -107,7 +107,7 @@ function ajaxTourInfo(tourAreaCode, sigunguCode) {
    $.getJSON(accUrl, function(obj) {
       var accResult = obj.response.body.items.item;
       
-      console.log(accResult)
+      //console.log(accResult)
       
       contents2 = "";
       template2 = Handlebars.compile($('#accResult').html())
@@ -115,7 +115,7 @@ function ajaxTourInfo(tourAreaCode, sigunguCode) {
        for (var i in accResult) {
     	  contents2 += template2(accResult[i])
     	  
-    	  console.log(contents2)
+    	  //console.log(contents2)
       }
       $("#products2").html(contents2)
 
@@ -199,7 +199,7 @@ function ajaxMyScheduleLoad(no) {
       console.log(detailResult.data.groupName)
       console.log(contents2)
       $("#groupName").html(contents2)
-      ajaxMidTermWeather(startDay, gpno);
+      ajaxTermWeather(startDay, gpno, detailResult.data.dday);
       ajaxTourAreaCode();
    })
 }
@@ -208,24 +208,29 @@ function ajaxMyScheduleLoad(no) {
  * 2016.11.1 수정사항 : 중기예보를 불러오는 ajaxMidTermWeather 추가
  * gpno : 그룹 번호, date : 날짜 (형식 : YYYY-MM-DD)
  */
-function ajaxMidTermWeather(date, gpno) {
-   date = date.substring(0,10);
+function ajaxTermWeather(date, gpno, dday) {
+   //date = date.substring(0,10);
    console.log(date);
+   console.log("dday"+dday)
    console.log(gpno);
-   $.getJSON(serverAddr + '/myschedule/midTermWeather.json?gpno='
-         +gpno+'&date='+date, function(obj) {
-      midTermResult = obj.jsonResult;
-      console.log(midTermResult);
-      if(midTermResult.state != "success") {
-         alert("조회 실패입니다.");
-         return;
-      }
+   $.getJSON(serverAddr + '/myschedule/termWeather.json?gpno='
+         +gpno+'&date='+date+'&dday='+ dday, function(obj) {
+	   termResult = obj.jsonResult;
+	      console.log(termResult);
+	      console.log(termResult.data.term);
+	      if(termResult.state != "success") {
+	         alert("조회 실패입니다.");
+	         return;
+	      }
+	      if(termResult.data.term == "short") {
+	    	  $(".weather-temperature-current").html(termResult.data.currentTemp + "°C");
+	      }
       
-      $(".weather-city").html(midTermResult.data.city);
-      $(".weather-temperature-mx").html(midTermResult.data.maxTemp + "°C");
-      $(".weather-temperature-mn").html(midTermResult.data.minTemp + "°C");
+      $(".weather-city").html(termResult.data.city);
+      $(".weather-temperature-mx").html(termResult.data.maxTemp + "°C");
+      $(".weather-temperature-mn").html(termResult.data.minTemp + "°C");
       
-      switch(midTermResult.data.state) {
+      switch(termResult.data.state) {
       case "맑음":
     	  $(".weather-img").addClass("sunny");
     	  break;
@@ -248,7 +253,7 @@ function ajaxMidTermWeather(date, gpno) {
     	  $(".weather-img").addClass("snowAndRain");
     	  break;
        };
-      $(".weather-state").html(midTermResult.data.state);
+      $(".weather-state").html(termResult.data.state);
    });
       
       
