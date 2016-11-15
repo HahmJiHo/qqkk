@@ -33,7 +33,7 @@
 		from hiba_g_membs t1
 		left outer join hiba_group t2 on t1.gno=t2.gno and t1.mno=t2.mno
 		left outer join hiba_g_sc t3 on t1.gno=t3.gno
-		where t1.mno= '5'
+		where t1.mno= #{memberNo}
 	</select>
 	
 
