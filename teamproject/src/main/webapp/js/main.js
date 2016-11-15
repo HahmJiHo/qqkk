@@ -14,6 +14,7 @@
 		$('.invite-box').slideToggle();	
   });  
 
+  	
   $(".title-nav li").click(function(){
      var thisIndex = $(this).index();
      $(".artice").hide();

@@ -1,6 +1,8 @@
-$('.wrap').removeClass('display-none');
-$('body').css({"background" : "#fff"})
 function ajaxMemberInviteList() {
+	$('.wrap').removeClass('display-none');
+	$('.aside').css({"display" : "none"})
+	$('.header-top').css({"display" : "none"})
+	$('body').css({"background" : "#0d8aa5", "z-index" : "99999"})
 	$.getJSON(serverAddr +"/memberInvite/list.json", function(obj) {
 		var result = obj.jsonResult
 		if (result.state != "success") {
@@ -28,15 +30,16 @@ function ajaxMemberInviteList() {
 			}			
 		}
 	    $('.wrap').addClass('display-none');
-	    $('body').css({"background" : ""})
+	    $('.aside').css({"display" : "block"})
+	    $('.header-top').css({"display" : "block"})
+	    $('body').css({"background" : " " ,"z-index" : "0"})
 	})
 }
 
 
 
-$('.wrap').removeClass('display-none');
-$('body').css({"background" : "#fff"})
 function ajaxMemberGroupInviteList() {
+	$('.wrap').removeClass('display-none');
 	$.getJSON(serverAddr +"/memberInvite/list.json",function(obj) {
 		var result = obj.jsonResult
 		if (result.state != "success") {
@@ -60,6 +63,5 @@ function ajaxMemberGroupInviteList() {
 			window.location.href = "../group/makeSc.html?no=" + $(this).attr("data-no")
 		}) 	
 		$('.wrap').addClass('display-none');
-		 $('body').css({"background" : ""})
 	})	
 }

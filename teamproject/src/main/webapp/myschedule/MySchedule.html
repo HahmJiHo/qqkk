@@ -6,7 +6,7 @@
   <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">	
-	<title>Insert title here</title>
+	<title>HIBA</title>
 	<!--[if lt IE 9]>
       <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -87,16 +87,15 @@ transition: all .2s ease-in-out;
     
     
 		<div class="section-wrap">
-		<div class="make-text" style="position:fixed; left:20px; z-index:2;">
-
+		  <div class="make-text" style="position:fixed; left:20px; z-index:2; top:80px; left: 20px; float:left;">
          <h2>
-          <span class="my-profile" style="display:block; text-align:center; padding-left:0px;">
-              <img src="" id="profilePhoto" style="width:80px; height:80px; "/>
+          <span class="my-profile" style="display:block; text-align:center; padding-left:30px;">
+              <img src="" id="profilePhoto" style="width:80px; height:80px; border-radius:50% "/>
           </span><br>
-          <span id="userName user" class="my-login" data-value=""></span>님 안녕하세요?
+          <span id="user" class="my-login" data-value="" style="font-size:16px;"></span> 안녕하세요?
          </h2>
-         <p>
-          <span id="user" class="my-login" data-value=""></span>님의 캘린더
+         <p style="font-size:12px; color:#fff;">
+                  일정을 확인하세요.
         </p>
         </div>
 			<div class="selectbar-left">
@@ -181,7 +180,7 @@ transition: all .2s ease-in-out;
 				<h3 class="list-group-item-text">{{placeName}}</h3><br>
 				<span class="list-group-item-text">{{start}} ~ {{end}}</span>
 
-        <a href='#' class="btn btn-xs btn-success my-detail" data-no="">일정보기</a>	
+        <a href='#' id="viewSc" class="btn btn-xs btn-success my-detail" data-no="">일정보기</a>	
 		    
 	 			<div id="dday-Info">
 					<h1 id="dday"  style="font-size:30px; font-weight:bold;">D-day {{dday}}</h1>

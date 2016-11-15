@@ -51,7 +51,7 @@
           #{content}, 
           #{name}
     from hiba_membs
-    where name=#{name}
+    where mno=#{memberNo}
   
   </insert>
   

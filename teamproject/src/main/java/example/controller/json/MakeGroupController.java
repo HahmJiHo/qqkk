@@ -62,13 +62,13 @@ public class MakeGroupController {
 		
 		System.out.println("file1 --: " + file1);
 		
-		makeGroup.setEmail(member.getEmail());		
-		makeGroup.setNo(member.getNo());		
-		makeGroupService.insertMakeGroup(makeGroup, file1, uploadDir);
-		try {			
-		
+		try {
 			
-			System.out.println("1");	
+			makeGroup.setEmail(member.getEmail());				
+			makeGroup.setName(member.getName());		
+			makeGroup.setMemberNumber(member.getNo());		
+			makeGroupService.insertMakeGroup(makeGroup, file1, uploadDir);
+			
 			MemberInvite memberInvite = new MemberInvite();
 			// 그룹 생성시 생성자 자동추가
 			memberInvite.setGroupNo(makeGroup.getNo());
