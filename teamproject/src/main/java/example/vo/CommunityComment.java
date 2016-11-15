@@ -15,15 +15,31 @@ public class CommunityComment implements Serializable {
   protected String userPhoto;             // 회원사진
   
   
+  protected String communityBoardNo;      // 커뮤니티 게시물 번호
   protected String commentNo;             // 댓글번호
   protected String commentUserNo;         // 댓글회원번호
-  protected String communityBoardNo;      // 댓글회원번호
   protected String commentUserNicName;    // 댓글작성자 
+  protected String commentUserPhoto;      // 댓글작성자사진 
+
   protected String comment;               // 댓글
   protected Date commentRegisterDate;     // 댓글 등록날짜
   protected String commentRegisterDate2;  
   
   
+	
+	public int getNo() {
+		return no;
+	}
+	public void setNo(int no) {
+		this.no = no;
+	}
+	
+	public String getCommentUserPhoto() {
+		return commentUserPhoto;
+	}
+	public void setCommentUserPhoto(String commentUserPhoto) {
+		this.commentUserPhoto = commentUserPhoto;
+	}
 	
 	public String getCommentNo() {
 		return commentNo;
@@ -77,6 +93,8 @@ public class CommunityComment implements Serializable {
 		this.commentRegisterDate = Date.valueOf(str);
 		this.commentRegisterDate2 = str;
 	}
+	
+	
 
 }
 

@@ -30,6 +30,7 @@ public class CommunityController {
 			@RequestParam(defaultValue="1")int pageNo,
 			@RequestParam(defaultValue="30")int length,
 			Model model) throws Exception {
+		
 		List<Community> list = communityService.getCommunityList();
 		model.addAttribute("list", list);			
 		

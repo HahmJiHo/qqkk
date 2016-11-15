@@ -2,8 +2,13 @@ package example.controller.json;
 
 import java.util.List;
 
+import javax.mail.MessagingException;
+import javax.mail.internet.AddressException;
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -25,7 +30,7 @@ public class MemberInviteController {
 	@Autowired GroupMemberDao groupMemberDao;
 	@Autowired GroupMemberService groupMemberService;
 	@Autowired MemberInviteDao memberInviteDao;
-	
+
 	@RequestMapping(path="list")
 	public Object list(
 			@RequestParam(defaultValue="1") int pageNo,
@@ -33,7 +38,7 @@ public class MemberInviteController {
 
 		try {
 			List<MemberInvite> list = memberInviteService.getMemberInvitetList();
-      
+
 			return JsonResult.success(list);
 
 		} catch (Exception e) {
@@ -41,7 +46,7 @@ public class MemberInviteController {
 			return JsonResult.fail(e.getMessage());
 		}					
 	}
-	
+
 	@RequestMapping(path="orginlist")
 	public Object orginOList() throws Exception {
 
@@ -53,12 +58,13 @@ public class MemberInviteController {
 			return JsonResult.fail(e.getMessage());
 		}					
 	}
-	
-	
+
+
 	@RequestMapping(path="add")
-	public Object add(MemberInvite memberInvite) throws Exception {
+	public Object add(MemberInvite memberInvite) throws Exception{
 		try {
 			if (memberInviteService.getMemberInviteGroupNoAndEmail(memberInvite.getGroupNo(), memberInvite.getInviteEmail() ) != null ) {
+			
 				throw new Exception("이미 초대된 회원 이거나 일치하는 회원이 없습니다.");
 			}
 			memberInviteService.insertMemberInvite(memberInvite);

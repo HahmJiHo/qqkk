@@ -1,8 +1,8 @@
 $("#addBtn").click(function(e) { 
-	var makegroup = {
+/*	var makegroup = {
 			groupName : $("#groupName").val(),
 			name : $("#userName").text()
-	}
+	}*/
 	/*ajaxAddGroup(makegroup)*/
 	ajaxAddGroupPhoto()
 });
@@ -123,9 +123,7 @@ function ajaxDeleteGroup(no) {
 
 })*/
 function ajaxAddGroupPhoto() {
-	var formData = new FormData();
-	formData.append("memberNumber" , $("#userName").attr('data-value'));
-	formData.append("name" , $("#userName").text());
+	var formData = new FormData();	
 	formData.append("groupName", $("input[name=groupName]").val());
 	formData.append("groupText", $("input[name=groupText]").val());
 	formData.append("file1", $("input[name=file1]")[0].files[0]);

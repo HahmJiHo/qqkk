@@ -24,19 +24,13 @@ public class Community implements Serializable {
   
   protected int boardLike;                // 좋아요
   
-  protected String commentNo;             // 댓글 번호
-  protected String commentUserNo;         // 댓글 회원번호
-  protected String communityBoardNo;      // 댓글 회원번호
-  protected String commentUserNicName;    // 댓글 작성자 
-  protected String comment;               // 댓글
   protected int commentCount;             // 댓글 카운트
-  protected Date commentRegisterDate;     // 댓글 등록날짜
-  protected String commentRegisterDate2;  
   
   protected int fileNo;                   // 업로드 파일넘버
   protected String filename;              // 업로드 파일사진
   protected String fileBoardNo;           // 업로드 파일사진
   protected int fileUpMember;             // 업로드 회원번호
+  
   
   
 
@@ -102,7 +96,6 @@ public class Community implements Serializable {
 	
 	
 	
-	
 	public Date getRegisterDate() {
 		return registerDate;
 	}
@@ -131,60 +124,7 @@ public class Community implements Serializable {
 		this.boardLike = boardLike;
 	}
 	
-	public String getCommentNo() {
-		return commentNo;
-	}
-	public void setCommentNo(String commentNo) {
-		this.commentNo = commentNo;
-	}
-	
-	public String getCommentUserNo() {
-		return commentUserNo;
-	}
-	public void setCommentUserNo(String commentUserNo) {
-		this.commentUserNo = commentUserNo;
-	}
-	
-	
-	public String getCommunityBoardNo() {
-		return communityBoardNo;
-	}
-	public void setCommunityBoardNo(String communityBoardNo) {
-		this.communityBoardNo = communityBoardNo;
-	}
-	
-	
-	
-	public String getCommentUserNicName() {
-		return commentUserNicName;
-	}
-	public void setCommentUserNicName(String commentUserNicName) {
-		this.commentUserNicName = commentUserNicName;
-	}
-	public String getComment() {
-		return comment;
-	}
-	public void setComment(String comment) {
-		this.comment = comment;
-	}
-	
-	
-	public Date getCommentRegisterDate() {
-		return commentRegisterDate;
-	}
-	public void setCommentRegisterDate(Date commentRegisterDate) {
-		this.commentRegisterDate = commentRegisterDate;
-		this.commentRegisterDate2 = format.format(commentRegisterDate);
-	}
-	public String getCommentRegisterDate2() {
-		return commentRegisterDate2;
-	}
-	public void setCommentRegisterDate2(String str) {
-		this.commentRegisterDate = Date.valueOf(str);
-		this.commentRegisterDate2 = str;
-	}
-	
-	
+
 	
 	public int getCommentCount() {
 		return commentCount;
@@ -214,6 +154,14 @@ public class Community implements Serializable {
 	}
 	public void setFileBoardNo(String fileBoardNo) {
 		this.fileBoardNo = fileBoardNo;
+	}
+	@Override
+	public String toString() {
+		return "Community [no=" + no + ", userNo=" + userNo + ", userNicName=" + userNicName + ", userPhoto=" + userPhoto
+				+ ", title=" + title + ", contents=" + contents + ", address=" + address + ", registerDate=" + registerDate
+				+ ", registerDate2=" + registerDate2 + ", viewCount=" + viewCount + ", boardLike=" + boardLike
+				+ ", commentCount=" + commentCount + ", fileNo=" + fileNo + ", filename=" + filename + ", fileBoardNo="
+				+ fileBoardNo + ", fileUpMember=" + fileUpMember + "]";
 	}
 	
 	

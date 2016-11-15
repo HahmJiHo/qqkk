@@ -1,4 +1,6 @@
 function ajaxGroupInviteListMessage() {
+	$('.wrap').removeClass('display-none');
+	$('body').css({"background" : "#0d8aa5", "z-index" : "99999"})
 	$.getJSON(serverAddr +"/memberInvite/list.json", function(obj) {
 		async: false
 		var result = obj.jsonResult
@@ -27,9 +29,10 @@ function ajaxGroupInviteListMessage() {
 		if (inviteBox > 0) {
 			$(".alert-icon").show()
 		} 
-
+		$('.wrap').addClass('display-none');	    
+	    $('body').css({"background" : "" ,"z-index" : "0"})	
 	})
-	
+		
 }
 
 $("body").on('click','.addTrue', function(e){

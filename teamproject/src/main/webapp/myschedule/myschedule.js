@@ -61,7 +61,7 @@ function ajaxMygroupList() {
    $.getJSON(serverAddr + "/myschedule/list.json", function(obj) {
       var result = obj.jsonResult
       if (result.state != "success") {
-         alert("서버에서 데이터를 가져오는데 실패했습니다.")
+         alert("서버에서 데이터를 가져오는데 실패했습니다. -ajaxMygroupList")
          return
       }
 
@@ -135,18 +135,18 @@ function ajaxMygroupList() {
             //&& $("#group-Info").attr('data-value') == count(arr[i].groupNo)) {(
 
         	 $("#viewSc").attr('data-no', arr[i].groupscNo)
-        	 console.log($("#viewSc").attr('data-no'))
+        	
             arr[i].count = count[arr[i].groupNo]
             mygroupArr.push(arr[i]);
          }
       }   
       
-      console.log(mygroupArr)
+      
       var newArr = removeDuplicate(mygroupArr) 
-      console.log("new");
-      console.log(newArr);
-      console.log("my");
-      console.log(mygroupArr);
+      
+      
+      
+      
       for (var i in newArr) {
     	  contents += template(newArr[i])
     	  
@@ -177,7 +177,7 @@ function ajaxMygroupList() {
     	  contents2 += "<ul class='caption'  style='z-index:11' id='bxslider" + i + "'>" + tempContents[i] + "</ul>";
     	 
       }
-      console.log("t2" + contents2)
+      
       $("#schedule-Info").html(contents2);
       
       for(var i in tempContents) {
@@ -274,5 +274,7 @@ function ajaxLoginUser() {
       $("#user").text(result.data.name)
       $("#user").attr('data-value', result.data.no)
       $("#userSc").attr('data-value', result.data.no)
+      $("#profilePhoto").attr('src', '../upload/' + result.data.filename)
+      
    })
 }

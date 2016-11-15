@@ -20,12 +20,13 @@
     <result column="B_LIKE" property="boardLike" />
     
     <result column="NICKNM" property="userNicName"/>
+    <result column="PHOT_PATH" property="userPhoto"/>
     
     <result column="file_path" property="filename"/>
   </resultMap>
 
   <select id="selectList" resultMap="communityMap" parameterType="map">
-    select hiba_board.*, hiba_brd_file.*, hiba_membs.nicknm
+    select hiba_board.*, hiba_brd_file.*, hiba_membs.nicknm, hiba_membs.phot_path
       from hiba_board 
       inner join hiba_membs on hiba_board.mno = hiba_membs.mno
       left join hiba_brd_file on hiba_board.cno = hiba_brd_file.cno and hiba_membs.mno = hiba_brd_file.mno;  
@@ -56,12 +57,11 @@
   </select>
   
   
- <!-- <select id="selectOneByPassword" resultMap="communityMap" parameterType="map">
-    select cno, title, conts, adds, rg_dt, vw_cnt 
-    from hiba_board 
-    where cno=#{no} 
-  </select> -->
-
+  <update id="updateViewCount" parameterType="int">
+   update hiba_board set
+   vwct = vwct+1
+   where cno=#{no}
+  </update>
   
   <insert id="insert" parameterType="community"  useGeneratedKeys="true" keyColumn="no" keyProperty="no">
     insert into hiba_board(mno, titl, conts, adds, RG_DT)

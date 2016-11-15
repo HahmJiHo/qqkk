@@ -53,13 +53,11 @@ FROM hibadb.hiba_invit    hiba_invit
     values (#{memberNo}, #{groupName}, gphot(#{groupPhoto}))
   -->
     insert into hiba_group(mno, email, mname, gname, gtext)
-    select mno,
+    values (#{memberNumber},
           #{email}, 
           #{name},  
           #{groupName},
-          #{groupText}
-    from hiba_membs
-    where email=#{email}      
+          #{groupText})      
   </insert>
   
 
