@@ -204,6 +204,7 @@ function showCalendar(arr) {
 
 		},	
 		eventRender: function(event, element, view) {
+			
 			/* 일정 추가 팝업*/
 			
 			$('.fc-content').data('data-scno', event.id)
@@ -327,8 +328,9 @@ function showCalendar(arr) {
 
 };   
 
-
 function ajaxMyScheduleList(no) {
+	$('.wrap').removeClass('display-none');
+	$('body').css({"background" : "#0d8aa5", "z-index" : "99999"})
 	$.getJSON(serverAddr +"/schedule/list.json", function(obj) {
 		var result = obj.jsonResult
 		if (result.state != "success") {
@@ -363,19 +365,8 @@ function ajaxMyScheduleList(no) {
 		
 	$(".side-schedhule-List").html(contents) 
 	showCalendar(arrTest);
-
-	var len = $('.scno').length    
-	var scheduleNo = $('.scno').attr('data-scno')
-	$('body').on('change', '.list-checked',function () {
-	    var listCheckedNo = $(this).attr('data-value')
-		$('.scno').each(function() {
-			if (listCheckedNo == $(this).attr('data-scno')) {
-				$(this).parent().show()
-			} else if (listCheckedNo != $(this).attr('data-scno')) {
-				$(this).parent().hide()
-			}
-		})	     
-	});
+	 $('.wrap').addClass('display-none');	    
+	    $('body').css({"background" : "" ,"z-index" : "0"})
 	})
 }
 

@@ -95,10 +95,12 @@ footer { background: #404040; color: #c0c0c0; padding: 10px 0; clear: both; }
 .w3-teal,.w3-hover-teal:hover{color:#fff!important;background-color:#9dc92a!important}
 
 .wrap {
-  position: relative;
-  top: 150px;
-  width: 150px;
-  margin: 0 auto;
+  position: relative !important;
+  width:100% !important;
+  height:100% !important;
+  top:0px !important;
+  left:0px !important;
+  background: #0d8aa5 !important;
 }
 
 .loader {
@@ -253,6 +255,40 @@ footer { background: #404040; color: #c0c0c0; padding: 10px 0; clear: both; }
     z-index: 4;
 	
 }
+.loading {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin: -60px 0 0 -60px;
+  background: #fff;
+  width: 100px;
+  height: 100px;
+  border-radius: 100%;
+  border: 10px solid #19bee1;
+}
+.loading:after {
+  content: '';
+  background: trasparent;
+  width: 140%;
+  height: 140%;
+  position: absolute;
+  border-radius: 100%;
+  top: -20%;
+  left: -20%;
+  opacity: 0.7;
+  box-shadow: rgba(255, 255, 255, 0.6) -4px -5px 3px -3px;
+  animation: rotate 2s infinite linear;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotateZ(0deg);
+  }
+  100% {
+    transform: rotateZ(360deg);
+  }
+}
+
 .header-top {background-color: rgba(255, 255, 255, 0.96);  border-bottom: 1px solid rgba(0, 0, 0, 0.1); width:100%;}
 
 @media (min-width: 1080px) {   
