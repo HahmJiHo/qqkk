@@ -3,45 +3,60 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="example.dao.AlbumDao">
-	<resultMap type="album" id="albumMap">
-	<!-- type 
-	 스프링 설정 에서 typeAliasesPackage 에 지정함 별명을 앞에 example.vo 으로 
-	 자동으로 만들어 주게 설정했다. 
-	 그래서 앞에 example.vo 를 빼도 된다.
-	 -->
-		<id column="ALNO" property="ALNO" /> <!--PK 는 ID 나머지는 result -->
-		<result column="GNO" property="groupNo" />
-		<result column="MNO" property="memberNo" />
-		<result column="GSNO" property="groupScheduleNo" />
-		<result column="sc_title" property="groupScheduleName"/>
+	<resultMap type="memberInviteGroup" id="memberInviteGroupMap">
+		<!-- type 스프링 설정 에서 typeAliasesPackage 에 지정함 별명을 앞에 example.vo 으로 자동으로 
+			만들어 주게 설정했다. 그래서 앞에 example.vo 를 빼도 된다. -->
+		<id column="gno" property="groupNo" /> <!--PK 는 ID 나머지는 result -->
+		<id column="mno" property="memberNo" />
 		<result column="gname" property="groupName" />
-		<result column="AL_PHOT" property="filename" />
-		<result column="CRE_DT" property="createdDate" />   
+		<result column="mname" property="memberName" />
+		<collection property="scheduleList" ofType="scheduleSimple">
+			<id  column="gsno" property="groupscNo"/>
+			<result column="sc_title" property="title" />	
+		</collection>
+		
 	</resultMap>
-  
- <insert id="insert" parameterType="album">
-    insert into hiba_g_al(mno, gno, gsno, AL_PHOT,CRE_DT)
-    values (#{memberNo}, #{groupNo}, #{groupScheduleNo},#{filename},now())
-  </insert>
-  <select id="selectList" resultMap="albumMap" parameterType="map">
-  select hiba_membs.mno, hiba_g_sc.gsno, hiba_g_membs.gno, hiba_group.gname, hiba_g_sc.sc_title from hiba_g_membs
-  inner join hiba_membs on hiba_g_membs.mno=hiba_membs.mno
-  inner join hiba_group on hiba_g_membs.gno=hiba_group.gno
-  inner join hiba_g_sc on hiba_g_membs.mno=hiba_g_sc.mno and hiba_g_membs.gno=hiba_g_sc.gno
-  </select>
 
-   <select id="selectOneByGroupNoScheduleNo" resultMap="albumMap" parameterType="map">
- 	select gno, gsno from hiba_g_al
-    where  gno=#{groupNo} and gsno=#{groupScheduleNo}
-  </select> 
+	<insert id="insert" parameterType="album">
+		insert into hiba_g_al(mno, gno, gsno, AL_PHOT,CRE_DT)
+		values (#{memberNo}, #{groupNo}, #{groupScheduleNo},#{filename},now())
+	</insert>
+	
+	<select id="selectList" resultMap="memberInviteGroupMap" parameterType="map">
+		select 
+			t1.gno, 
+			t2.gname, 
+			t1.mno, 
+			t2.mname, 
+			t3.gsno, 
+			t3.sc_title
+		from hiba_g_membs t1
+		left outer join hiba_group t2 on t1.gno=t2.gno and t1.mno=t2.mno
+		left outer join hiba_g_sc t3 on t1.gno=t3.gno
+		where t1.mno= '5'
+	</select>
+	
 
- <select id="countAll" resultType="int">
-    select count(*)
-    from hiba_g_sc
-    </select>
- <update id="update" parameterType="album">
-    update HIBA_G_AL set
-    AL_PHOT=#{filename}
-    where mno=#{memberNo} and gno=#{groupNo} and gsno=#{groupScheduleNo} and CRE_DT=#{createdDate}
-  </update>
+	<!-- <select id="selectList" resultMap="albumMap" parameterType="map"> select 
+		hiba_membs.mno, hiba_g_sc.gsno, hiba_g_membs.gno, hiba_group.gname, hiba_g_sc.sc_title, 
+		hiba_g_al.al_phot, hiba_g_al.cre_dt from hiba_g_membs inner join hiba_membs 
+		on hiba_g_membs.mno=hiba_membs.mno inner join hiba_group on hiba_g_membs.gno=hiba_group.gno 
+		inner join hiba_g_sc on hiba_g_membs.mno=hiba_g_sc.mno and hiba_g_membs.gno=hiba_g_sc.gno 
+		inner join hiba_g_al on hiba_g_al.mno=hiba_g_sc.mno </select> -->
+    <!-- 
+	<select id="selectOneByGroupNoScheduleNo" resultMap="albumMap"
+		parameterType="map">
+		select gno, gsno from hiba_g_al
+		where gno=#{groupNo} and gsno=#{groupScheduleNo}
+	</select>
+ -->
+	<select id="countAll" resultType="int">
+		select count(*)
+		from hiba_g_sc
+	</select>
+	<update id="update" parameterType="groupFile">
+		update hiba_g_al set
+		al_phot=#{filename}
+		where mno=#{memberNo} and gno=#{groupNo}
+	</update>
 </mapper>

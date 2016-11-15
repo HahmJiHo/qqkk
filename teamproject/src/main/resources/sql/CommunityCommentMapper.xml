@@ -18,14 +18,10 @@
     <result column="MNO" property="commentUserNo" />
     <result column="CNO" property="communityBoardNo" />
     <result column="NICKNM" property="commentUserNicName" />
+    <result column="PHOT_PATH" property="commentUserPhoto" />
     <result column="CONTS" property="comment" />
     <result column="RG_DT" property="commentRegisterDate" />
 		
-		
-		<result column="MNO" property="userNo" />
-    <result column="NICKNM" property="userNicName" />
-    <result column="PHOT_PATH" property="userPhoto" />
-    
     
 	</resultMap>
 
@@ -36,7 +32,7 @@
    from hiba_brd_reply
    inner join hiba_membs on hiba_brd_reply.mno=hiba_membs.mno
    inner join hiba_board on hiba_brd_reply.cno=hiba_board.cno
-<!--    <where>
+<!-- <where>
       <if test="title != null">title like concat('%', #{title}, '%')</if>
     </where> -->
      order by 
@@ -46,6 +42,7 @@
     </choose>   
     limit #{startIndex}, #{length}
   </select>
+  
   
 
   <select id="selectOne" parameterType="int" resultMap="communityCommentMap">

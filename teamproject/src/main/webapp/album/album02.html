@@ -10,17 +10,19 @@
   href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
   integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
   crossorigin="anonymous">
-  <link rel="stylesheet" type="text/css" href="../css/common_style.css">
-<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
-<link rel="stylesheet" type="text/css" href="../css/MySchedule.css">
-<link rel="stylesheet"
-	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   
+  <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
   
+  
+  
+    <script src="js/fileinput.min.js" type="text/javascript"></script>
   <script src="js/fileinput.js" type="text/javascript"></script>
 <link href="css/fileinput.css" media="all" rel="stylesheet" type="text/css" />
 </head>
@@ -28,7 +30,7 @@
 .container { width: 800px; margin:0 auto;}
 </style>
 <style>
-.row.content {
+/* .row.content {
 	height: 1500px;
 	float: left;
 	width: 100%;
@@ -55,106 +57,151 @@
 	margin-bottom: 10px;
 }
 
-.affix { /* 스크롤 시 같이 내려옴 */
+.affix { /* 스크롤 시 같이 내려옴 
 	top: 20px;
+} */
+#album_option {
+	float: right;
+	margin: auto;
+	margin-bottom: 10px;
 }
-
-.col-sm-3.sidenav {
-	font-size: 15px;
-	font-style: oblique;
-	background-color: rgba(51, 122, 183, 0.12);
+.w3-top {
+    top: 60px;
 }
+.w3-padding-64 {
+    padding-top: 2px!important;
+    padding-bottom: 64px!important;
+}
+.w3-text-grey, .w3-hover-text-grey:hover, .w3-text-gray, .w3-hover-text-gray:hover {
+    color: #757575!important;
+        font-weight: bold;
+            font-size: 18px!important;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+.fileinput-upload-button {
+	display:none;
+}
+.w3-accordion-content {
+    cursor: auto;
+    display: inherit;
+    position: relative;
+    width: 100%;
+    }
 </style>
 </head>
-<body>
-<header></header>
-	<section1>
-		<div class="container-fluid">
-			<div class="row content">
-				<nav class="col-sm-3 sidenav" style="width: 20%;">
-					<div id="albumlist" data-value="">
-						<h4 id="albumgroup">John's Blog</h4>
-						<ul class="nav nav-pills nav-stacked">
-							<li class="active"><a href="#section1">Home</a></li>
-							<li><a href="#section2">Friends</a></li>
-							<li><a href="#section3">Family</a></li>
-							<li><a href="#section3">Photos</a></li>
-						</ul>
-						<br>
+<style>
+.w3-sidenav a {font-family: "Roboto", sans-serif}
+body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
+</style>
+
+<body class="w3-content" style="max-width: 1200px">
+
+	<!-- Sidenav/menu -->
+	<nav class="w3-sidenav w3-white w3-collapse w3-top"
+		style="z-index: 3; width: 250px" id="mySidenav">
+
+		<div class="w3-padding-64 w3-large w3-text-grey"
+			style="font-weight: bold">
+			<div class="w3-container w3-padding-16">
+				<i onclick="w3_close()"
+					class="fa fa-remove w3-hide-large w3-closebtn w3-hover-text-red"></i>
+				<h3 class="w3-wide">
+					<b>Gallery</b>
+				</h3>
+			</div>
+			<div id="albumlist">
+				<div class="w3-accordion">
+					<!-- 그룹이름 -->
+					<div id="scheduleList"
+						class="w3-accordion-content w3-padding-large w3-medium">
+						<!-- 스케줄이름 -->
 					</div>
-				</nav>
-
-
-				<br> <br>
-
-				<div class="col-sm-9">
-					<div class="make-text">
-						<h2>
-							<span id="userName" class="my-login" data-value=""></span> 님의 앨범
-						</h2>
-					</div>
-					<div class="row" id="album_option">
-						<form id="frm2" action="/album/add" method="post"
-							enctype="multipart/form-data">
-							<input type="file" name="file1" id="file-input">
-							<button type="button" class="btn btn-primary al-btn">Submit</button>
-							<button type="reset" class="btn btn-default">Reset</button>
-
-							<button type="button" class="btn btn-info btn-md">공유하기</button>
-							<button type="button" class="btn btn-info btn-md">사진 관리</button>
-						</form>
-					</div>
-					<br> <br> <br>
-
-					<div id="imagesContainer"></div>
-
 				</div>
 			</div>
 		</div>
-	</section1>
-	<footer>
-  
-  </footer>
-	
-	
+		<br>
+	</nav>
+	<header
+		class="w3-container w3-top w3-hide-large w3-black w3-xlarge w3-padding-24"
+		style="top: 0px;">
+		<span class="w3-left w3-wide">Hiba</span> <a href="javascript:void(0)"
+			class="w3-right w3-opennav" onclick="w3_open()"><i
+			class="fa fa-bars"></i></a>
+	</header>
+
+	<!-- Overlay effect when opening sidenav on small screens -->
+	<div class="w3-overlay w3-hide-large" onclick="w3_close()"
+		style="cursor: pointer" title="close side menu" id="myOverlay"></div>
+
+	<!-- !PAGE CONTENT! -->
+	<div class="w3-main" style="margin-left: 250px"></div>
+
+	<!-- Push down content on small screens -->
+	<div class="w3-hide-large" style="margin-top: 83px"></div>
+
+
+	<div class="col-sm-9" style="float: right; padding-top: 30px;">
+		<div class="make-text">
+			<h2>
+				<span id="userName" class="my-login" data-value=""
+					style='font-family: "Nanum Gothic", sans-serif;"'></span> 님의 앨범
+			</h2>
+		</div>
+		<br>
+		<form id="fileForm" enctype="multipart/form-data">
+			<input id="file-1" type="file" multiple class="file"
+				data-overwrite-initial="false" data-min-file-count="1">
+		</form>
+		<br>
+		<div class="row" id="album_option">
+			<form>
+				<button type="submit" class="btn btn-primary">Submit</button>
+				<button type="reset" class="btn btn-default">Reset</button>
+
+				<button type="button" class="btn btn-info btn-md">공유하기</button>
+				<button type="button" class="btn btn-info btn-md">사진 관리</button>
+			</form>
+		</div>
+		<br> <br>
+		<div id="imagesContainer"></div>
+	</div>
 	<script id="groupNameTemplateText" type="text/x-handlebars-template">
-						<h4 id="albumgroup" data-no='{{groupNo}}','{{groupScheduleNo}}'>{{groupName}}</h4>
-						<ul class="nav nav-pills nav-stacked">
-							<li class="active" ><a href="#section1">{{groupScheduleName}}</a></li>
-						</ul>
-						<br>
+        <div id="showList" class="w3-light-grey w3-show"><a href="#" data-gsno="{{groupscNo}}"><i class="fa fa-caret-right w3-margin-right"></i>{{title}}</a></div>
 
+ 
 </script>
-<script id="imagesTemplateText" type="text/x-handlebars-template">
-	<img src="../upload/{{filename}}">
 
-
-
+	<script id="albumTemplateText" type="text/x-handlebars-template">
+	<img src="../upload/{{filename}}" style=" border-radius: 100px; vertical-align:middle; width:150px; height:150px;">
 </script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-  <script src="../node_modules/handlebars/dist/handlebars.min.js"></script>
-  <script src="../node_modules/jquery/dist/jquery.js"></script>   
-  <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-file-upload/9.13.0/js/vendor/jquery.ui.widget.js"></script>    
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-file-upload/9.13.0/js/jquery.fileupload.js"></script>   -->  
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.51/jquery.form.min.js"></script>
-  <script type='text/javascript'  src="../js/include.js"></script>    
-  <script type='text/javascript'  src="../js/main.js"></script>
-  <script type="text/javascript" src="../js/common.js"></script>
-  <script type="text/javascript" src="../js/bit.js"></script>   
-  <script type="text/javascript" src="../member/memberApp.js"></script>
-    <script type="text/javascript" src="../member/memberForm.js"></script>
-  <script type="text/javascript" src="album02.js"></script>
 
-  
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/5.0.7/sweetalert2.min.js"></script>
-  <script type="text/javascript">
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+		integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+		crossorigin="anonymous"></script>
+	<script src="../node_modules/handlebars/dist/handlebars.min.js"></script>
+	<script src="../node_modules/jquery/dist/jquery.js"></script>
+	<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-file-upload/9.13.0/js/vendor/jquery.ui.widget.js"></script>    
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-file-upload/9.13.0/js/jquery.fileupload.js"></script>   -->
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.51/jquery.form.min.js"></script>
+	<script type="text/javascript" src="../js/common.js"></script>
+	<script type="text/javascript" src="../js/bit.js"></script>
+	<script type="text/javascript" src="album02.js"></script>
+
+
+	<script type="text/javascript"
+		src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/5.0.7/sweetalert2.min.js"></script>
+	<script type="text/javascript">
   ajaxLoginUser()
   ajaxGroupName()
+  ajaxImagesLoad()
    /* ajaxStudyList() */
    if (location.search.startsWith("?")) {     
      $(".my-new").css("display","none")
-    
    } else {
        $(".my-view").css("display","none")
    }

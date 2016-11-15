@@ -15,4 +15,5 @@ public interface CommunityCommentDao {
   int insert(CommunityComment communityComment) throws Exception;
   int update(CommunityComment communityComment) throws Exception;
   int delete(int commentNo) throws Exception;
+  int commentCount(int no) throws Exception;
 }

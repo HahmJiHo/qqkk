@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import example.dao.CommunityCommentDao;
 import example.dao.CommunityDao;
 import example.dao.CommunityFileDao;
 import example.service.CommunityService;
@@ -36,48 +37,7 @@ public class DefaultCommnuityService implements CommunityService {
 		return communityDao.selectOne(no);
 	}
   
-  
-  public void insertCommunity(Community community, 
-      MultipartFile file1,
-      String uploadDir) throws Exception {
-    
-    communityDao.insert(community);
-    
-    System.out.println(community);
-    
-    String newFilename = null;
-    if (file1 != null && !file1.isEmpty()) {
-      newFilename = FileUploadUtil.getNewFilename(file1.getOriginalFilename());
-      System.out.println(newFilename);
-      
-      file1.transferTo(new File(uploadDir + newFilename));
-      CommunityFile communityFile = new CommunityFile();
-      communityFile.setFilename(community.getFilename());
-      communityFile.setCommunityNo(community.getNo());
-      communityFile.setFileUpMember(community.getFileUpMember());
-      //communityFile.setCommunityNo(10200); //트랜잭션 테스트 용 
-      communityFileDao.insert(communityFile);
-    }
-    
-  }
-  
-  public Community getCommunity(int no, String password) throws Exception {
-    HashMap<String,Object> paramMap = new HashMap<>();
-    paramMap.put("no", no);
-    paramMap.put("password", password);
-    return communityDao.selectOneByPassword(paramMap);
-  }
-  
-  @Override
-  public int getTotalPage(int pageSize) throws Exception {
-    int countAll = communityDao.countAll();
-    int totalPage = countAll / pageSize;
-    if ((countAll % pageSize) > 0) {
-      totalPage++;
-    }
-    return totalPage;
-  }
-  
+	
   public void updateCommunity(Community community) throws Exception {
     HashMap<String,Object> paramMap = new HashMap<>();
     paramMap.put("no", community.getNo());
@@ -89,9 +49,63 @@ public class DefaultCommnuityService implements CommunityService {
     communityDao.update(community);
   }
   
+  
+  
+  
   public void deleteCommunity(int no) throws Exception {
     communityDao.delete(no);
   }
+	
+	
+  
+  public void insertCommunity(Community community, 
+      MultipartFile file1,
+      String uploadDir) throws Exception {
+    communityDao.insert(community);
+    System.out.println("사용자번호 : " + community.getUserNo());
+    System.out.println("insert : " + community);
+    
+    String newFilename = null;
+    System.out.println("커뮤니티-서비스 file1 :" + file1);
+    
+    if (file1 != null && !file1.isEmpty()) {
+      newFilename = FileUploadUtil.getNewFilename(file1.getOriginalFilename());
+      file1.transferTo(new File(uploadDir + newFilename));
+      CommunityFile communityFile = new CommunityFile();
+      communityFile.setFilename(newFilename);
+      communityFile.setCommunityNo(community.getNo());
+      communityFile.setFileUpMember(community.getUserNo());
+      //communityFile.setCommunityNo(10200); //트랜잭션 테스트 용 
+      System.out.println(communityFile);
+      communityFileDao.insert(communityFile);
+      
+    }
+    
+  }
+  
+/*  public Community getCommunity(int no, String password) throws Exception {
+    HashMap<String,Object> paramMap = new HashMap<>();
+    paramMap.put("no", no);
+    paramMap.put("password", password);
+    return communityDao.selectOneByPassword(paramMap);
+  }*/
+  
+  @Override
+  public int getTotalPage(int pageSize) throws Exception {
+    int countAll = communityDao.countAll();
+    int totalPage = countAll / pageSize;
+    if ((countAll % pageSize) > 0) {
+      totalPage++;
+    }
+    return totalPage;
+  }
+
+
+	@Override
+	public void updateViewCount(int no) throws Exception {
+		communityDao.updateViewCount(no);
+		
+	}
 
 }
 

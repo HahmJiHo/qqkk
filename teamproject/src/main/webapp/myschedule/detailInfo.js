@@ -1,3 +1,14 @@
+$('body').on("click", ".btn-group ul li", function(e) {
+	 var thisIndex = $(this).index();
+	 console.log(thisIndex)
+	 $("article").hide();
+	 $("article").eq(thisIndex).show();
+	 
+ });
+ 
+ $(".btn-group ul li").eq(0).click();
+  
+
 var detailResult;
 var eventLocation;
 var mySchedulList;
@@ -64,6 +75,12 @@ function sigunguNameParser(inputStr) {
 function ajaxTourInfo(tourAreaCode, sigunguCode) {
    console.log(tourAreaCode);
    console.log(sigunguCode);
+   
+   
+   var contents = ""
+   var contents2 = ""
+   var template = ""
+   var template2 = ""
 
    var festiUrl = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList?ServiceKey=" +
          tourKey + "&contentTypeId=15&areaCode="+ tourAreaCode +"&sigunguCode="+sigunguCode+"&cat1=&cat2=&cat3=&listYN=Y&MobileOS=ETC&MobileApp=TourAPI3.0_Guide&arrange=A&numOfRows=12&pageNo=1";
@@ -73,15 +90,37 @@ function ajaxTourInfo(tourAreaCode, sigunguCode) {
    console.log(festiUrl);
    $.getJSON(festiUrl, function(obj) {
       var festiResult = obj.response.body.items.item;
-      console.log(obj);
-      console.log(festiResult)
+      //console.log(festiResult)
+      contents = "";
+      template = Handlebars.compile($('#festiResult').html())
+      
+      for (var i in festiResult) {
+    	  contents += template(festiResult[i])
+      }
+      
+      console.log(contents)
+      
+       $("#products").html(contents)
+      
    });
    
    $.getJSON(accUrl, function(obj) {
       var accResult = obj.response.body.items.item;
-      console.log(obj);
-      console.log(accResult);
+      
+      console.log(accResult)
+      
+      contents2 = "";
+      template2 = Handlebars.compile($('#accResult').html())
+      
+       for (var i in accResult) {
+    	  contents2 += template2(accResult[i])
+    	  
+    	  console.log(contents2)
+      }
+      $("#products2").html(contents2)
+
    });
+
 }
 
 function ajaxSigunguCode(tourAreaCode) {
@@ -161,6 +200,7 @@ function ajaxMyScheduleLoad(no) {
       console.log(contents2)
       $("#groupName").html(contents2)
       ajaxMidTermWeather(startDay, gpno);
+      ajaxTourAreaCode();
    })
 }
 
