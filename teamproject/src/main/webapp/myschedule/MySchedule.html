@@ -61,17 +61,13 @@ transition: all .2s ease-in-out;
 
 </head>
 <body>
-<div class="wrap display-none">
-  <div class="loader"></div>
-  <div class="loaderbefore"></div>
-  <div class="circular"></div>
-  <div class="circular another"></div>
-  <div class="text">Loading</div>
+<div class="wrap display-none" style="z-index: 9999;">
+  <div class="loading"></div>
 </div>
 <div class="wrapper">
 
 	<header> </header>
-	<section class="panel">
+	<section class="panel" style="background:none;">
 	
     <aside class="header-top" style="float: left; ">
 	    <ul class="aside-nav"> 
@@ -185,11 +181,13 @@ transition: all .2s ease-in-out;
 		<script id="div2TemplateText" type="text/x-handlebars-template">
 	
 	   <li id="sc">
-				<h1 class="list-group-item-text">{{title}}</h1>
-				<h3 class="list-group-item-text">{{placeName}}</h3><br>
-				<span class="list-group-item-text">{{start}} ~ {{end}}</span>
+				<h1 class="list-group-item-text"style="
+    font-size: 20px;">{{title}}</h1>
+				<h3 class="list-group-item-text" style="
+    font-size: 20px;">{{placeName}}</h3><br>
+				<span class="list-group-item-text" style="
+    font-size: 20px;">{{start}} ~ {{end}}</span>
 
-        <a href='#' id="viewSc" class="btn btn-xs btn-success my-detail" data-no="{{groupscNo}}">일정보기</a>	
 		    
 	 			<div id="dday-Info">
 					<h1 id="dday"  style="font-size:30px; font-weight:bold;">D-day {{dday}}</h1>
