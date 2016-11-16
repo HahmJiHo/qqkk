@@ -230,7 +230,7 @@ function ajaxTermWeather(date, gpno, dday) {
       $(".weather-temperature-mx").html(termResult.data.maxTemp + "°C");
       $(".weather-temperature-mn").html(termResult.data.minTemp + "°C");
       
-      switch(termResult.data.state) {
+      switch(termResult.data.state) { 
       case "맑음":
     	  $(".weather-img").addClass("sunny");
     	  break;
