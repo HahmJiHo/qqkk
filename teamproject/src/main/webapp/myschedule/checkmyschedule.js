@@ -233,20 +233,35 @@ function ajaxMyScheduleList() {
 
       var template = Handlebars.compile($('#divTemplateText').html())
       
+      
       for (var i in newArr) {
          if ($("#user").attr('data-value') == newArr[i].no
         		 && newArr[i].myScheduleStatus == 1){
             contents += template(newArr[i])
+            
             $("#groupList").attr('data-value', newArr[i].groupNo)
+           
+            wholeScList.push(myScheduleList[i]);
+	        $("#groupList").attr('data-no',  myScheduleList[i].groupscNo)
+            
+	            
+	        contents += "<fieldset class='tasks-list'>" + 
+            "<label class='tasks-list-item'>" + 
+            "<input type='checkbox' id='groupList' name='task_1' value='1' class='tasks-list-cb' checked data-no=" + myScheduleList[i].groupscNo + "\n" + "data-value=" + newArr[i].groupNo + ">" + 
+            "<span class='tasks-list-mark' id='groupList' data-no=" + myScheduleList[i].groupscNo + "\n" + "data-value=" + newArr[i].groupNo + ">" + "</span>" + 
+            "<span class='tasks-list-desc' id='groupList' data-no=" + myScheduleList[i].groupscNo + "\n" + "data-value=" + newArr[i].groupNo + ">" + newArr[i].groupName + 
+            "</span>" + "</label>" + "</fieldset>";
+            
+				
          }
       }
       
       
       for (var i in myScheduleList) {       
             wholeScList.push(myScheduleList[i]);
-            $("#groupList").attr('data-no', myScheduleList[i].groupscNo) // 그 원지선이 가진 no중에서 groupscNo 넣어주는거
-         
+	            $("#groupscList").attr('data-no',  myScheduleList[i].groupscNo) // 그 원지선이 가진 no중에서 groupscNo 넣어주는거
       }
+     // console.log(contents)
       
       $("#groupList").html(contents)
       showCalendar();
