@@ -48,6 +48,15 @@ transition: all .2s ease-in-out;
 }
 */
 
+
+.line {
+	margin-top: 20px;
+	margin-bottom: 20px;
+	border: 0;
+	border-top: 2px solid #696969;
+}
+​
+
 </style>
 
 </head>
@@ -107,10 +116,6 @@ transition: all .2s ease-in-out;
 						</div>
 						<form class="navbar-form navbar-left" role="search">
 							<div class="form-group">
-								<input type="text" class="form-control" placeholder="Search">
-								<button type="button" class="btn btn-default">
-									<i class="fa fa-search w3-xlarge"></i>
-								</button>
 								<button type="button" class="btn btn-default">
 									<i class="fa fa-bars w3-xlarge" aria-hidden="true"></i>
 								</button>
@@ -119,12 +124,16 @@ transition: all .2s ease-in-out;
 								<i class="fa fa-calendar w3-xlarge" aria-hidden="true"></i>
 							</button>
 						</div>
-
 					</form>
+					
+					<div class="sectionbar-line">
+					<hr class="line" align=center width=100%>
+				</div>
+					
 
 				</div>
 				<div class="article-sc">
-					<div id="schedule" style="clear: both; text-align: center; min-height: 800px; padding: 0 20px;">
+					<div id="schedule" style="clear: both; text-align: center; min-height: 800px; padding: 0 20px; margin-top: -90px;">
            <div class="user-group-info" style="position:relative; ">
 						  <div id="scheduleInfo" style="z-index:11; position:absolute;">
                       <div id="schedule-Info" data-value="">
@@ -180,7 +189,7 @@ transition: all .2s ease-in-out;
 				<h3 class="list-group-item-text">{{placeName}}</h3><br>
 				<span class="list-group-item-text">{{start}} ~ {{end}}</span>
 
-        <a href='#' id="viewSc" class="btn btn-xs btn-success my-detail" data-no="">일정보기</a>	
+        <a href='#' id="viewSc" class="btn btn-xs btn-success my-detail" data-no="{{groupscNo}}">일정보기</a>	
 		    
 	 			<div id="dday-Info">
 					<h1 id="dday"  style="font-size:30px; font-weight:bold;">D-day {{dday}}</h1>
