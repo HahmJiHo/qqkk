@@ -10,7 +10,6 @@ $("#logoutBtn").click(function(event) {
 
 
 
-$('input[name=commentCount1]').length
 
 $("#addBtn").click(function(event) {
 	   
@@ -37,7 +36,7 @@ $("#addBtn").click(function(event) {
 		          console.log('error : ' + textStatus + " " + errorThrown);
 		     }
 		});
-		/*window.location.reload();*/
+		window.location.reload();
 });
 
 
@@ -106,8 +105,7 @@ $("#updateCommentBtn").click(function(event) {
 
 $("#deleteCommentBtn").click(function(event) {
    var no = {commentNo: $("#commentNo").attr('data-no'),}
-   ajaxDeleteCommunityComment(no)
-
+   ajaxDeleteCommunityComment($("#no").val())
   
 });
 
@@ -180,7 +178,6 @@ $("#LikeBtn").click(function(event) {
 
 
 
-
 function ajaxLoadCommunity(no) {
 	$.getJSON(serverAddr + "/community/detail.json?no=" + no, function(obj) {
 		var result = obj.jsonResult
@@ -236,6 +233,8 @@ function ajaxDeleteCommunity(no) {
 
 
 
+
+
 function ajaxCommentCommunityList(no) {
 	$.getJSON(serverAddr + "/communityComment/list.json", function(obj) {
 		var result = obj.jsonResult
@@ -250,6 +249,8 @@ function ajaxCommentCommunityList(no) {
 		var template = Handlebars.compile($('#commentTemplateText').html())
 		var contents = ""
 	    var arr = result.data
+	    var commentCount2 = result.length
+	    
         for (var i in arr) {
           if (no == arr[i].communityBoardNo) {
         	contents += template(arr[i])
@@ -259,6 +260,8 @@ function ajaxCommentCommunityList(no) {
 	    $("#communityCommentTable").html(contents)
     })
 } 
+
+
 
 
 
@@ -333,20 +336,6 @@ function ajaxDeleteCommunityComment() {
 }
 
 
-
-
-function readURL(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-
-        reader.onload = function (e) {
-            $('#blah')
-                .attr('src', e.target.result);
-        };
-
-        reader.readAsDataURL(input.files[0]);
-    }
-}
 
 
 
