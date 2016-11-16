@@ -24,15 +24,16 @@
 	</resultMap>
 
 	<select id="selectList" resultMap="myscheduleMap" parameterType="map">
-select hiba_g_membs.mno, hiba_g_membs.gno, hiba_g_sc.gsno, hiba_g_sc.gpno, hiba_sc_status.status, hiba_membs.name, hiba_membs.nicknm, hiba_group.gname,
+select hiba_g_membs.mno, hiba_g_membs.gno, hiba_g_sc.gsno, hiba_g_sc.gpno, hiba_membs.name, hiba_sc_status.status, 
+hiba_membs.nicknm, hiba_group.gname,
        hiba_g_sc.sc_title, hiba_g_sc.st_dt, hiba_g_sc.ed_dt, hiba_place.pl_name, hiba_group_photo.gphot
 from hiba_sc_status
-left join hiba_g_membs on hiba_sc_status.mno= hiba_g_membs.mno and hiba_sc_status.gno=hiba_g_membs.gno
-left join hiba_membs on hiba_g_membs.mno=hiba_membs.mno
-left join hiba_group on hiba_g_membs.gno=hiba_group.gno
-left join hiba_group_photo on hiba_group.gno=hiba_group_photo.gno
-left join hiba_g_sc on hiba_sc_status.gsno=hiba_g_sc.gsno
-left join hiba_place on hiba_g_sc.gpno=hiba_place.gpno
+left join hiba_g_membs on hiba_sc_status.mno = hiba_g_membs.mno and hiba_sc_status.gno = hiba_g_membs.gno
+left join hiba_membs on hiba_g_membs.mno = hiba_membs.mno
+left join hiba_group on hiba_g_membs.gno = hiba_group.gno
+left join hiba_group_photo on hiba_group.gno = hiba_group_photo.gno
+left join hiba_g_sc on hiba_sc_status.gsno = hiba_g_sc.gsno
+left join hiba_place on hiba_g_sc.gpno = hiba_place.gpno
 	</select>
 
 	<select id="selectListefgroupName" resultMap="myscheduleMap"
