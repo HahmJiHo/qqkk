@@ -49,11 +49,11 @@
 </head>
 <style>
 #calendar {
-	position: absolute;
-	max-width: 800px;
-	left: 310px;
-	top: 150px;
-	box-shadow: 5px 8px 10px 3px gray;
+    position: absolute;
+    max-width: 800px;
+    left: 310px;
+    top: 150px;
+    box-shadow: 5px 8px 10px 3px gray;
 }
 
 .modal {
@@ -132,6 +132,17 @@
 					<hr class="line" align=center width=100%>
 				</div>
 
+				<!-- 	<div class="aside"
+					style="float: left; padding: 20px 20px 0 20px; width: auto;">
+					<div class="groupNameList">
+						<h1 class="groupListTitle">나의 그룹 리스트</h1>
+						<div id="groupList">
+							<input type="checkbox" data-no="" data-value="">
+						</div>
+					</div>
+				</div> -->
+
+
 				<div class="aside"
 					style="float: left; padding: 20px 20px 0 20px; width: auto;">
 					<section class="tasks" style="min-height: 600px;">
@@ -139,26 +150,16 @@
 							<h2 id="tasks-title">나의 그룹 리스트</h2>
 						</div>
 						<fieldset class="tasks-list">
-							<label class="tasks-list-item" id="groupList">
-							 <input type="checkbox" id="groupscList" data-no="" 
-								name="task_1" class="tasks-list-cb" checked> <!-- display: none -->
-								<span class="tasks-list-mark"></span>  <!-- 버튼똥끄라미 -->
-								<span class="tasks-list-desc" id="groupList" data-value="">Onyour mark</span>
+							<label class="tasks-list-item" id="groupList"> <input
+								type="checkbox" id="groupscList" data-no="" name="task_1"
+								class="tasks-list-cb" checked> <!-- display: none --> <span
+								class="tasks-list-mark"></span> <!-- 버튼똥끄라미 --> <span
+								class="tasks-list-desc" id="groupList" data-value="">Onyour
+									mark</span>
 							</label>
 						</fieldset>
 					</section>
 				</div>
-
-					<!-- <div class="groupNameList">
-						<nav>
-							<ul>
-								<li><a href="#" class="groupListTitle">나의 그룹 리스트</a></li>
-								 <div id="groupList">
-								<li><input type="checkbox" data-no="" data-value=""></li>
-								</div>
-							</ul>
-						</nav>
-					</div> -->
 
 				<div id='calendar'></div>
 
@@ -198,8 +199,21 @@
 			</div>
 
 		</section>
-
+	</div>
+	
+	
+		<!-- <div id="groupList">
+		<input type="checkbox"  data-no="{{groupscNo}}" data-value="{{groupNo}}">{{groupName}}
+		</div> -->
 	<script id="divTemplateText" type="text/x-handlebars-template">
+		<label class="tasks-list-item" id="groupList">
+			<input type="checkbox" id="groupscList" data-no="{{groupscNo}}"  data-value="{{groupNo}}" name="task_1"
+				class="tasks-list-cb" checked> <!-- display: none --> 
+			<span class="tasks-list-mark" data-no="{{groupscNo}}" ></span> <!-- 버튼똥끄라미 --> 
+			<span class="tasks-list-desc" data-value="{{groupNo}}">{{groupName}}</span>
+		</label>
+
+		
 	</script>
 
 
@@ -233,16 +247,13 @@
 		ajaxMyScheduleList()
 		//ajaxEventLocationList()
 		ajaxGroupInviteListMessage()
-
 		if (location.search.startsWith("?")) {
 			var no = location.search.split("=")[0];
 			ajaxMyScheduleList(no)
 			$(".my-new").css("display", "none")
-
 		} else {
 			$(".my-view").css("display", "none")
 		}
-
 		window.initMap = function() {
 			var map = new google.maps.Map(document.getElementById('map'), {
 				center : {
@@ -252,34 +263,28 @@
 				zoom : 16,
 				mapTypeId : google.maps.MapTypeId.ROADMAP
 			});
-
 			// Create the search box and link it to the UI element.
 			var input = document.getElementById('pac-input');
 			var searchBox = new google.maps.places.SearchBox(input);
 			map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-
 			// Bias the SearchBox results towards current map's viewport.
 			map.addListener('bounds_changed', function() {
 				searchBox.setBounds(map.getBounds());
 			});
-
 			var markers = [];
 			// [START region_getplaces]
 			// Listen for the event fired when the user selects a prediction and retrieve
 			// more details for that place.
 			searchBox.addListener('places_changed', function() {
 				var places = searchBox.getPlaces();
-
 				if (places.length == 0) {
 					return;
 				}
-
 				// Clear out the old markers.
 				markers.forEach(function(marker) {
 					marker.setMap(null);
 				});
 				markers = [];
-
 				// For each place, get the icon, name and location.
 				var bounds = new google.maps.LatLngBounds();
 				places.forEach(function(place) {
@@ -290,7 +295,6 @@
 						anchor : new google.maps.Point(17, 34),
 						scaledSize : new google.maps.Size(25, 25)
 					};
-
 					// Create a marker for each place.
 					markers.push(new google.maps.Marker({
 						map : map,
@@ -298,7 +302,6 @@
 						title : place.name,
 						position : place.geometry.location
 					}));
-
 					if (place.geometry.viewport) {
 						// Only geocodes have viewport.
 						bounds.union(place.geometry.viewport);

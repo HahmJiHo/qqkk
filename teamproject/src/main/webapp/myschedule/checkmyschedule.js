@@ -24,7 +24,6 @@ $('#calendarModal').on('shown.bs.modal', function(){
    google_map("google_map", event.placeName);
    //console.log(event);      
    google.maps.event.trigger(map,'resize',{});
-
 });*/
 
 function listCheck() {
@@ -153,7 +152,6 @@ function showCalendar() {
    });
 /*   $('#calendar').fullCalendar( 'addEventSource',        
          function(startDate, endDate, callback, event) {
-
    }*/
 }
 
@@ -233,35 +231,20 @@ function ajaxMyScheduleList() {
 
       var template = Handlebars.compile($('#divTemplateText').html())
       
-      
       for (var i in newArr) {
          if ($("#user").attr('data-value') == newArr[i].no
         		 && newArr[i].myScheduleStatus == 1){
             contents += template(newArr[i])
-            
             $("#groupList").attr('data-value', newArr[i].groupNo)
-           
-            wholeScList.push(myScheduleList[i]);
-	        $("#groupList").attr('data-no',  myScheduleList[i].groupscNo)
-            
-	            
-	        contents += "<fieldset class='tasks-list'>" + 
-            "<label class='tasks-list-item'>" + 
-            "<input type='checkbox' id='groupList' name='task_1' value='1' class='tasks-list-cb' checked data-no=" + myScheduleList[i].groupscNo + "\n" + "data-value=" + newArr[i].groupNo + ">" + 
-            "<span class='tasks-list-mark' id='groupList' data-no=" + myScheduleList[i].groupscNo + "\n" + "data-value=" + newArr[i].groupNo + ">" + "</span>" + 
-            "<span class='tasks-list-desc' id='groupList' data-no=" + myScheduleList[i].groupscNo + "\n" + "data-value=" + newArr[i].groupNo + ">" + newArr[i].groupName + 
-            "</span>" + "</label>" + "</fieldset>";
-            
-				
          }
       }
       
       
       for (var i in myScheduleList) {       
             wholeScList.push(myScheduleList[i]);
-	            $("#groupscList").attr('data-no',  myScheduleList[i].groupscNo) // 그 원지선이 가진 no중에서 groupscNo 넣어주는거
+            $("#groupList").attr('data-no', myScheduleList[i].groupscNo) // 그 원지선이 가진 no중에서 groupscNo 넣어주는거
+         
       }
-     // console.log(contents)
       
       $("#groupList").html(contents)
       showCalendar();
@@ -316,7 +299,6 @@ function ajaxMyScheduleList() {
       if (arr.message != "성공") {
          alert("서버에서 데이터를 가져오는데 실패했습니다.")
          return
-
       }
       var calendarWeather = data.weather
       console.log(calendarWeather.minutely[0])
@@ -327,7 +309,6 @@ function ajaxMyScheduleList() {
       $(".temperature-tmax").html(calendarWeather.minutely[0].temperature.tmax)
       $(".temperature-tmin").html(calendarWeather.minutely[0].temperature.tmin)
       $(".timeObservation").html(calendarWeather.minutely[0].timeObservation)
-
       
       for (var i in arr) {
          if (arr[i].weather)
@@ -335,7 +316,6 @@ function ajaxMyScheduleList() {
       }
    })
 }
-
 function ajaxEventLocationList() {
    $.getJSON(serverAddr + '/myschedule/listWeather.json', function(obj){
       var result = obj.jsonResult
