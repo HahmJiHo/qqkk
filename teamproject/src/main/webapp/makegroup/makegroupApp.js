@@ -3,7 +3,7 @@ $("#loginBtn").click(function (e) {
 })
 
 $("#logoutBtn").click(function (e) {
-	location.href = "../auth/authApp.html"
+	location.href = "../index_h.html"
 })
 
 
