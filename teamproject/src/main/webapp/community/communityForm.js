@@ -1,5 +1,5 @@
 var resultUser = []
-
+ 
 $("#loginBtn").click(function(event) {
 	location.href = "../auth/authApp.html"
 });

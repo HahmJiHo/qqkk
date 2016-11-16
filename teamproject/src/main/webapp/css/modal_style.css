@@ -14,7 +14,7 @@
   min-height: 680px;
   background-image: url(../images/login-background.jpg);
   box-shadow: 0 50px 70px -20px rgba(0, 0, 0, 0.85);
-}
+} 
 .modal-sign-box2 {
   display: block;
   position: relative;
