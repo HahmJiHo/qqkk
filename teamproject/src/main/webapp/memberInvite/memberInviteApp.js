@@ -62,6 +62,9 @@ function ajaxMemberGroupInviteList() {
 		$(".groupMore").click(function (e) {
 			window.location.href = "../group/makeSc.html?no=" + $(this).attr("data-no")
 		}) 	
+		$(".group-album").click(function (e) {
+			window.location.href = "../album/album02.html?no=" + $('#userName').attr('data-value')+ "&gno=" + $(this).attr("data-no")
+		}) 	
 		$('.wrap').addClass('display-none');
 	})	
 }
