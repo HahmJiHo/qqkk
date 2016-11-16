@@ -12,11 +12,11 @@
     <![endif]-->   
    
 		<link href="../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
+		<link rel="stylesheet" type="text/css" href="../css/common_style.css" > 		
+	  <link rel="stylesheet" type="text/css" href="../css/makeCal.css" >
 		<link href='../css/fullcalendar.css' rel='stylesheet' />
 		<link href='../css/fullcalendar.print.css' rel='stylesheet' media='print' />
-		<link rel="stylesheet" type="text/css" href="../css/common_style.css" > 		
 		<link href="http://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/a549aa8780dbda16f6cff545aeabc3d71073911e/build/css/bootstrap-datetimepicker.css" rel="stylesheet"/>
-	  <link rel="stylesheet" type="text/css" href="../css/makeCal.css" >
 	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/5.0.7/sweetalert2.min.css" />
     <link rel="stylesheet" href="../css/jquery.minicolors.css">
 		<link rel="stylesheet" type="text/css" href="../css/btn.css" >
@@ -104,7 +104,8 @@
     z-index: 20;   
 }
 .modal-backdrop{
-    z-index: 10;        
+  z-index: 0 !important;
+  background-color: #fff !important;         
 }
 .sm-title { font-size: 15px; color :#696969; } 
 .col-sm-2 { width: 10%; }​
@@ -175,7 +176,6 @@ top: 4px;
   height:100% !important;
   top:400px !important;
   left:0px !important;
-  background: #0d8aa5 !important;
 }
 .logOutBtn{cursor: pointer;} 
 
@@ -191,6 +191,15 @@ top: 4px;
 </div>
 <div class="wrapper">
 	<header></header>
+	 <div class="make-text" style="position:fixed; left:20px; z-index:100;">
+         <h2>
+          <span class="my-profile" style="display:block; text-align:center; padding-left:0px;">
+             
+          </span><br>
+          <span id="userName" class="my-login" data-value=""></span>님 안녕하세요?
+         </h2>
+         <p>일정을 만들 그룹을 선택해 주세요.<span id="mno"></span></p>
+       </div>
   <section class="panel" style="z-index:1">
      <aside class="header-top" style="float: left; ">
     <ul class="aside-nav"> 
@@ -202,16 +211,16 @@ top: 4px;
       <li class="f-r iconBell user-alert"
         style="display: block; cursor: pointer"><i
         class="glyphicon glyphicon-exclamation-sign alert-icon"
-        style="color: red; position: absolute; font-size: 15px; right: 0px; display: none"></i>
+        style="color: red; position: absolute; font-size: 15px; top:10px; display: none"></i>
       </li>
     
     </ul>
-     <!--  <p class="f-r logout" style="float: right;"><a href="#">로그아웃</a></p> -->
-				<p class="logOutBtn" id="logoutBtn" style="float: right;">로그아웃</p>
+     <!--  <p class="f-r logout" style="float: right;">로그아웃</a></p> -->
+			<p class="logOutBtn" id="logoutBtn" style="float: right;"><a href="#">로그아웃</a></p>
 			
 			
     <div class="alert-box"
-      style="position: absolute; background-color: rgba(0, 0, 0, 0.5); max-width: 250px; margin: 10px; right: 330px; top: 50px; color: #fff">
+      style="position: absolute; background-color: rgba(0, 0, 0, 0.5); max-width: 250px; margin: 10px; left: 50px; top: 60px; color: #fff; z-index:10;">
     </div>
   </aside>
     <div class="section-wrap"  style="z-index:1">
@@ -220,15 +229,7 @@ top: 4px;
          <h2><span id="userName" class="my-login"></span> 님의 캘린더.</h2>  
         </div>        
       </div> -->
-      <div class="make-text" style="position:fixed; left:20px; z-index:2;">
-         <h2>
-          <span class="my-profile" style="display:block; text-align:center; padding-left:0px;">
-              <img src="" id="profilePhoto" style="width:80px; height:80px;"/>
-          </span><br>
-          <span id="userName" class="my-login" data-value=""></span>님 안녕하세요?
-         </h2>
-         <p>일정을 만들 그룹을 선택해 주세요.<span id="mno"></span></p>
-        </div>
+
       <div class="artice">
                    
         <div id='calendar'></div>   

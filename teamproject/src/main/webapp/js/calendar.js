@@ -47,7 +47,7 @@ function showCalendar(arr) {
 								titleNo : count,
 								id : count,
 						}
-						console.log(event)
+						
 						ajaxAddSchedule(event)	
 						var eventDataValue = $('.sc-list').length;
 						var errorTest = "입력하지 않은 항목이 있습니다."
@@ -83,7 +83,7 @@ function showCalendar(arr) {
 								lon : lot,
 								id : count
 						}
-			            console.log(event)
+			            
 						ajaxAddSchedule(event)
 						var errorTest = "입력하지 않은 항목이 있습니다."
 							if ($('#addeventTitle').val().length != 0 
@@ -251,13 +251,11 @@ function showCalendar(arr) {
 			start = moment(event.start).format('YYYY-MM-DD HH:mm')
 			end = moment(event.end).format('YYYY-MM-DD HH:mm')
 			$('#calendarModal').modal()
-			console.log("11111111111")
+			
 			$('#modalTitle').html(event.title)
 			$('.modal-start-date').text(start + " ~ ")
 			$('.modal-end-date').text(end + " ")
-			console.log(event.start)
-			console.log(event.end)
-			console.log(event.placeName)
+			
 			var thisIndex = event.groupPlaceNo
 			if (thisIndex) {				
 				var marker;
@@ -291,7 +289,7 @@ function showCalendar(arr) {
 				}
 							
 				$('#calendarModal').on('shown.bs.modal', function(){
-					console.log("22222222222")
+					
 					initMap()
 					
 				});
@@ -315,7 +313,7 @@ function showCalendar(arr) {
 		$('#addDateEnd').val('')
 		$('#pac-input').val('')
 		$('body').on('click', '.make-sc-btn', function(e) {
-			console.log("11")
+			
 			$('#calendarAddModal').modal();				
 			$('.fc-myCustomButton-button').css({ "opacity": "1.0" ,  "position" : "static" });
 			if ($('.fc-myCustomButton-button').length <= 1) {				
@@ -329,8 +327,8 @@ function showCalendar(arr) {
 };   
 
 function ajaxMyScheduleList(no) {
+	$('.wrapper').css({"display" : "none"})
 	$('.wrap').removeClass('display-none');
-	$('body').css({"background" : "#0d8aa5", "z-index" : "99999"})
 	$.getJSON(serverAddr +"/schedule/list.json", function(obj) {
 		var result = obj.jsonResult
 		if (result.state != "success") {
@@ -365,8 +363,8 @@ function ajaxMyScheduleList(no) {
 		
 	$(".side-schedhule-List").html(contents) 
 	showCalendar(arrTest);
-	 $('.wrap').addClass('display-none');	    
-	    $('body').css({"background" : "" ,"z-index" : "0"})
+	$('.wrap').addClass('display-none');	    
+	$('.wrapper').css({"display" : "block"})
 	})
 }
 
@@ -377,7 +375,6 @@ function ajaxAddSchedule(event) {
 	$.post(serverAddr +"/schedule/add.json", event, function(obj) {
 		var result = obj.jsonResult
 		if (result.state != "success") {
-			console.log(result.data)
 			alert("등록 실패 입니다.")       
 			return
 		}  

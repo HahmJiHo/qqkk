@@ -1,8 +1,7 @@
 function ajaxMemberInviteList() {
+	$('.wrapper').css({"display" : "none"})
 	$('.wrap').removeClass('display-none');
-	$('.aside').css({"display" : "none"})
-	$('.header-top').css({"display" : "none"})
-	$('body').css({"background" : "#0d8aa5", "z-index" : "99999"})
+	
 	$.getJSON(serverAddr +"/memberInvite/list.json", function(obj) {
 		var result = obj.jsonResult
 		if (result.state != "success") {
@@ -28,12 +27,11 @@ function ajaxMemberInviteList() {
 					$(".group-member-waitlist").html(waitContents)
 				}
 			}			
-		}
-	    $('.wrap').addClass('display-none');
-	    $('.aside').css({"display" : "block"})
-	    $('.header-top').css({"display" : "block"})
-	    $('body').css({"background" : " " ,"z-index" : "0"})
+		}   
+		$('.wrap').addClass('display-none');	
+		$('.wrapper').css({"display" : "block"})
 	})
+	    
 }
 
 
