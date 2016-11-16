@@ -31,7 +31,7 @@ background-color: transparent; color:#00C7FC; } */
 .my-group-warp { padding-top:50px;}
 .add-group-box { padding: 20px 20px; background-color: #fff; border:2px solid #efefef;  margin-bottom: 20px;}
 .plus-sign {
-	  border: 1px solid #3897f0;
+	  border: 1px solid #9dc92a;
     border-radius: 50%;
     box-sizing: border-box;
     display: -webkit-box;
@@ -49,7 +49,7 @@ background-color: transparent; color:#00C7FC; } */
     -webkit-transition: height 1.5s ease-in,margin-bottom 1.5s ease-in,opacity 1.5s ease-in,width 1.5s ease-in;
     transition: height 1.5s ease-in,margin-bottom 1.5s ease-in,opacity 1.5s ease-in,width 1.5s ease-in;
     width: 80px;}
-.fa-plus { color: #3897f0; font-size: 20px; }
+.fa-plus { color: #9dc92a; font-size: 20px; }
 .add-group-box { cursor: pointer; text-align: center; }
 
 
