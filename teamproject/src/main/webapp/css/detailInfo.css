@@ -3,7 +3,7 @@
 #detail {
 	margin-left: 25px;
 }
-@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css); 
 
 
 
@@ -14,7 +14,7 @@ b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbo
 article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary,
 time, mark, audio, video { margin: 0; padding: 0; border: 0; outline: 0; font-size: 100%; vertical-align: baseline; background: transparent; font-family: "Nanum Gothic", sans-serif;}
 
-
+ 
 
 
 .sunny{background: url('../images/sunny.png') no-repeat center; width:100px; height:100px; }
@@ -28,7 +28,7 @@ time, mark, audio, video { margin: 0; padding: 0; border: 0; outline: 0; font-si
 .section-bar2 div{width:100%; height:10px; color:#9dc92a;}
 
 #profilePhoto{width:100px; height:100px; border-radius:50%;}
-.weather-img{float:left; margin-right:45px;}
+.weather-img{float:left; margin-right:45px;} 
 
 
 .joinGroup1{font-size:40px; color: rgb(117, 20, 133);}
@@ -37,62 +37,13 @@ time, mark, audio, video { margin: 0; padding: 0; border: 0; outline: 0; font-si
 .dateText1{font-size:18px; color:#6495ed;}
 .dateText2{font-size:18px; color:#ee82ee;}
 
+/* .img-responsive, .thumbnail>img, .thumbnail a>img, .carousel-inner>.item>img, .carousel-inner>.item>a>img {
+	display:block; max-width: 100%; height:340px;} 
+ */
+.festiBtn{float:left;}	
+.accBtn{float:left;}
+.btn-group{padding-bottom: 32px;}
 
-.glyphicon { margin-right:5px; }
-.thumbnail
-{
-    margin-bottom: 20px;
-    padding: 0px;
-    -webkit-border-radius: 0px;
-    -moz-border-radius: 0px;
-    border-radius: 0px;
-}
 
-.item.list-group-item
-{
-    float: none;
-    width: 100%;
-    background-color: #fff;
-    margin-bottom: 10px;
-}
-.item.list-group-item:nth-of-type(odd):hover,.item.list-group-item:hover
-{
-    background: #428bca;
-}
 
-.item.list-group-item .list-group-image
-{
-    margin-right: 10px;
-}
-.item.list-group-item .thumbnail
-{
-    margin-bottom: 0px;
-}
-.item.list-group-item .caption
-{
-    padding: 9px 9px 0px 9px;
-}
-.item.list-group-item:nth-of-type(odd)
-{
-    background: #eeeeee;
-}
-
-.item.list-group-item:before, .item.list-group-item:after
-{
-    display: table;
-    content: " ";
-}
-
-.item.list-group-item img
-{
-    float: left;
-}
-.item.list-group-item:after
-{
-    clear: both;
-}
-.list-group-item-text
-{
-    margin: 0 0 11px;
-}
 

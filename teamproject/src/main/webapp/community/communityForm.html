@@ -7,7 +7,9 @@
    <meta charset="utf-8">
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <title>하이바 커뮤니티</title>
-    
+   
+ 
+    <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico">
     <link rel="stylesheet" type="text/css" href="../css/common_style.css" >
     <link rel="stylesheet" type="text/css" href="../css/community.css" >
     
@@ -133,14 +135,9 @@ height: 40px; background: #555; }
 </head>
 
 <body>
-  <div class="wrap display-none">
-    <div class="loader"></div>
-    <div class="loaderbefore"></div>
-    <div class="circular"></div>
-    <div class="circular another"></div>
-    <div class="text">Loading</div>
-  </div>
-  <div class="wrapper">
+<div class="wrap display-none" style="z-index: 9999;">
+  <div class="loading"></div>
+</div>
   <header> </header>
 
   <section class="panel" style=""> 
@@ -232,11 +229,11 @@ height: 40px; background: #555; }
 	        <div class="form-group">
 	          <label class="control-label" >파일 업로드</label>
 	            <input type="file" id="file1" name="file1">
-	            <p class="help-block">업로드는 업데이트예정!</p>
+	            <p class="help-block">새로운 파일로 업로드됩니다.</p>
 	        </div>
 	        
 	        <div class="form-group my-view">
-             <label class="col-sm-2 control-label">등록일</label>
+             <label class="control-label">등록일</label>
               <div class="col-sm-10">
                <p id="registerDate" class="form-control-static"></p>
              </div>
@@ -282,11 +279,17 @@ height: 40px; background: #555; }
 			        <button class="button-comment" id="addCommentBtn" type="button">등록</button>
 			      </div>
 			    </form>
+			    
 			  </div>    
 			  <hr>   
-			  <p id="commentCount2" class="commentCount2">댓글갯수</p>
+
 			  <div class="comments">
+			  
+			  <div id='commentCount'></div>
+			 
 			    <div id="communityCommentTable"></div> 
+			    
+			
 			  </div>
 			  
 			      <!-- <a href="#" id="loadMore">Load More</a>
@@ -298,14 +301,16 @@ height: 40px; background: #555; }
 
 
 
+
 <script id="commentTemplateText" type="text/x-handlebars-template">
 
-  <div class="comments">
+  <div class="comments" id="commentCount">
     <div class="comment" data-no="{{commentNo}}">
+
       <div class="comment-avatar"data-no="{{communityBoardNo}}">
         <a href="" data-no="{{commentUserNo}}" style="display:block" onload="draw();">
           {{#if commentUserPhoto}}
-           <img src="../upload/{{commentUserPhoto}}" class="profile-img">
+           <img src="../upload/{{commentUserPhoto}}" class="profile-img" style="width:100%; height:100%; text-align: center;">
           {{else}}                            
            <img src="../images/user-3.png" class="profile-img">              
           {{/if}}  
@@ -313,6 +318,7 @@ height: 40px; background: #555; }
       </div>
 
       <div class="comment-box">
+
         <div class="comment-text">{{comment}}</div>
         <div class="comment-footer">
 
@@ -322,17 +328,30 @@ height: 40px; background: #555; }
             </span>
             <span class="comment-date">{{commentRegisterDate}}</span>
            </div>
-           <div>
+
+          <div>
             <button id="updateCommentBtn" type="button" data-no="{{commentNo}}">변경</button>
             <button id="deleteCommentBtn" type="button" data-no="{{commentNo}}">삭제</button>
           </div>
+
          </div>
         </div>
+
       </div>
+
     </div>
   </div>
 
 </script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+	var 
+    $("#div.comment-text > span.comment-author").size());
+});
+</script>
+
 
 
 <!-- 

@@ -8,18 +8,18 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport"
-	content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+   content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
 <title>프로젝트-스케줄</title>
 <!--[if lt IE 9]>
       <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
 <link rel="stylesheet"
-	href="https://fonts.googleapis.com/css?family=Raleway">
+   href="https://fonts.googleapis.com/css?family=Raleway">
 <link rel="stylesheet"
-	href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+   href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 <link rel="stylesheet"
-	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+   href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 
 <link href='../css/fullcalendar.css' rel='stylesheet' />
 <link rel="stylesheet" type="text/css" href="../css/common_style.css">
@@ -30,333 +30,365 @@
 
 <style>
 .container {
-	width: 600px;
+   width: 600px;
 }
 
 .detailFont {
-	font-size: 20px;
-	color: rgb(157, 201, 42);
+   font-size: 20px;
+   color: rgb(157, 201, 42);
 }
 
 .title {
-	font-size: 30px;
+   font-size: 30px;
 }
 
 #dday {
-	font-size: 50px;
-	font-weight: bold;
+   font-size: 50px;
+   font-weight: bold;
+}
+
+.thumbnail .caption {
+    padding: 9px;
+    color: #333;
+    height: 140px;
+}
+@media (min-width: 1200px){
+ .col-lg-4 {
+    width: 24%;
+}
+}
+.img-responsive, .thumbnail>img, .thumbnail a>img, .carousel-inner>.item>img, .carousel-inner>.item>a>img {
+    display: block;
+    width: 100% \9;
+    max-width: 100%;
+    height: 250px;
 }
 </style>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script
-	src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
+   src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
 <script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+   src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script
-	src="http://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/a549aa8780dbda16f6cff545aeabc3d71073911e/src/js/bootstrap-datetimepicker.js"></script>
+   src="http://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/a549aa8780dbda16f6cff545aeabc3d71073911e/src/js/bootstrap-datetimepicker.js"></script>
 <title>Insert title here</title>
 </head>
 <!-- test -->
 <script type="text/javascript">
-	
+   
 </script>
 <body>
-	<div class="wrapper">
-		<header> </header>
-		<section class="panel">
-			<aside class="header-top" style="float: left;">
-				<ul class="aside-nav">
-					<li class="f-r"><a href="#"></a></li>
-					<li class="f-r iconMemberPlus" data-toggle="tooltip"
-						data-placement="bottom" title="그룹추가하기"><a href="#"></a></li>
-					<li class="f-r iconSchedulePlus" data-toggle="tooltip"
-						data-placement="bottom" title="일정추가하기"><a href="#"></a></li>
-					<li class="f-r iconBell user-alert"
-						style="display: block; cursor: pointer"><i
-						class="glyphicon glyphicon-exclamation-sign alert-icon"
-						style="color: red; position: absolute; font-size: 15px; top: 10px; display: none"></i>
-					</li>
+   <div class="wrapper">
+      <header> </header>
+      <section class="panel">
+         <aside class="header-top" style="float: left;">
+            <ul class="aside-nav">
+               <li class="f-r"><a href="#"></a></li>
+               <li class="f-r iconMemberPlus" data-toggle="tooltip"
+                  data-placement="bottom" title="그룹추가하기"><a href="#"></a></li>
+               <li class="f-r iconSchedulePlus" data-toggle="tooltip"
+                  data-placement="bottom" title="일정추가하기"><a href="#"></a></li>
+               <li class="f-r iconBell user-alert"
+                  style="display: block; cursor: pointer"><i
+                  class="glyphicon glyphicon-exclamation-sign alert-icon"
+                  style="color: red; position: absolute; font-size: 15px; top: 10px; display: none"></i>
+               </li>
 
-				</ul>
-				<p class="f-r logout" style="float: right;">
-					<a href="#">로그아웃</a>
-				</p>
-				<div class="alert-box"
-					style="position: absolute; background-color: rgba(0, 0, 0, 0.5); max-width: 250px; margin: 10px; left: 50px; top: 60px; color: #fff">
-				</div>
-			</aside>
+            </ul>
+            <p class="f-r logout" style="float: right;">
+               <a href="#">로그아웃</a>
+            </p>
+            <div class="alert-box"
+               style="position: absolute; background-color: rgba(0, 0, 0, 0.5); max-width: 250px; margin: 10px; left: 50px; top: 60px; color: #fff">
+            </div>
+         </aside>
 
-			<div class="section-wrap">
-				<div class="make-top">
-					<div class="make-text"
-						style="position: fixed; left: 20px; z-index: 2;">
-						<h2>
-							<span class="my-profile"
-								style="display: block; text-align: center; padding-left: 0px;">
-								<img src="" id="profilePhoto"
-								style="width: 80px; height: 80px; margin-top: 90px;" />
-							</span><br> <span id="user" class="my-login" data-value=""></span>님의
-							상세정보
-						</h2>
-					</div>
-				</div>
-
-
-
-
-				<form class="navbar-form navbar-left" role="search">
-					<div class="form-group">
-						<input type="text" class="form-control" placeholder="Search">
-						<button type="button" class="btn btn-default">
-							<i class="fa fa-search w3-xlarge"></i>
-						</button>
-						<button type="button" class="btn btn-default"
-							onclick="location.href='MySchedule.html'">
-							<i class="fa fa-bars w3-xlarge" aria-hidden="true"></i>
-						</button>
-						<button type="button" class="btn btn-default"
-							onclick="location.href='checkMySchedule.html'">
-							<i class="fa fa-calendar w3-xlarge" aria-hidden="true"></i>
-						</button>
-					</div>
-				</form>
-
-				<div class="sectionbar-line">
-					<hr align=center width=100%>
-				</div>
+         <div class="section-wrap">
+            <div class="make-top">
+               <div class="make-text"
+                  style="position: fixed; left: 20px; z-index: 2;">
+                  <h2>
+                     <span class="my-profile"
+                        style="display: block; text-align: center; padding-left: 0px;">
+                        <img src="" id="profilePhoto"
+                        style="width: 80px; height: 80px; margin-top: 90px;" />
+                     </span><br> <span id="user" class="my-login" data-value=""></span>님의
+                     상세정보
+                  </h2>
+               </div>
+            </div>
 
 
 
 
-				<div id="schedule-cal">
-					<div id="groupName"></div>
-				</div>
+            <form class="navbar-form navbar-left" role="search">
+               <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Search">
+                  <button type="button" class="btn btn-default">
+                     <i class="fa fa-search w3-xlarge"></i>
+                  </button>
+                  <button type="button" class="btn btn-default"
+                     onclick="location.href='MySchedule.html'">
+                     <i class="fa fa-bars w3-xlarge" aria-hidden="true"></i>
+                  </button>
+                  <button type="button" class="btn btn-default"
+                     onclick="location.href='checkMySchedule.html'">
+                     <i class="fa fa-calendar w3-xlarge" aria-hidden="true"></i>
+                  </button>
+               </div>
+            </form>
+
+            <div class="sectionbar-line">
+               <hr align=center width=100%>
+            </div>
 
 
-				<div id="detail">
-					<h2 class="title">그룹1의 친구 생일 파티</h2>
-					<div class="schedule-date">
-						<h3>날짜</h3>
-						<hr class="section-bar"
-							style="border: solid; color: rgb(157, 201, 42);"></hr>
-						<div class="date">
-							<h1 id="dday"></h1>
-							<p class="appointmentDate"></p>
-						</div>
-					</div>
+
+
+            <div id="schedule-cal">
+               <div id="groupName"></div>
+            </div>
+
+
+            <div id="detail">
+               <h2 class="title">그룹1의 친구 생일 파티</h2>
+               <div class="schedule-date">
+                  <h3>날짜</h3>
+                  <hr class="section-bar"
+                     style="border: solid; color: rgb(157, 201, 42);"></hr>
+                  <div class="date">
+                     <h1 id="dday"></h1>
+                     <p class="appointmentDate"></p>
+                  </div>
+               </div>
 
 
 
 
-					<!--  
-	2016.11.1 수정사항 : 중기예보 XML data에 맞게 
-	도시(city) 최고기온(maxTemp) 최저기온(minTemp) 날씨 상태(state)로 수정 
+               <!--  
+   2016.11.1 수정사항 : 중기예보 XML data에 맞게 
+   도시(city) 최고기온(maxTemp) 최저기온(minTemp) 날씨 상태(state)로 수정 
  -->
-					<div id="weather">
-						<h3>날씨</h3>
-						<div class="colorbar"></div>
-						<div id="weather-wrap">
-							<div class="wrap-dayweather">
-								<div class="weather-city"></div>
-								<div class="weather-img">
-									<img src="">
-								</div>
-								<div class="weather-temperature-mx"></div>
-								<div class="weather-temperature-mn"></div>
-								<div class="weather-state"></div>
-								<hr class="section-bar"
-									style="border: solid; color: rgb(157, 201, 42);"></hr>
-							</div>
-						</div>
-					</div>
+               <div id="weather">
+                  <h3>날씨</h3>
+                  <div class="colorbar"></div>
+                  <div id="weather-wrap">
+                     <div class="wrap-dayweather">
+                        <div class="weather-city"></div>
+                        <div class="weather-img">
+                           <img src="">
+                        </div>
+                        <div class="weather-temperature-current"></div>
+                        <div class="weather-temperature-mx"></div>
+                        <div class="weather-temperature-mn"></div>
+                        <div class="weather-state"></div>
+                        <hr class="section-bar"
+                           style="border: solid; color: rgb(157, 201, 42);"></hr>
+                     </div>
+                  </div>
+               </div>
 
-					<div>
-						<h3>장소</h3>
-						<hr class="section-bar"
-							style="border: solid; color: rgb(157, 201, 42);"></hr>
-						<p class="placeName"></p>
+               <div>
+                  <h3>장소</h3>
+                  <hr class="section-bar"
+                     style="border: solid; color: rgb(157, 201, 42);"></hr>
+                  <p class="placeName"></p>
 
-						<div class="btn-group">
-						<ul>
-							<li><a href="#" id="list" class="btn btn-default btn-sm"><span
-								class="glyphicon glyphicon-th-list"> </span>축제</a></li>
-							<li> <a href="#"
-								id="grid" class="btn btn-default btn-sm"><span
-								class="glyphicon glyphicon-th"></span>숙박</a></li>
-						</ul>
-						</div>
+                  <div class="btn-group">
+               
+                  <ul>
+                     <li><a href="#" id="list" class="btn btn-default"><span
+                        class="glyphicon glyphicon-th-list"> </span>축제</a></li>
+                     <li> <a href="#"
+                        id="grid" class="btn btn-default"><span
+                        class="glyphicon glyphicon-th"></span>숙박</a></li>
+                  </ul>
+                  </div>
+                     <br>   
+
+                  <div id="products article" class="row list-group">
+                     <!-- <div class="item  col-xs-4 col-lg-4">
+                        <div class="thumbnail">
+                           <img class="group list-group-image"
+                              src="http://placehold.it/400x250/000/fff" alt="" />
+                           <div class="caption">
+                              <h4 class="group inner list-group-item-heading">Product
+                                 title</h4>
+                              <p class="group inner list-group-item-text">Product
+                                 description... Lorem ipsum dolor sit amet, consectetuer
+                                 adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
+                                 laoreet dolore magna aliquam erat volutpat.</p>
+                              <div class="row">
+                                 <div class="col-xs-12 col-md-6">
+                                    <p class="lead">$21.000</p>
+                                 </div>
+                                 <div class="col-xs-12 col-md-6">
+                                    <a class="btn btn-success"
+                                       href="http://www.jquery2dotnet.com">Add to cart</a>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div> -->
+                  </div>
+                  
+                  <div id="products2 article" class="row list-group" style="display:none;">
+                     <!-- <div class="item  col-xs-4 col-lg-4">
+                        <div class="thumbnail">
+                           <img class="group list-group-image"
+                              src="http://placehold.it/400x250/000/fff" alt="" />
+                           <div class="caption">
+                              <h4 class="group inner list-group-item-heading">Product
+                                 title</h4>
+                              <p class="group inner list-group-item-text">Product
+                                 description... Lorem ipsum dolor sit amet, consectetuer
+                                 adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
+                                 laoreet dolore magna aliquam erat volutpat.</p>
+                              <div class="row">
+                                 <div class="col-xs-12 col-md-6">
+                                    <p class="lead">$21.000</p>
+                                 </div>
+                                 <div class="col-xs-12 col-md-6">
+                                    <a class="btn btn-success"
+                                       href="http://www.jquery2dotnet.com">Add to cart</a>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div> -->
+                  </div>
+                  
+                  
+               </div>
+            </div>
+         </div>
+      </section>
+   </div>
+   <script id="divTemplateText" type="text/x-handlebars-template">
+            <h1 class="title"><span class="joinGroup1">{{groupName}}</span>  그룹의  <span class="joinGroup2">{{title}}</span> 일정입니다.</h1><br>
+         
+
+            <div class="schedule-date">
+               <div class="detailFont">날짜</div>
+               <hr class="section-bar" style="border:solid; color: rgb(157, 201, 42);"></hr>
+            
+
+            <div class="date">
+                  <h1 id="dday">D-day {{dday}}</h1>
+                     <p class="appointmentDate"><span class="dateText1">Start On:</span>{{start}}<br>
+                                                             <span class="dateText2">End On:</span>&nbsp;&nbsp;{{end}}</p>
+               </div>
+            </div><br>
+            <br>
+            
+
+            <div>
+               <div class="detailFont">날씨</div>
+                  <hr class="section-bar" style="border:solid; color: rgb(157, 201, 42);"></hr>
+               <div id="weather-wrap">
+                 <div class="wrap-dayweather">
+                     <div class="weather-img">
+                        <img src="">
+                     </div>
+                     <div class="weather-temperature-current">{{currentTemp}}</div>
+                     <div class="weather-temperature-mx"> MAX:{{maxTemp}}</div>
+                     <div class="weather-temperature-mn"> LOW:{{minTemp}}</div>
+
+                  <div>
+                  
+                     <div class="weather-state">{{state}}</div>
+                    </div> 
+
+                        <div class="weather-humidity"></div>
+                     <div class="weather-windspeed"></div>
+                 </div>
+              </div>
+            </div><br>
+            <br>
+            
+            <div>
+               <div class="detailFont">장소</div>
+               <hr class="section-bar" style="border:solid; color: rgb(157, 201, 42);"></hr>
+                  <p class="placeName">{{placeName}}</p><br>
+               <br>
+               
+               <div class="detailFont">축제 / 숙박</div>
+               <hr class="section-bar" style="border:solid; color: rgb(157, 201, 42);"></hr>
+
+            
 
 
-						<div id="products article" class="row list-group">
-							<!-- <div class="item  col-xs-4 col-lg-4">
-								<div class="thumbnail">
-									<img class="group list-group-image"
-										src="http://placehold.it/400x250/000/fff" alt="" />
-									<div class="caption">
-										<h4 class="group inner list-group-item-heading">Product
-											title</h4>
-										<p class="group inner list-group-item-text">Product
-											description... Lorem ipsum dolor sit amet, consectetuer
-											adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
-											laoreet dolore magna aliquam erat volutpat.</p>
-										<div class="row">
-											<div class="col-xs-12 col-md-6">
-												<p class="lead">$21.000</p>
-											</div>
-											<div class="col-xs-12 col-md-6">
-												<a class="btn btn-success"
-													href="http://www.jquery2dotnet.com">Add to cart</a>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div> -->
-						</div>
-						
-						<div id="products2 article" class="row list-group" style="display:none;">
-							<!-- <div class="item  col-xs-4 col-lg-4">
-								<div class="thumbnail">
-									<img class="group list-group-image"
-										src="http://placehold.it/400x250/000/fff" alt="" />
-									<div class="caption">
-										<h4 class="group inner list-group-item-heading">Product
-											title</h4>
-										<p class="group inner list-group-item-text">Product
-											description... Lorem ipsum dolor sit amet, consectetuer
-											adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
-											laoreet dolore magna aliquam erat volutpat.</p>
-										<div class="row">
-											<div class="col-xs-12 col-md-6">
-												<p class="lead">$21.000</p>
-											</div>
-											<div class="col-xs-12 col-md-6">
-												<a class="btn btn-success"
-													href="http://www.jquery2dotnet.com">Add to cart</a>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div> -->
-						</div>
-						
-						
-					</div>
-				</div>
-			</div>
-		</section>
-	</div>
-	<script id="divTemplateText" type="text/x-handlebars-template">
-				<h1 class="title"><span class="joinGroup1">{{groupName}}</span>  그룹의  <span class="joinGroup2">{{title}}</span> 일정입니다.</h1><br>
-			
+               <div class="btn-group">
+                  <ul>
+                     <li class="festiBtn"><a href="#" id="list" class="btn btn-primary"><span
+                        class="glyphicon glyphicon-heart"></span>   축제</a></li>
 
-				<div class="schedule-date">
-					<div class="detailFont">날짜</div>
-					<hr class="section-bar" style="border:solid; color: rgb(157, 201, 42);"></hr>
-				
+                     <li class="accBtn"><a href="#" id="grid" class="btn btn-primary"><span
+                        class="glyphicon glyphicon-home"></span>   숙박</a></li>
+                  </ul>
+               </div>
+                  
+               <article id="products" class="row list-group"></article>
+               <article id="products2" class="row list-group" style="display:none;"></article>
+            </div>
 
-				<div class="date">
-						<h1 id="dday">D-day {{dday}}</h1>
-							<p class="appointmentDate"><span class="dateText1">Start On:</span>{{start}}<br>
-																				 <span class="dateText2">End On:</span>&nbsp;&nbsp;{{end}}</p>
-					</div>
-				</div><br>
-				<br>
-				
 
-				<div>
-					<div class="detailFont">날씨</div>
-						<hr class="section-bar" style="border:solid; color: rgb(157, 201, 42);"></hr>
-					<div id="weather-wrap">
-				 	 <div class="wrap-dayweather">
-							<div class="weather-img">
-								<img src="">
-							</div>
-				 	  	
-				 	  	<div class="weather-temperature-mx"> MAX:{{maxTemp}}</div>
-				 	  	<div class="weather-temperature-mn"> LOW:{{minTemp}}</div>
 
-						<div>
-				 	  	<div class="weather-city">{{city}}</div>
-				 	  	<div class="weather-state">{{state}}</div>
-				 	 	</div> 
 
-								<div class="weather-humidity"></div>
-				 	  	<div class="weather-windspeed"></div>
-				 	 </div>
-				  </div>
-				</div><br>
-				<br>
-				
-				<div>
-					<div class="detailFont">장소</div>
-					<hr class="section-bar" style="border:solid; color: rgb(157, 201, 42);"></hr>
-						<p class="placeName">{{placeName}}</p>
-					
-					<div class="btn-group">
-						<ul>
-							<li><a href="#" id="list" class="btn btn-default btn-sm"><span
-								class="glyphicon glyphicon-th-list"> </span>축제</a></li>
-							<li> <a href="#"
-								id="grid" class="btn btn-default btn-sm"><span
-								class="glyphicon glyphicon-th"></span>숙박</a></li>
-						</ul>
-						</div>
-						
-					<article id="products" class="row list-group">
-					</article>
-
-					<article id="products2" class="row list-group" style="display:none;">
-					</article>
-
-				</div>
 </script>
 
-	<script id="festiResult" type="text/x-handlebars-template">
-		<div class="item  col-xs-4 col-lg-4">
-							<div class="thumbnail">
-								<img class="group list-group-image"
-									src={{firstimage}} alt="" />
-								<div class="caption">
-									<h4 class="group inner list-group-item-heading">{{title}}</h4>
-									<p class="group inner list-group-item-text">{{addr1}} {{addr2}}</p>
-									<p class="group inner list-group-item-text">{{tel}}</p>
-									<div class="row">
-										<div class="col-xs-12 col-md-6">
-										</div>
-										<div class="col-xs-12 col-md-6">
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-	</script>
-	
-	
-	
+   <script id="festiResult" type="text/x-handlebars-template">
+         <div class="item  col-xs-4 col-lg-4">
+                     <div class="thumbnail">
+                                  {{#if firstimage}}
+                        <img class="group list-group-image" src="{{firstimage}}" alt="" />
+                                    {{else}}  
+                                       <img class="group list-group-image" src="../images/default.jpg" alt=""/>
+                                  {{/if}} 
+                        <div class="caption">
+                           <h4 class="group inner list-group-item-heading">{{title}}</h4>
+                           <p class="group inner list-group-item-text">{{addr1}} {{addr2}}</p>
+                           <p class="group inner list-group-item-text">{{tel}}</p>
+                           <div class="row">
+                              <div class="col-xs-12 col-md-6">
+                              </div>
+                              <div class="col-xs-12 col-md-6">
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+   </script>
+   
+   
+   
 <script id="accResult" type="text/x-handlebars-template">
-		<div class="item  col-xs-4 col-lg-4">
-							<div class="thumbnail">
-								<img class="group list-group-image"
-									src={{firstimage}} alt="" />
-								<div class="caption">
-									<h4 class="group inner list-group-item-heading">{{title}}</h4>
-									<p class="group inner list-group-item-text">{{addr1}} {{addr2}}</p>
-									<p class="group inner list-group-item-text">{{tel}}</p>
-									<div class="row">
-										<div class="col-xs-12 col-md-6">
-										</div>
-										<div class="col-xs-12 col-md-6">
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-	</script>
+      <div class="item  col-xs-4 col-lg-4">
+                     <div class="thumbnail">
+                                  {{#if firstimage}}
+                        <img class="group list-group-image" src="{{firstimage}}" alt="" />
+                                    {{else}}  
+                                       <img class="group list-group-image" src="../images/default.jpg" alt=""/>
+                                  {{/if}} 
+                        <div class="caption">
+                           <h4 class="group inner list-group-item-heading">{{title}}</h4>
+                           <p class="group inner list-group-item-text">{{addr1}} {{addr2}}</p>
+                           <p class="group inner list-group-item-text">{{tel}}</p>
+                           <div class="row">
+                              <div class="col-xs-12 col-md-6">
+                              </div>
+                              <div class="col-xs-12 col-md-6">
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+   </script>
 
-	<script id="groupTemplateText" type="text/x-handlebars-template">
-	<a>{{groupName}}</a>
-	</script>
-	<script id="inviteMessage" type="text/x-handlebars-template">       
+   <script id="groupTemplateText" type="text/x-handlebars-template">
+   <a>{{groupName}}</a>
+   </script>
+   <script id="inviteMessage" type="text/x-handlebars-template">       
     <div class="invite-box" style="display:none" data-value="{{memberNo}}">             
       <p>{{name}} 님이 <span id="inviteGroupNo" > {{groupName}} 그룹에 초대하였습니다</span></p>
         <ul>
@@ -365,32 +397,32 @@
         </ul>     
      </div>  
   </script>
-	<script src="../node_modules/jquery/dist/jquery.min.js"></script>
-	<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-	<script src="../node_modules/handlebars/dist/handlebars.min.js"></script>
-	<script type="text/javascript" src="../member/memberApp.js"></script>
-	<script type="text/javascript" src="../js/common.js"></script>
-	<script type="text/javascript" src="../js/include.js"></script>
-	<script type="text/javascript" src="../js/bit.js"></script>
-	<script type="text/javascript" src="../member/memberApp.js"></script>
-	<script type="text/javascript"
-		src="../memberInvite/memberInvitemessageApp.js"></script>
-	<script type="text/javascript" src="detailInfo.js"></script>
-	<script>
-		ajaxLoginUser()
-		ajaxGroupInviteListMessage()
-		//ajaxEventLocationList()
-		//ajaxgetAreaCode()
+   <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+   <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+   <script src="../node_modules/handlebars/dist/handlebars.min.js"></script>
+   <script type="text/javascript" src="../member/memberApp.js"></script>
+   <script type="text/javascript" src="../js/common.js"></script>
+   <script type="text/javascript" src="../js/include.js"></script>
+   <script type="text/javascript" src="../js/bit.js"></script>
+   <script type="text/javascript" src="../member/memberApp.js"></script>
+   <script type="text/javascript"
+      src="../memberInvite/memberInvitemessageApp.js"></script>
+   <script type="text/javascript" src="detailInfo.js"></script>
+   <script>
+      ajaxLoginUser()
+      ajaxGroupInviteListMessage()
+      //ajaxEventLocationList()
+      //ajaxgetAreaCode()
 
-		if (location.search.startsWith("?")) { // 예) ?no=xxx
-			var no = location.search.split("=")[1];
-			ajaxMyScheduleLoad(no)
-			//ajaxEventLocationList(no)
-			//ajaxMidTermWeather()
-			$(".my-new").css("display", "none")
-		} else {
-			$(".my-view").css("display", "none")
-		}
-	</script>
+      if (location.search.startsWith("?")) { // 예) ?no=xxx
+         var no = location.search.split("=")[1];
+         ajaxMyScheduleLoad(no)
+         //ajaxEventLocationList(no)
+         //ajaxMidTermWeather()
+         $(".my-new").css("display", "none")
+      } else {
+         $(".my-view").css("display", "none")
+      }
+   </script>
 </body>
 </html>

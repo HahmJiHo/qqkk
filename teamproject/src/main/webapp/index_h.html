@@ -23,12 +23,13 @@
         <link rel="stylesheet" href="css/main/main.css">
         <link rel="stylesheet" href="css/modal_style.css">
         <link rel="stylesheet" href="css/main/responsive.css">
-		    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+        <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
         <link rel="stylesheet" type="text/css" href="css/animate.css">
         <link rel="stylesheet" type="text/css" href="css/color/violet.css">
         <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" />
-		    <style>
+        <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+        <style>
 .Btn2 { background-color: #e7e7e7;color: black;} /* Gray */
 .Btn3 { background-color:rgb(157, 201, 42); color: black;} /* Gray */
 
@@ -216,9 +217,10 @@
 {
     padding:170px 0px;    
 }
+
 </style>
     </head>
-	
+  
     <body>
 <div class="wrap display-none">
   <div class="loader"></div>
@@ -289,22 +291,22 @@
               class="w3-closebtn w3-hover-red w3-container w3-padding-8 w3-display-topright"
               style="z-index:10000"
             title="Close Modal">&times;</span>
-            <div class="login-container">	   
-						  <form method="post" class="form-login">
-						    <label for="LoginEmail" class="login__label">Email</label>
-						    <input id="LoginEmail" class="login__input" type="text" />
-						   
-						    <label for="LoginPassword" class="login__label">Password</label>
-						    <input id="LoginPassword" class="login__input" type="password" />
-						   
-						    <label for="" class="login__label--checkbox">
-						      <input id="saveEmail" type="checkbox" class="login__input--checkbox" />
-						      Keep me Signed in
-						    </label>
-						    <button type="button" class="login__submit" id="loginBtn">Sign in</button>
-						  </form>
-						</div>
-						 <div class="login-container">
+            <div class="login-container">    
+              <form method="post" class="form-login">
+                <label for="LoginEmail" class="login__label">Email</label>
+                <input id="LoginEmail" class="login__input" type="text" />
+               
+                <label for="LoginPassword" class="login__label">Password</label>
+                <input id="LoginPassword" class="login__input" type="password" />
+               
+                <label for="" class="login__label--checkbox">
+                  <input id="saveEmail" type="checkbox" class="login__input--checkbox" />
+                  Keep me Signed in
+                </label>
+                <button type="button" class="login__submit" id="loginBtn">Sign in</button>
+              </form>
+            </div>
+             <div class="login-container">
                 <form class="form-login"  method="post" enctype="multipart/form-data">
                   <label for="name" class="login__label">NAME</label>
                    <input type="text" id="name" class="login__input" name="usrId" required>
@@ -313,21 +315,30 @@
                    <input type="text" id="nicknm" class="login__input" name="usrName" required>
                   
                    <label for="email" class="login__label">EMAIL</label>
-                   <input type="text" id="email" class="login__input" name="email" required>
+                   <input type="text" id="email" class="login__input" name="email" required> 
                    
                    <div class="join-email-box" style="position: relative;">
-				             <p id="checkedEmail" style="position: absolute; top:-40px; margin:0px"></p>
-				           </div>
-				           
-				           <label for="password" class="login__label">PASSWORD</label>
-				           <input type="password" id="password" class="login__input" name="psw" required>
-				           
-				           <label for="file" class="file-label login__label">PHOTO</label><br> 
+                     <p id="checkedEmail" style="position: absolute; top:-40px; margin:0px"></p>
+                   </div><br>
+                   
+                   <label for="password" class="login__label">PASSWORD</label>
+                   <input type="password" id="password" class="login__input" name="psw" required>
+                   
+                
+                   <label for="file" class="file-label login__label">PHOTO</label>
                    <input type="file" name="filename" id="PHOT_PATH"/>
                    <button type="button" id="addBtn" class="login__submit" type="button">SIGN UP</button>
                 </form>
              </div>
           </div>
+          
+<script type="text/javascript">
+
+</script>          
+          
+          
+          
+          
         <!--   <div class="w3-section" style="margin-top:0px!important; margin-bottom:0px!important; ">
             
             <div class="group">      
@@ -377,16 +388,16 @@
         <section id="home">     
           <div id="home-carousel" class="carousel slide" data-interval="false">
               <div class="carousel-inner">
-					   	<div class="item active"  style="background-image: url('images/main1.png')">
-						     <div class="overlay">
-						         <div class="container">			             
-						            <div class="main-heading-content col-md-12 col-sm-12 text-center">
-						        <p class="main-heading-title" style="font-size: 35px; padding-bottom:20px;">HIBA<span class="main-element themecolor" data-elements="모임별로 일정을 알려주는 hiba!!!,모임별로 일정을 쉽게 잡아봐!,만나는 주변 장소와 날씨도 알아봐!,찍은 사진도 공유해 봐!"></span></p>
-						        <p class="main-heading-text">이번 달은 무슨 모임이 있지?<br/>동창 모임 3번, 여행 모임 1번.. 그리고 그 근처에 뭐가 있더라?<br>복잡한 모임 관리는 하이바에 맡기고,<br> 함께 하는 즐거움을 만끽하세요!</p>
-						            </div>						              
-						         </div>
-						     </div>  
-						 </div>     
+              <div class="item active"  style="background-image: url('images/main1.png')">
+                 <div class="overlay">
+                     <div class="container">                   
+                        <div class="main-heading-content col-md-12 col-sm-12 text-center">
+                    <p class="main-heading-title" style="font-size: 35px; padding-bottom:20px;">HIBA<span class="main-element themecolor" data-elements="모임별로 일정을 알려주는 hiba!!!,모임별로 일정을 쉽게 잡아봐!,만나는 주변 장소와 날씨도 알아봐!,찍은 사진도 공유해 봐!"></span></p>
+                    <p class="main-heading-text">이번 달은 무슨 모임이 있지?<br/>동창 모임 3번, 여행 모임 1번.. 그리고 그 근처에 뭐가 있더라?<br>복잡한 모임 관리는 하이바에 맡기고,<br> 함께 하는 즐거움을 만끽하세요!</p>
+                        </div>                          
+                     </div>
+                 </div>  
+             </div>     
             </div>
          
                   
@@ -455,7 +466,7 @@
                             </a>
                             <div class="media-body">
                                 <h3>Users Group</h3>
-                                <p>Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Curabitur aliquet quam.</p>
+                                <p><strong>모임별로 쉽게 잡아봐!</strong><br>복잡한 모임 관리는 하이바에 맡기고,<br>함께 하는 즐거움을 만끽하세요!</p>
                             </div>
                         </div>
 
@@ -468,7 +479,7 @@
                             </a>
                             <div class="media-body">
                                 <h3>Weather Services</h3>
-                                <p>Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Curabitur aliquet quam.</p>
+                                <p><strong>만나는 주변 장소도 알아봐!</strong><br>장소가 정해주면 주변 맛집, 카페, 축제등,<br> 다양한 정보를 알아보세요!</p>
                             </div>
                         </div>
                         
@@ -481,7 +492,7 @@
                             </a>
                             <div class="media-body">
                                 <h3>Map Services</h3>
-                                <p>Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Curabitur aliquet quam.</p>
+                                <p><strong>약속날 날씨도 미리봐!</strong><br>모임날 어떤 준비를 해야되는지<br> 날씨를 확인하고 준비하세요!</p>
                             </div>
                         </div>
                     </div>
@@ -493,7 +504,7 @@
                             </a>
                             <div class="media-body">
                                 <h3>Photo Sharing Service</h3>
-                                <p>Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Curabitur aliquet quam.</p>
+                                <p><strong>찍은 사진 공유해 봐!</strong><br>모인 날짜별로 사진을 정리할 수 있는 앨범으로<br>멤버들과 추억을 공유하세요!</p>
                             </div>
                         </div>
                     </div>
@@ -508,30 +519,30 @@
 
                     <div class="section-title text-center wow fadeInUp">
                         <h2>About Us</h2>    
-                        <p>안녕하세요 비트캠프 자바85기 프로젝트 팀 입니다.</p>
+                        <p>안녕하세요 BITCAMP JAVA85기 프로젝트 팀 QQKK입니다.</p>
                     </div>
                                <div class="col-md-5 col-md-offset-1 wow fadeInLeft">
 
                         <div class="subtitle text-center">
-                            <h3>Testimonials</h3>
-                            <p>Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Mauris blandit aliquet elit, eget tincidunt.</p>
+                            <h3>PROJECT TEAM MEMBER</h3>
+                           <!--  <p>Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Mauris blandit aliquet elit, eget tincidunt.</p> -->
                         </div>
 
                         <div id="testimonial">
 
                             <div class="tst-item clearfix">
                                 <div class="tst-single clearfix">
-                                    <img src="img/client/1.jpg" alt="Client" class="img-circle">
+                                    <img src="images/member/main_park.jpg" alt="Client" class="img-circle">
                                     <div class="tst-content">
-                                        <p>Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Mauris blandit aliquet elit, eget tincidunt.</p>
+                                        <p><strong>DEVELOPER</strong> Park.Nahyun<br><i class="fa fa-envelope-o"></i> s01049029479@gmail.com <br><i class="fa fa-phone"></i> 010-4902-9479 <br><i class="fa fa-github"></i> github.com/nahyunpark</p>
                                         <span>박나현</span>
                                     </div>
                                 </div>
 
                                 <div class="tst-single clearfix">
-                                    <img src="img/client/2.jpg" alt="Client" class="img-circle">
+                                    <img src="images/member/main_ham.jpg" alt="Client" class="img-circle">
                                     <div class="tst-content">
-                                        <p>Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Mauris blandit aliquet elit, eget tincidunt.</p>
+                                        <p><strong>DEVELOPER</strong> Hahm.Jiho<br><i class="fa fa-envelope-o"></i>  Hahm0418@gmail.com <br><i class="fa fa-phone"></i> 010-4734-2283 <br><i class="fa fa-github"></i> github.com/HahmJiHo</p>
                                         <span>함지호</span>
                                     </div>
                                 </div>
@@ -539,16 +550,16 @@
 
                             <div class="tst-item">
                                 <div class="tst-single clearfix">
-                                    <img src="img/client/3.jpg" alt="Client" class="img-circle">
+                                    <img src="images/member/main_gong.jpg" alt="Client" class="img-circle">
                                     <div class="tst-content">
-                                        <p>Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Mauris blandit aliquet elit, eget tincidunt.</p>
+                                        <p><strong>DEVELOPER</strong> Kong.Andrew<br><i class="fa fa-envelope-o"></i> shkong529@gmail.com <br><i class="fa fa-phone"></i> 010-8754-9084 <br><i class="fa fa-github"></i> github.com/AndrewKong88</p>
                                         <span>공승환</span>
                                     </div>
                                 </div>
                                 <div class="tst-single clearfix">
-                                    <img src="img/client/1.jpg" alt="Client" class="img-circle">
+                                    <img src="images/member/main_lee.jpg" alt="Client" class="img-circle">
                                     <div class="tst-content">
-                                        <p>Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Mauris blandit aliquet elit, eget tincidunt.</p>
+                                        <p><strong>DEVELOPER</strong> Lee.Sangwon<br><i class="fa fa-envelope-o"></i> wonlee6@gmail.com <br><i class="fa fa-phone"></i> 010-0000-0000 <br><i class="fa fa-github"></i> github.com/HahmJiHo</p>
                                         <span>이상원</span>
                                     </div>
                                 </div>
@@ -556,16 +567,16 @@
 
                             <div class="tst-item">
                                 <div class="tst-single clearfix">
-                                    <img src="img/client/2.jpg" alt="Client" class="img-circle">
+                                    <img src="images/member/main_won.jpg" alt="Client" class="img-circle">
                                     <div class="tst-content">
-                                        <p>Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Mauris blandit aliquet elit, eget tincidunt.</p>
+                                        <p><strong>DEVELOPER</strong> Won.Jiseon<br><i class="fa fa-envelope-o"></i> zx080818@gmail.com <br><i class="fa fa-phone"></i> 010-4347-3370 <br><i class="fa fa-github"></i> github.com/WonJiseon</p>
                                         <span>원지선</span>
                                     </div>
                                 </div>
                                 <div class="tst-single clearfix">
-                                    <img src="img/client/3.jpg" alt="Client" class="img-circle">
+                                    <img src="images/member/main_han.jpg" alt="Client" class="img-circle" style="border:1px solid #c0c0c0;">
                                     <div class="tst-content">
-                                        <p>Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Mauris blandit aliquet elit, eget tincidunt.</p>
+                                        <p><strong>DEVELOPER</strong> Han.Daeho<br><i class="fa fa-envelope-o"></i> zx0808@hanmail.net <br><i class="fa fa-phone"></i> 010-0000-0000 <br><i class="fa fa-github"></i> github.com/Handaeho</p>
                                         <span>한대호</span>
                                     </div>
                                 </div>
@@ -578,7 +589,7 @@
 
                         <div class="subtitle text-center">
                             <h3>OUR SKILLS</h3>
-                            <p>Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Mauris blandit aliquet elit, eget tincidunt.</p>
+                           <!--  <p>Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Mauris blandit aliquet elit, eget tincidunt.</p> -->
                         </div>
 
                         <div class="progress-bars">
@@ -617,8 +628,8 @@
                         </div>
 
                         <div class="footer-social wow fadeInUp">
-                            <h3>We are social</h3>
-														<i class="fa fa-github" aria-hidden="true"></i>
+                            <h3>We are Project Github</h3>
+                            <i class="fa fa-github" aria-hidden="true"></i>
                             <p><a href="https://github.com/HahmJiHo/qqkk">https://github.com/HahmJiHo/qqkk</a></p>
                         </div>
 
@@ -647,11 +658,11 @@
         <script type="text/javascript" src="js/typed.js"></script>
         <script type="text/javascript" src="js/main.js"></script>
         <script type="text/javascript" src="js/main/main_nav.js"></script>
-			  <script type="text/javascript" src="js/check.js"></script>			  
-			  <script type="text/javascript" src="js/common.js"></script>
-			  <script type="text/javascript" src="js/bit.js"></script>
-			  <script type="text/javascript" src="member/memberForm.js"></script>
-			  <script type="text/javascript" src="auth/authApp.js"></script>
+        <script type="text/javascript" src="js/check.js"></script>        
+        <script type="text/javascript" src="js/common.js"></script>
+        <script type="text/javascript" src="js/bit.js"></script>
+        <script type="text/javascript" src="member/memberForm.js"></script>
+        <script type="text/javascript" src="auth/authApp.js"></script>
         <script>  
 init() 
 ajaxLogout()
@@ -659,5 +670,5 @@ ajaxLogout()
 </script>
         
         
-    </body>
+ </body>
 </html>

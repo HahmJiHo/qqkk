@@ -107,7 +107,7 @@
 
 .login-nav__item a:hover:after,
 .login-nav__item.active a:after{
-  background-color: rgb(17, 97, 237);
+  background-color: rgb(125, 201, 42);
   height: 2px;
   right: 0;
   bottom: 2px;
@@ -179,13 +179,13 @@
   border-radius: 2rem;
   display: block;
   width: 100%;
-  background-color: rgba(17, 97, 237, .75);
+  background-color: rgba(125, 201, 42, .75);
   border: none;
   cursor: pointer;
 }
 
 .login__submit:hover {
-  background-color: rgba(17, 97, 237, 1);
+  background-color: rgba(125, 201, 42, 1);
 }
 .make-group-submit {
 	color: #ffffff;
@@ -217,5 +217,32 @@
 }
 
 .login__forgot:hover {
-  color: rgb(17, 97, 237);
+  color: rgb(125, 201, 42);
+}
+
+
+
+/* 파일선택 */
+[type="file"] {
+/* Style the color of the message that says 'No file chosen' */
+  color: #878787;
+}
+[type="file"]::-webkit-file-upload-button {
+  /* background: #9dc92a; */
+  background-color: rgba(255, 255, 255, 0.25);
+  border: 2px solid #535353;
+  border-radius: 2rem;
+  color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  font-size: 12px;
+  outline: none;
+  padding: 10px 25px;
+  text-transform: uppercase;
+  transition: all 1s ease;
+}
+
+[type="file"]::-webkit-file-upload-button:hover {
+  border: 2px solid #9dc92a;
+  color: #fff;
+  background-color: transparent;
 }

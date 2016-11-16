@@ -19,7 +19,6 @@
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/5.0.7/sweetalert2.min.css" />
     <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">     
-   
   <style>
 
   /* The switch - the box around the slider */
@@ -79,7 +78,10 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%;
+  
 }
+
+.logOutBtn{cursor: pointer;}
   </style>
   <script>
 
@@ -108,7 +110,8 @@ input:checked + .slider:before {
       </li>
     
     </ul>
-      <p class="f-r logout" style="float: right;"><a href="#">로그아웃</a></p>
+      <p class="logOutBtn" id="logoutBtn" style="float: right;">로그아웃</p>
+      
     <div class="alert-box"
       style="position: absolute; background-color: rgba(0, 0, 0, 0.5); max-width: 250px; margin: 10px; left: 50px; top: 60px; color: #fff">
     </div>

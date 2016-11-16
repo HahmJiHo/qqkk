@@ -19,7 +19,7 @@
 	  <link rel="stylesheet" type="text/css" href="../css/makeCal.css" >
 	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/5.0.7/sweetalert2.min.css" />
     <link rel="stylesheet" href="../css/jquery.minicolors.css">
-	
+		<link rel="stylesheet" type="text/css" href="../css/btn.css" >
 	
 	  <style>
 	    #calendar {	
@@ -177,7 +177,13 @@ top: 4px;
   left:0px !important;
   background: #0d8aa5 !important;
 }
+.logOutBtn{cursor: pointer;} 
+
   </style>
+  
+  
+  
+  
 </head>
 <body>
 <div class="wrap display-none" style="">
@@ -200,7 +206,10 @@ top: 4px;
       </li>
     
     </ul>
-      <p class="f-r logout" style="float: right;"><a href="#">로그아웃</a></p>
+     <!--  <p class="f-r logout" style="float: right;"><a href="#">로그아웃</a></p> -->
+				<p class="logOutBtn" id="logoutBtn" style="float: right;">로그아웃</p>
+			
+			
     <div class="alert-box"
       style="position: absolute; background-color: rgba(0, 0, 0, 0.5); max-width: 250px; margin: 10px; right: 330px; top: 50px; color: #fff">
     </div>
