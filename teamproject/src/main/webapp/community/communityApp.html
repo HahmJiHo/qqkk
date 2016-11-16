@@ -7,7 +7,9 @@
    <meta charset="utf-8">
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <title>하이바 커뮤니티</title>
-    
+   
+   
+    <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico">
     <link rel="stylesheet" type="text/css" href="../css/common_style.css" >
     <link rel="stylesheet" type="text/css" href="../css/community.css" >
     
@@ -127,14 +129,11 @@ height: 40px; background: #555; }
   </style>
  </head>
   
-  <body>
-	<div class="wrap display-none">
-	  <div class="loader"></div>
-	  <div class="loaderbefore"></div>
-	  <div class="circular"></div>
-	  <div class="circular another"></div>
-	  <div class="text">Loading</div>
-	</div>
+<body>
+<div class="wrap display-none" style="z-index: 9999;">
+  <div class="loading"></div>
+</div>
+
 	<div class="wrapper">
   <header> </header>
   
@@ -153,18 +152,16 @@ height: 40px; background: #555; }
       </li>
     </ul>
     <div style='position:absolute;right:0px;top:10px;font-size:15px;'>
-          <span id="userName" class="my-login"></span>
-          <a id="loginBtn" href='../index.html' class="btn btn-success btn-xs my-logout">로그인</a>
-          <a id="logoutBtn" href='../index.html' class="btn btn-success btn-xs my-login">로그아웃</a>
+          <p class="f-r login my-login" style="float: right;"><a href="../index_h.html">로그아웃</a></p>
+          <p class="f-r logout my-logout" style="float: right;"><a href="../index_h.html">로그인</a></p>
+
      </div>
     
    <!--    <p class="f-r logout" style="float: right;"><a href="#">로그아웃</a></p> -->
     <div class="alert-box"
       style="position: absolute; background-color: rgba(0, 0, 0, 0.5); max-width: 250px; margin: 10px; left: 50px; top: 60px; color: #fff">
     </div>
-  </aside>
-  
-  
+   </aside>
 
     <div class="section-wrap" align="center">
       <div class="make-top">
@@ -194,14 +191,12 @@ height: 40px; background: #555; }
 		    </div>
 		    
       -->
-
-
   
-  
-  <!-- Button trigger modal -->
+<!--   
+  Button trigger modal
 	<button type="button" class="button-border2" data-toggle="modal" data-target="#myModal">
 	  모달예제
-	</button>
+	</button> -->
 	
 	<!-- Modal S-->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -239,12 +234,8 @@ height: 40px; background: #555; }
              </div>
        </div>
        
-         
         <br>
-    
-    
       </div>
-      
       <div class="modal-footer">
         <button id="addBtn" type="button" class="btn btn-default my-new">등록</button>
         <button id="updateBtn" type="button" class="btn btn-default my-view">변경</button>
@@ -324,24 +315,13 @@ height: 40px; background: #555; }
             <!-- 모달 E  -->      
       
       
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
     </div>
   </div>
     </div>  
     </div>
   
   
-  
-  
+    
   
  
 	           
@@ -354,28 +334,10 @@ height: 40px; background: #555; }
 		  </div>
 		  
 		<!-- 컨텐츠 E -->  
-
-
-     
    </section> 
   </div>
            
  
-
-
-
-
-<!-- 
-  <div class="pin">
-       <a class="titleLink" href="#" data-no="{{no}}">
-         {{#if file_path}}
-         <img src="../upload/{{file_path}}" style="vertical-align:middle; width:320px; height:250px;">
-         {{else}}                            
-         <img src="http://placehold.it/320x250">               
-         {{/if}}  
-      </a>
- -->
-
 <script id="divTemplateText" type="text/x-handlebars-template">
 {{#each data}}
   <div class="pin">
@@ -454,7 +416,7 @@ height: 40px; background: #555; }
 </script>
 <!-- 커뮤니티 디테일 modal E-->
 
-<!-- 탑버튼 S--
+<!-- 탑버튼 S-->
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script type=text/javascript>
 $(document).ready(function(){
@@ -487,8 +449,6 @@ $(document).ready(function(){
  <!-- 탑버튼 E-->
  
  
- 
- 
 <script src="http://code.jquery.com/jquery-1.8.1.min.js"></script> 
 <script type=text/javascript>
 $(document).ready(function(){
@@ -518,10 +478,6 @@ $(document).ready(function(){
 });
 </script>
  
- <div class="top" > <button type="button" class="button-border button-success" >▲TOP</button> </div>
- 
- 
- 
 
 <script src="../node_modules/handlebars/dist/handlebars.min.js"></script>
 <script src="../node_modules/jquery/dist/jquery.min.js"></script>
@@ -546,7 +502,7 @@ $(document).ready(function(){
 
 
 
- </body>
+</body>
 </html>
 
 
