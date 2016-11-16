@@ -27,7 +27,7 @@ function ajaxGroupList() {
 
 function ajaxGroupName() {
 	$('.wrap').removeClass('display-none');
-	$('body').css({"background" : "#0d8aa5", "z-index" : "99999"})
+	
 	$.getJSON(serverAddr +"/group/list.json" , function(obj) {
 		var result = obj.jsonResult
 		if (result.state != "success") {
@@ -50,7 +50,7 @@ function ajaxGroupName() {
 			}
 		$(".make-text").append(contents)
 		$('.wrap').addClass('display-none');	    
-	    $('body').css({"background" : "" ,"z-index" : "0"})
+	   
 	})
 }
 function ajaxmyScheduleIng() {
