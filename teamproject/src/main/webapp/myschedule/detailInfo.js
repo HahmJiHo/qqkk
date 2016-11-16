@@ -24,7 +24,7 @@ $("#loginBtn").click(function(event) {
    location.href = "../index.html"
 });
 $("#logoutBtn").click(function(event) {
-   location.href = "../index.html"
+   location.href = "../index_h.html"
 });
 
 /*
