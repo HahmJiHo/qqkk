@@ -111,23 +111,6 @@ $("#deleteCommentBtn").click(function(event) {
 
 
 
-/*$("#writeBtn").click(function (e) {
-	if (resultUser.data == null) {
-		alert("로그인하세요")
-		window.location.reload()
-	  } else {
-		  var communityComment = {
-					commentUserNo: $("#userNo3").attr('data-value'),
-					communityBoardNo:$("#no").val(),
-					comment: $("#comment").val(),
-					commentRegisterDate: $("#commentRegisterDate").val()
-
-			}
-	  ajaxAddCommunityComment(communityComment)
-	  }
-})*/	
-
-
 
 
 
@@ -157,36 +140,24 @@ $("#LikeBtn").click(function(event) {
 
 */
 
-//_________________[파일업로드]기능_____________________________________________________//
-
-/*function ajaxAddFilePath() {
-	var formData = new FormData();
-	formData.append("fileUpMember" , $("#userName").attr('data-value'));
-	formData.append("file1", $("input[name=file1]")[0].files[0]);
-	$.ajax({
-		url: serverAddr + '/community/add.json',
-		processData: false,
-		contentType: false,
-		data: formData,
-		type: 'POST',
-		success: function(result){
-		}
-	});
-	window.location.reload();
-};*/
 
 
 
 
 function ajaxLoadCommunity(no) {
+	$('.side-header').css({"display": "none"})
+	$('.selectbar-left').css({"display": "none"})
+	$('.header-top').css({"display": "none"})
+	$('.make-text').css({"display": "none"})
+	$('.wrap').removeClass('display-none');
+	
 	$.getJSON(serverAddr + "/community/detail.json?no=" + no, function(obj) {
 		var result = obj.jsonResult
 		console.log(result)
 		if (result.state != "success") {
 			alert("조회 실패입니다 디테일.")
 			return
-		}
-		
+		}		
 		$("#no").val(result.data.no);
 		$("#userNicName").val(result.data.userNicName);
 		$("#title").val(result.data.title);
@@ -197,6 +168,12 @@ function ajaxLoadCommunity(no) {
 		$("#fileNo").text(result.data.fileNo);
 		$("#filename > img").attr("src", "../upload/" + result.data.filename);
 		$("#boardLike").text(result.data.boardLike);
+		
+	    $('.wrap').addClass('display-none');   
+	    $('.side-header').css({"display": "block"})
+	    $('.header-top').css({"display": "block"})
+	    $('.make-text').css({"display": "block"})
+	    $('.selectbar-left').css({"display": "block"})
 	})
 }
 

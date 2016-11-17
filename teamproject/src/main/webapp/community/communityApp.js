@@ -31,25 +31,20 @@ $("#writeBtn").click(function (e) {
 		location.href = "../index_h.html"
 		return
 	  } 
-	location.href = "communityForm.html"
+	location.href = "communityApp.html"
 });		
 
-
-/*
-$("#writeBtn").click(function (e) {
-	if (resultUser.data == null) {
-		alert("로그인하세요")
-		window.location.reload()
-		return
-	  } 
-	location.href = "communityForm.html"
-})	
-*/
 
 
 
 
 function ajaxCommunityList() {
+	$('.side-header').css({"display": "none"})
+	$('.selectbar-left').css({"display": "none"})
+	$('.header-top').css({"display": "none"})
+	$('.make-text').css({"display": "none"})
+	$('.wrap').removeClass('display-none');
+	
 	$.getJSON(serverAddr + "/community/list.json", function(obj) {
 		var result = obj.jsonResult
 		if (result.state != "success") {
@@ -64,7 +59,7 @@ function ajaxCommunityList() {
 		    window.location.href = "communityForm.html?no=" + $(this).attr("data-no")
 	    })
 	    
-	      // 현재 페이지 번호를 span 태그에 출력한다.
+	      // 현재 페이지 번호를 span 태그에 출력한다.http://localhost:8080/teamproject/makegroup/makegroup.html
 	    pageNo = result.data.pageNo;
 	    totalPage = result.data.totalPage;
 	    $('#pageNo').text(pageNo);
@@ -82,6 +77,12 @@ function ajaxCommunityList() {
 	    } else {
 	    	$('#nextBtn').removeAttr('disabled');
 	    }
+	    
+	    $('.wrap').addClass('display-none');   
+	    $('.side-header').css({"display": "block"})
+	    $('.header-top').css({"display": "block"})
+	    $('.make-text').css({"display": "block"})
+	    $('.selectbar-left').css({"display": "block"})
     })
 }
 
