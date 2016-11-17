@@ -6,6 +6,11 @@ $("#logoutBtn").click(function(event) {
    location.href = "../index.html"
 });
 
+$("a#viewSc").click(function(event) {
+	console.log("click")
+	loacation.href = "detailInfo.html?no=" + $("#viewSc").attr('data-no')
+})
+
 
 function loadBxSlider(num) {
 	var bx = "#bxslider" + num;
@@ -58,6 +63,8 @@ function removeDuplicate(inArray) {
 
 
 function ajaxMygroupList() {
+	/*$('.wrapper').css({"display" : "none"})
+	$('.wrap').removeClass('display-none');*/
    $.getJSON(serverAddr + "/myschedule/list.json", function(obj) {
       var result = obj.jsonResult
       if (result.state != "success") {
@@ -214,6 +221,8 @@ function ajaxMygroupList() {
             }
          }
       }
+    /*  $('.wrap').addClass('display-none');	
+	$('.wrapper').css({"display" : "block"})*/
    })
 }
 
