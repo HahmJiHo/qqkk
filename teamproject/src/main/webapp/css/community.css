@@ -26,7 +26,7 @@
 }
 
 .pin-form-width: {
-  width: 720px;
+	width: 720px;
 }
 
 .pin {
@@ -66,7 +66,7 @@
 }
 
 .pin li span{
-    font-size: 16px;
+	  font-size: 16px;
     text-align: right; 
     padding: 10px 2px 3px 10px;
     color: #751471; 
@@ -115,9 +115,8 @@
 
 
 .pin img {
-	max-width: 100% ;
-	width: expression(this.width > 700 ? 700: true) ;
-	height: auto ;
+  width: 700px;
+  height: auto;
   padding: 10px;
   -webkit-border-radius: 10px 10px 0 0;
   -moz-border-radius: 10px 10px 0 0;
@@ -125,9 +124,8 @@
   overflow: hidden;
 } 
 
-
 .pin h3 {
-  width: 700px;
+	width: 700px;
   font-size: 20px;
   font-weight: bold;
   padding: 10px 0 0 20px;
@@ -141,7 +139,7 @@
 
 
 .pin p {
-  width: 700px;
+	width: 700px;
   padding: 3px 3px 3px 20px; 
   color: #ccc;
   text-align:left;
@@ -152,11 +150,11 @@
 }
 
 
-/* 
+
 .button-write-width {
-  width: 700px;
+	width: 700px;
 }
- */
+
 
 
 
@@ -327,7 +325,7 @@ textarea {
 
 
 .modal-content-com img{
-   width: 100%;
+	 width: 100%;
    height: auto;
 }
 
@@ -587,7 +585,7 @@ textarea {
 }
 
 .comment-form2 .form textarea.input{
-  width: 80%;
+	width: 80%;
   height: 100px;
   padding: 15px;
   float: left;
@@ -595,8 +593,8 @@ textarea {
 
 
 button.button-comment {
-  width: 20%;
-  height: 100px;
+	width: 20%;
+	height: 100px;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   border-radius: 5px;
@@ -979,6 +977,7 @@ button .button2 {
   -moz-border-radius: 0px;
   -webkit-border-radius: 0px;
   border-radius: 0px;
+  width:700px;
 }
 
 
@@ -1026,6 +1025,30 @@ button .button2 .button-write:hover {
 @media (max-width:600px){.w3-modal-content{margin:0 10px;width:auto!important}.w3-modal{padding-top:30px}}
 @media (max-width:768px){.w3-modal-content{width:500px}.w3-modal{padding-top:50px}}
 @media (min-width:993px){.w3-modal-content{width:900px}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

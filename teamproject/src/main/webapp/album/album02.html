@@ -24,10 +24,126 @@
 <style>
 
 #albumlist {float: left}
-#groupinfo { clear: both; }
-.asdf { margin-bottom: 10px; }
-.tttt { float: left; padding-bottom: 20px; clear:both;}
+#groupinfo { clear: both; font-size:20px; }
+.asdf { margin: 10px 0; padding-bottom:5px; }
+.tttt { float: left; padding-bottom: 20px;  padding-right: 20px;}
 .navbar-brand { padding-top: 0px; padding-bottom: 0px; } 
+
+.tasks {
+  margin: auto;
+  float: left;  
+  margin-right: 0.25em;
+   margin-bottom: 0.5em;
+   padding: 0.5em;
+   background: #FFF;
+   border: 1px solid #F3F0F0;
+   position: relative;
+   -webkit-box-shadow: 0 1px 2px #AFAFAF;
+   -moz-box-shadow: 0 1px 2px #AFAFAF;
+   box-shadow: 0 1px 2px #AFAFAF;
+   -webkit-border-radius: 5px;
+   -moz-border-radius: 5px;
+   border-radius: 5px;
+  
+  
+}
+
+
+
+.tasks-lists {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  margin-top: -11px;
+  padding: 10px 4px;
+  width: 19px;
+  height: 3px;
+  font: 0/0 serif;
+  text-shadow: none;
+  color: transparent;
+}
+.tasks-lists:before {
+  content: '';
+  display: block;
+  height: 3px;
+  background: #8c959d;
+  border-radius: 1px;
+  -webkit-box-shadow: 0 6px #8c959d, 0 -6px #8c959d;
+  box-shadow: 0 6px #8c959d, 0 -6px #8c959d;
+}
+
+.tasks-list-item {
+  display: inline-block;
+  line-height: 24px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.tasks-list-item + .tasks-list-item {
+  border-top: 1px solid #f0f2f3;
+}
+
+.tasks-list-cb {
+  display: none;
+}
+
+.tasks-list-mark {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 5px;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #c4cbd2;
+  border-radius: 12px;
+}
+.tasks-list-mark:before {
+  content: '';
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -5px 0 0 -6px;
+  height: 4px;
+  width: 8px;
+  border: solid #751471;
+  border-width: 0 0 4px 4px;
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+.tasks-list-cb:checked ~ .tasks-list-mark {
+  border-color: #9dc92a;
+}
+.tasks-list-cb:checked ~ .tasks-list-mark:before {
+  display: block;
+}
+
+.tasks-list-cb:checked ~ .tasks-list-desc {
+  color: #696969;
+  font-size: 15px;
+}
+.ph-box {
+    height:176px;
+    max-height:176px;
+    margin-right: 0.25em;
+    margin-bottom: 0.5em;
+    padding: 0.5em;
+    background: #FFF;
+    border: 1px solid #F3F0F0;
+    position: relative;
+    -webkit-box-shadow: 0 1px 2px #AFAFAF;
+    -moz-box-shadow: 0 1px 2px #AFAFAF;
+    box-shadow: 0 1px 2px #AFAFAF;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
 </style>
 </head>
 
@@ -59,12 +175,13 @@
     </div>
   </aside>
   <div class="section-wrap">
-     <div class="make-text" style="top: 120px;">	    
-        <span class="my-profile" style="display:block; text-align:center; padding-left:0px;">
-            <img src="" id="profilePhoto" style="width:80px; height:80px;">
+     <div class="make-text" style="top: 80px; left: 0px;">	    
+        <span class="my-profile" style="display:block; text-align:center;">
+            <img src="" id="profilePhoto" style="width:80px; height:80px; border-radius:50%;">
         </span>  
-       <p> <span id="userName" class="my-login" data-value=""
-          style='font-family: "Nanum Gothic", sans-serif;"'></span> 님의 앨범</p>	             
+       <p style="font-size:12px; color:#fff; padding-top:12px;">  
+        <span id="userName" class="my-login" data-value="" style='padding-left:0px;'></span> 님 안녕하세요?
+       </p>	             
        <div id="groupNa" style="float:left;">
 	       <div class="sc-title" style="float:left;">
         
@@ -72,21 +189,36 @@
       </div>
    
      </div>
+
+    <div class="sub-box">
+       <div class="title-text-box">
+         <div class="title-header">
+            <p class="sub-gorup-name">GROUPNAME</p>
+            <h2 class="sub-tasks-title"><span id="tasks-title"></span>앨범</h2>
+            <p class="sub-text tasks-header">지나간 일정에 대한 사진을 올려주세요</p>
+          </div>                  
+         <!--  <p class="sc-title tasks-list-desc" style="font-size:20px; line-height:50px; padding-bottom:10px; font-weight: 500;"></p> -->
+       </div> 
+      <section class="sub-list-title-box">
        
-  <!-- Overlay effect when opening sidenav on small screens -->
-  <div class="w3-overlay w3-hide-large" onclick="w3_close()"
-    style="cursor: pointer" title="close side menu" id="myOverlay"></div>
-  <!-- !PAGE CONTENT! -->
-  <div class="w3-main" style="margin-left: 250px"></div>
-  <!-- Push down content on small screens -->
-  <div class="w3-hide-large" style="margin-top: 83px"></div>
-  <div class="col-sm-9" style="float: right; padding-top: 30px;">
+          <p class="sub-list-title">SCHEDULE</p>
+         <fieldset class="tasks-list">
+           
+          
+         </fieldset>
+       </section>
+      
+      
+
+    </div>  
+  <div class="muti-gal" style="float:left; padding-top: 30px; width:75%; ">
+ 
+   
     <form id="fileForm"  method="post" enctype="multipart/form-data">
-      <input id="multiFile" type="file" class="file" multiple>
-        <button type=button class="btn btn-primary al-btn">전송</button>
+      <button type=button class="btn btn-primary al-btn">전송</button>
         <button type="reset" class="btn btn-default">Reset</button>
-        <button type="button" class="btn btn-info btn-md">공유하기</button>
-        <button type="button" class="btn btn-info btn-md">사진 관리</button>
+      <input id="multiFile" type="file" class="file" multiple>
+        
     </form>
     <br>
     <div class="row" id="album_option">
@@ -94,46 +226,43 @@
     <br> <br>
     <div id="imagesContainer"></div>
   </div>
-		<div class="">
-		
-			<div id="albumlist">
-				<div class="w3-accordion">
-					<!-- 그룹이름 -->
-					<div 
-						class="w3-accordion-content w3-padding-large w3-medium">
-						<div class="w3-light-grey w3-show">
-						<!-- 스케줄이름 -->
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="aaaaa" style="float:left;"> </div>
-		</div>
-	
+
+	<div class="aaaaa" style=""> </div>
 
 	</div>
 	</section>
 	</div>
 	<script id="groupNameTemplateText" type="text/x-handlebars-template">
- 	<div class="asdf" data-vo="{{groupNo}}">
-		<ul>
-			<li> <a href="#" id="scheduleList" data-gsno="{{groupscNo}}">{{title}}</a></li>
-		</ul>
+ 	<div class="asdf sub-list-subj" data-vo="{{groupNo}}">
+    <input type="checkbox" id="groupscList" data-no="{{groupscNo}}"  data-value="{{groupNo}}" name="task_1" class="tasks-list-cb"> 
+     <!-- display: none --> 
+    <span class="tasks-list-mark" data-no="{{groupscNo}}" ></span> <!-- 버튼똥끄라미 --> 
+     
+      <label class="tasks-list-item" id="groupList">
+      <span id="scheduleList" class="tasks-list-desc" data-gsno="{{groupscNo}}">{{title}}</span>
+    </label>
 	</div>
-
 	</script>
 	<script id="groupNameTemplateText2" type="text/x-handlebars-template">
-	       <h2>
-					<span id="groupinfo2" data-value="{{groupNo}}">{{groupName}}</span> 그룹
+	       <h2 style="color:#fff">
+					<span id="groupinfo2"  data-value="{{groupNo}}">{{groupName}}</span> 그룹
 				</h2>
 </script>
 
 <script id="photoTemplate" type="text/x-handlebars-template">  
-  {{#if filename}} 
-
-  <a class="example-image-link" href="../upload/{{filename}}" data-lightbox="example-set" data-title="Click the right half of the image to move forward.">
-    <img class="example-image" src="../upload/thumbnail{{filename}}" alt=""/>
-</a>
+  {{#if filename}}  
+  <div class="ph-box" style="float:left; padding-right:10px;">
+    <div class="al-text-list" style="clear:both; padding-bottom:5px;">  
+      <span style="display:inline-block; margin-bottom;10px;">
+        <img src="../upload/{{memberFilename}}" id="profilePhoto" style="width:30px; height:30px; border-radius:50%;"/>
+      </span>
+      <span style="display:inline">{{name}}</span>
+       <span style="display:inline; float:right; line-height:25px;">{{createdDate}}</span>
+    </div>
+    <a class="example-image-link" href="../upload/{{filename}}" data-lightbox="example-set" data-title="Click the right half of the image to move forward.">
+      <img class="example-image" src="../upload/thumbnail{{filename}}" alt=""/>
+    </a>
+  </div>
   {{else}}
   <p>사진을 등록해주세요^^</p>
   {{/if}}    
