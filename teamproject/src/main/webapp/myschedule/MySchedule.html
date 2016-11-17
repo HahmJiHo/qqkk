@@ -2,27 +2,29 @@
 <!--[if lt IE 7]>      <html lang="en" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html lang="en" class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html lang="en" class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html lang="ko" class="no-js"> <!--<![endif]-->
-  <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">	
-	<title>HIBA</title>
-	<!--[if lt IE 9]>
+<!--[if gt IE 8]><!-->
+<html lang="ko" class="no-js">
+<!--<![endif]-->
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HIBA</title>
+<!--[if lt IE 9]>
       <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-	<link href="../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
-	<link rel="stylesheet" type="text/css" href="../css/common_style.css">
-	<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
-	<link rel="stylesheet"
+<link href="../node_modules/bootstrap/dist/css/bootstrap.min.css"
+	rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="../css/common_style.css">
+<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+<link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
-	<link href="../js/jquery.bxslider.css" rel="stylesheet" />
-	<link rel="stylesheet" type="text/css" href="../css/MySchedule.css">
+<link href="../js/jquery.bxslider.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="../css/MySchedule.css">
 
 
-	<style>
+<style>
 
-
-	/* .thumbnail > img,
+/* .thumbnail > img,
 	.thumbnail a > img,
 	.carousel-inner > .item > img,
 	.carousel-inner > .item > a > img {
@@ -47,8 +49,6 @@ border-radius: 4px;
 transition: all .2s ease-in-out;
 }
 */
-
-
 .line {
 	margin-top: 20px;
 	margin-bottom: 20px;
@@ -56,98 +56,109 @@ transition: all .2s ease-in-out;
 	border-top: 2px solid #696969;
 }
 ​
-
 </style>
 
 </head>
 <body>
-<!-- <div class="wrap display-none" style="z-index: 9999;">
+	s <div class="wrap display-none" style="z-index: 9999;">
   <div class="loading"></div>
-</div> -->
-<div class="wrapper">
+</div> 
+	<div class="wrapper">
 
-	<header> </header>
-	<section class="panel" style="background:none;">
-	
-    <aside class="header-top" style="float: left; ">
-	    <ul class="aside-nav"> 
-	      <li class="f-r"><a href="#"></a></li>
-	      <li class="f-r iconMemberPlus" data-toggle="tooltip"
-	        data-placement="bottom" title="그룹추가하기"><a href="#"></a></li>
-	      <li class="f-r iconSchedulePlus" data-toggle="tooltip"
-	        data-placement="bottom" title="일정추가하기"><a href="#"></a></li>
-	      <li class="f-r iconBell user-alert"
-	        style="display: block; cursor: pointer"><i
-	        class="glyphicon glyphicon-exclamation-sign alert-icon"
-	        style="color: red; position: absolute; font-size: 15px; top:10px; display: none"></i>
-	      </li>
-	    
-	    </ul>
-	      <p class="f-r logout" style="float: right;"><a href="#">로그아웃</a></p>
-	    <div class="alert-box"
-	      style="position: absolute; background-color: rgba(0, 0, 0, 0.5); max-width: 250px; margin: 10px; left: 50px; top: 60px; color: #fff">
-	    </div>
-   </aside>
-    
-    
-    
-		<div class="section-wrap">
-		  <div class="make-text" style="position:fixed; left:20px; z-index:2; top:80px; left: 20px; float:left;">
-         <h2>
-          <span class="my-profile" style="display:block; text-align:center; padding-left:30px;">
-              <img src="" id="profilePhoto" style="width:80px; height:80px; border-radius:50% "/>
-          </span><br>
-          <span id="user" class="my-login" data-value="" style="font-size:16px;"></span> 안녕하세요?
-         </h2>
-         <p style="font-size:12px; color:#fff;">
-                  일정을 확인하세요.
-        </p>
-        </div>
-			<div class="selectbar-left">
+		<header> </header>
+		<section class="panel" style="background: none;">
 
-				<div class="my-info">
-					<ul>
-						<li class="my-profile"></li>
-							</ul>
-						</div>
-						<form class="navbar-form navbar-left" role="search">
-							<div class="form-group">
-								<button type="button" class="btn btn-default">
-									<i class="fa fa-bars w3-xlarge" aria-hidden="true"></i>
-								</button>
-								<button type="button" class="btn btn-default"
+			<aside class="header-top" style="float: left;">
+				<ul class="aside-nav">
+					<li class="f-r"><a href="#"></a></li>
+					<li class="f-r iconMemberPlus" data-toggle="tooltip"
+						data-placement="bottom" title="그룹추가하기"><a href="#"></a></li>
+					<li class="f-r iconSchedulePlus" data-toggle="tooltip"
+						data-placement="bottom" title="일정추가하기"><a href="#"></a></li>
+					<li class="f-r iconBell user-alert"
+						style="display: block; cursor: pointer"><i
+						class="glyphicon glyphicon-exclamation-sign alert-icon"
+						style="color: red; position: absolute; font-size: 15px; top: 10px; display: none"></i>
+					</li>
+
+				</ul>
+				<p class="f-r logout" style="float: right;">
+					<a href="#">로그아웃</a>
+				</p>
+				<div class="alert-box"
+					style="position: absolute; background-color: rgba(0, 0, 0, 0.5); max-width: 250px; margin: 10px; left: 50px; top: 60px; color: #fff">
+				</div>
+			</aside>
+
+
+
+			<div class="section-wrap">
+				<div class="make-text"
+					style="position: fixed; left: 20px; z-index: 2; top: 80px; left: 20px; float: left;">
+					<h2>
+						<span class="my-profile"
+							style="display: block; text-align: center; padding-left: 30px;">
+							<img src="" id="profilePhoto"
+							style="width: 80px; height: 80px; border-radius: 50%" />
+						</span><br> <span id="user" class="my-login" data-value=""
+							style="font-size: 16px;"></span> 안녕하세요?
+					</h2>
+					<p style="font-size: 12px; color: #fff;">일정을 확인하세요.</p>
+				</div>
+				<div class="selectbar-left">
+
+					<div class="my-info">
+						<ul>
+							<li class="my-profile"></li>
+						</ul>
+					</div>
+					<form class="navbar-form navbar-left" role="search">
+						<div class="form-group">
+							<button type="button" class="btn btn-default">
+								<i class="fa fa-bars w3-xlarge" aria-hidden="true"></i>
+							</button>
+							<button type="button" class="btn btn-default"
 								onclick="location.href='checkMySchedule.html'">
 								<i class="fa fa-calendar w3-xlarge" aria-hidden="true"></i>
 							</button>
 						</div>
 					</form>
-					
+
 					<div class="sectionbar-line">
-					<hr class="line" align=center width=100%>
-				</div>
-					
+						<hr class="line" align=center width=100%>
+					</div>
+
 
 				</div>
 				<div class="article-sc">
-					<div id="schedule" style="clear: both; text-align: center; min-height: 800px; padding: 0 20px; margin-top: -90px;">
-           <div class="user-group-info" style="position:relative; ">
-						  <div id="scheduleInfo" style="z-index:11; position:absolute;">
-                      <div id="schedule-Info" data-value="">
-                        <div class="bxslider">
-                      <!--<li id="sc">
-                          <p></p> <span></span><br> <span> ~ </span>
-                          <a href='#' id="viewSc"
-                          class="btn btn-xs btn-success my-detail" data-no="" style="z-index:1000;">일정보기</a>
-                          <div id="dday-Info">
-                            <span id="dday"></span>
-                          </div>
-                        </li> -->
-                          </div>
-                       </div>
-                   </div>
-						<div id="group-Info" data-value="">
-          
-			<!-- 			<div id="myThumbnail" class="myThumbnail">
+					<div id="schedule"
+						style="clear: both; text-align: center; min-height: 800px; padding: 0 20px; margin-top: -90px;">
+						<div class="user-group-info" style="position: relative;">
+							<div id="scheduleInfo" style="z-index: 11; position: absolute;">
+								<div id="schedule-Info" data-value="">
+									<div class="bxslider">
+										<!-- <ul>
+										<li id="sc">
+											<h1 class="list-group-item-text" style="font-size: 20px;"></h1>
+											<h3 class="list-group-item-text" style="font-size: 20px;"></h3>
+											<br> <span class="list-group-item-text"
+											style="font-size: 20px;"></span> <a
+											href='#' id="viewSc" class="btn btn-xs btn-success my-detail"
+											data-no="" style="z-index: 1000;">일정보기</a>
+
+
+											<div id="dday-Info">
+												<h1 id="dday" style="font-size: 30px; font-weight: bold;"></h1>
+	
+											</div>
+										</li>
+										</ul> -->
+									</div>
+								</div>
+							</div>
+							<div id="group-Info" data-value="">
+
+								<!-- 			<div id="myThumbnail" class="myThumbnail">
 						</div>
 									<div class="gallery">
 										<div class="gallery-item">
@@ -162,41 +173,47 @@ transition: all .2s ease-in-out;
 										</div>
 									</div>
 									<div class="separate"></div> -->
-	
-					     	</div>
-					        
+
+							</div>
+
 						</div>
 					</div>
-					</div>
-				</div>	
+				</div>
+			</div>
 		</section>
-		</div>
+	</div>
 
 
 
 
-			<!--
+	<!--
 			bxslider 쓰기 위해 핸들바스 코드 수정
 		-->
-		<script id="div2TemplateText" type="text/x-handlebars-template">
+	<script id="div2TemplateText" type="text/x-handlebars-template">
+	<ul>
+										<li id="sc">
+								
+											<h1 class="list-group-item-text" style="font-size: 20px;">{{title}}</h1>
+											<h3 class="list-group-item-text" style="font-size: 20px;">{{placeName}}</h3>
+											<br> <span class="list-group-item-text"
+											style="font-size: 20px;">{{start}} ~ {{end}}</span>
+											
+											 <a	href='#' id="viewSc" class="btn btn-xs btn-success my-detail"
+											data-no="{{groupscNo}}" style="z-index: 1000;">일정보기</a>
 	
-	   <li id="sc">
-				<h1 class="list-group-item-text"style="
-    font-size: 20px;">{{title}}</h1>
-				<h3 class="list-group-item-text" style="
-    font-size: 20px;">{{placeName}}</h3><br>
-				<span class="list-group-item-text" style="
-    font-size: 20px;">{{start}} ~ {{end}}</span>
 
-		    
-	 			<div id="dday-Info">
-					<h1 id="dday"  style="font-size:30px; font-weight:bold;">D-day {{dday}}</h1>
- 
-				</div>
-			</li>
+											<div id="dday-Info">
+												<h1 id="dday" style="font-size: 30px; font-weight: bold;">D-day
+													{{dday}}</h1>
+
+											</div>
+										</li>
+
+
+										</ul>
 
 		</script>
-    <script id="divTemplateText" type="text/x-handlebars-template">
+	<script id="divTemplateText" type="text/x-handlebars-template">
 <div class="g_sc_border">
  <div class="g_sc" style="height: 300px;"> 
       <div class="groupInfo" data-value="">
@@ -221,7 +238,7 @@ transition: all .2s ease-in-out;
       </div>
 </div>
       </script>
- <script id="inviteMessage" type="text/x-handlebars-template">       
+	<script id="inviteMessage" type="text/x-handlebars-template">       
     <div class="invite-box" style="display:none" data-value="{{memberNo}}">             
       <p>{{name}} 님이 <span id="inviteGroupNo" > {{groupName}} 그룹에 초대하였습니다</span></p>
         <ul>
@@ -231,17 +248,18 @@ transition: all .2s ease-in-out;
      </div>  
   </script>
 
-		<script src="../node_modules/handlebars/dist/handlebars.min.js"></script>		
-		<script src="../node_modules/jquery/dist/jquery.min.js"></script>
-		<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="../js/include.js"></script>
-		<script src="../js/jquery.bxslider.min.js"></script>		
-		<script type="text/javascript" src="../js/common.js"></script>
-		<script type="text/javascript" src="../js/bit.js"></script>
-		<script type="text/javascript" src="../member/memberApp.js"></script>
-		<script type="text/javascript" src="myschedule.js"></script>
-		<script type="text/javascript" src="../memberInvite/memberInvitemessageApp.js"></script>
-		<script>
+	<script src="../node_modules/handlebars/dist/handlebars.min.js"></script>
+	<script src="../node_modules/jquery/dist/jquery.min.js"></script>
+	<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../js/include.js"></script>
+	<script src="../js/jquery.bxslider.min.js"></script>
+	<script type="text/javascript" src="../js/common.js"></script>
+	<script type="text/javascript" src="../js/bit.js"></script>
+	<script type="text/javascript" src="../member/memberApp.js"></script>
+	<script type="text/javascript" src="myschedule.js"></script>
+	<script type="text/javascript"
+		src="../memberInvite/memberInvitemessageApp.js"></script>
+	<script>
 		ajaxLoginUser()
 		ajaxMygroupList()
 		ajaxGroupInviteListMessage() 
@@ -258,5 +276,5 @@ transition: all .2s ease-in-out;
 
 		}
 		</script>
-	</body>
-	</html>
+</body>
+</html>

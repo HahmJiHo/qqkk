@@ -6,10 +6,17 @@ $("#logoutBtn").click(function(event) {
    location.href = "../index.html"
 });
 
-$("a#viewSc").click(function(event) {
-	console.log("click")
-	loacation.href = "detailInfo.html?no=" + $("#viewSc").attr('data-no')
-})
+$('body').on('click', '#viewSc', function(e) {
+	location.href = "detailInfo.html?no=" + ($(this).attr('data-no'))
+});
+
+
+var detailResult;
+var eventLocation;
+var mySchedulList;
+var startDay;
+var endDay;
+var gpno;
 
 
 function loadBxSlider(num) {
@@ -63,6 +70,11 @@ function removeDuplicate(inArray) {
 
 
 function ajaxMygroupList() {
+	   $('.side-header').css({"display": "none"})
+	   $('.selectbar-left').css({"display": "none"})
+	   $('.header-top').css({"display": "none"})
+	   $('.make-text').css({"display": "none"})
+	   $('.wrap').removeClass('display-none');
 	/*$('.wrapper').css({"display" : "none"})
 	$('.wrap').removeClass('display-none');*/
    $.getJSON(serverAddr + "/myschedule/list.json", function(obj) {
@@ -74,6 +86,8 @@ function ajaxMygroupList() {
 
       var arr = result.data.list
       //var upcomCount = [];
+      
+      
       var arrGrp = [];
       var arrGrp2 = [];
       var dday = [];
@@ -118,7 +132,8 @@ function ajaxMygroupList() {
             arrGrp.splice(tmp,1);
          }
       }
-
+      	
+       
 
       /* 2016.11.01 내일부터 아래 코딩하기*/
       var contents = "";
@@ -142,7 +157,8 @@ function ajaxMygroupList() {
             //&& $("#group-Info").attr('data-value') == count(arr[i].groupNo)) {(
 
         	 $("#viewSc").attr('data-no', arr[i].groupscNo)
-        	
+        	 
+        	ajaxTermWeather(arr[i].start, arr[i].gpno, arr[i].dday)
             arr[i].count = count[arr[i].groupNo]
             mygroupArr.push(arr[i]);
          }
@@ -192,43 +208,63 @@ function ajaxMygroupList() {
       }
 
       
-
-
-
-      function btnClickAction() {
-         $("#btn-left").click(function() {
-            btnLength--;
-            btnAnimate(btnLength)
-         })
-
-         $("#btn-right").click(function() {
-            btnLength++;
-            btnAnimate(btnLength)
-         })
-
-         function btnAnimate(num) {
-            $("#schedule-Info")
-
-            if (num >= btnLength -1) {
-               $("#btn-right").hide();
-            } else {
-               $("#btn-right").show();
-            }
-            if (num >= 1) {
-               $("#btn-left").show();
-            } else {
-               $("#btn-left").hide();
-            }
-         }
-      }
-    /*  $('.wrap').addClass('display-none');	
-	$('.wrapper').css({"display" : "block"})*/
+      $('.wrap').addClass('display-none');   
+      $('.side-header').css({"display": "block"})
+      $('.header-top').css({"display": "block"})
+      $('.make-text').css({"display": "block"})
+      $('.selectbar-left').css({"display": "block"})
    })
 }
 
-function btnAction() {
-
-}
+function ajaxTermWeather(date, gpno, dday) {
+	   //date = date.substring(0,10);
+	   console.log(date);
+	   console.log("dday"+dday)
+	   console.log(gpno);
+	   $.getJSON(serverAddr + '/myschedule/termWeather.json?gpno='
+	         +gpno+'&date='+date+'&dday='+ dday, function(obj) {
+		   termResult = obj.jsonResult;
+		      console.log(termResult);
+		      console.log(termResult.data.term);
+		      if(termResult.state != "success") {
+		         alert("조회 실패입니다.");
+		         return;
+		      }
+		      if(termResult.data.term == "short") {
+		    	  $(".weather-temperature-current").html(termResult.data.currentTemp + "°C");
+		      }
+	      
+	      console.log(termResult.data.state)
+	      switch(termResult.data.state) { 
+	      case "맑음":
+	    	  $(".weather-img").addClass("sunny");
+	    	  break;
+	      case "구름 조금":
+	    	  $(".weather-img").addClass("partlyCloudyDay");
+	    	  break;
+	      case "구름 많음" :
+	    	  $(".weather-img").addClass("heavyClouds");
+	    	  break;
+	      case "흐림" :
+	    	  $(".weather-img").addClass("clouds");
+	    	  break;
+	      case "비":
+	    	  $(".weather-img").addClass("rain");
+	    	  break;
+	      case "흐리고 비":
+	    	  $(".weather-img").addClass("rainWithClouds");
+	    	  break;
+	     case "구름많고 비/눈":
+	    	  $(".weather-img").addClass("snowAndRain");
+	    	  break;
+	       };
+	      $(".weather-state").html(termResult.data.state);
+	   });
+	      
+	      
+	      
+	      
+	}
 
 /*
 function ajaxMyScheduleList() {
