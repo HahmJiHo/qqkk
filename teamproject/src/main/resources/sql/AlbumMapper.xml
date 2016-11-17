@@ -27,6 +27,7 @@
     <result column="mno" property="memberNo" />
     <result column="gsno" property="groupScheduleNo" />
     <result column="AL_PHOT" property="filename" />
+    <result column="PHOT_PATH" property="memberFilename" />
     <result column="CRE_DT" property="createdDate" />
   </resultMap>
   
@@ -56,22 +57,15 @@
 	</select>
 	
   <select id="selectListAl" resultMap="orignAlbumMap" parameterType="map">
-    select *from hiba_g_al 
+  select hiba_g_al.*, hiba_membs.PHOT_PATH, hiba_membs.name 
+  from hiba_g_al
+  inner join hiba_membs on hiba_membs.mno = hiba_g_al.mno
+  
+ 
+    
     
   </select>
-	<!-- <select id="selectList" resultMap="albumMap" parameterType="map"> select 
-		hiba_membs.mno, hiba_g_sc.gsno, hiba_g_membs.gno, hiba_group.gname, hiba_g_sc.sc_title, 
-		hiba_g_al.al_phot, hiba_g_al.cre_dt from hiba_g_membs inner join hiba_membs 
-		on hiba_g_membs.mno=hiba_membs.mno inner join hiba_group on hiba_g_membs.gno=hiba_group.gno 
-		inner join hiba_g_sc on hiba_g_membs.mno=hiba_g_sc.mno and hiba_g_membs.gno=hiba_g_sc.gno 
-		inner join hiba_g_al on hiba_g_al.mno=hiba_g_sc.mno </select> -->
-    <!-- 
-	<select id="selectOneByGroupNoScheduleNo" resultMap="albumMap"
-		parameterType="map">
-		select gno, gsno from hiba_g_al
-		where gno=#{groupNo} and gsno=#{groupScheduleNo}
-	</select>
- -->
+  
 	<select id="countAll" resultType="int">
 		select count(*)
 		from hiba_g_sc
