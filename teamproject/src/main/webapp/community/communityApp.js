@@ -90,7 +90,7 @@ function ajaxCommunityList() {
 	
 
 function ajaxLoginUser() {
-	$.getJSON(serverAddr + "/auth/loginUser.json", function(obj) {
+	$.getJSON(serverAddr + "/auth/loginUser.json", function(obj) { 
 		resultUser = obj.jsonResult
 	    if (resultUser.state != "success") { // 로그아웃 상태일 경우 로그인 상태와 관련된 태그를 감춘다.
 	         $('.my-login').css("display", "none")

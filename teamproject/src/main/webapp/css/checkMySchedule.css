@@ -41,7 +41,7 @@ body{ font-family:"arial", sans-serif; font-size:12px;}
 .modal-title {font-size: 22px; color: #aeaeae;}
 .modal-start-date {font-size: 14px; color: #333; font-weight:bold; font-family: 'Montserrat', sans-serif;}
 .modal-end-date {font-size: 14px; color: #333; font-weight:bold; font-family: 'Montserrat', sans-serif;}
-.modal-place {font-size: 12px; color: #aeaeae;}
+.modal-place {font-size: 12px; color: #aeaeae;} 
 
 .tasks {
   margin: auto;

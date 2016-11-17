@@ -150,7 +150,7 @@ function ajaxLoadCommunity(no) {
 	$('.header-top').css({"display": "none"})
 	$('.make-text').css({"display": "none"})
 	$('.wrap').removeClass('display-none');
-	
+ 	
 	$.getJSON(serverAddr + "/community/detail.json?no=" + no, function(obj) {
 		var result = obj.jsonResult
 		console.log(result)
