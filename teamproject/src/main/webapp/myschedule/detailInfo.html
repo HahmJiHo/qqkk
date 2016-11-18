@@ -36,6 +36,8 @@
 .detailFont {
    font-size: 20px;
    color: rgb(157, 201, 42);
+     text-align: center;
+    
 }
 
 .title {
@@ -152,7 +154,9 @@
 
             <div id="detail">
                <h2 class="title">그룹1의 친구 생일 파티</h2>
-               <div class="schedule-date">
+               
+               
+               <div class="schedule-date" style="float: left; min-width: 300px; padding: 3px;">
                   <h3>날짜</h3>
                   <hr class="section-bar"
                      style="border: solid; color: rgb(157, 201, 42);"></hr>
@@ -265,59 +269,73 @@
       </section>
    </div>
    <script id="divTemplateText" type="text/x-handlebars-template">
+		<div class="seebal">
             <h1 class="title"><span class="joinGroup1">{{groupName}}</span>  그룹의  <span class="joinGroup2">{{title}}</span> 일정입니다.</h1><br>
          
+			<div class="detailinformation" style="width:100%">
+    
 
-            <div class="schedule-date">
+            <div class="schedule-date" style="float: left; width: 33%; padding: 3px; height: 250px; text-align: center;">
                <div class="detailFont">날짜</div>
                <hr class="section-bar" style="border:solid; color: rgb(157, 201, 42);"></hr>
             
 
-            <div class="date">
+            <div class="date" >
                   <h1 id="dday">D-day {{dday}}</h1>
+					<br>
                      <p class="appointmentDate"><span class="dateText1">Start On:</span>{{start}}<br>
                                                              <span class="dateText2">End On:</span>&nbsp;&nbsp;{{end}}</p>
                </div>
-            </div><br>
-            <br>
+
+            </div>	<!-- 날짜 닫음 -->
+           
             
 
-            <div>
-               <div class="detailFont">날씨</div>
+            <div class="weatherinfo" style="float: left;  width: 33%; padding: 3px; height: 250px; text-align: center;"> 
+               <div class="detailFont" >날씨</div> 
                   <hr class="section-bar" style="border:solid; color: rgb(157, 201, 42);"></hr>
-               <div id="weather-wrap">
-                 <div class="wrap-dayweather">
-                     <div class="weather-img">
+
+               <div id="weather-wrap" style="text-align: center;"> 
+
+                 <div class="wrap-dayweather"> 
+                     <div class="weather-img"> 
                         <img src="">
                      </div>
-                     <div class="weather-temperature-current">{{currentTemp}}</div>
-                     <div class="weather-temperature-mx"> MAX:{{maxTemp}}</div>
-                     <div class="weather-temperature-mn"> LOW:{{minTemp}}</div>
 
-                  <div>
-                  
-                     <div class="weather-state">{{state}}</div>
-                    </div> 
+					<div id="weather_current">
+                 	<h3>평균 기온 : <span class="weather-temperature-current">{{currentTemp}}</span></h3>
+						</div><br>
+
+					<div id="weather_max">
+                     <h3>최고 기온 : <span class="weather-temperature-mx">{{maxTemp}}</span></h3>
+					</div><br>
+
+					<div id="weather_min">
+                     <h3>최저 기온 : <span class="weather-temperature-mn">{{minTemp}}</span></h3>
+					</div><br>
+						
 
                         <div class="weather-humidity"></div>
                      <div class="weather-windspeed"></div>
-                 </div>
-              </div>
-            </div><br>
-            <br>
-            
-            <div>
-               <div class="detailFont">장소</div>
-               <hr class="section-bar" style="border:solid; color: rgb(157, 201, 42);"></hr>
+                 </div>  
+            </div>
+		</div> <!-- 날씨 닫음 -->
+
+
+            <div class="hotplace" style="float: left;  width: 33%; padding: 3px; height: 250px; text-align: center;">
+               <div class="detailFont"  >장소</div>
+               <hr class="section-bar" style="border:solid; color: rgb(157, 201, 42);min-width: 250px;"></hr>
                   <p class="placeName">{{placeName}}</p><br>
-               <br>
-               
-               <div class="detailFont">축제 / 숙박</div>
+				</div> <!--핫플레이스 닫음 --> 
+
+				</div>
+				</div>
+			<div class="123" style="clear: both;margin-bottom: -63px;">
+    
+			</div>
+			<br><br>
+			<div class="infoOption">
                <hr class="section-bar" style="border:solid; color: rgb(157, 201, 42);"></hr>
-
-            
-
-
                <div class="btn-group">
                   <ul>
                      <li class="festiBtn"><a href="#" id="list" class="btn btn-primary"><span
@@ -327,12 +345,12 @@
                         class="glyphicon glyphicon-home"></span>   숙박</a></li>
                   </ul>
                </div>
-                  
+			</div>
+                  <div class="placeinfor">
                <article id="products" class="row list-group"></article>
                <article id="products2" class="row list-group" style="display:none;"></article>
             </div>
-
-
+</div>
 
 
 </script>
