@@ -6,6 +6,11 @@ $("#logoutBtn").click(function(event) {
 	location.href = "../index.html"
 });
 
+$('body').on('click', '#viewSc', function(e) {
+	console.log("click")
+	location.href = "detailInfo.html?no=" +  $(this).attr('data-no')
+});
+
 
 function loadBxSlider(num) {
 	var bx = "#bxslider" + num;
@@ -26,7 +31,7 @@ function loadBxSlider(num) {
 }
 
 function computeDday(start) {
-<<<<<<< HEAD
+
    var now = new Date();
    var then = new Date(start);
    gap = now.getTime() - then.getTime();
@@ -38,7 +43,7 @@ function computeDday(start) {
    } else {
       return gap
    }
-=======
+
 	var now = new Date();
 	var then = new Date(start);
 	gap = now.getTime() - then.getTime();
@@ -48,7 +53,7 @@ function computeDday(start) {
 	} else {
 		return gap
 	}
->>>>>>> branch 'master' of https://github.com/HahmJiHo/qqkk.git
+
 }
 
 /*
@@ -71,245 +76,180 @@ function removeDuplicate(inArray) {
 
 
 
+
 function ajaxMygroupList() {
-<<<<<<< HEAD
-	   $('.side-header').css({"display": "none"})
-	   $('.selectbar-left').css({"display": "none"})
-	   $('.header-top').css({"display": "none"})
-	   $('.make-text').css({"display": "none"})
-	   $('.wrap').removeClass('display-none');
-	/*$('.wrapper').css({"display" : "none"})
-	$('.wrap').removeClass('display-none');*/
-	   
-	   
+   $('.side-header').css({"display": "none"})
+   $('.selectbar-left').css({"display": "none"})
+   $('.header-top').css({"display": "none"})
+   $('.make-text').css({"display": "none"})
+   $('.wrap').removeClass('display-none');
    $.getJSON(serverAddr + "/myschedule/list.json", function(obj) {
       var result = obj.jsonResult
       if (result.state != "success") {
          alert("서버에서 데이터를 가져오는데 실패했습니다. -ajaxMygroupList")
          return
       }
-=======
-	$('.side-header').css({"display": "none"})
-	$('.selectbar-left').css({"display": "none"})
-	$('.header-top').css({"display": "none"})
-	$('.make-text').css({"display": "none"})
-	$('.wrap').removeClass('display-none');
-	$.getJSON(serverAddr + "/myschedule/list.json", function(obj) {
-		var result = obj.jsonResult
-		if (result.state != "success") {
-			alert("서버에서 데이터를 가져오는데 실패했습니다. -ajaxMygroupList")
-			return
-		}
->>>>>>> branch 'master' of https://github.com/HahmJiHo/qqkk.git
 
-		var arr = result.data.list
-		//var upcomCount = [];
-		var arrGrp = [];
-		var arrGrp2 = [];
-		var dday = [];
-		var mygroupName = new Object();
-		var arrGroupName = [];
-		var arrGroupName2 = [];
+      var arr = result.data.list
+      //var upcomCount = [];
+      var arrGrp = [];
+      var arrGrp2 = [];
+      var dday = [];
+      var mygroupName = new Object();
+      var arrGroupName = [];
+      var arrGroupName2 = [];
 
-		for (var i in arr) {
-			//dday[i] = computeDday(arr[i].start)
-			//if (dday[i] > 0) 
-			//upcomCount += 1;      
-			//console.log(upcomArrGrpNo[i])
-			arrGrp[i] = arr[i].groupNo
-		}
+      for (var i in arr) {
+         //dday[i] = computeDday(arr[i].start)
+         //if (dday[i] > 0) 
+         //upcomCount += 1;      
+         //console.log(upcomArrGrpNo[i])
+         arrGrp[i] = arr[i].groupNo
+      }
 
-		arrGrp = arrGrp.sort();
-		arrGrp2 = arrGrp
-		arrGroupName = arrGroupName.sort();
-		arrGroupName2 = arrGroupName
+      arrGrp = arrGrp.sort();
+      arrGrp2 = arrGrp
+      arrGroupName = arrGroupName.sort();
+      arrGroupName2 = arrGroupName
 
-		var count = new Object();
+      var count = new Object();
 
-		for (var i in arrGrp) {
-			count[arrGrp[i]] = 0;
+      for (var i in arrGrp) {
+         count[arrGrp[i]] = 0;
 
-		}
+      }
 
 
-		for (var i = 0; i < arrGrp2.length; i++) {
-			while(1) {
-				//console.log(arrGrp2[i])
-				var tmp = arrGrp.indexOf(arrGrp2[i]);
-				//console.log(tmp);
+      for (var i = 0; i < arrGrp2.length; i++) {
+         while(1) {
+            //console.log(arrGrp2[i])
+            var tmp = arrGrp.indexOf(arrGrp2[i]);
+            //console.log(tmp);
 
-				var tmpVal = arrGrp[tmp];
-				//console.log(tmpVal)
-				if (tmp == -1) {
-					break;
-				}
+            var tmpVal = arrGrp[tmp];
+            //console.log(tmpVal)
+            if (tmp == -1) {
+               break;
+            }
 
-				count[tmpVal] += 1;
-				arrGrp.splice(tmp,1);
-			}
-		}
+            count[tmpVal] += 1;
+            arrGrp.splice(tmp,1);
+         }
+      }
 
 
-		/* 2016.11.01 내일부터 아래 코딩하기*/
-		var contents = "";
-		var contents2 = "";
+      /* 2016.11.01 내일부터 아래 코딩하기*/
+      var contents = "";
+      var contents2 = "";
 
-		var tempContents = new Array();
-		var template = Handlebars.compile($('#divTemplateText').html())
-		var template2 = Handlebars.compile($('#div2TemplateText').html())
+      var tempContents = new Array();
+      var template = Handlebars.compile($('#divTemplateText').html())
+      var template2 = Handlebars.compile($('#div2TemplateText').html())
 
-<<<<<<< HEAD
+      var mygroupArr = [];
+
+      for (var i in arr) {
+         $("#group-Info").attr('data-value', arr[i].groupNo)
+         //console.log( $("#viewSc").attr('data-value'))
+
          arr[i].dday = computeDday(arr[i].start)
-         
-         console.log(arr[i].dday)
-         if ((arr[i].dday >= 0 || arr[i].dday == "디데이 입니다.")
+         if ((arr[i].dday > 0 || arr[i].dday == "디데이 입니다.")
                && $("#user").attr('data-value') == arr[i].no
                && $("#group-Info").attr('data-value') == arr[i].groupNo
                && arr[i].myScheduleStatus == 1) {
             //&& $("#group-Info").attr('data-value') == count(arr[i].groupNo)) {(
-=======
-		var mygroupArr = [];
->>>>>>> branch 'master' of https://github.com/HahmJiHo/qqkk.git
 
-<<<<<<< HEAD
-        	 $("#viewSc").attr('data-no', arr[i].groupscNo)
-        	 
-        	/*ajaxTermWeather(arr[i].start, arr[i].gpno, arr[i].dday)*/
+            $("#viewSc").attr('data-no', arr[i].groupscNo)
+
             arr[i].count = count[arr[i].groupNo]
             mygroupArr.push(arr[i]);
          }
       }   
-      
-      
+
+
       var newArr = removeDuplicate(mygroupArr) 
-      
-      
-      
-      
+
+
+
+
       for (var i in newArr) {
-    	  contents += template(newArr[i])
-    	  
+         contents += template(newArr[i])
+
          $("#group-Info").html(contents)
-       
+
          //console.log(i)
          //console.log(contents)
          for (var j in mygroupArr) {
             if (newArr[i].groupNo == mygroupArr[j].groupNo) {
-            	console.log(mygroupArr[j]);
-//            	var tempP = "slider-prev" + i;
-//            	var tempN = "slider-next" + i;
-//            	$("#slider-prev").attr("id", tempP);
-//            	$("#slider-next").attr("id", tempN);
+               console.log(mygroupArr[j]);
+//               var tempP = "slider-prev" + i;
+//               var tempN = "slider-next" + i;
+//               $("#slider-prev").attr("id", tempP);
+//               $("#slider-next").attr("id", tempN);
                tempContents[i] += template2(mygroupArr[j])
             } 
          }
       }
-      
+
       console.log(tempContents);
       for(var i in tempContents) {
-		/*var button = '<button id="btn-left" type="button" class="btn btn-default">'
-=======
-		for (var i in arr) {
-			$("#group-Info").attr('data-value', arr[i].groupNo)
-			//console.log( $("#viewSc").attr('data-value'))
+         /*var button = '<button id="btn-left" type="button" class="btn btn-default">'
+      + '<span id="slider-prev'+ i + '"class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>'
+      + '</button>'
+      + '<button id="btn-right" type="button" class="btn btn-default">'
+      + '<span id="slider-next'+ i + '"class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>'
+      + '</button>';*/
+         contents2 += "<ul class='caption'  style='z-index:11' id='bxslider" + i + "'>" + tempContents[i] + "</ul>";
 
-			arr[i].dday = computeDday(arr[i].start)
-			if (arr[i].dday > 0 
-					&& $("#user").attr('data-value') == arr[i].no
-					&& $("#group-Info").attr('data-value') == arr[i].groupNo
-					&& arr[i].myScheduleStatus == 1) {
-				//&& $("#group-Info").attr('data-value') == count(arr[i].groupNo)) {(
+      }
 
-				$("#viewSc").attr('data-no', arr[i].groupscNo)
+      $("#schedule-Info").html(contents2);
 
-				arr[i].count = count[arr[i].groupNo]
-				mygroupArr.push(arr[i]);
-			}
-		}   
-
-
-		var newArr = removeDuplicate(mygroupArr) 
-
-
-
-
-		for (var i in newArr) {
-			contents += template(newArr[i])
-
-			$("#group-Info").html(contents)
-
-			//console.log(i)
-			//console.log(contents)
-			for (var j in mygroupArr) {
-				if (newArr[i].groupNo == mygroupArr[j].groupNo) {
-					console.log(mygroupArr[j]);
-//					var tempP = "slider-prev" + i;
-//					var tempN = "slider-next" + i;
-//					$("#slider-prev").attr("id", tempP);
-//					$("#slider-next").attr("id", tempN);
-					tempContents[i] += template2(mygroupArr[j])
-				} 
-			}
-		}
-
-		console.log(tempContents);
-		for(var i in tempContents) {
-			/*var button = '<button id="btn-left" type="button" class="btn btn-default">'
->>>>>>> branch 'master' of https://github.com/HahmJiHo/qqkk.git
-		+ '<span id="slider-prev'+ i + '"class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>'
-		+ '</button>'
-		+ '<button id="btn-right" type="button" class="btn btn-default">'
-		+ '<span id="slider-next'+ i + '"class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>'
-		+ '</button>';*/
-			contents2 += "<ul class='caption'  style='z-index:11' id='bxslider" + i + "'>" + tempContents[i] + "</ul>";
-
-		}
-
-		$("#schedule-Info").html(contents2);
-
-		for(var i in tempContents) {
-			loadBxSlider(i);
-		}
+      for(var i in tempContents) {
+         loadBxSlider(i);
+      }
 
 
 
 
 
-		function btnClickAction() {
-			$("#btn-left").click(function() {
-				btnLength--;
-				btnAnimate(btnLength)
-			})
+      function btnClickAction() {
+         $("#btn-left").click(function() {
+            btnLength--;
+            btnAnimate(btnLength)
+         })
 
-			$("#btn-right").click(function() {
-				btnLength++;
-				btnAnimate(btnLength)
-			})
+         $("#btn-right").click(function() {
+            btnLength++;
+            btnAnimate(btnLength)
+         })
 
-			function btnAnimate(num) {
-				$("#schedule-Info")
+         function btnAnimate(num) {
+            $("#schedule-Info")
 
-				if (num >= btnLength -1) {
-					$("#btn-right").hide();
-				} else {
-					$("#btn-right").show();
-				}
-				if (num >= 1) {
-					$("#btn-left").show();
-				} else {
-					$("#btn-left").hide();
-				}
-			}
-		}
-		$('.wrap').addClass('display-none');	
-		$('.side-header').css({"display": "block"})
-		$('.header-top').css({"display": "block"})
-		$('.make-text').css({"display": "block"})
-		$('.selectbar-left').css({"display": "block"})
-	})
+            if (num >= btnLength -1) {
+               $("#btn-right").hide();
+            } else {
+               $("#btn-right").show();
+            }
+            if (num >= 1) {
+               $("#btn-left").show();
+            } else {
+               $("#btn-left").hide();
+            }
+         }
+      }
+      $('.wrap').addClass('display-none');   
+      $('.side-header').css({"display": "block"})
+      $('.header-top').css({"display": "block"})
+      $('.make-text').css({"display": "block"})
+      $('.selectbar-left').css({"display": "block"})
+   })
+
+
 }
 
-<<<<<<< HEAD
+
 /*function ajaxTermWeather(date, gpno, dday) {
 	   //date = date.substring(0,10);
 	   console.log(date);
@@ -359,11 +299,8 @@ function ajaxMygroupList() {
 	      
 	      
 	}*/
-=======
-function btnAction() {
 
-}
->>>>>>> branch 'master' of https://github.com/HahmJiHo/qqkk.git
+
 
 /*
 function ajaxMyScheduleList() {
