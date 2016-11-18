@@ -210,17 +210,16 @@ function ajaxMyScheduleLoad(no) {
  */
 function ajaxTermWeather(date, gpno, dday) {
    //date = date.substring(0,10);
-   console.log(date);
+   /*console.log(date);
    console.log("dday"+dday)
-   console.log(gpno);
+   console.log(gpno);*/
+	
    $.getJSON(serverAddr + '/myschedule/termWeather.json?gpno='
          +gpno+'&date='+date+'&dday='+ dday, function(obj) {
 	   termResult = obj.jsonResult;
-	      console.log(termResult);
-	      console.log(termResult.data.term);
+	   
 	      if(termResult.state != "success") {
-	         alert("조회 실패입니다.");
-	         return;
+	    	  $(".wrap-dayweather").html("기간 정보가 잘못되어 기상청에서 날씨 정보를 받아올 수 없습니다.");
 	      }
 	      if(termResult.data.term == "short") {
 	    	  $(".weather-temperature-current").html(termResult.data.currentTemp + "°C");

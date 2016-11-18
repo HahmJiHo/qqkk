@@ -44,6 +44,8 @@ function computeDday(start) {
    gap = Math.floor(gap / (1000 * 60 * 60 * 24)) * -1;
    if (gap < 0) {
       return "이미 지난 스케줄입니다."
+   } else if (gap == 0) {
+	  return "디데이 입니다." 
    } else {
       return gap
    }
@@ -77,6 +79,8 @@ function ajaxMygroupList() {
 	   $('.wrap').removeClass('display-none');
 	/*$('.wrapper').css({"display" : "none"})
 	$('.wrap').removeClass('display-none');*/
+	   
+	   
    $.getJSON(serverAddr + "/myschedule/list.json", function(obj) {
       var result = obj.jsonResult
       if (result.state != "success") {
@@ -150,7 +154,9 @@ function ajaxMygroupList() {
          //console.log( $("#viewSc").attr('data-value'))
 
          arr[i].dday = computeDday(arr[i].start)
-         if (arr[i].dday > 0 
+         
+         console.log(arr[i].dday)
+         if ((arr[i].dday >= 0 || arr[i].dday == "디데이 입니다.")
                && $("#user").attr('data-value') == arr[i].no
                && $("#group-Info").attr('data-value') == arr[i].groupNo
                && arr[i].myScheduleStatus == 1) {
@@ -158,7 +164,7 @@ function ajaxMygroupList() {
 
         	 $("#viewSc").attr('data-no', arr[i].groupscNo)
         	 
-        	ajaxTermWeather(arr[i].start, arr[i].gpno, arr[i].dday)
+        	/*ajaxTermWeather(arr[i].start, arr[i].gpno, arr[i].dday)*/
             arr[i].count = count[arr[i].groupNo]
             mygroupArr.push(arr[i]);
          }
@@ -216,7 +222,7 @@ function ajaxMygroupList() {
    })
 }
 
-function ajaxTermWeather(date, gpno, dday) {
+/*function ajaxTermWeather(date, gpno, dday) {
 	   //date = date.substring(0,10);
 	   console.log(date);
 	   console.log("dday"+dday)
@@ -226,9 +232,9 @@ function ajaxTermWeather(date, gpno, dday) {
 		   termResult = obj.jsonResult;
 		      console.log(termResult);
 		      console.log(termResult.data.term);
-		      if(termResult.state != "success") {
-		         alert("조회 실패입니다.");
-		         return;
+		      if(termResult.date == "기간 정보가 잘못되었습니다. ") {
+		    	  $(".weather-state").html("기간을 잘못 설정하여 기상청에서 날씨 정보를 받아올 수 없습니다.ㄴ");
+		         
 		      }
 		      if(termResult.data.term == "short") {
 		    	  $(".weather-temperature-current").html(termResult.data.currentTemp + "°C");
@@ -264,7 +270,7 @@ function ajaxTermWeather(date, gpno, dday) {
 	      
 	      
 	      
-	}
+	}*/
 
 /*
 function ajaxMyScheduleList() {
@@ -304,9 +310,10 @@ function ajaxMyScheduleList() {
    })
 }
  */
-$('body').on('click', 'viewSc', function() {
+/*$('body').on('click', 'viewSc', function() {
 	console.log("111")
-})
+})*/
+
 function ajaxLoginUser() {
    $.getJSON(serverAddr +"/auth/loginUser.json", function(obj) {
       var result = obj.jsonResult

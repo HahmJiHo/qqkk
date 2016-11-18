@@ -18,10 +18,7 @@
    href="https://fonts.googleapis.com/css?family=Raleway">
 <link rel="stylesheet"
    href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
-<link rel="stylesheet"
-   href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-
-<link href='../css/fullcalendar.css' rel='stylesheet' />
+<link href="../node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet"/>
 <link rel="stylesheet" type="text/css" href="../css/common_style.css">
 <link rel="stylesheet" type="text/css" href="../css/detailInfo.css">
 
@@ -41,6 +38,14 @@
 .title {
    font-size: 30px;
 }
+
+.line {
+	margin-top: 20px;
+	margin-bottom: 20px;
+	border: 0;
+	border-top: 2px solid #696969;
+}
+​
 
 #dday {
    font-size: 50px;
@@ -69,8 +74,6 @@
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script
    src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
-<script
-   src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script
    src="http://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/a549aa8780dbda16f6cff545aeabc3d71073911e/src/js/bootstrap-datetimepicker.js"></script>
 <title>Insert title here</title>
@@ -123,10 +126,6 @@
 
             <form class="navbar-form navbar-left" role="search">
                <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Search">
-                  <button type="button" class="btn btn-default">
-                     <i class="fa fa-search w3-xlarge"></i>
-                  </button>
                   <button type="button" class="btn btn-default"
                      onclick="location.href='MySchedule.html'">
                      <i class="fa fa-bars w3-xlarge" aria-hidden="true"></i>
@@ -139,9 +138,8 @@
             </form>
 
             <div class="sectionbar-line">
-               <hr align=center width=100%>
-            </div>
-
+					<hr class="line" align=center width=100%>
+			</div>
 
 
 
@@ -275,7 +273,7 @@
 
             <div class="date">
                   <h1 id="dday">D-day {{dday}}</h1>
-                     <p class="appointmentDate"><span class="dateText1">Start On:</span>{{start}}<br>
+                     <p class="appointmentDate"><span class="dateText1">Start On: </span>{{start}}<br>
                                                              <span class="dateText2">End On:</span>&nbsp;&nbsp;{{end}}</p>
                </div>
             </div><br>
