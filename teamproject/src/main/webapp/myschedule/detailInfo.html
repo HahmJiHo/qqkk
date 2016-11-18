@@ -299,22 +299,27 @@
                      <div class="weather-img"> 
                         <img src="">
                      </div>
-
+					
+					{{#if cureentTemp}}
 					<div id="weather_current">
                  	<h3>평균 기온 : <span class="weather-temperature-current">{{currentTemp}}</span></h3>
 						</div><br>
+					{{/if}}
 					
-					{{#if maxTemp}}
+					
 					<div id="weather_max">
                      <h3>최고 기온 : <span class="weather-temperature-mx">{{maxTemp}}</span></h3>
 					</div><br>
-					{{/if}}
+					
 
-					{{#if minTemp}}
+					
 					<div id="weather_min">
                      <h3>최저 기온 : <span class="weather-temperature-mn">{{minTemp}}</span></h3>
 					</div><br>
-					{{/if}}
+
+					 <div class="weather-state">
+										 <h3>상태 : {{state}}</h3>
+					</div><br>
 						
 
                         <div class="weather-humidity"></div>
