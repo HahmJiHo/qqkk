@@ -267,7 +267,7 @@
       </section>
    </div>
    <script id="divTemplateText" type="text/x-handlebars-template">
-		<div class="seebal">
+		<div class="dkd">
             <h1 class="title"><span class="joinGroup1">{{groupName}}</span>  그룹의  <span class="joinGroup2">{{title}}</span> 일정입니다.</h1><br>
          
 			<div class="detailinformation" style="width:100%">
@@ -279,8 +279,7 @@
             
 
             <div class="date" >
-                  <h1 id="dday">D-day {{dday}}</h1>
-
+                  <h1 id="dday" style="font-size: 50px;">D-day {{dday}}</h1>
 					<br>
                      <p class="appointmentDate"><span class="dateText1">Start On:</span>{{start}}<br>
                                                              <span class="dateText2">End On:</span>&nbsp;&nbsp;{{end}}</p>
@@ -304,14 +303,18 @@
 					<div id="weather_current">
                  	<h3>평균 기온 : <span class="weather-temperature-current">{{currentTemp}}</span></h3>
 						</div><br>
-
+					
+					{{#if maxTemp}}
 					<div id="weather_max">
                      <h3>최고 기온 : <span class="weather-temperature-mx">{{maxTemp}}</span></h3>
 					</div><br>
+					{{/if}}
 
+					{{#if minTemp}}
 					<div id="weather_min">
                      <h3>최저 기온 : <span class="weather-temperature-mn">{{minTemp}}</span></h3>
 					</div><br>
+					{{/if}}
 						
 
                         <div class="weather-humidity"></div>

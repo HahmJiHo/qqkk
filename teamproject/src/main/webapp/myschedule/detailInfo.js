@@ -226,8 +226,10 @@ function ajaxTermWeather(date, gpno, dday) {
 	      }
       
       $(".weather-city").html(termResult.data.city);
+      if (termResult.data.maxTemp != -999.0 || termResult.data.minTemp != -999.0) {
       $(".weather-temperature-mx").html(termResult.data.maxTemp + "°C");
       $(".weather-temperature-mn").html(termResult.data.minTemp + "°C");
+      }
       
       switch(termResult.data.state) { 
       case "맑음":
