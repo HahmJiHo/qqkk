@@ -36,7 +36,8 @@ $("#addBtn").click(function(event) {
 		          console.log('error : ' + textStatus + " " + errorThrown);
 		     }
 		});
-		window.location.reload();
+	/*	window.location.reload();*/
+		location.href = "communityApp.html"
 });
 
 

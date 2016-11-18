@@ -31,7 +31,7 @@ $("#writeBtn").click(function (e) {
 		location.href = "../index_h.html"
 		return
 	  } 
-	location.href = "communityApp.html"
+	location.href = "communityForm.html"
 });		
 
 

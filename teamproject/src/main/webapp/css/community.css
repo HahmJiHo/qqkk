@@ -26,7 +26,7 @@
 }
 
 .pin-form-width: {
-	width: 720px;
+  width: 720px;
 }
 
 .pin {
@@ -66,7 +66,7 @@
 }
 
 .pin li span{
-	  font-size: 16px;
+    font-size: 16px;
     text-align: right; 
     padding: 10px 2px 3px 10px;
     color: #751471; 
@@ -109,13 +109,13 @@
 
 .pin .profile-date{
   font-size:12px;
-  font-family: 'Montserrat', sans-serif;
   color:#969696;
 }
 
 
 .pin img {
-  width: 700px;
+  max-width: 700px ;
+  width: expression(this.width > 700 ? 700: true) ;
   height: auto;
   padding: 10px;
   -webkit-border-radius: 10px 10px 0 0;
@@ -124,8 +124,9 @@
   overflow: hidden;
 } 
 
+
 .pin h3 {
-	width: 700px;
+  width: 700px;
   font-size: 20px;
   font-weight: bold;
   padding: 10px 0 0 20px;
@@ -139,7 +140,7 @@
 
 
 .pin p {
-	width: 700px;
+  width: 700px;
   padding: 3px 3px 3px 20px; 
   color: #ccc;
   text-align:left;
@@ -150,11 +151,11 @@
 }
 
 
-
+/* 
 .button-write-width {
-	width: 700px;
+  width: 700px;
 }
-
+ */
 
 
 
@@ -325,7 +326,7 @@ textarea {
 
 
 .modal-content-com img{
-	 width: 100%;
+   width: 100%;
    height: auto;
 }
 
@@ -382,7 +383,6 @@ textarea {
 
 .modal-pin .profile-date{
   font-size:12px;
-  font-family: 'Montserrat', sans-serif;
   color:#969696;
 }
 
@@ -585,7 +585,7 @@ textarea {
 }
 
 .comment-form2 .form textarea.input{
-	width: 80%;
+  width: 80%;
   height: 100px;
   padding: 15px;
   float: left;
@@ -593,8 +593,8 @@ textarea {
 
 
 button.button-comment {
-	width: 20%;
-	height: 100px;
+  width: 20%;
+  height: 100px;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   border-radius: 5px;
@@ -977,7 +977,6 @@ button .button2 {
   -moz-border-radius: 0px;
   -webkit-border-radius: 0px;
   border-radius: 0px;
-  width:700px;
 }
 
 
@@ -1022,33 +1021,39 @@ button .button2 .button-write:hover {
 .w3-teal,.w3-hover-teal:hover{color:#fff!important;background-color:#9dc92a!important}
 
 
+
+
+
+.add-group-box { /* background-color: #fff; border:2px solid #efefef; margin-bottom: 20px; */ width: 720px; margin: 0px auto;}
+.plus-sign {
+    border: 1px solid #9dc92a;
+    border-radius: 50%;
+    box-sizing: border-box;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    height: 80px;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    margin: 15px auto;
+    -webkit-transition: height 1.5s ease-in,margin-bottom 1.5s ease-in,opacity 1.5s ease-in,width 1.5s ease-in;
+    transition: height 1.5s ease-in,margin-bottom 1.5s ease-in,opacity 1.5s ease-in,width 1.5s ease-in;
+    width: 80px;}
+    
+.fa-plus { color: #9dc92a; font-size: 16px; }
+.glyphicon-pencil { color: #9dc92a; font-size: 20px; }
+.add-group-box { cursor: pointer; text-align: center; }
+
+
+
 @media (max-width:600px){.w3-modal-content{margin:0 10px;width:auto!important}.w3-modal{padding-top:30px}}
 @media (max-width:768px){.w3-modal-content{width:500px}.w3-modal{padding-top:50px}}
 @media (min-width:993px){.w3-modal-content{width:900px}}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
