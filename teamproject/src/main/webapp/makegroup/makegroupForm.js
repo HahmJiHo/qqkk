@@ -1,11 +1,9 @@
-$("#addBtn").click(function(e) { 
-/*	var makegroup = {
-			groupName : $("#groupName").val(),
-			name : $("#userName").text()
-	}*/
-	/*ajaxAddGroup(makegroup)*/
-	ajaxAddGroupPhoto()
+/*
+$('body').on('click',".albumBtn", function() {
+	window.location.href = "../album/album02.html?no=" + $("#userName").attr("data-value") 
 });
+
+*/
 $('body').on('click','.addImage', function(e) {
 	var no = $(this).attr('data-no');
 	$('#add-images-pop').modal();	
@@ -63,28 +61,6 @@ $("#member").on('click', '#deleteBtn', function(e) {
 });
 
 
-
-/*function ajaxAddGroup(makegroup) {
-	$.post(serverAddr +"/group/add.json", makegroup, function(obj) {
-		var result = obj.jsonResult
-		if (result.state != "success") {
-			console.log(result.data)
-			alert("등록 실패 입니다.makeGroup")       
-			return
-		} 
-		swal(
-				'Good job!',
-				'You clicked the button!',
-				'success'
-		)
-
-
-
-		window.location.reload();
-	}, "json" )	
-}*/
-
-
 function ajaxLoadGroup(no) {
 	$.getJSON(serverAddr +"/group/detail.json?no=" + no, function(obj) {
 		var result = obj.jsonResult
@@ -119,25 +95,25 @@ function ajaxDeleteGroup(no) {
 		ajaxGroupList()
 	})		
 }
-/*$('body').on('click',"#addBtn", function(){
+$('body').on('click',"#addBtn", function(){
+	
+		var formData = new FormData();	
+		formData.append("groupName", $("input[name=groupName]").val());
+		formData.append("groupText", $("input[name=groupText]").val());
+		formData.append("file1", $("input[name=file1]")[0].files[0]);
+		$.ajax({
+			url: serverAddr + '/group/add.json',
+			processData: false,
+			contentType: false,
+			data: formData,
+			type: 'POST',
+			success: function(result){
+			}
+		});
+		window.location.reload();
+	
+})
 
-})*/
-function ajaxAddGroupPhoto() {
-	var formData = new FormData();	
-	formData.append("groupName", $("input[name=groupName]").val());
-	formData.append("groupText", $("input[name=groupText]").val());
-	formData.append("file1", $("input[name=file1]")[0].files[0]);
-	$.ajax({
-		url: serverAddr + '/group/add.json',
-		processData: false,
-		contentType: false,
-		data: formData,
-		type: 'POST',
-		success: function(result){
-		}
-	});
-	window.location.reload();
-};
 
 $('body').on('click', '.sw-btn', function(){
 	$(this).parents().children('.list-article').toggle()
@@ -151,6 +127,4 @@ $('body').on('click', '.sw-btn', function(){
 		$(this).parents().children('.list-article').children('.list-more-box').css({"left" : "10px"})
 	}
 
-
 })
-

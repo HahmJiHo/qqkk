@@ -82,6 +82,8 @@ input:checked + .slider:before {
 }
 
 .logOutBtn{cursor: pointer;}
+a { text-decoration: none !important;}
+a:hover { text-decoration: none !important;}
   </style>
   <script>
 
@@ -118,15 +120,24 @@ input:checked + .slider:before {
   </aside>
     
 		<div class="section-wrap">
+		  <div class="sub-box">
+       <div class="title-text-box">
+         <div class="title-header">
+            <p class="sub-gorup-name">GROUPNAME</p>
+            <h2 class="sub-tasks-title"><span id="tasks-title"></span>일정을 만들 모임을 선택해 주세요</h2>
+            <p class="sub-text tasks-header">모임이 없다면 새로운 모임을 만들어 주세요</p>
+          </div>                        
+       </div>            
+    </div>
+		
 		  <div class="make-top">
 		    <div class="make-text" style="position:fixed; left:20px; z-index:2;">
 		     <h2>
-		      <span class="my-profile" style="display:block; text-align:center; padding-left:0px;">
-		          <img src="" id="profilePhoto" style="width:80px; height:80px;"/>
+		      <span class="my-profile">
+		          <img src="" id="profilePhoto" style="width:80px; height:80px; margin-left:10px;margin-bottom:10px;"/>
 		      </span><br>
-		      <span id="userName" class="my-login" data-value=""></span>님 안녕하세요?
-		     </h2>
-	  	   <p>일정을 만들 그룹을 선택해 주세요.<span id="mno"></span></p>
+		      <span id="userName" class="my-login" data-value="" style="margin-left:-5px;"></span>님 안녕하세요?
+		     </h2>	  	   
 		    </div>
 		    <div class="my-info">
 	
@@ -148,8 +159,7 @@ input:checked + .slider:before {
                 <input id="groupText"class="login__input"  type="text" name="groupText" placeholder="그룹명을 입력하세요.">
                 <label for="file"  class="login__label">그룹이미지</label>
                 <input type="file" name="file1" />
-                <button type="button" id="addBtn" class="make-group-submit">만들기</button>
-                <button type="button" class="btn btn-default" onclick="document.getElementById('id01').style.display='none'">취소</button>
+                <button type="button" id="addBtn" class="make-group-submit">만들기</button>              
               </form>         		  
       			</div>
 					</div>      	
@@ -162,12 +172,9 @@ input:checked + .slider:before {
                     <form id="frm2" action="/upload/add" method="post" enctype="multipart/form-data">
                       <label for="file">그룹이미지</label><br> 
                       <input type="file" name="file2" />
-                       <button type="button" id="addImageBtn" class="btn btn-default" data-dismiss="modal">만들기</button>
+                      <button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
+                      <button type="button" id="addImageBtn" class="btn btn-default" data-dismiss="modal">만들기</button>
                     </form>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-dismiss="modal">취소</button>
-                  <button type="button" id="addBtn" class="btn btn-default" data-dismiss="modal">만들기</button>
                 </div>
               </div>
             </div>
@@ -287,7 +294,7 @@ box-shadow: 0 1px 2px #AFAFAF; border-radius: 5px; left:0px;">
          <div class="list-more-box" style="position: absolute; bottom:20px; left:30px;">      
               <ul style="">
                  <li style="float:left; margin-right: 5px;">
-                   <p class="group-album" data-no="{{groupNo}}">갤러리</p>               
+                   <p class="group-album" data-no="{{groupNo}}">앨범</p>               
                  </li>
                  <li style="float:left; margin-right: 5px;">
                    <p class="addImage" data-no="{{groupNo}}">이미지 변경</p>               

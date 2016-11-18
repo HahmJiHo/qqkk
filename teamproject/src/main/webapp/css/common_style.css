@@ -103,7 +103,7 @@ footer { background: #404040; color: #c0c0c0; padding: 10px 0; clear: both; }
   background: #9dc92a !important;
 }
 .wrap {
-  position: relative !important;
+  /* position: relative !important; */
   width:100% !important;
   height:100% !important;
   top:0px !important;

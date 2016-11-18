@@ -26,8 +26,7 @@ function ajaxGroupList() {
  */
 
 function ajaxGroupName() {
-	$('.wrap').removeClass('display-none');
-	
+
 	$.getJSON(serverAddr +"/group/list.json" , function(obj) {
 		var result = obj.jsonResult
 		if (result.state != "success") {
@@ -48,9 +47,9 @@ function ajaxGroupName() {
 				}
 
 			}
-		$(".make-text").append(contents)
-		$('.wrap').addClass('display-none');	    
-	   
+		
+		$("#tasks-title").html(contents)
+	       
 	})
 }
 function ajaxmyScheduleIng() {

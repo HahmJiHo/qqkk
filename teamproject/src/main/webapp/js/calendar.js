@@ -214,8 +214,8 @@ function showCalendar(arr) {
 			var eventStart = moment(event.start).valueOf();
 			
 			if (eventStart >= ntoday) {
-				$('.fc-event-container').attr('data-scno', event.id)
-				element.prepend( "<span class='scno' data-scno=" + event.id +">" + event.id + "</span>" );			
+				/*$('.fc-event-container').attr('data-scno', event.id)
+				element.prepend( "<span class='scno' data-scno=" + event.id +">" + event.id + "</span>" );*/			
 				element.append( "<span class='closeon' style='display:blokc; position:absolute; right:0; top:0; z-index:1000;' data-no=" + event.groupPlaceNo +">X</span>" );
 
 			} 
@@ -265,7 +265,7 @@ function showCalendar(arr) {
 				    center: {lat: Number(event.lat), lng: Number(event.lon)}
 				  });
 				  var markerMaxWidth = 260;  // 마커를 클릭했을때 나타나는 말풍선의 최대 크기
-				  var contentString = '<table><tr><td width=90><img src="../images/logo.png" width="80" style="border-radius:5px;"></td><td><div>' + 
+				  var contentString = '<table><tr><td><div>' + 
 				     '<span style="padding-bottom:10px"><b>'+event.title+'</b></span><br />'+ 
 				     '<div class="map_Content">'+ 
 				       '주소:' +  event.placeName + 
@@ -327,8 +327,7 @@ function showCalendar(arr) {
 };   
 
 function ajaxMyScheduleList(no) {
-	$('.wrapper').css({"display" : "none"})
-	$('.wrap').removeClass('display-none');
+
 	$.getJSON(serverAddr +"/schedule/list.json", function(obj) {
 		var result = obj.jsonResult
 		if (result.state != "success") {
@@ -353,18 +352,19 @@ function ajaxMyScheduleList(no) {
 		for (var i in arr) {
 			if (no == arr[i].groupNo) {				
 		        arrTest.push(arr[i]);
+		        
 		        if(arr[i].titleNo) {
 		        	if (arr[i].start > date) {
 		        		contents += template(arr[i])
 		        	}       			        	
 		        }
-			}	
+			}
+			
 		}
 		
+		showCalendar(arrTest);
 	$(".side-schedhule-List").html(contents) 
-	showCalendar(arrTest);
-	$('.wrap').addClass('display-none');	    
-	$('.wrapper').css({"display" : "block"})
+	
 	})
 }
 
