@@ -14,6 +14,8 @@ public class OrignAlbum implements Serializable {
 	protected int memberNo;
 	protected int groupScheduleNo;
 	protected String filename;
+	protected String name;
+	protected String memberFilename;
 	protected Date createdDate;
 	protected String createdDate2;
 	public int getNo() {
@@ -58,6 +60,21 @@ public class OrignAlbum implements Serializable {
 	public void setCreatedDate2(String createdDate2) {
 		this.createdDate2 = createdDate2;
 	}
+		
+	public String getMemberFilename() {
+		return memberFilename;
+	}
+	public void setMemberFilename(String memberFilename) {
+		this.memberFilename = memberFilename;
+	}
+	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	
 	@Override
 	public String toString() {
 		return "OrignAlbum [No=" + No + ", groupNo=" + groupNo + ", memberNo=" + memberNo + ", groupScheduleNo="

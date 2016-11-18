@@ -41,6 +41,7 @@
 
       body {
       background: #f7f7f8;
+      z-index: 0;
       }
       
       
@@ -340,7 +341,7 @@ height: 40px; background: #555; }
  
 <script id="divTemplateText" type="text/x-handlebars-template">
 {{#each data}}
-  <div class="pin">
+  <div class="pin"> 
        <div class="profile">
          <a href="" data-no="{{userNo}}" style="display:block">
           {{#if userPhoto}}
@@ -354,9 +355,10 @@ height: 40px; background: #555; }
           <div class="profile-date">{{registerDate}}</div>
         </div>
        </div>  
+
        <a class="titleLink" href="#" data-no="{{no}}">
          {{#if filename}}
-         <img src="../upload/{{filename}}" style="vertical-align:middle;">
+         <img src="../upload/{{filename}}" style="vertical-align:middle; width:700px; height:auto;">
          {{else}}                            
          <img src="http://placehold.it/700x300">               
          {{/if}}  
