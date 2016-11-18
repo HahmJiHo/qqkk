@@ -263,7 +263,7 @@ NOTE: use percentage font sizes or else old IE chokes
 
 .fc-button-group {
 	display: inline-block;
-	margin-top: 60px;
+	margin-top: 20px;
 }
 
 /*
@@ -824,8 +824,8 @@ a.fc-more:hover {
 .fc-toolbar {
 	text-align: center;
 	margin-bottom: 0em;
-	height: 100px;
-	background-color: #9dc92a;
+	height: 70px;
+	/* background-color: #9dc92a; */
 }
 
 .fc-toolbar .fc-left {
@@ -860,7 +860,7 @@ a.fc-more:hover {
 
 .fc-toolbar h2 {
 	margin: 25px 90px 1px 1px;
-    font-size: 40px;
+    font-size: 18px;
 }
 
 /* button layering (for border precedence) */
@@ -938,9 +938,12 @@ a.fc-more:hover {
 }
 
 /* week and day number styling */
-
 .fc-day-top.fc-other-month {
 	opacity: 0.3;
+}
+
+.fc-other-month {
+	background-color: #f0f0f0;
 }
 
 .fc-basic-view .fc-week-number,

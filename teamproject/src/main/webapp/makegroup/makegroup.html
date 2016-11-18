@@ -123,12 +123,12 @@ a:hover { text-decoration: none !important;}
 		  <div class="sub-box">
        <div class="title-text-box">
          <div class="title-header">
-            <p class="sub-gorup-name">GROUPNAME</p>
+            <p class="sub-gorup-name">MAKEGROUP</p>
             <h2 class="sub-tasks-title"><span id="tasks-title"></span>일정을 만들 모임을 선택해 주세요</h2>
             <p class="sub-text tasks-header">모임이 없다면 새로운 모임을 만들어 주세요</p>
           </div>                        
        </div>            
-    </div>
+      </div>
 		
 		  <div class="make-top">
 		    <div class="make-text" style="position:fixed; left:20px; z-index:2;">
@@ -264,7 +264,7 @@ a:hover { text-decoration: none !important;}
            <a href="#" class="groupMore" data-js="{{groupNo}}"  data-no="{{groupNo}}" style="width:100%;">      
                 
               {{#if gphoto}}
-                <img src="../upload/{{gphoto}}" style="width:100%; height:180px;">
+                <img src="../upload/thumbnail{{gphoto}}">
               {{else}}                            
                   <img src="../images/profile.png">                
               {{/if}}             

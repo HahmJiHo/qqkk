@@ -18,11 +18,11 @@
 	position: relative;
 	margin: 0 auto 0px;
 	padding: 0;
-	top: 20px;
-	left: auto;
-	right: 38px;
+	margin-bottom:20px;
+	left: auto;	
 	*zoom: 1;
 	height: 300px;
+	background : #fff;
 }
 
 .bx-wrapper img {
@@ -40,6 +40,7 @@
     height: 250px;
     background-color: white;
     color: black;
+   
 }
 
 
@@ -48,7 +49,7 @@
 	-webkit-box-shadow: 0 0 5px #ccc;
 	box-shadow: 0 0 5px #fff;
 	border:  3px solid #fff;
-	left: 10px;
+	left: 0px;
 	background: #fff;
 	
 	/*fix other elements on the page moving (on Chrome)*/
@@ -59,7 +60,7 @@
     	transform: translatez(0);
 }
 .bx-controls { top : 0px; position:relative; }
-.bx-controls-direction { position:relative; top: -50px; }
+.bx-controls-direction { position:relative; top: -50px; left: 15px;}
 .bx-wrapper .bx-pager,
 .bx-wrapper .bx-controls-auto {
 	position: absolute;
