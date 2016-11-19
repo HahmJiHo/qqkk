@@ -230,15 +230,16 @@ function ajaxTermWeather(date, gpno, dday) {
       $(".weather-temperature-mx").html(termResult.data.maxTemp + "°C");
       $(".weather-temperature-mn").html(termResult.data.minTemp + "°C");
       $(".weather-state").html(termResult.data.state);
-      
-      switch(termResult.data.state) { 
+   
+      var aaa = termResult.data.state.trim()
+      switch(aaa) { 
       case "맑음":
     	  $(".weather-img").addClass("sunny");
     	  break;
-      case "구름 조금":
+      case "구름조금":
     	  $(".weather-img").addClass("partlyCloudyDay");
     	  break;
-      case "구름 많음" :
+      case "구름많음" :
     	  $(".weather-img").addClass("heavyClouds");
     	  break;
       case "흐림" :
@@ -253,6 +254,7 @@ function ajaxTermWeather(date, gpno, dday) {
      case "구름많고 비/눈":
     	  $(".weather-img").addClass("snowAndRain");
     	  break;
+    	  console.log()
        };
       $(".weather-state").html(termResult.data.state);
    });

@@ -162,6 +162,15 @@ height: 40px; background: #555; }
    </aside>
 
     <div class="section-wrap">
+   <div class="sub-box">
+         <div class="title-text-box">
+           <div class="title-header">
+              <p class="sub-gorup-name">COMMUNITY</p>
+              <h2 class="sub-tasks-title"><span id="tasks-title"></span>맛있는 곳, 재밌는 곳 공유하세요</h2>
+              <p class="sub-text tasks-header">회원간에 정보를 교환 해보세요!</p>
+            </div>                        
+         </div>  
+        </div>
       <div class="make-top">
 	      <div class="make-text" style="position:fixed; left:20px; z-index:2; width:150px;">
 	        <!--  <h2>
@@ -182,29 +191,6 @@ height: 40px; background: #555; }
 	        </div>
           
       </div>
-      <!-- <h2>커뮤니티</h2> -->
-      <!-- 
-        <div class="col-md-9">
-		        <form method="post" class="light">
-		          <input type="text" placeholder="검색할 내용을 적어주세요">
-		        </form>
-		        <label>
-		        <button type="button" class="button-border2"> <span class="glyphicon glyphicon-search" aria-hidden="true"></span></button></label>
-		        <button id="writeBtn" type="button" class="button-border2" >글쓰기</button>
-		        <button type="button" class="button-border2">내글보기</button>
-		        <button type="button" class="button-border button-success">최신순</button>
-           <button type="button" class="button-border button-success">조회수</button>
-		    </div>
-		    
-      -->
-  
-<!--   
-  Button trigger modal
-	<button type="button" class="button-border2" data-toggle="modal" data-target="#myModal">
-	  모달예제
-	</button> -->
-	
-	<!-- Modal S-->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -247,86 +233,13 @@ height: 40px; background: #555; }
         <button id="updateBtn" type="button" class="btn btn-default my-view">변경</button>
         <button id="deleteBtn" type="button" class="btn btn-default my-view">삭제</button>
         <button id="cancelBtn" type="button" class="btn btn-default" data-dismiss="modal">취소</button>        
-      </div>
-  <!-- Modal E-->     
-
-
-
-
-<!-- Modal S--
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        
-         <div class="modal-pin">
-          <div class="profile">
-             <a href="" data-no="{{userNo}}" style="display:block">
-               <img src="../images/user-3.png" class="profile-img">
-             </a>
-            <div class="profile-names">
-              <div class="profile-name">{{userNicName}}</div>
-              <div class="profile-date">{{registerDate}}</div>
-            </div>
-           </div>  
-        </div>
-
-      </div>
-      <div class="modal-body">
-      
-        <h4 class="modal-title" id="myModalLabel">{{title}}</h4>
-          <p>{{contents}}</p>
-        
-            <div class="modal-content-com">
-                <img src="http://placehold.it/600x600">  
-            </div>
-      </div>
-      
-      <div class="modal-footer">
-        <button id="addBtn" type="button" class="btn btn-default my-new">등록</button>
-        <button id="updateBtn" type="button" class="btn btn-default my-view">변경</button>
-        <button id="deleteBtn" type="button" class="btn btn-default my-view">삭제</button>
-        <button id="cancelBtn" type="button" class="btn btn-default" data-dismiss="modal">취소</button>        
-      </div>
-      
-      <hr>
-     
-			<div class="comments-app my-view" >
-			  <!-- From --
-			  <div class="comment-form2">
-			    <!-- Comment Avatar --
-			    <div class="comment-avatar ">
-			      <img src="../images/user-3.png" class="profile-img">
-			    </div>
-			
-			    <form class="form" name="form">
-			      <div class="form-row" id="userNo3" data-value="" >
-			        <textarea id="comment" class="input" placeholder="댓글내용을 적어주세요"></textarea>
-			      </div>
-			
-			      <div class="form-row">
-			        <button class="button-comment" id="addCommentBtn" type="button">등록</button>
-			      </div>
-			    </form>
-			  </div>    
-			  <hr>   
-			      <div class="comments">
-			        <div id="communityCommentTable"></div> 
-			      </div>
-			      
-			      <a href="#" id="loadMore">Load More</a>
-			      <p class="totop">  <a href="#top">Back to top</a> </p>
-			       </div>
-            <!-- 모달 E  -->      
-      
-      
+      </div>      
     </div>
   </div>
     </div>  
     </div>
   
-       <div class="pin-align" style="padding-top:120px;"> 
+       <div class="pin-align" style="padding-top:70px;"> 
          <div class="add-group-box" id="writeBtn" >
            <span class="plus-sign">
             <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> 
@@ -338,15 +251,6 @@ height: 40px; background: #555; }
 	           
 		<!-- 컨텐츠 S -->
 		  <div id="communityDiv" class="pin-align">
-		  
-
-
-		  
-		  <!-- 
-		      <button id="writeBtn" type="button" class="button-border button-write" >
-          <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>   hiBa 커뮤니티 글쓰기
-			    </button>
-			     -->
 		    <div></div>
 		  </div>
 		  
@@ -392,6 +296,7 @@ height: 40px; background: #555; }
 <br>
 {{/each}}
  </script> 
+<<<<<<< HEAD
   <script id="inviteMessage" type="text/x-handlebars-template">       
     <div class="invite-box" style="display:none; border-bottom:1px solid #9dc92a" data-value="{{memberNo}}">             
       <p style="font-size:16px;">{{name}} 님이 <span id="inviteGroupNo" > {{groupName}} 그룹에 초대하였습니다</span></p>
@@ -449,6 +354,9 @@ height: 40px; background: #555; }
              </div>
 </script>
 <!-- 커뮤니티 디테일 modal E-->
+=======
+
+>>>>>>> branch 'master' of https://github.com/HahmJiHo/qqkk.git
 
 <!-- 탑버튼 S-->
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
