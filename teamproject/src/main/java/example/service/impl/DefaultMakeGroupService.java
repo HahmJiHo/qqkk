@@ -16,6 +16,7 @@ import example.service.MakeGroupService;
 import example.util.FileUploadUtil;
 import example.vo.GroupFile;
 import example.vo.MakeGroup;
+import net.coobird.thumbnailator.Thumbnails;
 
 
 @Service 
@@ -74,7 +75,17 @@ public class DefaultMakeGroupService implements MakeGroupService{
 			groupFile.setMemberNo(makeGroup.getMemberNumber());
 			System.out.println(groupFile);
 			groupFileDao.insert(groupFile);
-	
+			
+		  //원본이미지파일의 경로+파일명
+      File image = new File(uploadDir + newFilename);
+      //생성할 썸네일파일의 경로+썸네일파일명
+      File thumbnail  = new File(uploadDir + "thumbnail" + newFilename);
+      if (image.exists()) {
+        thumbnail.getParentFile().mkdirs();
+        Thumbnails.of(image).size(320, 180).outputFormat("jpg").toFile(thumbnail);
+        System.out.println("썸네일 생성완료");
+    }    
+			
 			
 		}
 

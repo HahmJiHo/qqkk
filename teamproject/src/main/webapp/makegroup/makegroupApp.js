@@ -49,6 +49,7 @@ function ajaxGroupName() {
 			}
 		
 		$("#tasks-title").html(contents)
+		$('.chat-group-name').html(contents)
 	       
 	})
 }
