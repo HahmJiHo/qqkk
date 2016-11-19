@@ -14,12 +14,14 @@
     <result column="rgno" property="groupNo" />
     <result column="nicknm" property="name" />
     <result column="conts" property="content" />      
+    <result column="PHOT_PATH" property="fileName" />
 	</resultMap>
 
 	<select id="selectList" resultMap="replyContentMap" parameterType="map">
-    select mno, rgno, nicknm, conts
+    select hiba_g_r_cont.mno, hiba_g_r_cont.rgno, hiba_g_r_cont.nicknm, hiba_g_r_cont.conts, hiba_membs.PHOT_PATH
     from hiba_g_r_cont
-      order by
+    inner join hiba_membs on hiba_membs.mno = hiba_g_r_cont.mno 
+    order by
     <choose>
       <when test="noOrder == 'asc'">rno asc</when>
       <otherwise>rno desc</otherwise>
