@@ -10,7 +10,7 @@ public class ReplyContent implements Serializable {
   protected int groupNo;
   protected String name;
 	protected String content;
-	
+	protected String fileName;
 	public int getNo() {
 		return no;
 	}
@@ -40,6 +40,14 @@ public class ReplyContent implements Serializable {
 	}
 	public void setGroupNo(int groupNo) {
 		this.groupNo = groupNo;
+	}
+	
+
+	public String getFileName() {
+		return fileName;
+	}
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
 	}
 	@Override
 	public String toString() {

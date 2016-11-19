@@ -1,7 +1,7 @@
 $("#addBtn").click(function(e) { 
 	var replyContent = {
 		memberNo : $("#userName").attr('data-value'),
-		groupNo : $("#group-reply-btn").attr('data-no'),
+		groupNo : $("#groupName").attr('data-value'),
 		content : $("#content").val(),
 		name : $("#userName").html()
 	}
@@ -27,4 +27,5 @@ function ajaxAddReplyContent(replyContent) {
 		ajaxReplyList()
 	}, "json" )	
 }
+
 

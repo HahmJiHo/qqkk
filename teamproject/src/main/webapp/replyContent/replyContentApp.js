@@ -10,21 +10,23 @@ function ajaxReplyList() {
 		var contents = ""
 		var arr = result.data	
 
-		for (var i in arr) {			
-			if ($('#group-reply-btn').attr('data-no') == arr[i].groupNo) {					
+		for (var i in arr) {					
+			if ($('#groupName').attr('data-value') == arr[i].groupNo) {					
 				if ($("#userName").text() ==  arr[i].name) {
-					 contents +=  "<span class='listNickName' style='font-weight:bold; float:right; display:block; max-width: 300px; clear:both'>" + arr[i].name +"</span>" +	
-					"<div class='bubble-me' style='float:right; clear:both;'>" +			   			 
+					 contents +=  "<span class='listNickName' style='font-weight:bold; float:right; display:block; max-width: 300px; clear:both'>" + arr[i].name +"</span>" +
+					"<span class='listNickName'  style='float:right; display:block; clear:both'> <img src='../upload/" +arr[i].fileName+ "'style='width: 30px; height: 30px; border-radius: 50%'/></span>" +
+					"<div class='bubble-me' style='float:right;'>" +			   			
 					"<ul style='float:right; clear:both;'>" +
-					"<li id='no' style='display:none'>" + arr[i].no + "</li>" +				
+					"<li id='no' style='display:none'>" + arr[i].no + "</li>" +									
 					"<li>" + arr[i].content + " </li>" +        						
 					"</ul>" + 
 					"</div>";
 				} else {
 					contents += "<span class='listNickName' style='font-weight:bold; float:left; display:block; max-width: 300px; clear:both'>" + arr[i].name +"</span>" +
-					"<div class='bubble' style='float:left; clear:both;'>" +   				  				
+					"<span class='listNickName' style='float:left; display:left; clear:both'> <img src='../upload/" + arr[i].fileName + "'style='width: 30px; height: 30px; border-radius: 50%'/></span>" +
+					"<div class='bubble' style='float:left;'>" +   				  				
 					"<ul style='float:left; clear:both'>" +
-					"<li id='no' style='display:none'>" + arr[i].no + "</li>" +				
+					"<li id='no' style='display:none'>" + arr[i].no + "</li>" +							
 					"<li>" + arr[i].content + "</li>" +        				
 					"<li class='delBtnList'>" + ' ' + "</li>" +			
 					"</ul>" + 
