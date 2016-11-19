@@ -30,6 +30,16 @@ $("#deleteBtn").click(function(e) {
 	ajaxDeleteMember($("#no").val(), $("#password").val())
 });
 
+$(".h-m-list li").click(function(){
+    var thisIndex = $(this).index();
+    $("#h-invite-list").hide();
+    $("#h-invite-list").eq(thisIndex).show();
+    
+    $(".h-m-list li p").removeClass("active");
+    $(".h-m-list li p").eq(thisIndex).addClass("active");  
+    
+    return false;
+   });
 
 function ajaxAddMemberInvite(memberInvite) {
 	$.post(serverAddr +"/memberInvite/add.json", memberInvite, function(obj) {

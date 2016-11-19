@@ -1,6 +1,5 @@
 function ajaxGroupInviteListMessage() {
-	$('.wrap').removeClass('display-none');
-	$('body').css({"background" : "#0d8aa5", "z-index" : "99999"})
+	
 	$.getJSON(serverAddr +"/memberInvite/list.json", function(obj) {
 		async: false
 		var result = obj.jsonResult
@@ -16,6 +15,10 @@ function ajaxGroupInviteListMessage() {
 			if (($("#userName").attr('data-value') == arr[i].memberNo) && (arr[i].status == false) && (arr[i].groupNo == arr[i].groupGroupNo)) {				 
 				inviteContents += template2(arr[i])
 				
+			 }	
+			if (($("#user").attr('data-value') == arr[i].memberNo) && (arr[i].status == false) && (arr[i].groupNo == arr[i].groupGroupNo)) {				 
+				inviteContents += template2(arr[i])
+				
 			 }		
 	    }
 		$('.alert-box').html(inviteContents) 
@@ -29,8 +32,7 @@ function ajaxGroupInviteListMessage() {
 		if (inviteBox > 0) {
 			$(".alert-icon").show()
 		} 
-		$('.wrap').addClass('display-none');	    
-	    $('body').css({"background" : "" ,"z-index" : "0"})	
+	
 	})
 		
 }

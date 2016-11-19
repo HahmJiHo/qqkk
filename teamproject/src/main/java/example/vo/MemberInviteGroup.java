@@ -12,9 +12,11 @@ public class MemberInviteGroup implements Serializable {
 	protected String groupName;
 	protected int memberNo;
 	protected String memberName;
+	
 	protected List<ScheduleSimple> scheduleList;
 	
 	
+
 	public List<ScheduleSimple> getScheduleList() {
 		return scheduleList;
 	}
@@ -63,13 +65,13 @@ public class MemberInviteGroup implements Serializable {
 		this.memberName = memberName;
 	}
 
-
 	@Override
 	public String toString() {
 		return "MemberInviteGroup [groupNo=" + groupNo + ", groupName=" + groupName + ", memberNo=" + memberNo
-				+ ", memberName=" + memberName + "]";
+				+ ", memberName=" + memberName + ", scheduleList=" + scheduleList + "]";
 	}
-	
+
+
 	
 	
 	

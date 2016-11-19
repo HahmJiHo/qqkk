@@ -1,7 +1,5 @@
 function ajaxMemberInviteList() {
-	$('.wrapper').css({"display" : "none"})
-	$('.wrap').removeClass('display-none');
-	
+
 	$.getJSON(serverAddr +"/memberInvite/list.json", function(obj) {
 		var result = obj.jsonResult
 		if (result.state != "success") {
@@ -17,19 +15,20 @@ function ajaxMemberInviteList() {
 			if (location.search.startsWith("?")) {
 				if (arr[i].groupNo == no && arr[i].status == true) {					
 					contents += template(arr[i])
-					console.log(arr)
+					
 					if ($('#userName').text() == arr[i].inviteName) {
 						$('#color-btn').attr('data-no', arr[i].no)				
 					}
 					$('.group-member-list').html(contents)
-				} else if (arr[i].groupNo == no && arr[i].status == false){
+				} 
+				if (arr[i].groupNo == no && arr[i].status == false){
 					waitContents += template(arr[i])
 					$(".group-member-waitlist").html(waitContents)
 				}
 			}			
 		}   
-		$('.wrap').addClass('display-none');	
-		$('.wrapper').css({"display" : "block"})
+	
+
 	})
 	    
 }
@@ -55,7 +54,7 @@ function ajaxMemberGroupInviteList() {
 			} 	
 		}
 		$(".gallery").append(contents)
-		console.log(arr)
+		
 		ajaxmyScheduleIng()	
 		$(".groupMore").click(function (e) {
 			window.location.href = "../group/makeSc.html?no=" + $(this).attr("data-no")
