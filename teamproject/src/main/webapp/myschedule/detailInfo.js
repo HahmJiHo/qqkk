@@ -239,6 +239,12 @@ function ajaxTermWeather(date, gpno, dday) {
       case "구름조금":
     	  $(".weather-img").addClass("partlyCloudyDay");
     	  break;
+      case "구름 조금":
+    	  $(".weather-img").addClass("partlyCloudyDay");
+    	  break;
+      case "구름 많음" :
+    	  $(".weather-img").addClass("heavyClouds");
+    	  break;	  
       case "구름많음" :
     	  $(".weather-img").addClass("heavyClouds");
     	  break;
