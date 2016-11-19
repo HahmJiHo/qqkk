@@ -15,7 +15,8 @@
     <link rel="stylesheet" type="text/css" href="../css/makeCal.css" >
     <link rel="stylesheet" type="text/css" href="../css/makegroup.css">       
     <link rel="stylesheet" type="text/css" href="../css/modal_style.css"> 
-    <link rel="stylesheet" type="text/css" href="../css/makegrouplayout.css"> 
+    <link rel="stylesheet" type="text/css" href="../css/makegrouplayout.css">
+    <link rel="stylesheet" type="text/css" href="../css/btn.css"> 
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/5.0.7/sweetalert2.min.css" />
     <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">     
@@ -115,7 +116,7 @@ a:hover { text-decoration: none !important;}
       <p class="logOutBtn" id="logoutBtn" style="float: right;">로그아웃</p>
       
     <div class="alert-box"
-      style="position: absolute; background-color: rgba(0, 0, 0, 0.5); max-width: 250px; margin: 10px; left: 50px; top: 60px; color: #fff">
+      style="position: absolute; background-color: rgba(0, 0, 0, 0.5); min-width: 250px; margin: 10px; left: 50px; top: 60px; color: #fff">
     </div>
   </aside>
     
@@ -131,13 +132,14 @@ a:hover { text-decoration: none !important;}
       </div>
 		
 		  <div class="make-top">
-		    <div class="make-text" style="position:fixed; left:20px; z-index:2;">
-		     <h2>
+		    <div class="make-text" style="position:fixed; left:20px; z-index:2;  width:150px;">
+		     <h2 style="float:left; margin-right:5px;">
 		      <span class="my-profile">
-		          <img src="" id="profilePhoto" style="width:80px; height:80px; margin-left:10px;margin-bottom:10px;"/>
-		      </span><br>
-		      <span id="userName" class="my-login" data-value="" style="margin-left:-5px;"></span>님 안녕하세요?
-		     </h2>	  	   
+		          <img src="" id="profilePhoto" style="width: 50px; height: 50px; border-radius: 50%; margin-bottom:10px; box-shadow: 2px 2px 1px 0px rgba(80,78,80,1);" />
+		      </span>		      
+		     </h2>	  	 
+		       <p style="color:#751471; margin-top: 5px; margin-left:5px; font-size:14px; font-weight:bold"><span>안녕하세요!</span></p> 
+          <p style="color:#fff; font-size:14px;  margin-left:5px; font-weight:bold"><span id="userName" class="my-login" data-value="" ></span>님</p>  
 		    </div>
 		    <div class="my-info">
 	
@@ -315,12 +317,21 @@ box-shadow: 0 1px 2px #AFAFAF; border-radius: 5px; left:0px;">
        
   </script>
   <script id="inviteMessage" type="text/x-handlebars-template">       
-    <div class="invite-box" style="display:none" data-value="{{memberNo}}">             
-      <p>{{name}} 님이 <span id="inviteGroupNo" > {{groupName}} 그룹에 초대하였습니다</span></p>
+   <div class="invite-box" style="display:none; border-bottom:1px solid #9dc92a" data-value="{{memberNo}}">             
+      <p style="font-size:16px;">{{name}} 님이 <span id="inviteGroupNo" > {{groupName}} 그룹에 초대하였습니다</span></p>
         <ul>
-           <li style="display:inline"><button type="button" class="btn addTrue"  data-value="{{no}}" data-no="{{groupNo}}" data-chat="{{groupReplyNo}}">수락</button></li>
-           <li style="display:inline"><button type="button" class="btn addFail" data-value="{{no}}">거절</button></li>
-        </ul>     
+           <li style="display:inline">
+              <button type="button" class="button-border-p addTrue"  data-value="{{no}}" data-no="{{groupNo}}" data-chat="{{groupReplyNo}}">
+                <i class="fa fa-check" aria-hidden="true" style="font-size:12px"></i>수락
+              </button>
+           </li>
+           <li style="display:inline">
+            <button type="button" class="hiba-btn btn-round-p addFail" data-value="{{no}}">
+            <i class="fa fa-times" aria-hidden="true" style="font-size:12px"></i>거절
+        </button>
+            </li>
+        </ul>    
+         
      </div>  
   </script>
   

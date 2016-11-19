@@ -47,7 +47,7 @@ body{ font-family:"Nanum Gothic", sans-serif; font-size:12px; }
 .nav { width : 100%; }
 .nav li { float: none; }
 .nav li a { display:block; width:100%; }
-.nav li a:hover { background: rgba(255, 255, 255, 0.13); opacity: 1; }
+.nav li a:hover { background: rgba(255, 255, 255, 0.13); opacity: 1; color:#fff}
 .aside-nav { float: left;  padding:15px 0 15px 20px; }
 .aside-nav li { float: left; margin-right: 15px;}
 .iconMemberPlus {width: 40px; height:40px; background: url('../images/icon_memberplus_off.png') no-repeat center; }
@@ -230,7 +230,7 @@ footer { background: #404040; color: #c0c0c0; padding: 10px 0; clear: both; }
 }
 .side-header {
 	 position: fixed;
-	  background : rgba(152, 109, 218, 0.62);
+	  background : rgba(74, 38, 130, 0.62);
     max-height: none;
     min-height: 100%;
     overflow: hidden;

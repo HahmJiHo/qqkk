@@ -14,14 +14,12 @@
       <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
-<link rel="stylesheet"
-   href="https://fonts.googleapis.com/css?family=Raleway">
-<link rel="stylesheet"
-   href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+<link rel="stylesheet"  href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet"  href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 <link href="../node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet"/>
 <link rel="stylesheet" type="text/css" href="../css/common_style.css">
 <link rel="stylesheet" type="text/css" href="../css/detailInfo.css">
-
+<link rel="stylesheet" type="text/css" href="../css/btn.css">
 
 <!-- Optional theme -->
 
@@ -104,22 +102,26 @@
             </ul>
     		 <p class="logOutBtn" id="logoutBtn" style="float: right;">로그아웃</p>
             <div class="alert-box"
-               style="position: absolute; background-color: rgba(0, 0, 0, 0.5); max-width: 250px; margin: 10px; left: 50px; top: 60px; color: #fff">
+               style="position: absolute; background-color: rgba(0, 0, 0, 0.5); min-width: 250px; margin: 10px; left: 50px; top: 60px; color: #fff">
             </div>
          </aside>
 
          <div class="section-wrap">
             <div class="make-top">
-               <div class="make-text"
-                  style="position: fixed; left: 20px; z-index: 2;">
-                  <h2>
+               <div class="make-text" style="position: fixed; left: 20px; z-index: 2; width:150px; top:80px">
+          <!--         <h2>
                      <span class="my-profile"
                         style="display: block; text-align: center; padding-left: 0px;">
                         <img src="" id="profilePhoto"
                         style="width: 80px; height: 80px; margin-top: 90px;" />
                      </span><br> <span id="user" class="my-login" data-value=""></span>님의
                      상세정보
-                  </h2>
+                  </h2> -->
+                     <h2 style="float:left; margin-right:5px;">
+          <img src="" id="profilePhoto" style="width: 50px; height: 50px; border-radius: 50%; margin-bottom:10px; box-shadow: 2px 2px 1px 0px rgba(80,78,80,1);" />
+         </h2>         
+          <p style="color:#751471; margin-top: 5px; margin-left:5px; font-size:14px; font-weight:bold"><span>안녕하세요!</span></p> 
+          <p style="color:#fff; font-size:14px;  margin-left:5px; font-weight:bold"><span id="user" class="my-login" data-value="" ></span>님</p>
                </div>
             </div>
 
@@ -132,10 +134,7 @@
                      onclick="location.href='MySchedule.html'">
                      <i class="fa fa-bars w3-xlarge" aria-hidden="true"></i>
                   </button>
-                  <button type="button" class="btn btn-default"
-                     onclick="location.href='checkMySchedule.html'">
-                     <i class="fa fa-calendar w3-xlarge" aria-hidden="true"></i>
-                  </button>
+
                </div>
             </form>
 
@@ -337,13 +336,10 @@
 
 				</div>
 				</div>
-			<div class="123" style="clear: both;margin-bottom: -63px;">
-    
-			</div>
-			<br><br>
-			<div class="infoOption">
-               <hr class="section-bar" style="border:solid; color: rgb(157, 201, 42);"></hr>
-               <div class="btn-group">
+					
+			<div class="infoOption" style="margin-top: 100px; border-top:6px solid rgb(157, 201, 42); clear:both">
+               
+               <div class="btn-group" style="margin-top:10px;">
                   <ul>
                      <li class="festiBtn"><a href="#" id="list" class="btn btn-primary"><span
                         class="glyphicon glyphicon-heart"></span>   축제</a></li>
@@ -414,19 +410,29 @@
    <a>{{groupName}}</a>
    </script>
    <script id="inviteMessage" type="text/x-handlebars-template">       
-    <div class="invite-box" style="display:none" data-value="{{memberNo}}">             
-      <p>{{name}} 님이 <span id="inviteGroupNo" > {{groupName}} 그룹에 초대하였습니다</span></p>
+     <div class="invite-box" style="display:none; border-bottom:1px solid #9dc92a" data-value="{{memberNo}}">             
+      <p style="font-size:16px;">{{name}} 님이 <span id="inviteGroupNo" > {{groupName}} 그룹에 초대하였습니다</span></p>
         <ul>
-           <li style="display:inline"><button type="button" class="btn addTrue"  data-value="{{no}}" data-no="{{groupNo}}" data-chat="{{groupReplyNo}}">수락</button></li>
-           <li style="display:inline"><button type="button" class="btn addFail" data-value="{{no}}">거절</button></li>
-        </ul>     
-     </div>  
+           <li style="display:inline">
+              <button type="button" class="button-border-p addTrue"  data-value="{{no}}" data-no="{{groupNo}}" data-chat="{{groupReplyNo}}">
+                <i class="fa fa-check" aria-hidden="true" style="font-size:12px"></i>수락
+              </button>
+           </li>
+           <li style="display:inline">
+            <button type="button" class="hiba-btn btn-round-p addFail" data-value="{{no}}">
+            <i class="fa fa-times" aria-hidden="true" style="font-size:12px"></i>거절
+        </button>
+            </li>
+        </ul>    
+         
+     </div>    
   </script>
    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
    <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
    <script src="../node_modules/handlebars/dist/handlebars.min.js"></script>
    <script type="text/javascript" src="../member/memberApp.js"></script>
    <script type="text/javascript" src="../js/common.js"></script>
+   <script type="text/javascript" src="../js/main.js"></script>
    <script type="text/javascript" src="../js/include.js"></script>
    <script type="text/javascript" src="../js/bit.js"></script>
    <script type="text/javascript" src="../member/memberApp.js"></script>

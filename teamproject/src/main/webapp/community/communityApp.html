@@ -7,15 +7,9 @@
    <meta charset="utf-8">
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <title>하이바 커뮤니티</title>
-   
-   
     <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico">
     <link rel="stylesheet" type="text/css" href="../css/common_style.css" >
     <link rel="stylesheet" type="text/css" href="../css/community.css" >
-    
-    
-   
-    
      <!-- makegroupd에서 가져온 CSS -->
     <link rel="stylesheet" type="text/css" href="../css/makeCal.css" >
     <link href="../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
@@ -163,21 +157,29 @@ height: 40px; background: #555; }
     
    <!--    <p class="f-r logout" style="float: right;"><a href="#">로그아웃</a></p> -->
     <div class="alert-box"
-      style="position: absolute; background-color: rgba(0, 0, 0, 0.5); max-width: 250px; margin: 10px; left: 50px; top: 60px; color: #fff">
+      style="position: absolute; background-color: rgba(0, 0, 0, 0.5); mㅑㅜ-width: 250px; margin: 10px; left: 50px; top: 60px; color: #fff">
     </div>
    </aside>
 
-    <div class="section-wrap" align="center">
+    <div class="section-wrap">
       <div class="make-top">
-      <div class="make-text" style="position:fixed; left:20px; z-index:2;">
-         <h2>
-          <span class="my-profile" style="display:block; text-align:center; padding-left:0px;">
-              <img src="" id="profilePhoto" style="width:80px; height:80px; "/>
-          </span><br>
-          <span id="mno"></span>
-          <span id="userName" class="my-login" data-value=""></span>님 안녕하세요?
-         </h2>
-        </div>
+	      <div class="make-text" style="position:fixed; left:20px; z-index:2; width:150px;">
+	        <!--  <h2>
+	          <span class="my-profile" style="display:block; text-align:center; padding-left:0px;">
+	              <img src="" id="profilePhoto" style="width:80px; height:80px; "/>
+	          </span><br>
+	          <span id="mno"></span>
+	          <span id="userName" class="my-login" data-value=""></span>님 안녕하세요?
+	         </h2> -->
+	         <h2 style="float:left; margin-right:5px;">
+          <span class="my-profile">
+              <img src="" id="profilePhoto" style="width: 50px; height: 50px; border-radius: 50%; margin-bottom:10px; box-shadow: 2px 2px 1px 0px rgba(80,78,80,1);" />
+          </span>         
+         </h2>       
+          <p style="color:#751471; margin-top: 5px; margin-left:5px; font-size:14px; font-weight:bold"><span>안녕하세요!</span></p> 
+          <p style="color:#fff; font-size:14px;  margin-left:5px; font-weight:bold"><span id="userName" class="my-login" data-value="" ></span>님</p>
+	         
+	        </div>
           
       </div>
       <!-- <h2>커뮤니티</h2> -->
@@ -390,7 +392,24 @@ height: 40px; background: #555; }
 <br>
 {{/each}}
  </script> 
-
+  <script id="inviteMessage" type="text/x-handlebars-template">       
+    <div class="invite-box" style="display:none; border-bottom:1px solid #9dc92a" data-value="{{memberNo}}">             
+      <p style="font-size:16px;">{{name}} 님이 <span id="inviteGroupNo" > {{groupName}} 그룹에 초대하였습니다</span></p>
+        <ul>
+           <li style="display:inline">
+              <button type="button" class="button-border-p addTrue"  data-value="{{no}}" data-no="{{groupNo}}" data-chat="{{groupReplyNo}}">
+                <i class="fa fa-check" aria-hidden="true" style="font-size:12px"></i>수락
+              </button>
+           </li>
+           <li style="display:inline">
+            <button type="button" class="hiba-btn btn-round-p addFail" data-value="{{no}}">
+            <i class="fa fa-times" aria-hidden="true" style="font-size:12px"></i>거절
+        </button>
+            </li>
+        </ul>    
+         
+     </div>  
+  </script>
 
 <!-- 커뮤니티 디테일 modal S--
 <script id="commentTemplateText" type="text/x-handlebars-template">
@@ -499,20 +518,22 @@ $(document).ready(function(){
 <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/5.0.7/sweetalert2.min.js"></script>
 <!-- <script src="https://use.fontawesome.com/bf4034f4dc.js"></script>   -->
-<script type="text/javascript" src="../memberInvite/memberInvitemessageApp.js"></script>
 <script type='text/javascript'  src="../js/main.js"></script> 
 
 
 <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="../js/main.js"></script>
 <script type='text/javascript' src="../js/include.js"></script> 
 <script type="text/javascript" src="../js/common.js"></script>
 <script type="text/javascript" src="../js/bit.js"></script>
 <script type="text/javascript" src="communityApp.js"></script>
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyAft7ukIrCdQPQYU4aXTBySOqsjQthqMNE&libraries=places&callback=initMap" async defer></script>
+<script type="text/javascript" src="../memberInvite/memberInvitemessageApp.js"></script>
 
 <script type="text/javascript">
 	ajaxLoginUser()               // 로그인 유저 정보 가져오기
 	ajaxCommunityList()           // 게시물 목록 가져오기
+	 ajaxGroupInviteListMessage()
 </script>
 
 
