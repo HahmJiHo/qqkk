@@ -354,6 +354,7 @@ function ajaxLoginUser() {
 		//$("#userEmail").text(result.data.email);
 		$(".my-logout").css("display", "none")
 		$("#user").text(result.data.name)
+		$("#userName").attr('data-value', result.data.no)
 		$("#user").attr('data-value', result.data.no)
 		$("#userSc").attr('data-value', result.data.no)
 		$("#profilePhoto").attr('src', '../upload/' + result.data.filename)
