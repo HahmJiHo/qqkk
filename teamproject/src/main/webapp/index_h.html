@@ -29,6 +29,70 @@
         <link rel="stylesheet" type="text/css" href="css/color/violet.css">
         <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" />
         <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+        <script src="node_modules/jquery/dist/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.51/jquery.form.min.js"></script>    
+        <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script>
+        $( document ).ready(function() {
+          $.getJSON(serverAddr +"/member/countAllGroup.json", function(obj) {
+              var result = obj.jsonResult
+              if (result.state != "success") {
+                return
+              }       
+              console.log(result.data)
+              $('#groupCount').countTo({ from: 100, to : result.data, speed: 2000,
+                  refreshInterval: 100,
+                  formatter: function (value, options) {
+                    return value.toFixed(options.decimals);
+                  },
+                  onUpdate: function (value) {
+                    console.debug(this);
+                  },
+                  onComplete: function (value) {
+                    console.debug(this);
+                  } 
+                })
+              })
+               $.getJSON(serverAddr +"/member/countAllSc.json", function(obj) {
+              var result = obj.jsonResult
+              if (result.state != "success") {
+                return
+              }       
+              console.log(result.data)
+              $('#scCount').countTo({ from: 100, to : result.data, speed: 2000,
+                  refreshInterval: 100,
+                  formatter: function (value, options) {
+                    return value.toFixed(options.decimals);
+                  },
+                  onUpdate: function (value) {
+                    console.debug(this);
+                  },
+                  onComplete: function (value) {
+                    console.debug(this);
+                  } 
+                })
+              })
+               $.getJSON(serverAddr +"/member/countAllMember.json", function(obj) {
+              var result = obj.jsonResult
+              if (result.state != "success") {
+                return
+              }       
+              console.log(result.data)
+              $('#memberCount').countTo({ from: 100, to : result.data, speed: 2000,
+                  refreshInterval: 100,
+                  formatter: function (value, options) {
+                    return value.toFixed(options.decimals);
+                  },
+                  onUpdate: function (value) {
+                    console.debug(this);
+                  },
+                  onComplete: function (value) {
+                    console.debug(this);
+                  } 
+                })
+              })
+            })  
+        </script>
         <style>
 .Btn2 { background-color: #e7e7e7;color: black;} /* Gray */
 .Btn3 { background-color:rgb(157, 201, 42); color: black;} /* Gray */
@@ -407,7 +471,7 @@
                       <div class="fact-icon">
                           <i class="fa fa-check-square fa-lg"></i>
                       </div>
-                      <span data-to="356">0</span>
+                      <span id="groupCount"></span>
                       <p>생성된 그룹</p>
                   </div>
               </div>
@@ -417,7 +481,7 @@
                       <div class="fact-icon">
                           <i class="fa fa-users fa-lg"></i>                                    
                       </div>
-                      <span data-to="1502">0</span>
+                      <span id="scCount">0</span>
                       <p>진행중인 약속</p>
                   </div>
               </div>
@@ -427,7 +491,7 @@
                       <div class="fact-icon">
                           <i class="fa fa-clock-o fa-lg"></i>
                       </div>
-                      <span data-to="2500">0</span>
+                      <span id="memberCount">0</span>
                       <p>회원수</p>
                   </div>
               </div>
@@ -644,9 +708,7 @@
 
         
         <!-- main jQuery -->
-        <script src="node_modules/jquery/dist/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.51/jquery.form.min.js"></script>    
-        <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+        
         <script src="js/main/jquery.nav.js"></script>
         <script src="js/main/jquery.mixitup.min.js"></script>
         <script src="js/main/jquery.fancybox.pack.js"></script>
@@ -663,11 +725,11 @@
         <script type="text/javascript" src="js/bit.js"></script>
         <script type="text/javascript" src="member/memberForm.js"></script>
         <script type="text/javascript" src="auth/authApp.js"></script>
-        <script>  
-init() 
-ajaxLogout()
-
-</script>
+        <script>
+				init() 				
+				ajaxLogout()
+				</script>
+				
         
         
  </body>

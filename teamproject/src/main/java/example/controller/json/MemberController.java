@@ -23,6 +23,24 @@ public class MemberController {
 	@Autowired ServletContext sc;
 	
 	
+
+	@RequestMapping(path="countAllGroup")
+	public Object countAllGroup() throws Exception {		
+		int groupCount = memberDao.countAllGroup();
+		return JsonResult.success(groupCount);		
+	}
+	
+	@RequestMapping(path="countAllSc")
+	public Object countAllSc() throws Exception {	
+		int scCount = memberDao.countAllSc();
+		return JsonResult.success(scCount);		
+	}
+	@RequestMapping(path="countAllMember")
+	public Object countAllMember() throws Exception {		
+		int memberCount = memberDao.countAllMember();
+		return JsonResult.success(memberCount);		
+	}
+	
 	@RequestMapping(path="list")
 	public Object list(
 			@RequestParam(defaultValue="1") int pageNo,

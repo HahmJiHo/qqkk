@@ -25,6 +25,20 @@
     limit #{startIndex}, #{length}
   </select>
 
+    <select id="countAllSc" resultType="int">
+		 SELECT COUNT(*) FROM hiba_g_sc as hiba_g_sc
+  </select>
+
+  <select id="countAllMember" resultType="int">
+     SELECT COUNT(*) FROM hiba_membs as hiba_membs
+  </select>
+
+
+  <select id="countAllGroup" resultType="int">
+     SELECT COUNT(*) FROM hiba_group as hiba_group
+  </select>
+
+
   <select id="selectOne" parameterType="int" resultMap="memberMap">
     select mno,
     name, nicknm, email, PHOT_PATH

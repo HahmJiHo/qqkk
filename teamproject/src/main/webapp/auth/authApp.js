@@ -35,6 +35,45 @@ function ajaxLogin(user) {
 	})
 }
 
+function ajaxMainCount() {
+	console.log("호출")
+	$.getJSON(serverAddr +"/member/countAllGroup.json", function(obj) {
+		var result = obj.jsonResult
+		if (result.state != "success") {
+			return
+		}				
+		$('.scCount').attr('data-to', result.data)	
+	})	
+
+}
+
+
+/*	$.getJSON(serverAddr +"/member/countAllGroup.json", function(obj) {
+var result = obj.jsonResult
+if (result.state != "success") {
+	alert("조회 실패 입니다.-2")       
+	return
+} 
+var arr = result.data
+for (var i in arr) {	
+	console.log(arr[i])
+	$('.groupCount').attr('data-to', arr[i])
+}
+		
+})
+$.getJSON(serverAddr +"/member/countAllMember.json", function(obj) {
+var result = obj.jsonResult
+if (result.state != "success") {
+	alert("조회 실패 입니다.-3")       
+	return
+} 
+var arr = result.data
+for (var i in arr) {	
+	console.log(arr[i])
+	$('.memberCount').attr('data-to', arr[i])
+}
+		
+})*/
 
 
 

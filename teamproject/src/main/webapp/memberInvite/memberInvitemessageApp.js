@@ -44,6 +44,7 @@ $("body").on('click','.addTrue', function(e){
 			groupNo : $(this).attr('data-no'),
 			memberNo : $("#userName").attr('data-value')
 	}
+	console.log(memberInvite)
 	ajaxMemberInvite(memberInvite)
 	/*groupNo : $(this).attr('data-no'),*/
 	var replyContent = {
