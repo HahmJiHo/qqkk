@@ -1,4 +1,8 @@
 function ajaxReplyList() {
+	 $.ajaxSetup ({  
+	        cache: false  
+	    });  
+	 setInterval(function(){
 	$.getJSON(serverAddr + "/replyContent/list.json", function(obj) {
 		var result = obj.jsonResult
 
@@ -37,8 +41,12 @@ function ajaxReplyList() {
 		
 		$("#board-Table").html(contents)
 	})
+	 }, 1000);
 }
 
+$(".reflash").click(function(e) {
+	 ajaxReplyList()
+})
 /*function ajaxLoginUser() {
 	$.getJSON(serverAddr +"/auth/loginUser.json", function(obj) {
 		var result = obj.jsonResult

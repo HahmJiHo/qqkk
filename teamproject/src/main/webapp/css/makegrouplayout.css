@@ -62,8 +62,8 @@ html,body {
 /*  SCROLLBAR
 -------------------*/
 ::-webkit-scrollbar {
-  width: 0.2em;
-  background: #e74c3c;
+  width: 0.5em;
+  background: #9dc92a;
 }
 
 ::-webkit-scrollbar-track {
@@ -89,7 +89,7 @@ html,body {
 }
 /* === Links Styles === */
 a {
-  text-decoration: underline;
+
   -webkit-transition: 0.25s;
   -moz-transition: 0.25s;
   -o-transition: 0.25s;
@@ -252,7 +252,7 @@ body {
 }
 .gallery_item_preview a img {
   display: block;
-  width: 100%;
+  max-width: 100%;
   height: 150px;
 
   -webkit-border-radius: 5px;

@@ -263,7 +263,7 @@ a:hover { text-decoration: none !important;}
     </div>
       <div class="gallery_item_preview">
   
-           <a href="#" class="groupMore" data-js="{{groupNo}}"  data-no="{{groupNo}}" style="width:100%;">      
+           <a href="#" class="groupMore" data-js="{{groupNo}}"  data-no="{{groupNo}}">      
                 
               {{#if gphoto}}
                 <img src="../upload/thumbnail{{gphoto}}">
@@ -346,20 +346,17 @@ box-shadow: 0 1px 2px #AFAFAF; border-radius: 5px; left:0px;">
   <script type="text/javascript" src="../js/common.js"></script>
   <script type="text/javascript" src="../js/bit.js"></script>   
   <script type="text/javascript" src="../member/memberApp.js"></script>
-  <script type="text/javascript" src="makegroupApp.js"></script>
-  <script type="text/javascript" src="makegroupForm.js"></script>
   <script type="text/javascript" src="../memberInvite/memberInviteApp.js"></script>
   <script type="text/javascript" src="../memberInvite/memberInviteForm.js"></script>
-  <script type="text/javascript" src="../groupSchedule/groupScheduleApp.js"></script>
+  <script type="text/javascript" src="makegroupApp.js"></script>
+  <script type="text/javascript" src="makegroupForm.js"></script>  
   <script type="text/javascript" src="../memberInvite/memberInvitemessageApp.js"></script>
   <script type="text/javascript" src="../js/makegrouplayout.js"></script>  
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/5.0.7/sweetalert2.min.js"></script>
   <script type="text/javascript">
-
   ajaxLoginUser()
   ajaxMemberGroupInviteList()
   ajaxGroupInviteListMessage() 
-  
    /* ajaxStudyList() */
    if (location.search.startsWith("?")) {     
      $(".my-new").css("display","none")
@@ -377,6 +374,3 @@ box-shadow: 0 1px 2px #AFAFAF; border-radius: 5px; left:0px;">
   
 </body>
 </html>
-
-
-

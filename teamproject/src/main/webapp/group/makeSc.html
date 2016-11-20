@@ -21,7 +21,7 @@
 	  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="../css/jquery.minicolors.css">
 		<link rel="stylesheet" type="text/css" href="../css/btn.css" >
-	
+	 <link rel="stylesheet" type="text/css" href="../css/makegrouplayout.css">
 	  <style>
 	    #calendar {	
 	    margin-top:20px;
@@ -171,13 +171,7 @@ top: 4px;
 #color-btn { float: left; } 
 #popoverContent { display: none;}
 .form-group ul li .minicolors .minicolors-swatch { border-radius : 100px; }
-.wrap {
-  position: relative !important;
-  width:100% !important;
-  height:100% !important;
-  top:400px !important;
-  left:0px !important;
-}
+
 .logOutBtn{cursor: pointer;} 
 .artice { float: left;}
 ::-webkit-scrollbar {
@@ -203,7 +197,7 @@ top: 4px;
   
 </head>
 <body>
-<div class="wrap display-none" style="">
+<div class="wrap display-none" style="z-index:9999">
   <div class="loading"></div>
 </div>
 <div class="wrapper">
@@ -523,10 +517,10 @@ top: 4px;
   <script type="text/javascript" src="../replyContent/replyContentForm.js"></script> 
   <script>  
   ajaxLoginUser()  
-  ajaxMemberInviteList()
   ajaxMemberList()
   ajaxGroupName()
   ajaxGroupInviteListMessage() 
+  ajaxMemberInviteList()
   ajaxReplyList()
 	if (location.search.startsWith("?")) {
 	  var no = location.search.split("=")[1];

@@ -88,15 +88,14 @@ function ajaxDeleteGroup(no) {
 		no: no
 	}, function(obj) {
 		var result = obj.jsonResult
-		if (result.state != "success") {
+		if (result.state != "success") { 
 			alert("삭제 실패 입니다.")       
 			return
 		} 
 		ajaxGroupList()
 	})		
 }
-$('body').on('click',"#addBtn", function(){
-	
+$('body').on('click',"#addBtn", function(){	
 		var formData = new FormData();	
 		formData.append("groupName", $("input[name=groupName]").val());
 		formData.append("groupText", $("input[name=groupText]").val());
@@ -110,8 +109,8 @@ $('body').on('click',"#addBtn", function(){
 			success: function(result){
 			}
 		});
-		window.location.reload();
-	
+		 ajaxMemberGroupInviteList()
+		 window.location.reload();
 })
 
 

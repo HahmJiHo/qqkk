@@ -15,7 +15,6 @@ $('.group-reply-more').on('click', '#group-reply-btn',function(e) {
 })
 
 
-
 function ajaxAddReplyContent(replyContent) {
 	$.post(serverAddr +"/replyContent/add.json", replyContent,  function(obj) {
 		var result = obj.jsonResult

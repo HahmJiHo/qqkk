@@ -12,6 +12,8 @@ var gsno = parseInt(groupScNo)
 
 
 function ajaxGroupName() { // gno , gsno 불러오는 function
+	$('.wrapper').css({"display" : "none"})
+	$('.wrap2').removeClass('display-none');
 	$.getJSON(serverAddr +"/album/list.json",  function(obj) {
 		var result = obj.jsonResult
 		if (result.state != "success") {
@@ -20,18 +22,15 @@ function ajaxGroupName() { // gno , gsno 불러오는 function
 		} 
 		var contents = "";
 		var contents2 = "";	
-		/*var myGroupList = "";*/	
 		var photoContents = "";	
 		var arr = result.data.list
 		var template = Handlebars.compile($('#groupNameTemplateText').html())			
 		var template2 = Handlebars.compile($('#groupNameTemplateText2').html())
 		var template3 = Handlebars.compile($('#photoTemplate').html())
-		/*var template4 = Handlebars.compile($('#myGroupListTeamplae').html())*/
+	
 		
 		for (var i in arr) {
-		/*	if (no == arr[i].memberNo) {
-				myGroupList += template4(arr[i])
-			}*/		
+	
 			if (no == arr[i].memberNo && arr[i].groupNo == gno) {
 				var sch = arr[i].scheduleList
 				$("#groupinfo").attr('data-value', arr[i].groupNo)								
@@ -55,7 +54,6 @@ function ajaxGroupName() { // gno , gsno 불러오는 function
 		
 		$('.tasks-list').html(contents)	
 		$('#groupNa').html(contents2)
-		/*$("#mygorupList").html(myGroupList)*/
 		$('.tttt').each(function(i, obj) {
 			var vv = $(this).attr("data-value")
 			var vvv = $(this)
@@ -85,10 +83,17 @@ function ajaxGroupName() { // gno , gsno 불러오는 function
 			window.location.href = "../album/album02.html?no=" + no + "&gno=" + gno + "&gsno=" + $(this).attr("data-gsno")	
 		})	
 
+		$('.wrapper').css({"display" : "block"})
+		$('.wrap2').addClass('display-none');
 	});
 }
 
 function ajaxGroupPhoto() {
+	console.log("!0")
+	$('.wrapper').css({"display" : "none"})
+	console.log("!1")
+	$('.wrap').removeClass('display-none');
+	console.log("!2")
 	$.getJSON(serverAddr +"/album/listAl.json", function(obj) {
 		var result = obj.jsonResult
 		if (result.state != "success") {
@@ -99,13 +104,16 @@ function ajaxGroupPhoto() {
 		var contents =""
 		var template = Handlebars.compile($('#photoTemplate').html())
 		for (var i in arr) {
-			if ((gno == arr[i].groupNo) && (gsno == arr[i].groupScheduleNo)) {
-				console.log(arr[i])
+			if ((gno == arr[i].groupNo) && (gsno == arr[i].groupScheduleNo)) {				
 				contents += template(arr[i]) 	
 			}
 		}
 		$('.aaaaa').html(contents)
 		
+		console.log("!5")
+		$('.wrapper').css({"display" : "block"})
+		console.log("!6")
+		$('.wrap').addClass('display-none');
 	})
 }
 

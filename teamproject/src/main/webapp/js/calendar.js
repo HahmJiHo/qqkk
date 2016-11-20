@@ -243,7 +243,7 @@ function showCalendar(arr) {
 				})								
 				return false;				
 			});
-
+			
 		
 		},
 		eventClick: function(event, start, end) {
@@ -327,7 +327,12 @@ function showCalendar(arr) {
 };   
 
 function ajaxMyScheduleList(no) {
-
+	$('header').css({"display" : "none"})
+	$('.make-text').css({"display" : "none"})
+	$('.header-top').css({"display" : "none"})
+	$('.header-top').css({"display" : "none"})
+	$('.header-top').css({"display" : "none"})
+	$('.wrap').removeClass('display-none');
 	$.getJSON(serverAddr +"/schedule/list.json", function(obj) {
 		var result = obj.jsonResult
 		if (result.state != "success") {
@@ -364,7 +369,12 @@ function ajaxMyScheduleList(no) {
 		
 		showCalendar(arrTest);
 	$(".side-schedhule-List").html(contents) 
-	
+	$('header').css({"display" : "block"})
+	$('.make-text').css({"display" : "block"})
+	$('.header-top').css({"display" : "block"})
+	$('.header-top').css({"display" : "block"})
+	$('.header-top').css({"display" : "block"})
+	$('.wrap').addClass('display-none');
 	})
 }
 
