@@ -23,7 +23,7 @@ public class CommunityCommentController {
 	@RequestMapping(path="list")
 	public Object list(
 			@RequestParam(defaultValue="1") int pageNo,
-			@RequestParam(defaultValue="5") int length) throws Exception {
+			@RequestParam(defaultValue="100") int length) throws Exception {
 
 		try {
 			HashMap<String,Object> map = new HashMap<>();

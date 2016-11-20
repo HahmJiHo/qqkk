@@ -120,8 +120,3 @@ function ajaxJoinMember(formData) {
 
 
 
-
-
-
-
-
