@@ -291,7 +291,7 @@ a:hover { text-decoration: none !important;}
               {{/if}}             
                 
            <span>
-           <h3 class="group-name" style="padding-bottom:2px; font-size:14px;"> {{groupName}} 그룹</h3>
+           <h3 class="group-name" style="padding:2px 0; font-size:14px; font-weight:bold;"> {{groupName}} 그룹</h3>
             <p>{{groupText}}</p>
 
             </span>
@@ -315,13 +315,13 @@ box-shadow: 0 1px 2px #AFAFAF; border-radius: 5px; left:0px;">
          <div class="list-more-box" style="position: absolute; bottom:20px; left:30px;">      
               <ul style="">
                  <li style="float:left; margin-right: 5px;">
-                   <p class="group-album" data-no="{{groupNo}}"><button class="button-border-g" >앨범</button></p>               
+                   <p class="group-album" data-no="{{groupNo}}"><button class="button-border-g" style="font-size:10px;" >앨범</button></p>               
                  </li>
                  <li style="float:left; margin-right: 5px;">
-                   <p class="addImage" data-no="{{groupNo}}"><button class="button-border-g" onclick="document.getElementById('id02').style.display='block'">이미지 변경</button></p>               
+                   <p class="addImage" data-no="{{groupNo}}"><button class="button-border-g" onclick="document.getElementById('id02').style.display='block'" style="font-size:10px;">이미지 변경</button></p>               
                  </li>
                   <li style="float:left; margin-right: 5px;">
-                    <button id="deleteBtn" class="button-border-error" data-no="{{groupNo}}">삭제</btuuon>               
+                    <p style="font-size:10px;"><button id="deleteBtn" class="button-border-error" data-no="{{groupNo}}" style="font-size:10px;">삭제</btuuon></p>               
                  </li>               
               </ul>
          </div>
