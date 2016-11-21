@@ -16,6 +16,7 @@ import example.util.FileUploadUtil;
 import example.vo.GroupFile;
 import example.vo.JsonResult;
 import example.vo.Member;
+import net.coobird.thumbnailator.Thumbnails;
 
 @Controller // 페이지 컨트롤러에 붙이는 애노테이션 
 @RequestMapping("/upload/") // 이 페이지의 컨트롤러의 기준 URL
@@ -55,7 +56,16 @@ public class GroupFileController {
 					System.out.println(groupFile);
 					
 				}
-	      
+				//원본이미지파일의 경로+파일명
+	      File image = new File(uploadDir + newFilename);
+	      //생성할 썸네일파일의 경로+썸네일파일명
+	      File thumbnail  = new File(uploadDir + "thumbnail" + newFilename);
+	      if (image.exists()) {
+	        thumbnail.getParentFile().mkdirs();
+	        Thumbnails.of(image).size(330, 180).outputFormat("jpg").toFile(thumbnail);
+	        System.out.println("썸네일 생성완료");
+	      }    
+				
 	    }
 		
 			
