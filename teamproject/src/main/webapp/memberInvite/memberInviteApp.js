@@ -27,7 +27,7 @@ function ajaxMemberInviteList() {
 				}
 			}			
 		}   
-		$(".side-schedhule-List").html(contents) 
+		
 
 	})
 	    
