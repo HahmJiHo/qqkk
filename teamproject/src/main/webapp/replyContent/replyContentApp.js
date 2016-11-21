@@ -1,8 +1,6 @@
 function ajaxReplyList() {
-	 $.ajaxSetup ({  
-	        cache: false  
-	    });  
-	 setInterval(function(){
+
+	setInterval(function(){
 	$.getJSON(serverAddr + "/replyContent/list.json", function(obj) {
 		var result = obj.jsonResult
 
@@ -13,9 +11,11 @@ function ajaxReplyList() {
 
 		var contents = ""
 		var arr = result.data	
-
-		for (var i in arr) {					
-			if ($('#groupName').attr('data-value') == arr[i].groupNo) {					
+		var groupNo = getGroupNo.split("=")[1]
+		for (var i in arr) {
+			
+			if ($('.sub-gorup-name').attr('data-g-no') == arr[i].groupNo) {	
+				console.log(arr)
 				if ($("#userName").text() ==  arr[i].name) {
 					 contents +=  "<span class='listNickName' style='font-weight:bold; float:right; display:block; max-width: 300px; clear:both'>" + arr[i].name +"</span>" +
 					"<span class='listNickName'  style='float:right; display:block; clear:both'> <img src='../upload/" +arr[i].fileName+ "'style='width: 30px; height: 30px; border-radius: 50%'/></span>" +
@@ -41,7 +41,7 @@ function ajaxReplyList() {
 		
 		$("#board-Table").html(contents)
 	})
-	 }, 1500);
+	}, 1500);
 }
 
 $(".reflash").click(function(e) {

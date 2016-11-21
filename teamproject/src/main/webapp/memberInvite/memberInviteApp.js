@@ -13,7 +13,8 @@ function ajaxMemberInviteList() {
 				var no = location.search.split("=")[1];
 		for (var i in arr) {					
 			if (location.search.startsWith("?")) {
-				if (arr[i].groupNo == no && arr[i].status == true) {					
+				if (arr[i].groupNo == no && arr[i].status == true) {	
+					$(".sub-gorup-name").attr('data-g-no', arr[i].groupReplyNo)
 					contents += template(arr[i])
 					
 					if ($('#userName').text() == arr[i].inviteName) {

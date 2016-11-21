@@ -1,7 +1,7 @@
 $("#addBtn").click(function(e) { 
 	var replyContent = {
 		memberNo : $("#userName").attr('data-value'),
-		groupNo : $("#groupName").attr('data-value'),
+		groupNo : $('.sub-gorup-name').attr('data-g-no'),
 		content : $("#content").val(),
 		name : $("#userName").html()
 	}
@@ -24,8 +24,7 @@ function ajaxAddReplyContent(replyContent) {
 			console.log(result.data)
 			alert("등록 실패 입니다.re-con")       
 			return
-		}
-		ajaxReplyList()
+		}		
 	}, "json" )	
 }
 
