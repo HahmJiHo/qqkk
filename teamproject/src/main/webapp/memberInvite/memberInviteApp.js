@@ -27,7 +27,7 @@ function ajaxMemberInviteList() {
 				}
 			}			
 		}   
-	
+		$(".side-schedhule-List").html(contents) 
 
 	})
 	    
@@ -36,6 +36,7 @@ function ajaxMemberInviteList() {
 
 
 function ajaxMemberGroupInviteList() {
+	$('.wrapper').css({"display" : "none"})
 	$('.wrap').removeClass('display-none');
 	$.getJSON(serverAddr +"/memberInvite/list.json",function(obj) {
 		var result = obj.jsonResult
@@ -62,6 +63,7 @@ function ajaxMemberGroupInviteList() {
 		$(".group-album").click(function (e) {
 			window.location.href = "../album/album02.html?no=" + $('#userName').attr('data-value')+ "&gno=" + $(this).attr("data-no")
 		}) 	
+		$('.wrapper').css({"display" : "block"})
 		$('.wrap').addClass('display-none');
 	})	
 }

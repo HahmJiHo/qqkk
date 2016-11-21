@@ -5,13 +5,13 @@
 }
 @import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css); 
 
-.sunny{background: url('../images/sunny.png') no-repeat center; width:100px; height:100px; }
-.partlyCloudyDay{background: url('../images/partlyCloudDay.png') no-repeat center; width:100px; height:100px;}
-.heavyClouds{background: url('../images/partlyCloudDay.png') no-repeat center; width:100px; height:100px;}
-.clouds{background: url('../images/clouds.png') no-repeat center; width:100px; height:100px;}
-.rain{background: url('../images/rain.png') no-repeat center; width:100px; height:100px;}
-.rainWithClouds{background: url('../images/rainWithClouds.png') no-repeat center; width:100px; height:100px;}
-.snowAndRain{background: url('../images/snowAndRain.png') no-repeat center; width:100px; height:100px;}
+.sunny{background: url('../images/sunny.png') no-repeat center; width:150px; height:150px; }
+.partlyCloudyDay{background: url('../images/partlyCloudDay.png') no-repeat center; width:150px; height:150px;}
+.heavyClouds{background: url('../images/partlyCloudDay.png') no-repeat center; width:150px; height:150px;}
+.clouds{background: url('../images/clouds.png') no-repeat center; width:150px; height:150px;}
+.rain{background: url('../images/rain.png') no-repeat center; width:150px; height:150px;}
+.rainWithClouds{background: url('../images/rainWithClouds.png') no-repeat center; width:150px; height:150px;}
+.snowAndRain{background: url('../images/snowAndRain.png') no-repeat center; width:150px; height:150px;}
 
 .section-bar2 div{width:100%; height:10px; color:#9dc92a;}
 
@@ -19,8 +19,8 @@
 .weather-img{float:left; margin-right:45px;} 
 
 
-.joinGroup1{font-size:40px; color: rgb(117, 20, 133);}
-.joinGroup2{font-size:40px; color: rgb(16, 121, 181);}
+.joinGroup1{font-size:40px; color: #464646;}
+.joinGroup2{font-size:40px; color: #464646;}
 
 .dateText1{font-size:18px; color:#6495ed;}
 .dateText2{font-size:18px; color:#ee82ee;}

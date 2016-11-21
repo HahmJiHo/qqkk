@@ -226,9 +226,19 @@ function ajaxTermWeather(date, gpno, dday) {
 	      }
       
       $(".weather-city").html(termResult.data.city);
+      if (!termResult.data.temp) {
+    	  $(".weather-temperature-mx2").html(termResult.data.maxTemp + "°C");
+      } 
+    $(".weather-temperature-mx2").html(termResult.data.currentTemp);    	  
       
-      $(".weather-temperature-mx").html(termResult.data.maxTemp + "°C");
-      $(".weather-temperature-mn").html(termResult.data.minTemp + "°C");
+    if ((termResult.data.maxTemp == -999.0) || (termResult.data.minTemp == -999.0)) {
+      $(".weather-temperature-mx").html("기상청에서 정보를 받아올수 없습니다.");
+      $(".weather-temperature-mn").html("기상청에서 정보를 받아올수 없습니다.");
+    } else {
+    	
+    	$(".weather-temperature-mx").html(termResult.data.maxTemp + "°C");
+    	$(".weather-temperature-mn").html(termResult.data.minTemp + "°C");
+    }
       $(".weather-state").html(termResult.data.state);
    
       var aaa = termResult.data.state.trim()

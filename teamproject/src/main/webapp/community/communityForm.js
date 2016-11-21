@@ -154,7 +154,7 @@ function ajaxLoadCommunity(no) {
  	
 	$.getJSON(serverAddr + "/community/detail.json?no=" + no, function(obj) {
 		var result = obj.jsonResult
-		console.log(result)
+		
 		if (result.state != "success") {
 			alert("조회 실패입니다 디테일.")
 			return
@@ -169,6 +169,13 @@ function ajaxLoadCommunity(no) {
 		$("#fileNo").text(result.data.fileNo);
 		$("#filename > img").attr("src", "../upload/" + result.data.filename);
 		$("#boardLike").text(result.data.boardLike);
+		console.log(result)
+		if (result.data.userNo != $("#userName").attr('data-value')) {
+			$('#title').attr('disabled','disabled');
+			$('#contents').attr('disabled','disabled');
+			$(".fileupload-box").remove()	
+		}
+		
 		
 	    $('.wrap').addClass('display-none');   
 	    $('.side-header').css({"display": "block"})
