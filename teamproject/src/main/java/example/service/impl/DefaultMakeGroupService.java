@@ -1,9 +1,11 @@
 package example.service.impl;
 
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.imageio.ImageIO;
 import javax.servlet.ServletContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -82,11 +84,16 @@ public class DefaultMakeGroupService implements MakeGroupService{
       File thumbnail  = new File(uploadDir + "thumbnail" + newFilename);
       if (image.exists()) {
         thumbnail.getParentFile().mkdirs();
-        Thumbnails.of(image).size(320, 180).outputFormat("jpg").toFile(thumbnail);
+        Thumbnails.of(image).size(330, 180).outputFormat("jpg").toFile(thumbnail);
         System.out.println("썸네일 생성완료");
-    }    
+      }    
 			
 			
+      
+      
+      
+      
+      
 		}
 
 	}
