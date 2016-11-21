@@ -79,6 +79,9 @@ public class AlbumController {
 			String newFilename = null;
 			for (int i = 0; i < file1.length; i++) {
 				if (file1[i] != null && !file1[i].isEmpty()) {
+					
+				 
+	         
 					newFilename = FileUploadUtil.getNewFilename(file1[i].getOriginalFilename());
 					file1[i].transferTo(new File(uploadDir + newFilename));	     
 					album.setMemberNo(member.getNo());
@@ -86,8 +89,7 @@ public class AlbumController {
 					System.out.println(album);
 					albumDao.insert(album);		
 					
-
-	         //원본이미지파일의 경로+파일명
+					 //원본이미지파일의 경로+파일명
 	         File image = new File(uploadDir + newFilename);
 	         //생성할 썸네일파일의 경로+썸네일파일명
 	         File thumbnail  = new File(uploadDir + "thumbnail" + newFilename);
@@ -95,7 +97,8 @@ public class AlbumController {
 	           thumbnail.getParentFile().mkdirs();
 	           Thumbnails.of(image).size(190, 150).outputFormat("jpg").toFile(thumbnail);
 	           System.out.println("썸네일 생성완료");
-	       }    
+	         } 
+	          
 										
 				}
 			}
