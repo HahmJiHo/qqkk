@@ -368,13 +368,15 @@ function ajaxMyScheduleList(no) {
 		}
 		
 		showCalendar(arrTest);
-	$(".side-schedhule-List").html(contents) 
+		$(".side-schedhule-List").html(contents) 
+	
 	$('header').css({"display" : "block"})
 	$('.make-text').css({"display" : "block"})
 	$('.header-top').css({"display" : "block"})
 	$('.header-top').css({"display" : "block"})
 	$('.header-top').css({"display" : "block"})
 	$('.wrap').addClass('display-none');
+	
 	})
 }
 

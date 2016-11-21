@@ -10,7 +10,9 @@ $("#addBtn").click(function(e) {
 	$("#content").val('')
 });
 
-$('body').on('click', '#g-r-box',function(e) {
+
+
+$('body').on('click', '#group-reply-btn',function(e) {
 	$('#origin-reply-box').css({"display" : "block"})		
 })
 $('body').on('click', '.g-r-x', function(e) {
