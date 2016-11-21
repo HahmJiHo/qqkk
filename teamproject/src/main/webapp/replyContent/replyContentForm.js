@@ -10,10 +10,12 @@ $("#addBtn").click(function(e) {
 	$("#content").val('')
 });
 
-$('.group-reply-more').on('click', '#group-reply-btn',function(e) {
-	$('#reply-modal').modal();	
+$('body').on('click', '#g-r-box',function(e) {
+	$('#origin-reply-box').css({"display" : "block"})		
 })
-
+$('body').on('click', '.g-r-x', function(e) {
+	$('#origin-reply-box').css({"display" : "none"})		
+})
 
 function ajaxAddReplyContent(replyContent) {
 	$.post(serverAddr +"/replyContent/add.json", replyContent,  function(obj) {

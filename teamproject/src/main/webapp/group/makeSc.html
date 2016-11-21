@@ -173,7 +173,7 @@ top: 4px;
 .form-group ul li .minicolors .minicolors-swatch { border-radius : 100px; }
 
 .logOutBtn{cursor: pointer;} 
-.artice { float: left;}
+.artice { float: right; margin-right:80px; }
 ::-webkit-scrollbar {
   width: 0.2em;
   background: #9dc92a;
@@ -238,9 +238,13 @@ top: 4px;
          <div class="title-header">
             <p class="sub-gorup-name">GROUPNAME</p>
             <h2 class="sub-tasks-title"><span id="tasks-title" style="color:#751471; font-size:50px;"></span>그룹의 일정만들기</h2>
-            <p class="sub-text tasks-header">약속을 잡아주세요</p>
+            <p class="sub-text tasks-header">약속을 잡아주세요<button type="button" id="g-r-box"class="hiba-btn btn-round-p" style="cursor: pointer; margin-left:10px; font-size:12px; display:none">그룹 메모</button></p>
+            
           </div>                        
-       </div>            
+       </div>    
+         <div class="group-reply-more">
+          
+         </div>        
       </div>
       
        <div class="aside" style="float: left; padding:20px 20px 0 20px;width: auto; z-index: 1; ">
@@ -262,7 +266,7 @@ top: 4px;
                </li>
              </ul>                             
            </div>  
-        <div role="tabpanel" style="border-top: 3px solid #751471; background: #fff; min-height:300px;">
+        <div role="tabpanel" style="border-top: 3px solid #751471; background: #fff; min-height:350px;">
 
 	         <ul class="nav nav-tabs" role="tablist">
 	            <li role="presentation" class="active" style="float:left;">
@@ -290,46 +294,17 @@ top: 4px;
 	         </div>
         </div>
        </div>         
- 
-
-     <div class="group-reply-box" style="float:left; min-width:600px; margin: 20px 35px 0 15px; border-top: 3px solid #751471; background:#ab9ec4;">              
-       <div class="chat-group-name-box" style="background:#fff; padding:10px 0; position:relative">
-        <p style="margin-left:20px; font-size:16px; font-weight:bold; color:#751471"><span class="chat-group-name"></span>그룹 메모<p>
-         <span class="reflash"style="position:absolute; cursor:pointer; right:10px; top:10px;"><i class="fa fa-refresh" aria-hidden="true"></i></span>
-       </div>
-       <div class="reply my-login">
-       <form method="post" class="form-horizontal">   
-         <div class="reply-table-box" style="height: 500px; overflow:hidden; overflow-y:scroll; padding:0 15px;"> 
-           <div id="board-Table" class='table table-hover'>                         
-             
-           </div>
-         </div>
-           
-           <div class="form-group" style='display:none'>
-           <label for="userName" class="col-sm-2 control-label">닉네임</label>
-             <div class="col-sm-10">
-               <span id="nicknm" class="my-login" style="color:#000"></span>
-             </div>
-           </div> 
+      
+      <div class="artice">
           
-          <div class="form-group" style="padding-top:20px;">
-             <div class="col-sm-10" style="width:100%;">
-               <textarea class="form-control" id="content" placeholder="내용" style="width:85%; height:40px; display:inline-block; margin-left: 15px;"> </textarea>
-               <button id="addBtn" type="button" class="button-border-p" style="float:right; padding:10px 18px 8px 18px">등록</button>                           
-             </div>                          
+        <div class="cal-warp" style=" width:450px;">
+          <div class="my-make-schedule">
+            <button type="button" class="make-sc-btn hiba-btn btn-round-p" style="cursor: pointer; margin-top:35px; margin-right:10px; font-size:12px;">일정 추가하기</button>
+                        
           </div>
-         </form>
-       </div>     
-
-    </div>   
-     <div class="artice">
-
-	      <div class="cal-warp" style=" width:450px;">
-	        <div class="my-make-schedule">
-            <button type="button" class="make-sc-btn hiba-btn btn-round-p" style="cursor: pointer; margin-top:35px; margin-right:10px; font-size:12px;">일정 추가하기</button>            
-          </div>
-	        <div id='calendar' style="float: right; border-top: 3px solid #751471"></div>
-	      </div>               
+        
+          <div id='calendar' style="float: right; border-top: 3px solid #751471"></div>
+        </div>               
         <div id="calendarModal" class="modal fade">
           <div class="modal-dialog">
             <div class="modal-content">
@@ -428,10 +403,79 @@ top: 4px;
         </div>  
       </div>      
       </div> 
-      </div>     
+      </div>
+      <div id="origin-reply-box">   
+     <div class="group-reply-box" style="float:left; min-width:600px; margin: 20px 35px 0 15px; border-top: 3px solid #751471; background:#ab9ec4;">              
+       <div class="chat-group-name-box" style="background:#fff; padding:10px 0; position:relative">
+        <p style="margin-left:20px; font-size:16px; font-weight:bold; color:#751471"><span class="chat-group-name"></span>그룹 메모<p>
+         <span class="reflash" style="position:absolute; cursor:pointer; right:10px; top:10px;"><i class="fa fa-refresh" aria-hidden="true"></i></span>
+         <span class="g-r-x" style="position:absolute; cursor:pointer; right:10px; top:10px; display:none;"><i class="fa fa-times" aria-hidden="true" style="font-size:12px"></i></span>
+       </div>
+       <div class="reply my-login">
+       <form method="post" class="form-horizontal">   
+         <div class="reply-table-box" style="height: 500px; overflow:hidden; overflow-y:scroll; padding:0 15px;"> 
+           <div id="board-Table" class='table table-hover'>                         
+             
+           </div>
+         </div>
+           
+           <div class="form-group" style='display:none'>
+           <label for="userName" class="col-sm-2 control-label">닉네임</label>
+             <div class="col-sm-10">
+               <span id="nicknm" class="my-login" style="color:#000"></span>
+             </div>
+           </div> 
+          
+          <div class="form-group" style="padding-top:20px;">
+             <div class="col-sm-10" style="width:100%;">
+               <textarea class="form-control" id="content" placeholder="내용" style="width:85%; height:40px; display:inline-block; margin-left: 15px;"> </textarea>
+               <button id="addBtn" type="button" class="button-border-p" style="float:right; padding:10px 18px 8px 18px">등록</button>                           
+             </div>                          
+          </div>
+         </form>
+       </div>     
+
+    </div>   
+    </div>
+    <!--  <div id="reply-modal" class="modal fade">
+              <div class="group-reply-box" style="float:left; min-width:600px; margin: 20px 35px 0 15px; border-top: 3px solid #751471; background:#ab9ec4;">              
+       <div class="chat-group-name-box" style="background:#fff; padding:10px 0; position:relative">
+        <p style="margin-left:20px; font-size:16px; font-weight:bold; color:#751471"><span class="chat-group-name"></span>그룹 메모<p>
+         <span class="reflash"style="position:absolute; cursor:pointer; right:10px; top:10px;"><i class="fa fa-refresh" aria-hidden="true"></i></span>
+       </div>
+       <div class="reply my-login">
+       <form method="post" class="form-horizontal">   
+         <div class="reply-table-box" style="height: 500px; overflow:hidden; overflow-y:scroll; padding:0 15px;"> 
+           <div id="board-Table" class='table table-hover'>                         
+             
+           </div>
+         </div>
+           
+           <div class="form-group" style='display:none'>
+           <label for="userName" class="col-sm-2 control-label">닉네임</label>
+             <div class="col-sm-10">
+               <span id="nicknm" class="my-login" style="color:#000"></span>
+             </div>
+           </div> 
+          
+          <div class="form-group" style="padding-top:20px;">
+             <div class="col-sm-10" style="width:100%;">
+               <textarea class="form-control" id="content" placeholder="내용" style="width:85%; height:40px; display:inline-block; margin-left: 15px;"> </textarea>
+               <button id="addBtn" type="button" class="button-border-p" style="float:right; padding:10px 18px 8px 18px">등록</button>                           
+             </div>                          
+          </div>
+         </form>
+       </div>     
+
+    </div>   
+        </div>
+     -->
+    
+    
     </div>
   </section>       
   </div>             
+  
   <script id="groupReplyMore" type="text/x-handlebars-template"> 
   <button id="group-reply-btn"class="btn btn-primary" type="button" data-no="{{no}}">그룹 댓글</button>
   </script>
@@ -522,6 +566,7 @@ top: 4px;
   ajaxGroupInviteListMessage() 
   ajaxMemberInviteList()
   ajaxReplyList()
+   
 	if (location.search.startsWith("?")) {
 	  var no = location.search.split("=")[1];
 	  ajaxMyScheduleList(no)

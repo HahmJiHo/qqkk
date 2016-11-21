@@ -41,7 +41,7 @@ function ajaxReplyList() {
 		
 		$("#board-Table").html(contents)
 	})
-	 }, 1000);
+	 }, 1500);
 }
 
 $(".reflash").click(function(e) {
