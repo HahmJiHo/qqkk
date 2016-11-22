@@ -57,7 +57,7 @@ function showCalendar(arr) {
 							) {
 								swal(
 										'Good job!',
-										'You clicked the button!',
+										'일정을 성공적으로 만들었습니다.',
 										'success'							
 								)
 		
@@ -93,7 +93,7 @@ function showCalendar(arr) {
 																	
 								swal(
 										'Good job!',
-										'You clicked the button!',
+										'일정을 성공적으로 만들었습니다.',
 										'success'							
 								)
 								$('#calendarAddModal').modal('hide');
