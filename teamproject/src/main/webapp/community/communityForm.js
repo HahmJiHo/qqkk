@@ -84,8 +84,9 @@ $("#addCommentBtn").click(function(event) {
 			comment: $("#comment").val(),
 			commentRegisterDate: $("#commentRegisterDate").val()
 	}
-	ajaxAddCommunityComment(communityComment)
 	
+	ajaxAddCommunityComment(communityComment)
+	$("#comment").val("")
 });
 
 $("#updateCommentBtn").click(function(event) {
