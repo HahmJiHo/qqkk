@@ -10,6 +10,8 @@ $("#addMember").click(function(e) {
 	}
 	console.log(memberInvite)
 	ajaxAddMemberInvite(memberInvite)
+	$("#name").val("")
+	$("#email").val("")
 	
 });
 $(".add-member-btn").click(function (e){
@@ -49,6 +51,11 @@ function ajaxAddMemberInvite(memberInvite) {
 			alert("이미 초대된 회원입니다.")       
 			return
 		}
+		swal(
+				'초대 성공!',
+				'친구 초대가 되었습니다.',
+				'success'							
+		)
 		ajaxMemberInviteList()
 	}, "json" )	
 }
