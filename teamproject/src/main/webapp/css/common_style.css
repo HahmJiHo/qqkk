@@ -290,7 +290,7 @@ color: #9c9c9c; line-height: inherit; padding: 5px 0;}
 .tasks-list-desc { font-size: 15px; font-weight:400;}
 
 
-
+.logOutBtn { font-size:16px; margin:20px;}
 
 .header-top {background-color: rgba(255, 255, 255, 0.96);  border-bottom: 1px solid rgba(0, 0, 0, 0.1); width:100%;}
 .group-reply-box { min-width: 600px;}

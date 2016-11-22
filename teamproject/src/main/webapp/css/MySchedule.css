@@ -11,7 +11,8 @@
     -moz-border-radius: 0px;
     border-radius: 0px;
 }
-
+.logOutBtn { font-size:16px; margin:20px;}
+.logout { font-size:16px; margin:20px; }
 .item.list-group-item
 {
     float: none;
@@ -244,7 +245,7 @@
   .g_sc { width: 250px; height:300px; overflow:hidden;  }
   .gallery{ width:250px; }
   .gallery-item { width: 400px;}
-    #scheduleInfo { width: 550px;  left: 250px; right:0px;}
+    #scheduleInfo { width: 550px;  left: 300px; right:0px;}
   .viewScLi { right: 100px; }
   #schedule-Info { width: 550px; }
   .bx-wrapper .bx-next { left: 500px !important; }
