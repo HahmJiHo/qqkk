@@ -168,7 +168,7 @@ function ajaxLoadCommunity(no) {
 		$("#registerDate").text(result.data.registerDate2);
 		$("#viewCount").text(result.data.viewCount);
 		$("#fileNo").text(result.data.fileNo);
-		$("#filename > img").attr("src", "../upload/" + result.data.filename);
+		$("#filename > img").attr("src", "../upload/thumbnail" + result.data.filename);
 		$("#boardLike").text(result.data.boardLike);
 		console.log(result)
 		if (result.data.userNo != $("#userName").attr('data-value')) {
