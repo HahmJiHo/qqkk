@@ -26,10 +26,11 @@
   </resultMap>
 
   <select id="selectList" resultMap="communityMap" parameterType="map">
-    select hiba_board.*, hiba_brd_file.*, hiba_membs.nicknm, hiba_membs.phot_path
+      select hiba_board.*, hiba_brd_file.*, hiba_membs.nicknm, hiba_membs.phot_path
       from hiba_board 
       inner join hiba_membs on hiba_board.mno = hiba_membs.mno
-      left join hiba_brd_file on hiba_board.cno = hiba_brd_file.cno and hiba_membs.mno = hiba_brd_file.mno;  
+      left join hiba_brd_file on hiba_board.cno = hiba_brd_file.cno and hiba_membs.mno = hiba_brd_file.mno
+     ORDER BY hiba_board.cno DESC
 <!--     <where>
       <if test="title != null">title like concat('%', #{title}, '%')</if>
     </where> 

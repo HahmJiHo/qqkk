@@ -79,7 +79,7 @@ public class DefaultCommnuityService implements CommunityService {
       //communityFile.setCommunityNo(10200); //트랜잭션 테스트 용 
       System.out.println(communityFile);
       communityFileDao.insert(communityFile);
-   	 //원본이미지파일의 경로+파일명
+   	/* //원본이미지파일의 경로+파일명
       File image = new File(uploadDir + newFilename);
       //생성할 썸네일파일의 경로+썸네일파일명
       File thumbnail  = new File(uploadDir + "thumbnail" + newFilename);
@@ -87,7 +87,7 @@ public class DefaultCommnuityService implements CommunityService {
         thumbnail.getParentFile().mkdirs();
         Thumbnails.of(image).size(700, 700).outputFormat("jpg").toFile(thumbnail);
         System.out.println("썸네일 생성완료");
-      } 
+      } */
     }
     
   }

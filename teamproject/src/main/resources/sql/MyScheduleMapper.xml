@@ -30,8 +30,8 @@ hiba_membs.nicknm, hiba_group.gname,
 from hiba_sc_status
 left join hiba_g_membs on hiba_sc_status.mno = hiba_g_membs.mno and hiba_sc_status.gno = hiba_g_membs.gno
 left join hiba_membs on hiba_g_membs.mno = hiba_membs.mno
-left join hiba_group on hiba_g_membs.gno = hiba_group.gno
-left join hiba_group_photo on hiba_group.gno = hiba_group_photo.gno
+left join hiba_group on hiba_g_membs.gno = hiba_group.gno 
+left join hiba_group_photo on hiba_group.gno = hiba_group_photo.gno and hiba_membs.mno = hiba_group_photo.mno
 left join hiba_g_sc on hiba_sc_status.gsno = hiba_g_sc.gsno
 left join hiba_place on hiba_g_sc.gpno = hiba_place.gpno
 	</select>

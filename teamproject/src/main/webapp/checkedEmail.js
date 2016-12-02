@@ -5,8 +5,8 @@ var url = require('url');
 
 var connection = mysql.createConnection({
 	host     : 'localhost',
-	user     : 'HIBA',
-	password : 'HIBA0418',
+	user     : 'hiba',
+	password : 'hiba1234',
 	database : 'hibadb'
 });
 

@@ -333,24 +333,29 @@ top: 4px;
             </div>
           </div>
         </div>      
+          
           <div id="calendarAddModal" class="modal fade">
-          <div class="modal-dialog">
+          <div class="modal-dialog" style="border-top: 3px solid #751471;">
               <div class="modal-content">
                 <div class="modal-header">
+                    <ul style="padding-bottom:20px;">
+                      <li style="float:left; font-size: 20px; border-bottom: 1px solid #afafaf; color: #afafaf; ">일정잡기</li>
+                      <li style="float:left; margin: 10px 0 0 10px; color: #afafaf;">이벤트명은 앨범명과 동일하게 저장 됩니다.</li>
+                    </ul>
                     <div class="article-schedule">
-                      <div class="container" style="position:relative;" >
+                      <div class="container" style="position:relative; " >
                          <form>
                            <ul class="add-pop-list">
                              <li>
-                               <span>이벤트 : </span><input type="text" id="addeventTitle">
+                               <span style="margin-right:10px; color:#751471;"><i class="fa fa-keyboard-o" aria-hidden="true" style="margin-right:10px;"></i>이벤트 </span><input style="width:200px;" type="text" id="addeventTitle" placeholder="이벤트">
                                <p class="title-state"></p>
                              </li>
                              <li>
-                               <span>시작일 : </span><input type="text" id="addDateStart">
+                               <span style="margin-right:10px; color:#751471;"><i class="fa fa-calendar-o" aria-hidden="true" style="margin-right:10px;"></i>시작일 </span><input style="width:200px;" type="text" id="addDateStart" placeholder="시작일">
                                 <p class="start-state"></p>
                              </li>
                              <li>
-                               <span>종료일 : </span><input type="text" id="addDateEnd">
+                               <span style="margin-right:10px; color:#751471;"><i class="fa fa-calendar-o" aria-hidden="true" style="margin-right:10px;"></i>종료일 </span><input style="width:200px;" type="text" id="addDateEnd" placeholder="종료일">
                                <p class="end-state"></p>
                              </li>
                              <li>
@@ -370,7 +375,8 @@ top: 4px;
                   </div>
              </div>
           </div>
-      </div>     
+      </div> 
+              
        <div class="h-ing-sc" style="float: left; width:100%; margin-top:15px;">          
         <div class="h-ing-sc-box" style="background:#fff; height:250px; overflow-x: hidden; overflow-y: scroll; padding:5px 10px 0px 10px; border-top:3px solid #751471 ">  
            <h3 class="sm-title" style="color:#751471; font-size:16px; font-weight:bold">진행 일정</h3>
@@ -406,7 +412,7 @@ top: 4px;
       </div> 
       </div>
     <div id="origin-reply-box">   
-     <div class="group-reply-box" style="float:left;  margin: 20px 35px 0 15px; border-top: 3px solid #751471; background:#ab9ec4;">              
+     <div class="group-reply-box" style="float:left;  margin: 20px 35px 0 15px; border-top: 3px solid #751471; background:#d7d2e2;">              
        <div class="chat-group-name-box" style="background:#fff; padding:10px 0; position:relative">
         <p style="margin-left:20px; font-size:16px; font-weight:bold; color:#751471"><span class="chat-group-name"></span>그룹 메모<p>
          <span class="reflash" style="position:absolute; cursor:pointer; right:10px; top:10px;"><i class="fa fa-refresh" aria-hidden="true"></i></span>
