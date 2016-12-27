@@ -43,7 +43,7 @@
     select mno,
     name, nicknm, email, PHOT_PATH
     from hiba_membs
-    where mno = #{value}
+    where email = #{value}
   </select>
 
   <select id="selectOneByPassword" resultMap="memberMap" parameterType="map">
@@ -51,6 +51,11 @@
     from hiba_membs 
     where mno=#{no} and pwd=password(#{password})
   </select>
+  
+  <select id="selectOneByEmail" resultMap="memberMap" parameterType="map">
+    select email from hiba_membs where email=#{email}
+  </select>
+  
   
    <select id="selectOneByEmailAndPassword" resultMap="memberMap" parameterType="map">
     select mno, name, nicknm, email ,PHOT_PATH

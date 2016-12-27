@@ -8,8 +8,13 @@ $("#addMember").click(function(e) {
 		groupNo : groupNo,
 		inviteEmail : $("#email").val()
 	}
+	var inviteEmail = {
+			inviteEmail : $("#email").val()
+		}
+	alert(inviteEmail)
 	console.log(memberInvite)
 	ajaxAddMemberInvite(memberInvite)
+	ajaxInviteEmail(inviteEmail)
 	$("#name").val("")
 	$("#email").val("")
 	
@@ -59,6 +64,19 @@ function ajaxAddMemberInvite(memberInvite) {
 		ajaxMemberInviteList()
 	}, "json" )	
 }
+
+function ajaxInviteEmail(inviteEmail) {
+	$.post(serverAddr +"/sendEmail/mail.json", inviteEmail, function(obj) {
+		var result = obj.jsonResult	
+		if (result.state != "success") {
+			console.log(result.data)
+			alert("이미 초대된 회원입니다.")       
+			return
+		}
+	}, "json" )	
+}
+
+
 
 function ajaxUpdateMemberInvite(memberInvite) {	
 	$.post(serverAddr +"/memberInvite/update.json", memberInvite, function(obj) {
